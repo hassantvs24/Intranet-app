@@ -1,0 +1,27 @@
+#site-header {
+    display: none;
+}
+
+.login-page-wrap {
+    .left-col {
+        padding: 35px 15px;
+        background-image: url("/images/hero-bg.png");
+
+        @include md {
+            height: 100vh;
+        }
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    .right-col {
+        padding: 35px 15px;
+    }
+}
+
+.login-form {
+    width: 96%;
+    max-width: 750px;
+}
