@@ -1,8 +1,5 @@
-#site-header {
-    display: none;
-}
-
-.login-page-wrap {
+.login-page-wrap,
+.register-page-wrap {
     .left-col {
         padding: 35px 15px;
         background-image: url("/images/hero-bg.png");
@@ -21,7 +18,8 @@
     }
 }
 
-.login-form {
+.login-form,
+.register-form {
     width: 96%;
     max-width: 750px;
 }

@@ -10909,6 +10909,12 @@ a.text-dark:focus {
     Custom Scss Styles
 -----------------------------------*/
 
+/* -------- Hide header where necessary -------- */
+
+.hide-header #site-header {
+  display: none;
+}
+
 /* -------- Letter spacing -------- */
 
 .ls-1 {
@@ -10926,30 +10932,31 @@ a.text-dark:focus {
   background-image: linear-gradient(90deg, #4d16dd, #4d16dd 25%, #ff47f9 50%, #ffaff9 75%, #ffaff9);
 }
 
-#site-header {
-  display: none;
-}
-
-.login-page-wrap .left-col {
+.login-page-wrap .left-col,
+.register-page-wrap .left-col {
   padding: 35px 15px;
   background-image: url("/images/hero-bg.png");
 }
 
 @media (min-width: 768px) {
-  .login-page-wrap .left-col {
+  .login-page-wrap .left-col,
+  .register-page-wrap .left-col {
     height: 100vh;
   }
 }
 
-.login-page-wrap p {
+.login-page-wrap p,
+.register-page-wrap p {
   font-size: 20px;
 }
 
-.login-page-wrap .right-col {
+.login-page-wrap .right-col,
+.register-page-wrap .right-col {
   padding: 35px 15px;
 }
 
-.login-form {
+.login-form,
+.register-form {
   width: 96%;
   max-width: 750px;
 }

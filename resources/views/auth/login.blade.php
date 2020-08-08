@@ -2,15 +2,15 @@
 
 @section('title', 'Login')
 
-@section('body-class', 'page page-login')
+@section('body-class', 'page page-login hide-header')
 
 @section('content')
     <div class="login-page-wrap">
         <div class="container-fluid">
             <div class="row justify-content-center align-items-stretch align-content-stretch">
                 <div class="col-md-5 bg-dark left-col d-flex flex-wrap justify-content-center align-content-center align-items-center">
-                    <h1 class="text-center text-light w-100">Welcome.</h1>
-                    <p class="w-100 text-center text-light">Please login to view your board.</p>
+                    <h1 class="text-center text-light w-100 font-weight-bolder">{{ __('Login.') }}</h1>
+                    <p class="w-100 text-center text-light">{{ __('Please login to view your board.') }}</p>
                 </div>
 
                 <div class="col-md-7 right-col d-flex flex-wrap justify-content-center align-content-center align-items-center">
