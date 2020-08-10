@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function invite_users()
+    {
+        return view('admin.invite-users');
+    }
 }
