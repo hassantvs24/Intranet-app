@@ -7,6 +7,7 @@ require('./bootstrap');
 // window.dayGridPlugin = require('@fullcalendar/daygrid')
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 // import interactionPlugin from '@fullcalendar/interaction';
 
 // this data will come from backend
@@ -41,9 +42,14 @@ const EVENTS = [
 document.addEventListener('DOMContentLoaded', function() {
     let calendarEl = document.getElementById('calendar')
     let calendar = new Calendar(calendarEl, {
-        plugins: [ dayGridPlugin ],
+        plugins: [ dayGridPlugin, timeGridPlugin ],
         editable: false,
-        events: EVENTS
+        events: EVENTS,
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        }
     })
     calendar.render()
 });
