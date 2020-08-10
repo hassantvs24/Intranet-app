@@ -5,6 +5,7 @@
         <h1>Typography</h1>
 
         <hr>
+
         <h1 class="display-1">Hello World!!</h1>
         <h1 class="display-2">Hello World!!</h1>
         <h1 class="display-3">Hello World!!</h1>
