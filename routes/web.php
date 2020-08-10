@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/style-guide', function () {
     return view('style-guide');
 });
+
+// admin routes
+Route::get('/invite', 'HomeController@invite_users')->name('invite');
