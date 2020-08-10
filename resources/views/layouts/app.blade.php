@@ -21,11 +21,11 @@
 </head>
 <body class="@yield('body-class')">
     {{--START top bar--}}
-    <div class="top-color-bar default-gradient"></div>
+    <div class="top-color-bar"></div>
     {{--END top bar--}}
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white" id="site-header">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light" id="site-header">
+            <div class="container bg-color">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('images/logo.svg') }}" height="35" alt="">
                 </a>
@@ -53,7 +53,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
