@@ -79,15 +79,14 @@
                 </div>
                 <!-- END card -->
                 <!-- START card -->
-                <div class="col col-md-4 my-4">
+                <div class="col col-md-8 my-4">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="cart-title mb-0">Calender</h3>
                         </div>
                         <div class="card-body">
                             <div class="card-body__child card-body__child--text">
-                                <h3>calendar</h3>
-                                <h3>calendar</h3>
+                                <div id="calendar"></div>
                             </div>
                         </div>
                     </div>
