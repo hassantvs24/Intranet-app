@@ -63,9 +63,13 @@ $btn-font-size:               1rem;
 //$btn-block-spacing-y:         .5rem;
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius:           5px;
-$btn-border-radius-lg:        5px;
-$btn-border-radius-sm:        5px;
+$btn-border-radius:           8px;
+$btn-border-radius-lg:        8px;
+$btn-border-radius-sm:        8px;
+
+$border-radius: 8px;
+$border-radius-lg: 8px;
+$border-radius-sm: 8px;
 
 //$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 /*=======================================

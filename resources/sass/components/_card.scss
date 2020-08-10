@@ -1,0 +1,46 @@
+.card {
+    border-radius: 8px;
+    border: 0;
+    box-shadow: 0 7px 20px 5px rgba(0,0,0,.05);
+    overflow: hidden;
+    //background-color: rgba($primary, .08);
+    padding: 20px;
+
+    .card-header {
+        border: 0;
+        border-radius: 8px;
+        background-color: rgba($primary, .08);
+        //background-image: linear-gradient(120deg, rgba($primary, .35) 0%, rgba($secondary, .35) 100%);
+        text-align: center;
+        color: $primary;
+        box-shadow: 0 3px 20px 5px rgba(0,0,0,.05);
+    }
+    .cart-title {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .card-body {
+        padding: 0;
+
+        &__child {
+            margin-top: 20px;
+            border: 8px;
+            overflow: hidden;
+        }
+
+        &__child--links {
+            li {
+                padding: 5px;
+            }
+
+            a {
+                font-weight: 600;
+            }
+        }
+
+        &__child--video iframe {
+            border-radius: 8px;
+        }
+    }
+}
