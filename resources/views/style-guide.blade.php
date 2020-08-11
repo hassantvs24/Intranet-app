@@ -5,6 +5,7 @@
         <h1>Typography</h1>
 
         <hr>
+
         <h1 class="display-1">Hello World!!</h1>
         <h1 class="display-2">Hello World!!</h1>
         <h1 class="display-3">Hello World!!</h1>
@@ -22,6 +23,7 @@
 
         <hr>
 
+        <!-- START data cards -->
         <div class="data-cards">
             <h1>Data Cards</h1>
             <div class="row">
@@ -79,15 +81,14 @@
                 </div>
                 <!-- END card -->
                 <!-- START card -->
-                <div class="col col-md-4 my-4">
+                <div class="col col-md-8 my-4">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="cart-title mb-0">Calender</h3>
                         </div>
                         <div class="card-body">
                             <div class="card-body__child card-body__child--text">
-                                <h3>calendar</h3>
-                                <h3>calendar</h3>
+                                <div id="calendar"></div>
                             </div>
                         </div>
                     </div>
