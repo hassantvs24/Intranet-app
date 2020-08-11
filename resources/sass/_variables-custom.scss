@@ -75,3 +75,19 @@ $border-radius-sm: 8px;
 /*=======================================
 END Bootstrap button variables
 =======================================*/
+
+/*=======================================
+Custom css variables
+=======================================*/
+.body-teal {
+    --color-one: #02aab0;
+    --color-two: #00cdac;
+
+    .bg-color {
+        background-color: rgba(#02aab0, .15) !important;
+    }
+    a,
+    .txt-color {
+        color: var(--color-one) !important;
+    }
+}
