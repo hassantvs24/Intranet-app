@@ -4,27 +4,6 @@
 
 @section('admin-content')
     <div class="group-create-wrap">
-        {{-- START header cards --}}
-        {{--<div class="header container-fluid my-4 px-4">
-            <div class="row">
-                <div class="col">
-                    <div class="card">
-
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur assumenda commodi dignissimos distinctio dolorum enim, eos excepturi id magni minus nobis placeat quas quisquam reiciendis! Assumenda eligendi officiis ullam?
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur assumenda commodi dignissimos distinctio dolorum enim, eos excepturi id magni minus nobis placeat quas quisquam reiciendis! Assumenda eligendi officiis ullam?
-                    </div>
-                </div>
-            </div>
-        </div>--}}
-        {{-- END header cards --}}
 
         {{-- START create group --}}
         <div class="container" id="create-group-form-wrap">
