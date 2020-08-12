@@ -79,12 +79,98 @@ END Bootstrap button variables
 /*=======================================
 Custom css variables
 =======================================*/
+::root {
+    --violet: #6c5ce7;
+    --green: #2ed573;
+    --teal: #02aab0;
+    --blue: #0984e3;
+    --pink: #e84393;
+    --yellow: #fdcb6e;
+    --red: #ff4757;
+    --orange: #f65b00;
+}
+.body-red {
+    --color-one: #ff4757;
+
+    .bg-color {
+        background-color: rgba(#ff4757, .15) !important;
+    }
+    a,
+    .txt-color {
+        color: var(--color-one) !important;
+    }
+}
+.body-orange {
+    --color-one: #f65b00;
+
+    .bg-color {
+        background-color: rgba(#f65b00, .15) !important;
+    }
+    a,
+    .txt-color {
+        color: var(--color-one) !important;
+    }
+}
+.body-yellow {
+    --color-one: #fdcb6e;
+
+    .bg-color {
+        background-color: rgba(#fdcb6e, .15) !important;
+    }
+    a,
+    .txt-color {
+        color: var(--color-one) !important;
+    }
+}
+.body-violet {
+    --color-one: #6c5ce7;
+
+    .bg-color {
+        background-color: rgba(#6c5ce7, .15) !important;
+    }
+    a,
+    .txt-color {
+        color: var(--color-one) !important;
+    }
+}
+.body-green {
+    --color-one: #2ed573;
+
+    .bg-color {
+        background-color: rgba(#2ed573, .15) !important;
+    }
+    a,
+    .txt-color {
+        color: var(--color-one) !important;
+    }
+}
 .body-teal {
     --color-one: #02aab0;
-    --color-two: #00cdac;
 
     .bg-color {
         background-color: rgba(#02aab0, .15) !important;
+    }
+    a,
+    .txt-color {
+        color: var(--color-one) !important;
+    }
+}
+.body-blue {
+    --color-one: #0984e3;
+
+    .bg-color {
+        background-color: rgba(#0984e3, .15) !important;
+    }
+    a,
+    .txt-color {
+        color: var(--color-one) !important;
+    }
+}
+.body-pink {
+    --color-one: #e84393;
+
+    .bg-color {
+        background-color: rgba(#e84393, .15) !important;
     }
     a,
     .txt-color {
