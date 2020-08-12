@@ -23,4 +23,9 @@ Route::get('/style-guide', function () {
 });
 
 // admin routes
+Route::get('/dashboard', 'AdminController@home')->name('admin-home');
+Route::get('/all-groups', 'AdminController@index')->name('all-groups');
+Route::get('/archived-groups', 'AdminController@archived')->name('archived-groups');
+Route::get('/create-group', 'AdminController@create')->name('create-group');
+Route::get('/edit-group', 'AdminController@edit')->name('edit-group');
 Route::get('/invite', 'HomeController@invite_users')->name('invite');
