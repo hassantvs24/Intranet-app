@@ -6,10 +6,24 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function home()
+    {
+        return view('admin.dashboard');
+    }
 
     public function index()
     {
         return view('admin.group-index');
+    }
+
+    public function archived()
+    {
+        return view('admin.group-archive');
     }
 
     public function create()
@@ -27,7 +41,8 @@ class AdminController extends Controller
         return view('admin.group-view');
     }
 
-    public function edit($id)
+//    public function edit($id)
+    public function edit()
     {
         return view('admin.group-edit');
     }

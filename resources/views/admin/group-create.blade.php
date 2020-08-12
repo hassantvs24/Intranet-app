@@ -46,10 +46,6 @@
                         </div>
 
                         <div class="form-row">
-{{--                            <div class="form-group col-md-6">--}}
-{{--                                <label for="group_color">Color</label>--}}
-{{--                                <input type="text" class="form-control" id="group_color" name="group_color" required>--}}
-{{--                            </div>--}}
                             <div class="form-group col-md-6 d-flex flex-wrap">
                                 <label for="" class="d-block w-100">Select a group color:</label>
 
@@ -111,16 +107,49 @@
                         </div>
 
                         <div class="form-row">
+                            <label for="" class="d-block w-100">Select group admins:</label>
+
                             <div class="form-group col-md-6">
-                                <label for="group_admin">Primary Contact</label>
-                                <select id="group_admin" name="group_admin" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>Adam Rusega</option>
-                                    <option>Levi Archman</option>
-                                    <option>Jhonny Ive</option>
-                                    <option>Douglas Costa</option>
-                                </select>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="group_admins" id="group_admin_1" checked>
+                                    <label class="custom-control-label" for="group_admin_1">Adam Rusega</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="group_admins" id="group_admin_2" checked>
+                                    <label class="custom-control-label" for="group_admin_2">Levi Archman</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="group_admins" id="group_admin_3">
+                                    <label class="custom-control-label" for="group_admin_3">Jhonny Ive</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="group_admins" id="group_admin_4">
+                                    <label class="custom-control-label" for="group_admin_4">Douglas Costa</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="group_admins" id="group_admin_4">
+                                    <label class="custom-control-label" for="group_admin_4">Eren Yeager</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="group_admins" id="group_admin_4">
+                                    <label class="custom-control-label" for="group_admin_4">Bone ALi Mia</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="group_admins" id="group_admin_4">
+                                    <label class="custom-control-label" for="group_admin_4">Alan Walker</label>
+                                </div>
                             </div>
+
+{{--                            <div class="form-group col-md-6">--}}
+{{--                                <label for="group_admin">Primary Contact</label>--}}
+{{--                                <select id="group_admin" name="group_admin" class="form-control">--}}
+{{--                                    <option selected>Choose...</option>--}}
+{{--                                    <option>Adam Rusega</option>--}}
+{{--                                    <option>Levi Archman</option>--}}
+{{--                                    <option>Jhonny Ive</option>--}}
+{{--                                    <option>Douglas Costa</option>--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
                         </div>
 
                         <button type="submit" class="btn btn-primary">Add New Group</button>

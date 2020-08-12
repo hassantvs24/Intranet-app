@@ -69,7 +69,7 @@ $btn-border-radius-sm:        8px;
 
 $border-radius: 8px;
 $border-radius-lg: 8px;
-$border-radius-sm: 8px;
+$border-radius-sm: 5px;
 
 //$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 /*=======================================
@@ -80,14 +80,14 @@ END Bootstrap button variables
 Custom css variables
 =======================================*/
 ::root {
-    --violet: #6c5ce7;
     --green: #2ed573;
-    --teal: #02aab0;
     --blue: #0984e3;
-    --pink: #e84393;
     --yellow: #fdcb6e;
     --red: #ff4757;
+    --pink: #e84393;
     --orange: #f65b00;
+    --teal: #02aab0;
+    --violet: #6c5ce7;
 }
 .body-red {
     --color-one: #ff4757;

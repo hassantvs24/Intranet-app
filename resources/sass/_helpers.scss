@@ -1,3 +1,27 @@
+label {
+    font-weight: 600;
+}
+.table th,
+.table td {
+    vertical-align: middle;
+}
+.custom-checkbox {
+    cursor: pointer;
+
+    .custom-control-label::before {
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .custom-control-label::after {
+        cursor: pointer;
+    }
+    .custom-control-label:hover::before {
+        cursor: pointer;
+    }
+    .custom-control-label:hover::after {
+        cursor: pointer;
+    }
+}
 /* -------- Hide header where necessary -------- */
 .hide-header #site-header {
     display: none;
