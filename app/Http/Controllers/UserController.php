@@ -13,17 +13,17 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('backend.users.users-index');
+        return view('backend.users.index');
     }
 
     public function archived()
     {
-        return view('backend.users.users-archive');
+        return view('backend.users.archive');
     }
 
     public function create()
     {
-        return view('backend.users.users-create');
+        return view('backend.users.create');
     }
 
     public function store(Request $request)
@@ -34,13 +34,13 @@ class UserController extends Controller
 //    public function show($id)
     public function show()
     {
-        return view('backend.users.users-view');
+        return view('backend.users.view');
     }
 
 //    public function edit($id)
     public function edit()
     {
-        return view('backend.users.users-edit');
+        return view('backend.users.edit');
     }
 
     public function update(Request $request, $id)
