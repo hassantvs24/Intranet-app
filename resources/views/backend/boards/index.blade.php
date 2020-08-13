@@ -5,15 +5,15 @@
     <div class="container-fluid p-4">
         <div class="row page-header mb-3">
             <div class="col">
-                <h3 class="page-title">{{ __('Users') }}</h3>
+                <h3 class="page-title">{{ __('Boards') }}</h3>
             </div>
         </div>
 
         <div class="row mb-4">
             <div class="alert alert-primary font-weight-bold" role="alert">
-                {{__('Only admins can access these pages.')}}
-                <br>
-                {{__('Create edit delete or archive a user. These are all of your active users. To see users specific to a group, you can view a group from "all groups" page.')}}
+                {{__('Boards are page that your customer will see while logged in.')}} <br>
+{{--                {{__('You can create multiple boards and assign days for which board show up when')}} <br>--}}
+                {{__('You can update the same board for a group as necessary.')}}
             </div>
         </div>
 
@@ -51,10 +51,10 @@
                                 <label class="custom-control-label" for="select_all_groups"></label>
                             </div>
                         </th>
-                        <th scope="col" class="border-0">Name</th>
-                        <th scope="col" class="border-0">Email</th>
-                        <th scope="col" class="border-0">Phone</th>
-                        <th scope="col" class="border-0">Group</th>
+                        <th scope="col" class="border-0">{{ __('Name') }}</th>
+                        <th scope="col" class="border-0">{{ __('Users') }}</th>
+                        <th scope="col" class="border-0">{{ __('Admin') }}</th>
+                        <th scope="col" class="border-0">{{ __('color') }}</th>
                         <th scope="col" class="border-0">&nbsp;</th>
                     </tr>
                     </thead>
@@ -67,9 +67,9 @@
                             </div>
                         </th>
                         <td>Mark</td>
-                        <td>Otto@email.com</td>
-                        <td>+819646546</td>
-                        <td>Group A</td>
+                        <td>20</td>
+                        <td>Anthony</td>
+                        <td><span class="bg-primary group-color-dot"></span></td>
                         <td class="cta-group-item">
                             <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
@@ -90,9 +90,9 @@
                             </div>
                         </th>
                         <td>Jacob</td>
-                        <td>Thornton@email.com</td>
-                        <td>+4664484</td>
-                        <td>Group A</td>
+                        <td>20</td>
+                        <td>Anthony</td>
+                        <td><span class="bg-primary group-color-dot"></span></td>
                         <td class="cta-group-item">
                             <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
@@ -113,9 +113,9 @@
                             </div>
                         </th>
                         <td>Larry</td>
-                        <td>theBird@email.com</td>
-                        <td>+9816489849</td>
-                        <td>Group b</td>
+                        <td>20</td>
+                        <td>Anthony</td>
+                        <td><span class="bg-primary group-color-dot"></span></td>
                         <td class="cta-group-item">
                             <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
@@ -136,9 +136,9 @@
                             </div>
                         </th>
                         <td>Larry</td>
-                        <td>aBird@email.com</td>
-                        <td>+8948491948</td>
-                        <td>Group b</td>
+                        <td>20</td>
+                        <td>Anthony</td>
+                        <td><span class="bg-primary group-color-dot"></span></td>
                         <td class="cta-group-item">
                             <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
@@ -172,7 +172,7 @@
 
         <div class="row">
             <div class="col">
-                <a href="{{ route('archived-users') }}" class="btn btn-warning">{{ __('view Active users') }}</a>
+                <a href="{{ route('archived-users') }}" class="btn btn-warning">{{ __('view archived users') }}</a>
             </div>
         </div>
     </div>

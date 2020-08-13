@@ -11321,3 +11321,10 @@ label {
 
 /*------- END view group ----------*/
 
+.group-color-dot {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+

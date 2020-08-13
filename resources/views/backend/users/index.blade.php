@@ -51,10 +51,10 @@
                                 <label class="custom-control-label" for="select_all_groups"></label>
                             </div>
                         </th>
-                        <th scope="col" class="border-0">Name</th>
-                        <th scope="col" class="border-0">Email</th>
-                        <th scope="col" class="border-0">Phone</th>
-                        <th scope="col" class="border-0">Group</th>
+                        <th scope="col" class="border-0">{{ __('Name') }}</th>
+                        <th scope="col" class="border-0">{{ __('Email') }}</th>
+                        <th scope="col" class="border-0">{{ __('Phone') }}</th>
+                        <th scope="col" class="border-0">{{ __('Group') }}</th>
                         <th scope="col" class="border-0">&nbsp;</th>
                     </tr>
                     </thead>
@@ -172,7 +172,7 @@
 
         <div class="row">
             <div class="col">
-                <a href="{{ route('archived-users') }}" class="btn btn-warning">{{ __('view Active users') }}</a>
+                <a href="{{ route('archived-users') }}" class="btn btn-warning">{{ __('view archived users') }}</a>
             </div>
         </div>
     </div>

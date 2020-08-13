@@ -62,7 +62,7 @@
                         <a href="{{ route('all-groups') }}" class="submenu-item text-light d-block pl-4">{{ __('All Groups') }}</a>
                         <a href="{{ route('create-group') }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Group') }}</a>
                         <a href="{{ route('archived-groups') }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Groups') }}</a>
-                    </div>i
+                    </div>
                 </div>
                 {{-- END menu item --}}
                 {{-- START menu item --}}
