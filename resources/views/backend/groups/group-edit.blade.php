@@ -9,7 +9,7 @@
         <div class="container" id="create-group-form-wrap">
             <div class="row page-header my-4 pt-4">
                 <div class="col">
-                    <h3 class="page-title">Edit group</h3>
+                    <h3 class="page-title">{{ __('Edit group')}}</h3>
                     <hr>
                 </div>
             </div>
@@ -19,14 +19,14 @@
                     <form action="#" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="group_name">Name</label>
+                                <label for="group_name">{{__('Name')}}</label>
                                 <input type="text" class="form-control" id="group_name" name="group_name" value="dynamic_group_name" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6 d-flex flex-wrap">
-                                <label for="" class="d-block w-100">Select a group color:</label>
+                                <label for="" class="d-block w-100">{{ __('Select a group color:') }}</label>
 
                                 <div class="custom-control custom-radio mr-4 my-1 body-green">
                                     <input type="radio" id="group_color_green" name="group_color" class="custom-control-input">
@@ -73,20 +73,20 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="group_start_date">Start date <span class="font-weight-light">( mm/dd/year )</span></label>
+                                <label for="group_start_date">{{__('Start date')}} <span class="font-weight-light">( mm/dd/year )</span></label>
                                 <input type="date" class="form-control" id="group_start_date" name="group_start_date" value="2020-08-12" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="group_end_date">End date spa<span class="font-weight-light">( mm/dd/year )</span></label>
+                                <label for="group_end_date">{{ __('End date spa') }}<span class="font-weight-light">( mm/dd/year )</span></label>
                                 <input type="date" class="form-control" id="group_end_date" name="group_end_date" value="2020-08-27" required>
                             </div>
                         </div>
 
                         <div class="form-row">
-                            <label for="" class="d-block w-100">Select group admins:</label>
+                            <label for="" class="d-block w-100">{{ __('Select group admins:') }}</label>
 
                             <div class="form-group col-md-6">
                                 <div class="custom-control custom-checkbox">
@@ -120,7 +120,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">{{ __('Save changes') }}</button>
                     </form>
                 </div>
             </div>

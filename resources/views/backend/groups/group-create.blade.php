@@ -7,7 +7,7 @@
         <div class="container" id="create-group-form-wrap">
             <div class="row page-header my-4 pt-4">
                 <div class="col">
-                    <h3 class="page-title">Create group</h3>
+                    <h3 class="page-title">{{ __('Create group') }}</h3>
                     <hr>
                 </div>
             </div>
@@ -17,14 +17,14 @@
                     <form action="#" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="group_name">Name</label>
+                                <label for="group_name">{{ __('Name') }}</label>
                                 <input type="text" class="form-control" id="group_name" name="group_name" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6 d-flex flex-wrap">
-                                <label for="" class="d-block w-100">Select a group color:</label>
+                                <label for="" class="d-block w-100">{{ __('Select a group color:') }}</label>
 
                                 <div class="custom-control custom-radio mr-4 my-1 body-green">
                                     <input type="radio" id="group_color_green" name="group_color" class="custom-control-input" checked>
@@ -71,20 +71,20 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="group_start_date">Start date</label>
+                                <label for="group_start_date">{{ __('Start date') }}</label>
                                 <input type="date" class="form-control" id="group_start_date" name="group_start_date" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="group_end_date">End date</label>
+                                <label for="group_end_date">{{ __('End date') }}</label>
                                 <input type="date" class="form-control" id="group_end_date" name="group_end_date" required>
                             </div>
                         </div>
 
                         <div class="form-row">
-                            <label for="" class="d-block w-100">Select group admins:</label>
+                            <label for="" class="d-block w-100">{{ __('Select group admins:') }}</label>
 
                             <div class="form-group col-md-6">
                                 <div class="custom-control custom-checkbox">
@@ -116,20 +116,9 @@
                                     <label class="custom-control-label" for="group_admin_4">Alan Walker</label>
                                 </div>
                             </div>
-
-{{--                            <div class="form-group col-md-6">--}}
-{{--                                <label for="group_admin">Primary Contact</label>--}}
-{{--                                <select id="group_admin" name="group_admin" class="form-control">--}}
-{{--                                    <option selected>Choose...</option>--}}
-{{--                                    <option>Adam Rusega</option>--}}
-{{--                                    <option>Levi Archman</option>--}}
-{{--                                    <option>Jhonny Ive</option>--}}
-{{--                                    <option>Douglas Costa</option>--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Add New Group</button>
+                        <button type="submit" class="btn btn-primary">{{ __('Add New Group') }}</button>
                     </form>
                 </div>
             </div>

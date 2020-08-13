@@ -9,7 +9,7 @@
         <div class="container" id="create-group-form-wrap">
             <div class="row page-header my-4 pt-4">
                 <div class="col">
-                    <h3 class="page-title">Edit group</h3>
+                    <h3 class="page-title">{{ __('Edit user')}}</h3>
                     <hr>
                 </div>
             </div>

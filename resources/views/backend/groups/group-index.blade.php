@@ -28,7 +28,7 @@
             </div>
 
             <div class="col text-right">
-                <a href="{{ route('create-group') }}" class="btn btn-primary btn-md">Create New</a>
+                <a href="{{ route('create-group') }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
             </div>
         </div>
 
@@ -43,11 +43,11 @@
                             <label class="custom-control-label" for="select_all_groups"></label>
                         </div>
                     </th>
-                    <th scope="col" class="border-0">Name</th>
-                    <th scope="col" class="border-0">Start date</th>
-                    <th scope="col" class="border-0">End date</th>
-                    <th scope="col" class="border-0">Members</th>
-                    <th scope="col" class="border-0">Actions</th>
+                    <th scope="col" class="border-0">{{ __('Name') }}</th>
+                    <th scope="col" class="border-0">{{ __('Start date') }}</th>
+                    <th scope="col" class="border-0">{{ __('End date') }}</th>
+                    <th scope="col" class="border-0">{{ __('Members') }}</th>
+                    <th scope="col" class="border-0">&nbsp;</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -150,7 +150,7 @@
 
         <div class="row">
             <div class="col">
-                <a href="{{ route('archived-groups') }}" class="btn btn-warning">Archived Groups</a>
+                <a href="{{ route('archived-groups') }}" class="btn btn-warning">{{__('Archived Groups')}}</a>
             </div>
         </div>
     </div>

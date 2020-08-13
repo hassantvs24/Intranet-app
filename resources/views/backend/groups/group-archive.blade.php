@@ -28,7 +28,7 @@
             </div>
 
             <div class="col text-right">
-                <a href="{{ route('create-group') }}" class="btn btn-primary btn-md">Create New</a>
+                <a href="{{ route('create-group') }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
             </div>
         </div>
 
@@ -43,11 +43,11 @@
                             <label class="custom-control-label" for="select_all_groups"></label>
                         </div>
                     </th>
-                    <th scope="col" class="border-0">Name</th>
-                    <th scope="col" class="border-0">Start date</th>
-                    <th scope="col" class="border-0">End date</th>
-                    <th scope="col" class="border-0">Members</th>
-                    <th scope="col" class="border-0">Actions</th>
+                    <th scope="col" class="border-0">{{ __('Name') }}</th>
+                    <th scope="col" class="border-0">{{ __('Start date') }}</th>
+                    <th scope="col" class="border-0">{{ __('End date') }}</th>
+                    <th scope="col" class="border-0">{{ __('Members') }}</th>
+                    <th scope="col" class="border-0">&nbsp;</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -336,11 +336,11 @@
             <div class="col">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination font-weight-bold">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">{{ __('Previous') }}</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        <li class="page-item"><a class="page-link" href="#">{{ __('Next') }}</a></li>
                     </ul>
                 </nav>
             </div>
@@ -348,7 +348,7 @@
 
         <div class="row">
             <div class="col">
-                <a href="{{ route('all-groups') }}" class="btn btn-outline-primary">view Active Groups</a>
+                <a href="{{ route('all-groups') }}" class="btn btn-outline-primary">{{ __('view Active Groups') }}</a>
             </div>
         </div>
     </div>
