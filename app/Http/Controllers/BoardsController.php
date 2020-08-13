@@ -18,17 +18,17 @@ class BoardsController extends Controller
 
     public function index()
     {
-        return view('backend.groups.index');
+        return view('backend.boards.index');
     }
 
     public function archived()
     {
-        return view('backend.groups.archive');
+        return view('backend.boards.archive');
     }
 
     public function create()
     {
-        return view('backend.groups.create');
+        return view('backend.boards.create');
     }
 
     public function store(Request $request)
@@ -39,13 +39,13 @@ class BoardsController extends Controller
 //    public function show($id)
     public function show()
     {
-        return view('backend.groups.view');
+        return view('backend.boards.view');
     }
 
 //    public function edit($id)
     public function edit()
     {
-        return view('backend.groups.edit');
+        return view('backend.boards.edit');
     }
 
     public function update(Request $request, $id)
