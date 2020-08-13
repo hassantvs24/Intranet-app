@@ -1,3 +1,6 @@
+body,html {
+    scroll-behavior: smooth;
+}
 label {
     font-weight: 600;
 }
@@ -29,4 +32,7 @@ label {
 /* -------- Letter spacing -------- */
 .ls-1 {
     letter-spacing: 1px;
+}
+.page-title {
+    text-transform: capitalize !important;
 }

@@ -9,7 +9,7 @@
             </div>
         </div>
 
-        <div class="row  mb-4 align-items-center align-content-center">
+        <div class="row mb-4 align-items-center align-content-center">
             <div class="col">
                 <form action="#" method="get">
                     <div class="form-row">
@@ -123,11 +123,11 @@
                 <tr>
                     <th scope="row">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="group_3_id">
-                            <label class="custom-control-label" for="group_3_id"></label>
+                            <input type="checkbox" class="custom-control-input" id="group_4_id">
+                            <label class="custom-control-label" for="group_4_id"></label>
                         </div>
                     </th>
-                    <td>Larry</td>
+                    <td>Larry 2</td>
                     <td>the Bird</td>
                     <td>@twitter</td>
                     <td>13</td>

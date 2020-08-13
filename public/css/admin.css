@@ -11028,6 +11028,11 @@ a.text-dark:focus {
     Custom Scss Styles
 -----------------------------------*/
 
+body,
+html {
+  scroll-behavior: smooth;
+}
+
 label {
   font-weight: 600;
 }
@@ -11068,6 +11073,10 @@ label {
 
 .ls-1 {
   letter-spacing: 1px;
+}
+
+.page-title {
+  text-transform: capitalize !important;
 }
 
 .top-color-bar {
@@ -11299,4 +11308,16 @@ label {
 }
 
 /*------- END CREATE group ----------*/
+
+/*------- START view group ----------*/
+
+#invite-users {
+  margin-bottom: 200px;
+}
+
+#invite-users .left-col {
+  padding: 200px 0;
+}
+
+/*------- END view group ----------*/
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class GroupsController extends Controller
 {
     public function __construct()
     {
@@ -13,22 +13,22 @@ class AdminController extends Controller
 
     public function home()
     {
-        return view('admin.dashboard');
+        return view('backend.dashboard');
     }
 
     public function index()
     {
-        return view('admin.group-index');
+        return view('backend.groups.group-index');
     }
 
     public function archived()
     {
-        return view('admin.group-archive');
+        return view('backend.groups.group-archive');
     }
 
     public function create()
     {
-        return view('admin.group-create');
+        return view('backend.groups.group-create');
     }
 
     public function store(Request $request)
@@ -36,15 +36,16 @@ class AdminController extends Controller
         //
     }
 
-    public function show($id)
+//    public function show($id)
+    public function show()
     {
-        return view('admin.group-view');
+        return view('backend.groups.group-view');
     }
 
 //    public function edit($id)
     public function edit()
     {
-        return view('admin.group-edit');
+        return view('backend.groups.group-edit');
     }
 
     public function update(Request $request, $id)
