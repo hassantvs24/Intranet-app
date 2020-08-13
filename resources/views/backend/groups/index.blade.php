@@ -9,6 +9,14 @@
             </div>
         </div>
 
+        <div class="row mb-4">
+            <div class="alert alert-primary font-weight-bold" role="alert">
+                {{__('Only admins can access these pages.')}}
+                <br>
+                {{__('Create groups and invite users to your groups. You can edit delete or archive a group. There can be unlimited users in a group.')}}
+            </div>
+        </div>
+
         <div class="row mb-4 align-items-center align-content-center">
             <div class="col">
                 <form action="#" method="get">
