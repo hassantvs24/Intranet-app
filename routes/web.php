@@ -32,11 +32,11 @@ Route::get('/view-group', 'GroupsController@show')->name('view-group');
 Route::get('/invite', 'HomeController@invite_users')->name('invite');
 
 // Boards controller
-Route::get('/all-boards', 'UserController@index')->name('all-boards');
-Route::get('/archived-boards', 'UserController@archived')->name('archived-boards');
-Route::get('/create-board', 'UserController@create')->name('create-board');
-Route::get('/edit-board', 'UserController@edit')->name('edit-board');
-Route::get('/view-board', 'UserController@show')->name('view-board');
+Route::get('/all-boards', 'BoardsController@index')->name('all-boards');
+Route::get('/archived-boards', 'BoardsController@archived')->name('archived-boards');
+Route::get('/create-board', 'BoardsController@create')->name('create-board');
+Route::get('/edit-board', 'BoardsController@edit')->name('edit-board');
+Route::get('/view-board', 'BoardsController@show')->name('view-board');
 
 
 // users controller
