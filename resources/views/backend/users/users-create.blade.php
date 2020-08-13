@@ -7,7 +7,7 @@
         <div class="container" id="create-group-form-wrap">
             <div class="row page-header my-4 pt-4">
                 <div class="col">
-                    <h3 class="page-title">Create user</h3>
+                    <h3 class="page-title">{{ __('Create user') }}</h3>
                     <hr>
                 </div>
             </div>
@@ -17,14 +17,14 @@
                     <form action="#" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="group_name">Name</label>
+                                <label for="group_name">{{ __('Name') }}</label>
                                 <input type="text" class="form-control" id="group_name" name="group_name" placeholder="ex: Adam Levi" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6 d-flex flex-wrap">
-                                <label for="" class="d-block w-100">Assign a group:</label>
+                                <label for="" class="d-block w-100">{{ __('Assign a group:') }}</label>
 
                                 <div class="custom-control custom-radio mr-4 my-1">
                                     <input type="radio" id="group_a" name="user_group" class="custom-control-input" checked>
@@ -51,20 +51,20 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="user_email">User Email</label>
+                                <label for="user_email">{{ __('User Email') }}</label>
                                 <input type="email" class="form-control" id="user_email" name="user_email" placeholder="email@domain.com" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="user_phone_no">User Phone</label>
+                                <label for="user_phone_no">{{ __('User Phone') }}</label>
                                 <input type="tel" class="form-control" id="user_phone_no" name="user_phone_no" placeholder="+470156421" required>
                             </div>
                         </div>
 
                         <div class="form-row">
-                            <label for="" class="d-block w-100">Select primary contact:</label>
+                            <label for="" class="d-block w-100">{{ __('Select primary contact:') }}</label>
 
                             <div class="form-group col-md-6">
                                 <div class="custom-control custom-radio">
@@ -98,7 +98,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Add New User</button>
+                        <button type="submit" class="btn btn-primary">{{ __('Add New User') }}</button>
                     </form>
                 </div>
             </div>

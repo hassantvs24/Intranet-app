@@ -9,15 +9,15 @@
                     <h3 class="page-title">{{ __('group name') }}</h3>
                     <div class="group-info mt-3">
                         <div class="info-line-item">
-                            <span class="font-weight-bold">Start date: </span>
+                            <span class="font-weight-bold">{{ __('Start date: ') }}</span>
                             <span>2020/08/12</span>
                         </div>
                         <div class="info-line-item my-2">
-                            <span class="font-weight-bold">End date: </span>
+                            <span class="font-weight-bold">{{ __('End date: ') }}</span>
                             <span>2020/08/27</span>
                         </div>
                         <div class="info-line-item">
-                            <span class="font-weight-bold">Current members: </span>
+                            <span class="font-weight-bold">{{ __('Current members: ') }}</span>
                             <span>15</span>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                         </div>
 
                         <div class="col text-right">
-                            <a href="#invite-users" type="submit" class="btn btn-primary">Invite Users to this group</a>
+                            <a href="#invite-users" type="submit" class="btn btn-primary">{{ __('Invite Users to this group') }}</a>
                         </div>
                     </div>
 
@@ -62,9 +62,9 @@
                                             <label class="custom-control-label" for="select_all_groups"></label>
                                         </div>
                                     </th>
-                                    <th scope="col" class="border-0">Name</th>
-                                    <th scope="col" class="border-0">Email</th>
-                                    <th scope="col" class="border-0">Phone</th>
+                                    <th scope="col" class="border-0">{{ __('Name') }}</th>
+                                    <th scope="col" class="border-0">{{ __('Email') }}</th>
+                                    <th scope="col" class="border-0">{{ __('Phone') }}</th>
                                     <th scope="col" class="border-0">&nbsp;</th>
                                 </tr>
                                 </thead>
@@ -197,10 +197,10 @@
 
                                             <div class="col-md-6">
                                                 <select class=" form-control @error('password') is-invalid @enderror" id="inputGroupSelect01" required>
-                                                    <option>Choose...</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2" selected>Two</option>
-                                                    <option value="3">Three</option>
+                                                    <option>{{ __('Choose') }}...</option>
+                                                    <option value="1">Group A</option>
+                                                    <option value="2" selected>Group B</option>
+                                                    <option value="3">Group C</option>
                                                 </select>
 
                                                 @error('password')

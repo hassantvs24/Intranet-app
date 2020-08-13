@@ -37,10 +37,11 @@
 
                                 <div class="col-md-6">
                                     <select class=" form-control @error('password') is-invalid @enderror" id="inputGroupSelect01" required>
-                                        <option selected>Choose...</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option selected>{{ __('Choose') }}...</option>
+                                        <option value="1">Group A</option>
+                                        <option value="2">Group B</option>
+                                        <option value="3">Group C</option>
+                                        <option value="3">Group D</option>
                                     </select>
 
                                     @error('password')

@@ -28,7 +28,7 @@
             </div>
 
             <div class="col text-right">
-                <a href="{{ route('create-user') }}" class="btn btn-primary btn-md">Create New</a>
+                <a href="{{ route('create-user') }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
             </div>
         </div>
 
@@ -164,7 +164,7 @@
 
         <div class="row">
             <div class="col">
-                <a href="{{ route('archived-users') }}" class="btn btn-warning">Archived Users</a>
+                <a href="{{ route('archived-users') }}" class="btn btn-warning">{{ __('view Active users') }}</a>
             </div>
         </div>
     </div>

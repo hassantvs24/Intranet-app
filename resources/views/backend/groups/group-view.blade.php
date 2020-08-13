@@ -9,15 +9,15 @@
                     <h3 class="page-title">{{ __('group name') }}</h3>
                     <div class="group-info mt-3">
                         <div class="info-line-item">
-                            <span class="font-weight-bold">Start date: </span>
+                            <span class="font-weight-bold">{{ __('Start date: ') }}</span>
                             <span>2020/08/12</span>
                         </div>
                         <div class="info-line-item my-2">
-                            <span class="font-weight-bold">End date: </span>
+                            <span class="font-weight-bold">{{ __('End date: ') }}</span>
                             <span>2020/08/27</span>
                         </div>
                         <div class="info-line-item">
-                            <span class="font-weight-bold">Current members: </span>
+                            <span class="font-weight-bold">{{ __('Current members: ') }}</span>
                             <span>15</span>
                         </div>
                     </div>
@@ -62,10 +62,9 @@
                                             <label class="custom-control-label" for="select_all_groups"></label>
                                         </div>
                                     </th>
-                                    <th scope="col" class="border-0">Name</th>
-                                    <th scope="col" class="border-0">Email</th>
-                                    <th scope="col" class="border-0">Phone</th>
-                                    <th scope="col" class="border-0">Group</th>
+                                    <th scope="col" class="border-0">{{ __('Name') }}</th>
+                                    <th scope="col" class="border-0">{{ __('Email') }}</th>
+                                    <th scope="col" class="border-0">{{ __('Phone') }}</th>
                                     <th scope="col" class="border-0">&nbsp;</th>
                                 </tr>
                                 </thead>
@@ -80,7 +79,6 @@
                                     <td>Mark</td>
                                     <td>Otto@email.com</td>
                                     <td>+819646546</td>
-                                    <td>Group A</td>
                                     <td class="cta-group-item">
                                         <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
@@ -103,7 +101,6 @@
                                     <td>Jacob</td>
                                     <td>Thornton@email.com</td>
                                     <td>+4664484</td>
-                                    <td>Group A</td>
                                     <td class="cta-group-item">
                                         <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
@@ -126,7 +123,6 @@
                                     <td>Larry</td>
                                     <td>theBird@email.com</td>
                                     <td>+9816489849</td>
-                                    <td>Group b</td>
                                     <td class="cta-group-item">
                                         <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
@@ -149,7 +145,6 @@
                                     <td>Larry</td>
                                     <td>aBird@email.com</td>
                                     <td>+8948491948</td>
-                                    <td>Group b</td>
                                     <td class="cta-group-item">
                                         <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
@@ -202,7 +197,7 @@
 
                                             <div class="col-md-6">
                                                 <select class=" form-control @error('password') is-invalid @enderror" id="inputGroupSelect01" required>
-                                                    <option>Choose...</option>
+                                                    <option>{{ __('Choose') }}...</option>
                                                     <option value="1">Group A</option>
                                                     <option value="2" selected>Group B</option>
                                                     <option value="3">Group C</option>
