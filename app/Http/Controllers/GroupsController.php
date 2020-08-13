@@ -18,17 +18,17 @@ class GroupsController extends Controller
 
     public function index()
     {
-        return view('backend.groups.group-index');
+        return view('backend.groups.index');
     }
 
     public function archived()
     {
-        return view('backend.groups.group-archive');
+        return view('backend.groups.archive');
     }
 
     public function create()
     {
-        return view('backend.groups.group-create');
+        return view('backend.groups.create');
     }
 
     public function store(Request $request)
@@ -39,13 +39,13 @@ class GroupsController extends Controller
 //    public function show($id)
     public function show()
     {
-        return view('backend.groups.group-view');
+        return view('backend.groups.view');
     }
 
 //    public function edit($id)
     public function edit()
     {
-        return view('backend.groups.group-edit');
+        return view('backend.groups.edit');
     }
 
     public function update(Request $request, $id)
