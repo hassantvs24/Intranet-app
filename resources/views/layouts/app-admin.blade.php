@@ -62,12 +62,28 @@
                         <a href="{{ route('all-groups') }}" class="submenu-item text-light d-block pl-4">{{ __('All Groups') }}</a>
                         <a href="{{ route('create-group') }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Group') }}</a>
                         <a href="{{ route('archived-groups') }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Groups') }}</a>
+                    </div>i
+                </div>
+                {{-- END menu item --}}
+                {{-- START menu item --}}
+                <div class="menu-wrap">
+                    <a href="{{ route('all-users') }}" class="menu-item d-flex align-content-center align-items-center">
+                        <div class="icon mr-3">
+                            <img src="images/boards.svg" alt="dashboard icon">
+                        </div>
+                        <div class="text text-light">{{ __('Info Boards') }}</div>
+                    </a>
+
+                    <div class="submenu pl-5">
+                        <a href="{{ route('all-boards') }}" class="submenu-item text-light d-block pl-4">{{ __('All Boards') }}</a>
+                        <a href="{{ route('create-board') }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Board') }}</a>
+                        <a href="{{ route('archived-boards') }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Boards') }}</a>
                     </div>
                 </div>
                 {{-- END menu item --}}
                 {{-- START menu item --}}
                 <div class="menu-wrap">
-                    <a href="#" class="menu-item d-flex align-content-center align-items-center">
+                    <a href="{{ route('all-users') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
                             <img src="images/user.svg" alt="dashboard icon">
                         </div>
