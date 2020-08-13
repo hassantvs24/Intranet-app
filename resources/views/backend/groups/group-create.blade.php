@@ -1,5 +1,4 @@
 @extends('layouts.app-admin')
-
 @section('body-class', 'bg-light')
 
 @section('admin-content')

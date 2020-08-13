@@ -75,9 +75,9 @@
                     </a>
 
                     <div class="submenu pl-5">
-                        <a href="#" class="submenu-item text-light d-block pl-4">{{ __('All Users') }}</a>
-                        <a href="#" class="submenu-item text-light d-block pl-4">{{ __('Add New User') }}</a>
-                        <a href="#" class="submenu-item text-light d-block pl-4">{{ __('Archived Users') }}</a>
+                        <a href="{{ route('all-users') }}" class="submenu-item text-light d-block pl-4">{{ __('All Users') }}</a>
+                        <a href="{{ route('create-user') }}" class="submenu-item text-light d-block pl-4">{{ __('Add New User') }}</a>
+                        <a href="{{ route('archived-users') }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Users') }}</a>
                     </div>
                 </div>
                 {{-- END menu item --}}
@@ -146,7 +146,7 @@
                 </div>
             </nav>
 
-            <main class="py-0">
+            <main class="py-0 px-2">
                 @yield('admin-content')
             </main>
         </div>
