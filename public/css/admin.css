@@ -11185,3 +11185,146 @@ label {
   box-shadow: 0 3px 20px 5px rgba(0, 0, 0, 0.05);
 }
 
+#sidebar {
+  background-color: #475261;
+  width: 300px;
+  height: 100vh;
+  min-height: 600px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9;
+}
+
+.sidebar-header {
+  background-color: #262d37;
+  padding: 10px 30px;
+  height: 65px;
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+
+.sidebar-content {
+  padding-top: 15px;
+}
+
+.sidebar-content .menu-item {
+  padding: 15px 30px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.sidebar-content .menu-item:hover {
+  background-color: rgba(38, 45, 55, 0.4);
+}
+
+.sidebar-content .icon img {
+  height: 25px;
+}
+
+.sidebar-content .submenu {
+  padding: 5px 0;
+}
+
+.sidebar-content .submenu-item {
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+#app {
+  width: calc(100% - 300px);
+  margin-left: 300px;
+}
+
+.navbar {
+  height: 65px;
+}
+
+.navbar-brand {
+  line-height: 1;
+}
+
+.navbar-brand label {
+  font-size: 14px;
+  margin: 0;
+}
+
+/*------- all groups ----------*/
+
+.table--all-groups {
+  background-color: #fff;
+}
+
+.cta-group-item .btn {
+  padding: 10px;
+  margin: 0 10px 0 0;
+  border-color: rgba(77, 22, 221, 0.1);
+}
+
+.cta-group-item .btn:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cta-group-item .btn:hover svg path {
+  fill: #fff;
+}
+
+.cta-group-item #btn-delete-group:hover {
+  background-color: var(--red);
+}
+
+.cta-group-item svg {
+  width: 20px;
+  height: auto;
+}
+
+.cta-group-item svg path {
+  fill: rgba(77, 22, 221, 0.3);
+  transition: all 0.2s ease-in-out;
+}
+
+/*------- END all groups ----------*/
+
+/*------- CREATE group ----------*/
+
+.group-create-wrap .show-group-color {
+  background-color: var(--color-one) !important;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  margin-top: 2px;
+  margin-left: 2px;
+}
+
+.group-create-wrap .custom-control-label {
+  font-weight: 400;
+}
+
+/*------- END CREATE group ----------*/
+
+/*------- START view group ----------*/
+
+#invite-users {
+  margin-bottom: 200px;
+}
+
+#invite-users .left-col {
+  padding: 200px 0;
+}
+
+/*------- END view group ----------*/
+
+.group-color-dot {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+

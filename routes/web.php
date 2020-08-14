@@ -23,4 +23,25 @@ Route::get('/style-guide', function () {
 });
 
 // admin routes
+Route::get('/dashboard', 'GroupsController@home')->name('admin-home');
+Route::get('/all-groups', 'GroupsController@index')->name('all-groups');
+Route::get('/archived-groups', 'GroupsController@archived')->name('archived-groups');
+Route::get('/create-group', 'GroupsController@create')->name('create-group');
+Route::get('/edit-group', 'GroupsController@edit')->name('edit-group');
+Route::get('/view-group', 'GroupsController@show')->name('view-group');
 Route::get('/invite', 'HomeController@invite_users')->name('invite');
+
+// Boards controller
+Route::get('/all-boards', 'BoardsController@index')->name('all-boards');
+Route::get('/archived-boards', 'BoardsController@archived')->name('archived-boards');
+Route::get('/create-board', 'BoardsController@create')->name('create-board');
+Route::get('/edit-board', 'BoardsController@edit')->name('edit-board');
+Route::get('/view-board', 'BoardsController@show')->name('view-board');
+
+
+// users controller
+Route::get('/all-users', 'UserController@index')->name('all-users');
+Route::get('/archived-users', 'UserController@archived')->name('archived-users');
+Route::get('/create-user', 'UserController@create')->name('create-user');
+Route::get('/edit-user', 'UserController@edit')->name('edit-user');
+Route::get('/view-user', 'UserController@show')->name('view-user');
