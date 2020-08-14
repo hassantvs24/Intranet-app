@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,16 +25,18 @@ Route::get('/style-guide', function () {
 // admin routes
 Route::get('/dashboard', 'GroupsController@home')->name('admin-home');
 Route::get('/all-groups', 'GroupsController@index')->name('all-groups');
-Route::get('/archived-groups', 'GroupsController@archived')->name('archived-groups');
-Route::get('/create-group', 'GroupsController@create')->name('create-group');
-Route::get('/edit-group', 'GroupsController@edit')->name('edit-group');
-Route::get('/view-group', 'GroupsController@show')->name('view-group');
+Route::get('/groups/archived', 'GroupsController@archived')->name('archived-groups');
+Route::get('/groups/create', 'GroupsController@create')->name('create-group');
+Route::post('/groups/store', 'GroupsController@store')->name('group.store');
+Route::get('/groups/edit', 'GroupsController@edit')->name('edit-group');
+Route::get('/group/show', 'GroupsController@show')->name('view-group');
 Route::get('/invite', 'HomeController@invite_users')->name('invite');
 
 // Boards routes
 Route::get('/all-boards', 'BoardsController@index')->name('all-boards');
 Route::get('/archived-boards', 'BoardsController@archived')->name('archived-boards');
 Route::get('/create-board', 'BoardsController@create')->name('create-board');
+Route::post('/create-board', 'BoardsController@store')->name('store-board');
 Route::get('/edit-board', 'BoardsController@edit')->name('edit-board');
 Route::get('/view-board', 'BoardsController@show')->name('view-board');
 
@@ -51,5 +53,6 @@ Route::get('/view-user', 'UserController@show')->name('view-user');
 Route::get('/all-admins', 'GroupAdminsController@index')->name('all-admins');
 Route::get('/archived-admins', 'GroupAdminsController@archived')->name('archived-admins');
 Route::get('/create-admin', 'GroupAdminsController@create')->name('create-admin');
+Route::post('/post-admin', 'GroupAdminsController@store')->name('admin.store');
 Route::get('/edit-admin', 'GroupAdminsController@edit')->name('edit-admin');
 Route::get('/view-admin', 'GroupAdminsController@show')->name('view-admin');
