@@ -7,7 +7,7 @@
         <div class="container" id="create-group-form-wrap">
             <div class="row page-header my-4 pt-4">
                 <div class="col">
-                    <h3 class="page-title">{{ __('Create user') }}</h3>
+                    <h3 class="page-title">{{ __('Create Board') }}</h3>
                     <hr>
                 </div>
             </div>
@@ -24,7 +24,7 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6 d-flex flex-wrap">
-                                <label for="" class="d-block w-100">{{ __('Assign a group:') }}</label>
+                                <label for="" class="d-block w-100">{{ __('Select a group:') }}</label>
 
                                 <div class="custom-control custom-radio mr-4 my-1">
                                     <input type="radio" id="group_a" name="user_group" class="custom-control-input" checked>
@@ -49,56 +49,44 @@
                             </div>
                         </div>
 
+                        {{-- This start and end date will change according to selected group --}}
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="user_email">{{ __('User Email') }}</label>
-                                <input type="email" class="form-control" id="user_email" name="user_email" placeholder="email@domain.com" required>
+                                <label for="group_start_date">{{ __('Start date') }}</label>
+                                <input type="date" class="form-control" id="group_start_date" name="group_start_date" value="2020-08-12" disabled>
                             </div>
                         </div>
-
+                        {{-- This start and end date will change according to selected group --}}
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="user_phone_no">{{ __('User Phone') }}</label>
-                                <input type="tel" class="form-control" id="user_phone_no" name="user_phone_no" placeholder="+470156421" required>
+                                <label for="group_end_date">{{ __('End date') }}</label>
+                                <input type="date" class="form-control" id="group_end_date" name="group_end_date" value="2020-08-27" disabled>
                             </div>
                         </div>
+{{--                        <div class="form-row">--}}
+{{--                            <div class="form-group col-md-6">--}}
+{{--                                <label for="user_email">{{ __('User Email') }}</label>--}}
+{{--                                <input type="email" class="form-control" id="user_email" name="user_email" placeholder="email@domain.com" required>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="form-row">--}}
+{{--                            <div class="form-group col-md-6">--}}
+{{--                                <label for="user_phone_no">{{ __('User Phone') }}</label>--}}
+{{--                                <input type="tel" class="form-control" id="user_phone_no" name="user_phone_no" placeholder="+470156421" required>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+                        <button type="submit" class="btn btn-primary">{{ __('Create Board') }}</button>
 
                         <div class="form-row">
-                            <label for="" class="d-block w-100">{{ __('Select primary contact:') }}</label>
-
-                            <div class="form-group col-md-6">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_1" checked>
-                                    <label class="custom-control-label" for="group_admin_1">Adam Rusega</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_2">
-                                    <label class="custom-control-label" for="group_admin_2">Levi Archman</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_3">
-                                    <label class="custom-control-label" for="group_admin_3">Jhonny Ive</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_4">
-                                    <label class="custom-control-label" for="group_admin_4">Douglas Costa</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_4">
-                                    <label class="custom-control-label" for="group_admin_4">Eren Yeager</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_4">
-                                    <label class="custom-control-label" for="group_admin_4">Bone ALi Mia</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_4">
-                                    <label class="custom-control-label" for="group_admin_4">Alan Walker</label>
+                            <div class="col-md-6">
+                                <div class="alert alert-primary mt-4 font-weight-bold" role="alert">
+                                    {{ __('To add information cards for the users of this group & board, please save the board first.') }}
+                                    {{ __('After saving you will get the option to add or edit information cards. Thank you.') }}
                                 </div>
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">{{ __('Add New User') }}</button>
                     </form>
                 </div>
             </div>

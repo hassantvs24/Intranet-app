@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div class="row mb-4" id="all-users">
+        <div class="row mb-4" id="all-boards">
             <div class="col">
                 <table class="table table--all-groups shadow-sm rounded border-0 overflow-hidden">
                     <thead class="thead-light border-0">
@@ -66,7 +66,7 @@
                                 <label class="custom-control-label" for="group_1_id"></label>
                             </div>
                         </th>
-                        <td>Mark</td>
+                        <td>Group A</td>
                         <td>20</td>
                         <td>Anthony</td>
                         <td><span class="bg-primary group-color-dot"></span></td>
@@ -89,7 +89,7 @@
                                 <label class="custom-control-label" for="group_2_id"></label>
                             </div>
                         </th>
-                        <td>Jacob</td>
+                        <td>Group b</td>
                         <td>20</td>
                         <td>Anthony</td>
                         <td><span class="bg-primary group-color-dot"></span></td>
@@ -112,7 +112,7 @@
                                 <label class="custom-control-label" for="group_4_id"></label>
                             </div>
                         </th>
-                        <td>Larry</td>
+                        <td>Group C</td>
                         <td>20</td>
                         <td>Anthony</td>
                         <td><span class="bg-primary group-color-dot"></span></td>
@@ -135,7 +135,7 @@
                                 <label class="custom-control-label" for="group_3_id"></label>
                             </div>
                         </th>
-                        <td>Larry</td>
+                        <td>Group D</td>
                         <td>20</td>
                         <td>Anthony</td>
                         <td><span class="bg-primary group-color-dot"></span></td>
