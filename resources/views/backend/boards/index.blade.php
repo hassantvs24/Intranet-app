@@ -36,7 +36,7 @@
             </div>
 
             <div class="col text-right">
-                <a href="{{ route('create-user') }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
+                <a href="{{ route('create-board') }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
             </div>
         </div>
 
@@ -156,23 +156,9 @@
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination font-weight-bold">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
         <div class="row">
             <div class="col">
-                <a href="{{ route('archived-users') }}" class="btn btn-warning">{{ __('view archived users') }}</a>
+                <a href="{{ route('archived-boards') }}" class="btn btn-warning">{{ __('view archived boards') }}</a>
             </div>
         </div>
     </div>
