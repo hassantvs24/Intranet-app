@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGroupAdminsTable extends Migration
+class CreateGroupAdminTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateGroupAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_admins', function (Blueprint $table) {
+        Schema::create('group_group_admin', function (Blueprint $table) {
             $table->id();
-            $table->string('name',100);
-            $table->string('email')->unique();
-            $table->string('phone');
-            $table->string('avatar');
-            $table->text('bio');
+            $table->unsignedBigInteger('group_id');
+            $table->unsignedBigInteger('group_admin_id');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateGroupAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_admins');
+        Schema::dropIfExists('group_group_admin');
     }
 }
