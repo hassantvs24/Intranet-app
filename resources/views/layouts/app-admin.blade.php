@@ -83,6 +83,22 @@
                 {{-- END menu item --}}
                 {{-- START menu item --}}
                 <div class="menu-wrap">
+                    <a href="{{ route('all-admins') }}" class="menu-item d-flex align-content-center align-items-center">
+                        <div class="icon mr-3">
+                            <img src="images/user.svg" alt="dashboard icon">
+                        </div>
+                        <div class="text text-light">{{ __('Admins') }}</div>
+                    </a>
+
+                    <div class="submenu pl-5">
+                        <a href="{{ route('all-admins') }}" class="submenu-item text-light d-block pl-4">{{ __('All Admins') }}</a>
+                        <a href="{{ route('create-admin') }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Admin') }}</a>
+                        <a href="{{ route('archived-admins') }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Admins') }}</a>
+                    </div>
+                </div>
+                {{-- END menu item --}}
+                {{-- START menu item --}}
+                <div class="menu-wrap">
                     <a href="{{ route('all-users') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
                             <img src="images/user.svg" alt="dashboard icon">
