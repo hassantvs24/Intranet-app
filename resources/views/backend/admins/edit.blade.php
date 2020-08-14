@@ -7,7 +7,7 @@
         <div class="container" id="create-group-form-wrap">
             <div class="row page-header my-4 pt-4">
                 <div class="col">
-                    <h3 class="page-title">{{ __('Create user') }}</h3>
+                    <h3 class="page-title">{{ __('Edit user') }}</h3>
                     <hr>
                 </div>
             </div>
@@ -18,14 +18,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="group_name">{{ __('Name') }}</label>
-                                <input type="text" class="form-control" id="group_name" name="group_name" placeholder="ex: Adam Levi" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="user_profile_image">Profile Image</label>
-                                <input type="file" class="form-control-file" id="user_profile_image" name="user_profile_image">
+                                <input type="text" class="form-control" id="group_name" name="group_name" value="Adam Levi" required>
                             </div>
                         </div>
 
@@ -59,21 +52,14 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="user_email">{{ __('User Email') }}</label>
-                                <input type="email" class="form-control" id="user_email" name="user_email" placeholder="email@domain.com" required>
+                                <input type="email" class="form-control" id="user_email" name="user_email" value="email@domain.com" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="user_phone_no">{{ __('User Phone') }}</label>
-                                <input type="tel" class="form-control" id="user_phone_no" name="user_phone_no" placeholder="+470156421" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="exampleFormControlTextarea1">{{ __('About / Bio') }}</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <input type="tel" class="form-control" id="user_phone_no" name="user_phone_no" value="+470156421" required>
                             </div>
                         </div>
 
@@ -112,7 +98,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">{{ __('Add New User') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
                     </form>
                 </div>
             </div>

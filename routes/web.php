@@ -31,7 +31,7 @@ Route::get('/edit-group', 'GroupsController@edit')->name('edit-group');
 Route::get('/view-group', 'GroupsController@show')->name('view-group');
 Route::get('/invite', 'HomeController@invite_users')->name('invite');
 
-// Boards controller
+// Boards routes
 Route::get('/all-boards', 'BoardsController@index')->name('all-boards');
 Route::get('/archived-boards', 'BoardsController@archived')->name('archived-boards');
 Route::get('/create-board', 'BoardsController@create')->name('create-board');
@@ -39,9 +39,17 @@ Route::get('/edit-board', 'BoardsController@edit')->name('edit-board');
 Route::get('/view-board', 'BoardsController@show')->name('view-board');
 
 
-// users controller
+// users routes
 Route::get('/all-users', 'UserController@index')->name('all-users');
 Route::get('/archived-users', 'UserController@archived')->name('archived-users');
 Route::get('/create-user', 'UserController@create')->name('create-user');
 Route::get('/edit-user', 'UserController@edit')->name('edit-user');
 Route::get('/view-user', 'UserController@show')->name('view-user');
+
+
+// admins routes
+Route::get('/all-admins', 'GroupAdminsController@index')->name('all-admins');
+Route::get('/archived-admins', 'GroupAdminsController@archived')->name('archived-admins');
+Route::get('/create-admin', 'GroupAdminsController@create')->name('create-admin');
+Route::get('/edit-admin', 'GroupAdminsController@edit')->name('edit-admin');
+Route::get('/view-admin', 'GroupAdminsController@show')->name('view-admin');

@@ -71,13 +71,6 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="exampleFormControlTextarea1">{{ __('About / Bio') }}</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
                             <label for="" class="d-block w-100">{{ __('Select primary contact:') }}</label>
 
                             <div class="form-group col-md-6">
