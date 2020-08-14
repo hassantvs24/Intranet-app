@@ -67,7 +67,7 @@
                 {{-- END menu item --}}
                 {{-- START menu item --}}
                 <div class="menu-wrap">
-                    <a href="{{ route('all-users') }}" class="menu-item d-flex align-content-center align-items-center">
+                    <a href="{{ route('all-boards') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
                             <img src="images/boards.svg" alt="dashboard icon">
                         </div>
