@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\GroupAdmin as Admin;
+use App\Group as Group;
 
 class GroupsController extends Controller
 {
@@ -18,7 +20,8 @@ class GroupsController extends Controller
 
     public function index()
     {
-        return view('backend.groups.index');
+        $groups = Group::all();
+        return view('backend.groups.index', compact('groups'));
     }
 
     public function archived()
@@ -28,12 +31,21 @@ class GroupsController extends Controller
 
     public function create()
     {
-        return view('backend.groups.create');
+        $admins = Admin::all();
+        return view('backend.groups.create', compact('admins'));
     }
 
     public function store(Request $request)
     {
-        //
+        $group = new Group();
+        $group->name = $request->name;
+        $group->color = $request->group_color;
+        $group->start_date = $request->start_date;
+        $group->end_date = $request->end_date;
+        $group->save();
+        $group->admins($group->id)->attach($request->group_admins);
+        $group->save();
+        return redirect(route('all-boards'))->with('status', 'Board successfully created!');
     }
 
 //    public function show($id)

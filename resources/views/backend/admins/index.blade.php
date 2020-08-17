@@ -3,14 +3,9 @@
 
 @section('admin-content')
 <div class="container-fluid p-4">
-    @if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-    </div>
-    @endif
     <div class="row page-header mb-3">
         <div class="col">
-            <h3 class="page-title">{{ __('Groups') }}</h3>
+            <h3 class="page-title">{{ __('Users') }}</h3>
         </div>
     </div>
 
@@ -18,7 +13,7 @@
         <div class="alert alert-primary font-weight-bold" role="alert">
             {{__('Only admins can access these pages.')}}
             <br>
-            {{__('Create groups and invite users to your groups. You can edit delete or archive a group. There can be unlimited users in a group.')}}
+            {{__('Create edit delete or archive a user. These are all of your active users. To see users specific to a group, you can view a group from "all groups" page.')}}
         </div>
     </div>
 
@@ -42,11 +37,11 @@
         </div>
 
         <div class="col text-right">
-            <a href="{{ route('create-group') }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
+            <a href="{{ route('create-admin') }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
         </div>
     </div>
 
-    <div class="row mb-4" id="all-groups">
+    <div class="row mb-4" id="all-users">
         <div class="col">
             <table class="table table--all-groups shadow-sm rounded border-0 overflow-hidden">
                 <thead class="thead-light border-0">
@@ -58,25 +53,23 @@
                             </div>
                         </th>
                         <th scope="col" class="border-0">{{ __('Name') }}</th>
-                        <th scope="col" class="border-0">{{ __('Start date') }}</th>
-                        <th scope="col" class="border-0">{{ __('End date') }}</th>
-                        <th scope="col" class="border-0">{{ __('Members') }}</th>
-                        <th scope="col" class="border-0">&nbsp;</th>
+                        <th scope="col" class="border-0">{{ __('Email') }}</th>
+                        <th scope="col" class="border-0">{{ __('Phone') }}</th>
+                        <th scope="col" class="border-0">{{ __('Actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($groups as $group)
+                    @foreach($admins as $admin)
                     <tr>
                         <th scope="row">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="group_2_id">
-                                <label class="custom-control-label" for="group_2_id"></label>
+                                <input type="checkbox" class="custom-control-input" id="group_1_id">
+                                <label class="custom-control-label" for="group_1_id"></label>
                             </div>
                         </th>
-                        <td>{{ $group->name }}</td>
-                        <td>{{ $group->start_date }}</td>
-                        <td>{{ $group->end_date }}</td>
-                        <td>15</td>
+                        <td>{{ $admin->name }}</td>
+                        <td>{{ $admin->email }}</td>
+                        <td>{{$admin->phone}}</td>
                         <td class="cta-group-item">
                             <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -95,15 +88,29 @@
                             </button>
                         </td>
                     </tr>
-                    @endforeach
                 </tbody>
+                @endforeach
             </table>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination font-weight-bold">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <a href="{{ route('archived-groups') }}" class="btn btn-warning">{{__('Archived Groups')}}</a>
+            <a href="{{ route('archived-users') }}" class="btn btn-warning">{{ __('view archived users') }}</a>
         </div>
     </div>
 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Group as Group;
 
 class BoardsController extends Controller
 {
@@ -28,7 +29,8 @@ class BoardsController extends Controller
 
     public function create()
     {
-        return view('backend.boards.create');
+        $groups = Group::all();
+        return view('backend.boards.create',compact('groups'));
     }
 
     public function store(Request $request)

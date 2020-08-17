@@ -28,11 +28,11 @@
             </div>
 
             <div class="col text-right">
-                <a href="{{ route('create-board') }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
+                <a href="{{ route('create-user') }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
             </div>
         </div>
 
-        <div class="row mb-4" id="all-boards">
+        <div class="row mb-4" id="all-users">
             <div class="col">
                 <table class="table table--all-groups shadow-sm rounded border-0 overflow-hidden">
                     <thead class="thead-light border-0">
@@ -43,10 +43,10 @@
                                 <label class="custom-control-label" for="select_all_groups"></label>
                             </div>
                         </th>
-                        <th scope="col" class="border-0">{{ __('Name') }}</th>
-                        <th scope="col" class="border-0">{{ __('Users') }}</th>
-                        <th scope="col" class="border-0">{{ __('Admin') }}</th>
-                        <th scope="col" class="border-0">{{ __('color') }}</th>
+                        <th scope="col" class="border-0">Name</th>
+                        <th scope="col" class="border-0">Email</th>
+                        <th scope="col" class="border-0">Phone</th>
+                        <th scope="col" class="border-0">Group</th>
                         <th scope="col" class="border-0">&nbsp;</th>
                     </tr>
                     </thead>
@@ -58,10 +58,10 @@
                                 <label class="custom-control-label" for="group_1_id"></label>
                             </div>
                         </th>
+                        <td>Mark</td>
+                        <td>Otto@email.com</td>
+                        <td>+819646546</td>
                         <td>Group A</td>
-                        <td>20</td>
-                        <td>Anthony</td>
-                        <td><span class="bg-primary group-color-dot"></span></td>
                         <td class="cta-group-item">
                             <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
@@ -81,10 +81,10 @@
                                 <label class="custom-control-label" for="group_2_id"></label>
                             </div>
                         </th>
-                        <td>Group b</td>
-                        <td>20</td>
-                        <td>Anthony</td>
-                        <td><span class="bg-primary group-color-dot"></span></td>
+                        <td>Jacob</td>
+                        <td>Thornton@email.com</td>
+                        <td>+4664484</td>
+                        <td>Group A</td>
                         <td class="cta-group-item">
                             <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
@@ -104,10 +104,10 @@
                                 <label class="custom-control-label" for="group_4_id"></label>
                             </div>
                         </th>
-                        <td>Group C</td>
-                        <td>20</td>
-                        <td>Anthony</td>
-                        <td><span class="bg-primary group-color-dot"></span></td>
+                        <td>Larry</td>
+                        <td>theBird@email.com</td>
+                        <td>+9816489849</td>
+                        <td>Group b</td>
                         <td class="cta-group-item">
                             <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
@@ -127,10 +127,10 @@
                                 <label class="custom-control-label" for="group_3_id"></label>
                             </div>
                         </th>
-                        <td>Group D</td>
-                        <td>20</td>
-                        <td>Anthony</td>
-                        <td><span class="bg-primary group-color-dot"></span></td>
+                        <td>Larry</td>
+                        <td>aBird@email.com</td>
+                        <td>+8948491948</td>
+                        <td>Group b</td>
                         <td class="cta-group-item">
                             <button class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
@@ -164,7 +164,7 @@
 
         <div class="row">
             <div class="col">
-                <a href="{{ route('all-boards') }}" class="btn btn-outline-primary">{{ __('view Active boards') }}</a>
+                <a href="{{ route('all-users') }}" class="btn btn-outline-primary">{{ __('view Active users') }}</a>
             </div>
         </div>
     </div>
