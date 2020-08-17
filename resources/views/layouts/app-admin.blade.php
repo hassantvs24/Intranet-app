@@ -43,7 +43,7 @@
                 <div class="menu-wrap">
                     <a href="{{ route('admin-home') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
-                            <img src="images/dashboard.svg" alt="dashboard icon">
+                            <img src="{{ asset('images/dashboard.svg') }}" alt="dashboard icon">
                         </div>
                         <div class="text text-light">{{ __('Dashboard') }}</div>
                     </a>
@@ -53,7 +53,7 @@
                 <div class="menu-wrap">
                     <a href="{{ route('all-groups') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
-                            <img src="images/users.svg" alt="dashboard icon">
+                            <img src="{{ asset('images/users.svg') }}" alt="dashboard icon">
                         </div>
                         <div class="text text-light">{{ __('Groups') }}</div>
                     </a>
@@ -69,7 +69,7 @@
                 <div class="menu-wrap">
                     <a href="{{ route('all-boards') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
-                            <img src="images/boards.svg" alt="dashboard icon">
+                            <img src="{{ asset('images/boards.svg')}}" alt="dashboard icon">
                         </div>
                         <div class="text text-light">{{ __('Info Boards') }}</div>
                     </a>
@@ -85,7 +85,7 @@
                 <div class="menu-wrap">
                     <a href="{{ route('all-admins') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
-                            <img src="images/user.svg" alt="dashboard icon">
+                            <img src="{{ asset('images/user.svg') }}" alt="dashboard icon">
                         </div>
                         <div class="text text-light">{{ __('Admins') }}</div>
                     </a>
@@ -101,7 +101,7 @@
                 <div class="menu-wrap">
                     <a href="{{ route('all-users') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
-                            <img src="images/user.svg" alt="dashboard icon">
+                            <img src="{{ asset('images/user.svg') }}" alt="dashboard icon">
                         </div>
                         <div class="text text-light">{{ __('Users') }}</div>
                     </a>

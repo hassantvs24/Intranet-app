@@ -65,6 +65,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                @if(count($groups) > 0)
                     @foreach($groups as $group)
                     <tr>
                         <th scope="row">
@@ -96,6 +97,14 @@
                         </td>
                     </tr>
                     @endforeach
+                    @else
+                        <tr>
+                            <td>
+                                {{ __('No records found.') }}
+                                <a href="{{ route('create-group') }}">{{ __('Create new.') }}</a>
+                            </td>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
         </div>
