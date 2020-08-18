@@ -55,6 +55,6 @@ class UserController extends Controller
     
     public function account_settings()
     {
-        return view('backend.account-settings');
+        return view('backend.users.account-settings');
     }
 }

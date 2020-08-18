@@ -82,6 +82,6 @@ class GroupAdminsController extends Controller
 
     public function account_settings()
     {
-        return view('backend.account-settings');
+        return view('backend.admins.account-settings');
     }
 }
