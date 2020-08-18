@@ -47,6 +47,8 @@ Route::get('/archived-users', 'UserController@archived')->name('archived-users')
 Route::get('/create-user', 'UserController@create')->name('create-user');
 Route::get('/edit-user', 'UserController@edit')->name('edit-user');
 Route::get('/view-user', 'UserController@show')->name('view-user');
+// add user account settings route
+Route::get('/users/my-account', 'UserController@account_settings')->name('user-account-settings');
 
 
 // admins routes
@@ -56,3 +58,5 @@ Route::get('/create-admin', 'GroupAdminsController@create')->name('create-admin'
 Route::post('/post-admin', 'GroupAdminsController@store')->name('admin.store');
 Route::get('/edit-admin', 'GroupAdminsController@edit')->name('edit-admin');
 Route::get('/view-admin', 'GroupAdminsController@show')->name('view-admin');
+// add admin account settings route
+Route::get('/admin/my-account', 'GroupAdminsController@account_settings')->name('admin-account-settings');

@@ -79,4 +79,9 @@ class GroupAdminsController extends Controller
     {
         //
     }
+
+    public function account_settings()
+    {
+        return view('backend.account-settings');
+    }
 }
