@@ -41,7 +41,6 @@ Route::get('/edit-board', 'BoardsController@edit')->name('edit-board');
 Route::get('/view-board', 'BoardsController@show')->name('view-board');
 Route::get('/edit-infocards', 'BoardsController@info_cards')->name('edit-infocards');
 
-
 // users routes
 Route::get('/all-users', 'UserController@index')->name('all-users');
 Route::get('/archived-users', 'UserController@archived')->name('archived-users');
@@ -50,7 +49,6 @@ Route::get('/edit-user', 'UserController@edit')->name('edit-user');
 Route::get('/view-user', 'UserController@show')->name('view-user');
 // add user account settings route
 Route::get('/users/my-account', 'UserController@account_settings')->name('user-account-settings');
-
 
 // admins routes
 Route::get('/all-admins', 'GroupAdminsController@index')->name('all-admins');

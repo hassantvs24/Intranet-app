@@ -116,42 +116,57 @@
     </div>
 
     {{-- ============= template for editing cards - modal ============= --}}
-    <!-- Include stylesheet Quills -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content border-0 px-4">
+            <div class="modal-content border-0 px-4">
 
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">{{ __('Modal title') }}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-header border-0">
+                <h3 class="modal-title" id="staticBackdropLabel">{{ __('Modal title') }}</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
             <div class="modal-body">
-                <!-- Create the editor container -->
-                <div id="editorjs">
-                    <p>Hello World!</p>
-                    <p>Some initial <strong>bold</strong> text</p>
-                    <p><br></p>
+                <div class="form-group">
+                    <label for="">{{ __('Change card title') }}</label>
+                    <input type="text" class="form-control" name="card_title" value="Old title goes here">
                 </div>
+
+                <!-- Create the editor container -->
+                <form method="post" action="#" id="card-content-form">
+                    <textarea id="summernote" name="editordata" class="form-control"></textarea>
+                </form>
             </div>
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>
+                <button type="button" class="btn btn-primary">{{ __('Save Changes') }}</button>
             </div>
 
-          </div>
+            </div>
         </div>
-      </div>
+    </div>
 
-      <script src="{{ asset('js/editor.js') }}"></script>
-      <script>
-          const editor = new EditorJS();
-      </script>
-
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+        (function($) {
+            $('#summernote').summernote({
+                height: 200,
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                ]
+            });
+        })(jQuery);
+    </script>
     {{-- // ============= template for editing cards - modal ============= --}}
 @endsection
