@@ -39,6 +39,7 @@ Route::get('/create-board', 'BoardsController@create')->name('create-board');
 Route::post('/create-board', 'BoardsController@store')->name('store-board');
 Route::get('/edit-board', 'BoardsController@edit')->name('edit-board');
 Route::get('/view-board', 'BoardsController@show')->name('view-board');
+Route::get('/edit-infocards', 'BoardsController@info_cards')->name('edit-infocards');
 
 
 // users routes

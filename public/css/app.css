@@ -11146,6 +11146,12 @@ label {
   border-color: var(--color-one);
 }
 
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 900px;
+  }
+}
+
 .login-page-wrap .left-col,
 .register-page-wrap .left-col {
   padding: 35px 15px;

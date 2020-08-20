@@ -3,6 +3,7 @@
 
 @section('admin-content')
     <div class="users-create-wrap">
+        
         {{-- START create group --}}
         <div class="container" id="create-group-form-wrap">
             <div class="row page-header my-4 pt-4">
@@ -15,6 +16,7 @@
             <div class="row">
                 <div class="col">
                     <form action="#" method="post">
+
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="group_name">{{ __('Name') }}</label>

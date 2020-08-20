@@ -113,6 +113,22 @@
                     </div>
                 </div>
                 {{-- END menu item --}}
+                {{-- START menu item --}}
+                <div class="menu-wrap">
+                    <a href="{{-- route('media-library') --}}" class="menu-item d-flex align-content-center align-items-center">
+                        <div class="icon mr-3">
+                            <img src="{{ asset('images/files.svg') }}" alt="media icon">
+                        </div>
+                        <div class="text text-light">{{ __('Files & Images') }}</div>
+                    </a>
+
+                    {{-- <div class="submenu pl-5">
+                        <a href="{{ route('all-users') }}" class="submenu-item text-light d-block pl-4">{{ __('All Users') }}</a>
+                        <a href="{{ route('create-user') }}" class="submenu-item text-light d-block pl-4">{{ __('Add New User') }}</a>
+                        <a href="{{ route('archived-users') }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Users') }}</a>
+                    </div> --}}
+                </div>
+                {{-- END menu item --}}
             </div>
         </div>
         {{-- END left col --}}

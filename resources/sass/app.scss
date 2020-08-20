@@ -2,10 +2,10 @@
     Fonts
 -----------------------------------*/
 //@import url('https://fonts.googleapis.com/css?family=Nunito');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;700;900&display=swap");
 
 // Variables
-@import 'variables-custom';
+@import "variables-custom";
 /*-----------------------------------
     Bootstrap
 -----------------------------------*/
@@ -57,6 +57,7 @@
 @import "components/card";
 @import "components/btn";
 @import "components/dropdown";
+@import "components/modal";
 
 @import "pages/login-register";
 @import "pages/user-dashboard";
