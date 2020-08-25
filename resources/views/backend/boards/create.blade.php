@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col">
                 <form action="{{ route('store-board') }}" method="post">
-                    @csrf;
+                    @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="group_name">{{ __('Name') }}</label>

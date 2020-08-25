@@ -22,7 +22,7 @@
                             </div>
                             <div class="card-body__child card-body__child--text">
                                 {{ __('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dignissimos dolore doloremque eaque enim eveniet expedita libero maiores neque.') }}
-                            </div>
+                            </div>indent guide
                         </div>
 
                         {{-- edit-options --}}
@@ -202,6 +202,8 @@
     </div>
     {{-- // ====== template - modal - primary contact ====== --}}
 
+    <div id="csrftoken">@csrf</div>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
@@ -217,9 +219,20 @@
                     ['fontsize', ['fontsize']],
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
-                    ['height', ['height']]
+                    ['height', ['height']],
+                    ['insert', ['link', 'picture', 'video']],
                 ]
             });
+
+            // get html from editor
+            let markupStr = $('#summernote').summernote('code');
+
+            // If you initialize multiple editor, You can get the HTML content of the second summernote with jQuery eq.
+            // var markupStr = $('.summernote').eq(1).summernote('code');
+
+            // set code inside editor
+            // var markupStr = 'hello world';
+            $('#summernote').summernote('code', markupStr);
         })(jQuery);
     </script>
     {{-- // ============= template for editing cards - modal ============= --}}
