@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
     <!-- Scripts -->
-    <script src="{{ asset('js/admin.js') }}" defer></script>
+    <script src="{{ asset('js/admin.js') }}" ></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -196,7 +196,7 @@
                 </div>
             </nav>
 
-            <main class="py-0 px-2">
+            <main class="py-0 px-2 mb-5">
                 @yield('admin-content')
             </main>
         </div>

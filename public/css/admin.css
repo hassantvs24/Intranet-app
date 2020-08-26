@@ -11188,19 +11188,6 @@ label {
   }
 }
 
-div#editor {
-  font-size: 16px;
-  font-family: inherit;
-  border: 1px solid #ced4da;
-}
-
-.ql-toolbar.ql-snow {
-  border-radius: 8px;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.06);
-  background: #fff;
-  border: 0 !important;
-}
-
 .login-page-wrap .left-col,
 .register-page-wrap .left-col {
   padding: 35px 15px;
@@ -11311,6 +11298,10 @@ div#editor {
   margin: 0;
 }
 
+.user-dashboard .navbar {
+  margin-top: 0;
+}
+
 /*------- all groups ----------*/
 
 .table--all-groups {
@@ -11381,5 +11372,116 @@ div#editor {
   height: 20px;
   width: 20px;
   border-radius: 50%;
+}
+
+div#editor {
+  font-size: 16px;
+  font-family: inherit;
+  border: 1px solid #ced4da;
+}
+
+.ql-toolbar.ql-snow {
+  border-radius: 8px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.06);
+  background: #fff;
+  border: 0 !important;
+}
+
+/*------- modal // popup - related styles --------*/
+
+.note-editor {
+  /*------ note toolbar -------*/
+  /*------- Editing area --------*/
+}
+
+.note-editor.note-frame {
+  border: 0 !important;
+}
+
+.note-editor * {
+  font-family: "Nunito", sans-serif;
+}
+
+.note-editor .note-input {
+  font-size: 16px;
+  padding: 8px 15px;
+}
+
+.note-editor .checkbox label {
+  font-weight: normal;
+}
+
+.note-editor .checkbox input {
+  margin-right: 10px;
+}
+
+.note-editor .note-modal-body label {
+  display: flex;
+  align-items: center;
+}
+
+.note-editor .note-modal-footer {
+  height: auto;
+  text-align: right;
+  padding: 10px 30px 30px 10px;
+}
+
+.note-editor .note-modal-footer .btn {
+  border-radius: 8px;
+  float: none;
+  color: #fff;
+  background-color: #4d16dd;
+  border-color: #4d16dd;
+  display: inline-block;
+  font-weight: 600;
+  padding: 7px 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+  border-radius: 8px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.note-editor .note-modal-footer .btn:hover {
+  background-color: #3509a5;
+  border-color: #3509a5;
+}
+
+.note-editor .note-modal-content {
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 7px 20px 5px rgba(0, 0, 0, 0.05);
+}
+
+.note-editor .note-modal-header {
+  border: 0;
+  border-radius: 8px 8px 0 0;
+  background-color: rgba(77, 22, 221, 0.08);
+}
+
+.note-editor .note-modal-title {
+  font-family: inherit;
+  color: #4d16dd;
+  font-weight: bold;
+}
+
+.note-editor .note-toolbar {
+  color: #333;
+  background-color: rgba(77, 22, 221, 0.08);
+  border-bottom: 1px solid;
+  border-color: transparent;
+  border-radius: 8px;
+  box-shadow: 0 0px 15px 5px rgba(0, 0, 0, 0.05);
+}
+
+.note-editor .note-editing-area {
+  margin-top: 15px;
+  border: 2px solid rgba(77, 22, 221, 0.08);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+}
+
+.note-editor.note-airframe .note-statusbar,
+.note-editor.note-frame .note-statusbar {
+  background-color: rgba(77, 22, 221, 0.08) !important;
 }
 

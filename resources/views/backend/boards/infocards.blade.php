@@ -1,5 +1,6 @@
 @extends('layouts.app-admin')
 @section('body-class', 'bg-light body-primary')
+@section('title', 'Edit InfoCards')
 
 @section('admin-content')
     {{-- show cards here --}}
@@ -22,13 +23,14 @@
                             </div>
                             <div class="card-body__child card-body__child--text">
                                 {{ __('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dignissimos dolore doloremque eaque enim eveniet expedita libero maiores neque.') }}
-                            </div>indent guide
+                            </div>
                         </div>
 
                         {{-- edit-options --}}
                         <div class="card-footer mt-3 border-0 rounded-lg d-flex align-items-center">
                             <div class="d-inline-block">
-                                <button class="btn btn-outline-primary btn-sm d-inline-block" id="btn-edit-group" data-toggle="modal" data-target="#staticBackdrop">
+                                <button class="btn btn-outline-primary btn-sm d-inline-block btn-edit-card" data-card-type="normal" data-card-id="card-1" data-board-id="123" 
+                                    data-toggle="modal" data-target="#dataEditModal">
                                     {{ __('Edit') }}
                                 </button>
                             </div>
@@ -65,7 +67,8 @@
                         {{-- edit-options --}}
                         <div class="card-footer mt-3 border-0 rounded-lg d-flex align-items-center">
                             <div class="d-inline-block">
-                                <button class="btn btn-outline-primary btn-sm d-inline-block" id="btn-edit-group" data-toggle="modal" data-target="#staticBackdrop">
+                                <button class="btn btn-outline-primary btn-sm d-inline-block btn-edit-card" data-card-type="normal" data-card-id="card-2" data-board-id="123"
+                                    data-toggle="modal" data-target="#dataEditModal">
                                     {{ __('Edit') }}
                                 </button>
                             </div>
@@ -94,7 +97,8 @@
                         {{-- edit-options --}}
                         <div class="card-footer mt-3 border-0 rounded-lg d-flex align-items-center">
                             <div class="d-inline-block">
-                                <button class="btn btn-outline-primary btn-sm d-inline-block" id="btn-edit-group" data-toggle="modal" data-target="#staticBackdrop">
+                                <button class="btn btn-outline-primary btn-sm d-inline-block btn-edit-card" data-card-type="normal" data-card-id="card-3" data-board-id="123" 
+                                    data-toggle="modal" data-target="#dataEditModal">
                                     {{ __('Edit') }}
                                 </button>
                             </div>
@@ -120,14 +124,14 @@
                                 <div id="calendar"></div>
                             </div>
                         </div>
-
+                        
                         {{-- edit-options --}}
                         <div class="card-footer mt-3 border-0 rounded-lg d-flex align-items-center">
                             <div class="d-inline-block">
-                                <button class="btn btn-outline-primary btn-sm d-inline-block" id="edit-calender-btn">
+                                <button class="btn btn-outline-primary btn-sm d-inline-block btn-edit-card" data-card-type="calendar" data-card-id="card-4" data-board-id="123">
                                     {{ __('Edit') }}
                                 </button>
-                                <button class="btn btn-secondary btn-sm d-inline-block" id="save-calender-btn" disabled>
+                                <button class="btn btn-secondary btn-sm d-inline-block save-card-data" disabled data-card-type="calendar" data-card-id="card-4" data-board-id="123">
                                     {{ __('Save') }}
                                 </button>
                             </div>
@@ -148,12 +152,12 @@
     </div>
 
     {{-- ============= template for editing cards - modal ============= --}}
-    <div class="modal right fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal right fade" id="dataEditModal" data-keyboard="false" tabindex="-1" aria-labelledby="dataEditModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog">
             <div class="modal-content border-0 px-4">
 
             <div class="modal-header border-0">
-                <h3 class="modal-title" id="staticBackdropLabel">{{ __('Modal title') }}</h3>
+                <h3 class="modal-title" id="dataEditModalLabel">{{ __('Modal title') }}</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -166,51 +170,45 @@
                 </div>
 
                 <!-- Create the editor container -->
-                <form method="post" action="#" id="card-content-form">
-                    <textarea id="summernote" name="editordata" class="form-control"></textarea>
-                </form>
-            </div>
-
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>
-                <button type="button" class="btn btn-primary">{{ __('Save Changes') }}</button>
-            </div>
-
-            </div>
-        </div>
-    </div>
-
-    {{-- ====== template - modal - primary contact ====== --}}
-    <div id="primary-contact-edit-template" class="template">
-        <div class="card">
-            <div class="card-body">
-                <form action="" method="post">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for=""></label>
-                            <select class="custom-select">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
+                <div class="form-group">
+                    <label for="card-content-form">{{ __('Card content') }}</label>
+                    <div method="post" action="#" id="card-content-form">
+                        <div id="summernote"></div>
                     </div>
-                </form>
+                </div>
+            </div>
+
+            <div class="modal-footer border-0 pb-5">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                <button type="button" class="btn btn-primary save-card-data" id="modal-save-btn" data-card-type="" data-card-id="card-1" data-board-id="123">
+                    {{ __('Save Changes') }}
+                </button>
+            </div>
+
             </div>
         </div>
     </div>
-    {{-- // ====== template - modal - primary contact ====== --}}
+    {{-- ============= END template for editing cards - modal ============= --}}
 
-    <div id="csrftoken">@csrf</div>
+    {{-- <div id="csrftoken">@csrf</div> --}}
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
     <script>
-        (function($) {
-            $('#summernote').summernote({
+        $(document).ready(function(){
+            /*--------------------------------------------
+                common dom items or variables
+            --------------------------------------------*/
+            const data_modal = $("#dataEditModal")
+
+            /*--------------------------------------------
+                Initalize text editor
+            --------------------------------------------*/
+            const cool_editor = $('#summernote')
+
+            cool_editor.summernote({
                 height: 200,
                 toolbar: [
                     // [groupName, [list of button]]
@@ -224,16 +222,80 @@
                 ]
             });
 
+            /*--------------------------------------------
+            Get card data for this board from api request
+            --------------------------------------------*/
+            // afeter api req example data 
+            let result = {
+                "card-1": {
+                    "type": "normal",
+                    "title": "Text or Image",
+                    "data": '<div class="card-body__child card-body__child--img"><img class="img-fluid rounded" src="/images/demo-card-image.png" alt=""></div><div class="card-body__child card-body__child--text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dignissimos dolore doloremque eaque enim eveniet expedita libero maiores neque.</div>'
+                },
+                "card-2": {
+                    "type": "normal",
+                    "title": "Resources & Links",
+                    "data": '<div class="card-body__child card-body__child--links"> <ul> <li><a href="#">How to take a nap?</a></li> <li><a href="#">Where to find good materials for our business?</a></li> <li><a href="#">Who to ask if I have questions and concerns</a></li> <li><a href="#">How to take a nap?</a></li> </ul> </div><div class="card-body__child card-body__child--text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dignissimos dolore doloremque eaque enim eveniet. </div>'
+                },
+                "card-3": {
+                    "type": "normal",
+                    "title": "Video",
+                    "data": '<iframe width="100%" height="180" src="https://www.youtube.com/embed/L4qM1IEhtNQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>'
+                },
+                "card-4": {
+                    "type": "calendar",
+                    "title": "Calender",
+                    "data": '<iframe width="100%" height="180" src="https://www.youtube.com/embed/L4qM1IEhtNQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>'
+                }
+            }
+            /*--------------------------------------------
+                Edit card Data after editing
+            --------------------------------------------*/
+            const edit_card_data_btn = $('.btn-edit-card')
+            const modal_save_btn = $('#modal-save-btn')
+            edit_card_data_btn.click(function () {
+                let card_type = $(this).attr('data-card-type')
+                let card_id = $(this).attr('data-card-id')
+                let board_id = $(this).attr('data-board-id')
+                if (card_type === 'normal') {
+                    modal_save_btn.attr('data-card-type', card_type)
+                    modal_save_btn.attr('data-card-id', card_id)
+                    modal_save_btn.attr('data-board-id', board_id)
+                }
+            })
+            /*--------------------------------------------
+                Save card Data after editing
+            --------------------------------------------*/
+            const save_card_data_btn = $('.save-card-data')
+            save_card_data_btn.click(function () {
+                let card_type = $(this).attr('data-card-type')
+                let card_id = $(this).attr('data-card-id')
+                let board_id = $(this).attr('data-board-id')
+                
+                if (card_type === 'normal') {
+                    // get html string from editor
+                    let html_string_from_editor = cool_editor.summernote('code')
+                    // save data to database here
+                    console.log(card_type, card_id,html_string_from_editor);
+                } else if (card_type === 'calendar') {
+                    // get json object from calendar widget
+                    // save to DB
+                }
+                // after saving show success message ?
+                // or hide modal
+                // data_modal.modal('hide')
+            })
+
             // get html from editor
-            let markupStr = $('#summernote').summernote('code');
+            // let markupStr = cool_editor.summernote('code');
 
             // If you initialize multiple editor, You can get the HTML content of the second summernote with jQuery eq.
             // var markupStr = $('.summernote').eq(1).summernote('code');
 
             // set code inside editor
             // var markupStr = 'hello world';
-            $('#summernote').summernote('code', markupStr);
-        })(jQuery);
+            // cool_editor.summernote('code', markupStr);
+        });
     </script>
     {{-- // ============= template for editing cards - modal ============= --}}
 @endsection
