@@ -53873,7 +53873,7 @@ document.addEventListener("DOMContentLoaded", function () {
       right: "dayGridMonth,timeGridWeek,timeGridDay"
     }
   });
-  calendar.render();
+  calendar.render(); // console.log(calendar.getEvents());
 });
 
 /***/ }),

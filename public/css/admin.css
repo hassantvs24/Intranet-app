@@ -11188,10 +11188,212 @@ label {
   }
 }
 
+.animation-overlay {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.animation-overlay .circle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ff47f9;
+  border-radius: 50%;
+  -webkit-animation-name: zoom-opacity;
+          animation-name: zoom-opacity;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.animation-overlay .circle-1 {
+  left: 20%;
+  top: 40%;
+}
+
+.animation-overlay .circle-2 {
+  left: 60%;
+  top: 70%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.animation-overlay .circle-3 {
+  left: 75%;
+  top: 20%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+.animation-overlay .xmark {
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  -webkit-animation-name: rorateClock;
+          animation-name: rorateClock;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.animation-overlay .xmark .h-line,
+.animation-overlay .xmark .v-line {
+  background-color: #e5b2d2;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+}
+
+.animation-overlay .xmark .v-line {
+  width: 1px;
+  height: 100%;
+}
+
+.animation-overlay .xmark-2 {
+  top: 50%;
+  left: 40%;
+}
+
+.animation-overlay .xmark-3 {
+  top: 70%;
+  left: 30%;
+}
+
+.animation-overlay .xmark-4 {
+  top: 90%;
+  left: 59%;
+}
+
+.animation-overlay .line {
+  position: absolute;
+  left: 40%;
+  top: 20%;
+  height: 1px;
+  width: 380px;
+  background-color: #7e4fa0;
+  transform: rotate(-45deg);
+  transform-style: preserve-3d;
+  transform-origin: 100% 100%;
+  will-change: transform;
+  -webkit-animation-name: linemove;
+          animation-name: linemove;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@-webkit-keyframes zoom-opacity {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  60% {
+    opacity: 0.6;
+    transform: scale(0.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoom-opacity {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  60% {
+    opacity: 0.6;
+    transform: scale(0.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes rorateClock {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rorateClock {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes linemove {
+  0% {
+    transform: translate3d(500px, -500px, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg, 0deg);
+  }
+
+  100% {
+    transform: translate3d(-1000px, 1000px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg, 0deg);
+  }
+}
+
+@keyframes linemove {
+  0% {
+    transform: translate3d(500px, -500px, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg, 0deg);
+  }
+
+  100% {
+    transform: translate3d(-1000px, 1000px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg, 0deg);
+  }
+}
+
 .login-page-wrap .left-col,
 .register-page-wrap .left-col {
   padding: 35px 15px;
   background-image: url("/images/hero-bg.png");
+  position: relative;
+  z-index: 99;
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
@@ -11199,6 +11401,11 @@ label {
   .register-page-wrap .left-col {
     height: 100vh;
   }
+}
+
+.login-page-wrap .left-col .content,
+.register-page-wrap .left-col .content {
+  z-index: 1;
 }
 
 .login-page-wrap p,
@@ -11372,6 +11579,168 @@ label {
   height: 20px;
   width: 20px;
   border-radius: 50%;
+}
+
+.animation-overlay {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.animation-overlay .circle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ff47f9;
+  border-radius: 50%;
+  -webkit-animation-name: zoom-opacity;
+          animation-name: zoom-opacity;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.animation-overlay .circle-1 {
+  left: 20%;
+  top: 40%;
+}
+
+.animation-overlay .circle-2 {
+  left: 60%;
+  top: 70%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.animation-overlay .circle-3 {
+  left: 75%;
+  top: 20%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+.animation-overlay .xmark {
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  -webkit-animation-name: rorateClock;
+          animation-name: rorateClock;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.animation-overlay .xmark .h-line,
+.animation-overlay .xmark .v-line {
+  background-color: #e5b2d2;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+}
+
+.animation-overlay .xmark .v-line {
+  width: 1px;
+  height: 100%;
+}
+
+.animation-overlay .xmark-2 {
+  top: 50%;
+  left: 40%;
+}
+
+.animation-overlay .xmark-3 {
+  top: 70%;
+  left: 30%;
+}
+
+.animation-overlay .xmark-4 {
+  top: 90%;
+  left: 59%;
+}
+
+.animation-overlay .line {
+  position: absolute;
+  left: 40%;
+  top: 20%;
+  height: 1px;
+  width: 380px;
+  background-color: #7e4fa0;
+  transform: rotate(-45deg);
+  transform-style: preserve-3d;
+  transform-origin: 100% 100%;
+  will-change: transform;
+  -webkit-animation-name: linemove;
+          animation-name: linemove;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@keyframes zoom-opacity {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  60% {
+    opacity: 0.6;
+    transform: scale(0.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rorateClock {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes linemove {
+  0% {
+    transform: translate3d(500px, -500px, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg, 0deg);
+  }
+
+  100% {
+    transform: translate3d(-1000px, 1000px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg, 0deg);
+  }
 }
 
 div#editor {
