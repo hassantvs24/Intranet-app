@@ -111,7 +111,7 @@
         will-change: transform;
 
         animation-name: linemove;
-        animation-duration: 3s;
+        animation-duration: 5s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
     }
@@ -152,3 +152,31 @@
         transform: translate3d(-1000px, 1000px, 0)  scale3d(1,1,1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg,0deg);
     }
 }
+
+
+// @keyframes linemoveRGB {
+//     0% {
+//         transform: translate3d(150px, -150px, 0px) scale3d(1,1,1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg,0deg);
+//         background-image: linear-gradient(to right, lightgreen 20%,cornflowerblue 40%,yellow 60%,violet 80%);
+//     }
+
+//     25% {
+//         transform: translate3d(-150px, 150px, 0px) scale3d(1,1,1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg,0deg);
+//         background-image: linear-gradient(to right, violet 20%,lightgreen 40%,cornflowerblue 60%,yellow 80%);
+//     }
+
+//     50% {
+//         transform: translate3d(-300px, 300px, 0px) scale3d(1,1,1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg,0deg);
+//         background-image: linear-gradient(to right, yellow 20%, violet 40%,lightgreen 60%,cornflowerblue 80%);
+//     }
+
+//     75% {
+//         transform: translate3d(-600px, 600px, 0px) scale3d(1,1,1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg,0deg);
+//         background-image: linear-gradient(to right, cornflowerblue 20%,yellow 40%,violet 60%,lightgreen 80%);
+//     }
+
+//     100% {
+//         transform: translate3d(-1200px, 1200px, 0px) scale3d(1,1,1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg,0deg);
+//         background-image: linear-gradient(to right, yellow 20%,violet 40%,lightgreen 60%,cornflowerblue 80%);
+//     }
+// }
