@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
-use App\GroupAdmin as Admin;
+use App\GroupAdmin;
 
 class GroupAdminsController extends Controller
 {
@@ -17,7 +17,7 @@ class GroupAdminsController extends Controller
 
     public function index()
     {
-        $admins = Admin::all();
+        $admins = GroupAdmin::all();
         return view('backend.admins.index', compact('admins'));
     }
 
@@ -34,7 +34,7 @@ class GroupAdminsController extends Controller
     public function store(Request $request)
     {
 
-        $admin = new Admin();
+        $admin = new GroupAdmin();
         $admin->name = $request->name;
         $admin->email = $request->email;
         $admin->phone = $request->phone;
@@ -55,29 +55,39 @@ class GroupAdminsController extends Controller
             $admin->avatar = $filePath;
         }
         $admin->save();
-        return redirect()->back()->with(['status' => 'Admin created successfully.']);
+        return redirect()->route('all-admins')->with(['status' => 'Admin created successfully.']);
     }
 
-    //    public function show($id)
-    public function show()
+    public function show($id)
     {
-        return view('backend.admins.view');
+        $admin = GroupAdmin::find($id);
+        return view('backend.admins.view', compact('admin'));
     }
 
-    //    public function edit($id)
-    public function edit()
+    public function edit($id)
     {
-        return view('backend.admins.edit');
+        $admin = GroupAdmin::find($id);
+        return view('backend.admins.edit', compact('admin'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $admin = GroupAdmin::find($id);
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->phone = $request->phone;
+        $admin->bio = $request->bio;
+        $admin->save();
+        return redirect()->route('all-admins')
+            ->with('success', 'Admin updated successfully');
     }
 
     public function destroy($id)
     {
-        //
+        GroupAdmin::findOrFail($id)->delete();
+
+        return redirect()->route('all-admins')
+        ->with('success', 'Admin deleted successfully');
     }
 
     public function account_settings()

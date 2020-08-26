@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -23,7 +24,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('backend.users.create');
+        $groups = Group::all();
+        return view('backend.users.create',compact('groups'));
     }
 
     public function store(Request $request)

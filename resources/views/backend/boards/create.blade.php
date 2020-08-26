@@ -14,8 +14,8 @@
 
         <div class="row">
             <div class="col">
-                <form action="{{ route('store-board') }}" method="post">
-                    @csrf
+                <form  method="post">
+                    @csrf;
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="group_name">{{ __('Name') }}</label>
@@ -32,6 +32,7 @@
                                 <label class="custom-control-label" for="group_{{$group->id}}">{{ $group->name }}</label>
                             </div>
                             @endforeach
+
                         </div>
                     </div>
 

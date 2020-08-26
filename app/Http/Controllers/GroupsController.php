@@ -45,24 +45,33 @@ class GroupsController extends Controller
         $group->save();
         $group->admins($group->id)->attach($request->group_admins);
         $group->save();
-        return redirect(route('all-boards'))->with('status', 'Board successfully created!');
+        return redirect(route('all-groups'))->with('status', 'Group successfully created!');
     }
 
-//    public function show($id)
-    public function show()
+    public function show($id)
     {
-        return view('backend.groups.view');
+        $group = Group::find($id);
+        return view('backend.groups.view',compact('group'));
     }
 
-//    public function edit($id)
-    public function edit()
+    public function edit($id)
     {
-        return view('backend.groups.edit');
+        $group = Group::find($id);
+        $group_admins = array_column($group->admins->toArray(), 'id');
+        $admins = Admin::all();
+        return view('backend.groups.edit', compact('group', 'admins', 'group_admins'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $group = Group::find($id);
+        $group->name = $request->name;
+        $group->color = $request->group_color;
+        $group->start_date = $request->start_date;
+        $group->end_date = $request->end_date;
+        $group->save();
+        $group->admins($group->id)->sync($request->group_admins);
+        return redirect(route('all-groups'))->with('status', 'Board successfully updated!');
     }
 
     public function destroy($id)
