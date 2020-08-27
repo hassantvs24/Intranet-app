@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="col text-right">
-                        <a href="#invite-users" type="submit" class="btn btn-primary">Invite Users to this group</a>
+                        <a href="#invite-users" type="submit" class="btn btn-primary">{{ __('Invite Users to this group') }}</a>
                     </div>
                 </div>
 
@@ -196,16 +196,21 @@
 
         <div class="row" id="invite-users">
             <div class="col-12">
-                <div class="card p-0">
+                <div class="card shadow-sm p-0">
                     <div class="row justify-content-center align-items-stretch align-content-stretch">
-                        <div class="col-md-5 bg-dark left-col d-flex flex-wrap justify-content-center align-content-center align-items-center">
-                            <h1 class="text-center text-light w-100 font-weight-bolder">{{ __('Invite Users.') }}</h1>
-                            <p class="w-100 text-center text-light">{{ __('Please enter an email & group to send invitation.') }}</p>
-                        </div>
+{{--                        <div class="col-md-5 bg-dark left-col d-flex flex-wrap justify-content-center align-content-center align-items-center">--}}
+{{--                            <h1 class="text-center text-light w-100 font-weight-bolder">{{ __('Invite Users.') }}</h1>--}}
+{{--                            <p class="w-100 text-center text-light">{{ __('Please enter an email & group to send invitation.') }}</p>--}}
+{{--                        </div>--}}
 
-                        <div class="col-md-7 right-col d-flex flex-wrap justify-content-center align-content-center align-items-center">
-                            <div class="login-form">
-                                <form method="POST" action="#">
+                        <div class="col-md-12 right-col d-flex flex-wrap justify-content-center align-content-center align-items-center">
+                            <div class="login-form p-5">
+
+                                <h3 class="text-center w-100 font-weight-bolder">{{ __('Invite Users.') }}</h3>
+                                <p class="w-100 text-center">{{ __('Please enter an email & group to send invitation.') }}</p>
+                                <hr>
+
+                                <form method="POST" action="#" class="d-block mt-4">
                                     @csrf
 
                                     <div class="form-group row">
@@ -226,22 +231,13 @@
                                         <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Group') }}</label>
 
                                         <div class="col-md-6">
-                                            <select class=" form-control @error('password') is-invalid @enderror" id="inputGroupSelect01" required>
-                                                <option>{{ __('Choose') }}...</option>
-                                                <option value="{{$group->id}}" selected>{{$group->name}}</option>
-                                            </select>
-
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                            <input class="form-control" type="text" value="{{ $group->name }}" disabled>
                                         </div>
                                     </div>
 
                                     <div class="form-group row mb-0">
                                         <div class="col-md-8 offset-md-4">
-                                            <button type="submit" class="btn btn-primary ls-1">
+                                            <button type="submit" class="btn btn-primary btn-sm ls-1">
                                                 {{ __('Send Invite') }}
                                             </button>
                                         </div>

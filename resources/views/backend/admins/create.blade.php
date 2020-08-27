@@ -56,8 +56,6 @@
                             </div>
                         </div>
 
-                        
-
                         <button type="submit" class="btn btn-primary">{{ __('Add New Admin') }}</button>
                     </form>
                 </div>

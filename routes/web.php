@@ -46,8 +46,10 @@ Route::get('/edit-infocards', 'BoardsController@info_cards')->name('edit-infocar
 Route::get('/all-users', 'UserController@index')->name('all-users');
 Route::get('/archived-users', 'UserController@archived')->name('archived-users');
 Route::get('/create-user', 'UserController@create')->name('create-user');
-Route::get('/edit-user', 'UserController@edit')->name('edit-user');
-Route::get('/view-user', 'UserController@show')->name('view-user');
+Route::get('/edit-user/{id}', 'UserController@edit')->name('edit-user');
+Route::put('/update-user/{id}', 'UserController@update')->name('update-user');
+Route::delete('/delete-user/{id}', 'UserController@destroy')->name('delete-user');
+Route::get('/view-user/{id}', 'UserController@show')->name('view-user');
 // add user account settings route
 Route::get('/users/my-account', 'UserController@account_settings')->name('user-account-settings');
 

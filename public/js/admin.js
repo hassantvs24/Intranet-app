@@ -53868,6 +53868,38 @@ document.addEventListener("DOMContentLoaded", function () {
     calendar.render(); // console.log(calendar.getEvents());
   }
 });
+/*===================================================================
+   On group select show relevant admins
+====================================================================*/
+
+document.addEventListener("DOMContentLoaded", function () {
+  var primary_contacts_wrap = $('#primary-contacts-wrap');
+
+  if (!!primary_contacts_wrap) {
+    $(".select-group-btn input[name='user_group']").change(function () {
+      // get selected group id
+      var group_id = $(this).val(); // clear old req data
+
+      var admins_html = ""; // get new data
+
+      axios.get('/api/group/' + group_id + '/contacts').then(function (response) {
+        // console.log( (response.data.data))
+        var data = response.data.data; // prepare html
+
+        data.forEach(function (admin) {
+          console.log(admin.name);
+          admins_html += "\n                        <div class=\"custom-control custom-radio w-100\">\n                            <input type=\"radio\" class=\"custom-control-input\" name=\"group_admins\" id=\"group_admin_".concat(admin.id, "\" value=\"").concat(admin.id, "\">\n                            <label class=\"custom-control-label\" for=\"group_admin_").concat(admin.id, "\">").concat(admin.name, "</label>\n                        </div>\n                    ");
+        }); // console.log(admins_html)
+        // clear DOM -> remove old group admins
+
+        primary_contacts_wrap.html(''); // set html in DOM
+
+        primary_contacts_wrap.html(admins_html);
+      });
+    });
+  } // execute this block only if primary-contact div is found
+
+});
 
 /***/ }),
 
