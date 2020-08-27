@@ -1,9 +1,10 @@
 @extends('layouts.app-admin')
+@section('title', 'Account Settings')
 @section('body-class', 'user-dashboard bg-light')
 
 @section('admin-content')
     <div class="users-create-wrap">
-        
+
         {{-- START create group --}}
         <div class="container" id="create-group-form-wrap">
             <div class="row page-header my-4 pt-4">

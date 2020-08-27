@@ -1,5 +1,5 @@
 @extends('layouts.app-admin')
-
+@section('title', 'Welcome')
 @section('body-class', 'bg-light')
 
 @section('admin-content')

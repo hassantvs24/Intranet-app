@@ -1,4 +1,5 @@
 @extends('layouts.app-admin')
+@section('title', 'View Group')
 @section('body-class', 'bg-light')
 
 @section('admin-content')
@@ -198,10 +199,6 @@
             <div class="col-12">
                 <div class="card shadow-sm p-0">
                     <div class="row justify-content-center align-items-stretch align-content-stretch">
-{{--                        <div class="col-md-5 bg-dark left-col d-flex flex-wrap justify-content-center align-content-center align-items-center">--}}
-{{--                            <h1 class="text-center text-light w-100 font-weight-bolder">{{ __('Invite Users.') }}</h1>--}}
-{{--                            <p class="w-100 text-center text-light">{{ __('Please enter an email & group to send invitation.') }}</p>--}}
-{{--                        </div>--}}
 
                         <div class="col-md-12 right-col d-flex flex-wrap justify-content-center align-content-center align-items-center">
                             <div class="login-form p-5">
