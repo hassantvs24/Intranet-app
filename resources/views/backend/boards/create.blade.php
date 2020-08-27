@@ -26,6 +26,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6 d-flex flex-wrap">
                             <label for="" class="d-block w-100">{{ __('Select a group:') }}</label>
+
                             @foreach($groups as $group)
                             <div class="custom-control custom-radio mr-4 my-1">
                                 <input type="radio" id="group_{{$group->id}}" name="user_group" class="custom-control-input" value="{{ $group->id }}">

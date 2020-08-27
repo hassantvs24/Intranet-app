@@ -24,7 +24,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="user_profile_image">Profile Image</label>
+                            <label for="user_profile_image">{{ __('Profile Image') }}</label>
                             <input type="file" class="form-control-file" id="user_profile_image" name="user_profile_image">
                         </div>
                     </div>
@@ -32,11 +32,12 @@
                     <div class="form-row">
                         <div class="form-group col-md-6 d-flex flex-wrap">
                             <label for="" class="d-block w-100">{{ __('Assign a group:') }}</label>
+
                             @foreach($groups as $group)
-                            <div class="custom-control custom-radio mr-4 my-1">
-                                <input type="radio" id="group_{{$group->id}}" name="user_group" class="custom-control-input" value="{{$group->id}}">
-                                <label class="custom-control-label" for="group_{{$group->id}}">{{$group->name}}</label>
-                            </div>
+                                <div class="custom-control custom-radio select-group-btn mr-4 my-1">
+                                    <input type="radio" id="group_{{$group->id}}" name="user_group" class="custom-control-input" value="{{$group->id}}">
+                                    <label class="custom-control-label" for="group_{{$group->id}}">{{$group->name}}</label>
+                                </div>
                             @endforeach
 
                         </div>
@@ -66,35 +67,8 @@
                     <div class="form-row">
                         <label for="" class="d-block w-100">{{ __('Select primary contact:') }}</label>
 
-                        <div class="form-group col-md-6">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_1" checked>
-                                <label class="custom-control-label" for="group_admin_1">Adam Rusega</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_2">
-                                <label class="custom-control-label" for="group_admin_2">Levi Archman</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_3">
-                                <label class="custom-control-label" for="group_admin_3">Jhonny Ive</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_4">
-                                <label class="custom-control-label" for="group_admin_4">Douglas Costa</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_4">
-                                <label class="custom-control-label" for="group_admin_4">Eren Yeager</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_4">
-                                <label class="custom-control-label" for="group_admin_4">Bone ALi Mia</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_4">
-                                <label class="custom-control-label" for="group_admin_4">Alan Walker</label>
-                            </div>
+                        <div class="form-group col-md-6" id="primary-contacts-wrap">
+                            {{-- Dynamic data here - Axios get() --}}
                         </div>
                     </div>
 
@@ -105,4 +79,36 @@
     </div>
     {{-- END create group --}}
 </div>
+
+<script>
+    const primary_contacts_wrap = $('#primary-contacts-wrap')
+
+    $(".select-group-btn input[name='user_group']").change(function () {
+        // get selected group id
+        let group_id = $(this).val()
+        // clear old req data
+        let admins_html = ``
+        // get new data
+        axios.get('/api/group/'+ group_id +'/contacts')
+            .then(function (response) {
+                console.log( (response.data.data))
+                let data = response.data.data
+                // prepare html
+                data.forEach((admin) => {
+                    console.log(admin.name)
+                    admins_html += `
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="group_admins" id="group_admin_${admin.id}" value="${admin.id}">
+                            <label class="custom-control-label" for="group_admin_${admin.id}">${admin.name}</label>
+                        </div>
+                    `
+                })
+                // console.log(admins_html)
+                // clear DOM -> remove old group admins
+                primary_contacts_wrap.html('')
+                // set html in DOM
+                primary_contacts_wrap.html(admins_html)
+            })
+    })
+</script>
 @endsection
