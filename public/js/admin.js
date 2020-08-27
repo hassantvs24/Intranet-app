@@ -53825,16 +53825,6 @@ Full calender implementation
 ===================================*/
 
 
-var edit_calender_btn = $("#edit-calender-btn");
-var save_calender_btn = $("#save-calender-btn");
-
-(function ($) {
-  edit_calender_btn.click(function () {
-    save_calender_btn.removeAttr("disabled", false);
-    console.log("clicked");
-  });
-})(jQuery);
-
 
 
 
@@ -53863,17 +53853,20 @@ var EVENTS = [{
 }];
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
-  var calendar = new _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__["Calendar"](calendarEl, {
-    plugins: [_fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_3__["default"], _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__["default"]],
-    editable: true,
-    events: EVENTS,
-    headerToolbar: {
-      left: "prev,next today",
-      center: "title",
-      right: "dayGridMonth,timeGridWeek,timeGridDay"
-    }
-  });
-  calendar.render(); // console.log(calendar.getEvents());
+
+  if (!!calendarEl) {
+    var calendar = new _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__["Calendar"](calendarEl, {
+      plugins: [_fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_3__["default"], _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__["default"]],
+      editable: true,
+      events: EVENTS,
+      headerToolbar: {
+        left: "prev,next today",
+        center: "title",
+        right: "dayGridMonth,timeGridWeek,timeGridDay"
+      }
+    });
+    calendar.render(); // console.log(calendar.getEvents());
+  }
 });
 
 /***/ }),

@@ -29,7 +29,7 @@
                         {{-- edit-options --}}
                         <div class="card-footer mt-3 border-0 rounded-lg d-flex align-items-center">
                             <div class="d-inline-block">
-                                <button class="btn btn-outline-primary btn-sm d-inline-block btn-edit-card" data-card-type="normal" data-card-id="card-1" data-board-id="123" 
+                                <button class="btn btn-outline-primary btn-sm d-inline-block btn-edit-card" data-card-type="normal" data-card-id="card-1" data-board-id="123"
                                     data-toggle="modal" data-target="#dataEditModal">
                                     {{ __('Edit') }}
                                 </button>
@@ -97,7 +97,7 @@
                         {{-- edit-options --}}
                         <div class="card-footer mt-3 border-0 rounded-lg d-flex align-items-center">
                             <div class="d-inline-block">
-                                <button class="btn btn-outline-primary btn-sm d-inline-block btn-edit-card" data-card-type="normal" data-card-id="card-3" data-board-id="123" 
+                                <button class="btn btn-outline-primary btn-sm d-inline-block btn-edit-card" data-card-type="normal" data-card-id="card-3" data-board-id="123"
                                     data-toggle="modal" data-target="#dataEditModal">
                                     {{ __('Edit') }}
                                 </button>
@@ -124,7 +124,7 @@
                                 <div id="calendar"></div>
                             </div>
                         </div>
-                        
+
                         {{-- edit-options --}}
                         <div class="card-footer mt-3 border-0 rounded-lg d-flex align-items-center">
                             <div class="d-inline-block">
@@ -225,7 +225,7 @@
             /*--------------------------------------------
             Get card data for this board from api request
             --------------------------------------------*/
-            // afeter api req example data 
+            // afeter api req example data
             let result = {
                 "card-1": {
                     "type": "normal",
@@ -261,6 +261,9 @@
                     modal_save_btn.attr('data-card-type', card_type)
                     modal_save_btn.attr('data-card-id', card_id)
                     modal_save_btn.attr('data-board-id', board_id)
+                } else {
+                    // card type calendar
+                    // make save button enabled
                 }
             })
             /*--------------------------------------------
@@ -271,7 +274,7 @@
                 let card_type = $(this).attr('data-card-type')
                 let card_id = $(this).attr('data-card-id')
                 let board_id = $(this).attr('data-board-id')
-                
+
                 if (card_type === 'normal') {
                     // get html string from editor
                     let html_string_from_editor = cool_editor.summernote('code')

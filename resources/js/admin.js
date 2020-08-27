@@ -3,15 +3,6 @@ require("./bootstrap");
 /*===================================
 Full calender implementation
 ===================================*/
-let edit_calender_btn = $("#edit-calender-btn");
-let save_calender_btn = $("#save-calender-btn");
-(function($) {
-    edit_calender_btn.click(function() {
-        save_calender_btn.removeAttr("disabled", false);
-        console.log("clicked");
-    });
-})(jQuery);
-
 import { Calendar } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -48,18 +39,18 @@ const EVENTS = [
 
 document.addEventListener("DOMContentLoaded", function() {
     let calendarEl = document.getElementById("calendar");
-
-    let calendar = new Calendar(calendarEl, {
-        plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin],
-        editable: true,
-        events: EVENTS,
-        headerToolbar: {
-            left: "prev,next today",
-            center: "title",
-            right: "dayGridMonth,timeGridWeek,timeGridDay"
-        }
-    });
-
-    calendar.render();
-    // console.log(calendar.getEvents());
+    if (!!calendarEl) {
+        let calendar = new Calendar(calendarEl, {
+            plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin],
+            editable: true,
+            events: EVENTS,
+            headerToolbar: {
+                left: "prev,next today",
+                center: "title",
+                right: "dayGridMonth,timeGridWeek,timeGridDay"
+            }
+        });
+        calendar.render();
+        // console.log(calendar.getEvents());
+    }
 });

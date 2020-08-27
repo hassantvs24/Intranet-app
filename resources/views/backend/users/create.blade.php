@@ -91,7 +91,7 @@
         // get new data
         axios.get('/api/group/'+ group_id +'/contacts')
             .then(function (response) {
-                console.log( (response.data.data))
+                // console.log( (response.data.data))
                 let data = response.data.data
                 // prepare html
                 data.forEach((admin) => {

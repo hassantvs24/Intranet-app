@@ -28,7 +28,7 @@
                             <label for="" class="d-block w-100">{{ __('Select a group:') }}</label>
 
                             @foreach($groups as $group)
-                            <div class="custom-control custom-radio mr-4 my-1">
+                            <div class="custom-control custom-radio select-group-btn mr-4 my-1">
                                 <input type="radio" id="group_{{$group->id}}" name="user_group" class="custom-control-input" value="{{ $group->id }}">
                                 <label class="custom-control-label" for="group_{{$group->id}}">{{ $group->name }}</label>
                             </div>
@@ -51,19 +51,7 @@
                             <input type="date" class="form-control" id="group_end_date" name="group_end_date" value="2020-08-27" disabled>
                         </div>
                     </div>
-                    {{-- <div class="form-row">--}}
-                    {{-- <div class="form-group col-md-6">--}}
-                    {{-- <label for="user_email">{{ __('User Email') }}</label>--}}
-                    {{-- <input type="email" class="form-control" id="user_email" name="user_email" placeholder="email@domain.com" required>--}}
-                    {{-- </div>--}}
-                    {{-- </div>--}}
 
-                    {{-- <div class="form-row">--}}
-                    {{-- <div class="form-group col-md-6">--}}
-                    {{-- <label for="user_phone_no">{{ __('User Phone') }}</label>--}}
-                    {{-- <input type="tel" class="form-control" id="user_phone_no" name="user_phone_no" placeholder="+470156421" required>--}}
-                    {{-- </div>--}}
-                    {{-- </div>--}}
                     <button type="submit" class="btn btn-primary">{{ __('Create Board') }}</button>
 
                     <div class="form-row">
@@ -81,4 +69,23 @@
     </div>
     {{-- END create group --}}
 </div>
+
+<script>
+    $(".select-group-btn input[name='user_group']").change(function () {
+        // get selected group id
+        let group_id = $(this).val()
+
+        // group data
+        axios.get('/api/groups/'+group_id)
+        .then(function (response) {
+            // console.log(response.data.data)
+            let data = response.data.data
+            let start_date = data.start_date
+            let end_date = data.end_date
+            // set srat && end date
+            $('#group_start_date').val(start_date)
+            $('#group_end_date').val(end_date)
+        })
+    })
+</script>
 @endsection
