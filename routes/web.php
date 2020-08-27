@@ -37,20 +37,22 @@ Route::get('/invite', 'HomeController@invite_users')->name('invite');
 Route::get('/all-boards', 'BoardsController@index')->name('all-boards');
 Route::get('/archived-boards', 'BoardsController@archived')->name('archived-boards');
 Route::get('/create-board', 'BoardsController@create')->name('create-board');
-Route::post('/create-board', 'BoardsController@store')->name('store-board');
-Route::get('/edit-board', 'BoardsController@edit')->name('edit-board');
-Route::get('/view-board', 'BoardsController@show')->name('view-board');
-Route::get('/edit-infocards', 'BoardsController@info_cards')->name('edit-infocards');
+Route::post('/save-board', 'BoardsController@store')->name('store-board');
+Route::get('/view-board/{id}', 'BoardsController@show')->name('view-board');
+Route::get('/edit-board/{id}', 'BoardsController@edit')->name('edit-board');
+Route::put('/update-board/{id}', 'BoardsController@update')->name('update-board');
+Route::delete('/delete-board/{id}', 'BoardsController@destroy')->name('delete-board');
+Route::get('/edit-infocards/board/{id}', 'BoardsController@info_cards')->name('edit-infocards');
 
 // users routes
 Route::get('/all-users', 'UserController@index')->name('all-users');
 Route::get('/archived-users', 'UserController@archived')->name('archived-users');
 Route::get('/create-user', 'UserController@create')->name('create-user');
+Route::get('/view-user/{id}', 'UserController@show')->name('view-user');
 Route::post('/save-user', 'UserController@store')->name('save-user');
 Route::get('/edit-user/{id}', 'UserController@edit')->name('edit-user');
 Route::put('/update-user/{id}', 'UserController@update')->name('update-user');
 Route::delete('/delete-user/{id}', 'UserController@destroy')->name('delete-user');
-Route::get('/view-user/{id}', 'UserController@show')->name('view-user');
 // add user account settings route
 Route::get('/users/my-account', 'UserController@account_settings')->name('user-account-settings');
 
@@ -58,10 +60,10 @@ Route::get('/users/my-account', 'UserController@account_settings')->name('user-a
 Route::get('/all-admins', 'GroupAdminsController@index')->name('all-admins');
 Route::get('/archived-admins', 'GroupAdminsController@archived')->name('archived-admins');
 Route::get('/create-admin', 'GroupAdminsController@create')->name('create-admin');
-Route::post('/post-admin', 'GroupAdminsController@store')->name('admin.store');
+Route::post('/save-admin', 'GroupAdminsController@store')->name('admin.store');
+Route::get('/view-admin/{id}', 'GroupAdminsController@show')->name('view-admin');
 Route::get('/edit-admin/{id}', 'GroupAdminsController@edit')->name('edit-admin');
 Route::put('/update-admin/{id}', 'GroupAdminsController@update')->name('update-admin');
 Route::delete('/delete-admin/{id}', 'GroupAdminsController@destroy')->name('delete-admin');
-Route::get('/view-admin/{id}', 'GroupAdminsController@show')->name('view-admin');
 // add admin account settings route
 Route::get('/admin/my-account', 'GroupAdminsController@account_settings')->name('admin-account-settings');

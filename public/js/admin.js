@@ -53898,7 +53898,12 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   } // execute this block only if primary-contact div is found
+  // init tooltip
 
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
 });
 
 /***/ }),

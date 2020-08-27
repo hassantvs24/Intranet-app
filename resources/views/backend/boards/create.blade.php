@@ -13,13 +13,20 @@
         </div>
 
         <div class="row">
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+
             <div class="col">
-                <form  method="post">
-                    @csrf;
+                <form action="{{ route('create-board') }}"  method="post">
+                    @csrf
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="group_name">{{ __('Name') }}</label>
-                            <input type="text" class="form-control" id="group_name" name="group_name" placeholder="ex: Adam Levi" required>
+                            <input type="text" class="form-control" id="group_name" name="name" placeholder="ex: Adam Levi" required>
                         </div>
                     </div>
 
@@ -41,14 +48,14 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="group_start_date">{{ __('Start date') }}</label>
-                            <input type="date" class="form-control" id="group_start_date" name="group_start_date" value="2020-08-12" disabled>
+                            <input type="date" class="form-control" id="group_start_date" name="group_start_date" value="" disabled>
                         </div>
                     </div>
                     {{-- This start and end date will change according to selected group --}}
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="group_end_date">{{ __('End date') }}</label>
-                            <input type="date" class="form-control" id="group_end_date" name="group_end_date" value="2020-08-27" disabled>
+                            <input type="date" class="form-control" id="group_end_date" name="group_end_date" value="" disabled>
                         </div>
                     </div>
 

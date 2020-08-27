@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Board;
 use Illuminate\Http\Request;
 use App\Group as Group;
 
@@ -19,7 +20,9 @@ class BoardsController extends Controller
 
     public function index()
     {
-        return view('backend.boards.index');
+        $boards = Board::paginate(15);
+        // $group_name = Group::find()
+        return view('backend.boards.index', compact('boards'));
     }
 
     public function archived()
@@ -35,24 +38,33 @@ class BoardsController extends Controller
 
     public function store(Request $request)
     {
-        //
+        Board::create([
+            'name' => $request['name'],
+            'group_id' => $request['user_group']
+        ]);
+        return redirect()->route('all-boards')
+            ->with('success', 'Board added successfully');
     }
 
-//    public function show($id)
-    public function show()
+    public function show($id)
     {
-        return view('backend.boards.view');
+        $board = Board::find($id);
+        return view('backend.boards.view', compact('board'));
     }
 
-//    public function edit($id)
-    public function edit()
+    public function edit($id)
     {
-        return view('backend.boards.edit');
+        $board = Board::find($id);
+        return view('backend.boards.edit', compact('board'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $board = Board::find($id);
+        $board->name = $request->name;
+        $board->save();
+        return redirect()->route('all-boards')
+            ->with('success', 'Board updated successfully');
     }
 
     public function destroy($id)
@@ -60,8 +72,8 @@ class BoardsController extends Controller
         //
     }
 
-    public function info_cards()
+    public function info_cards($id)
     {
-        return view('backend.boards.infocards');
+        return view('backend.boards.infocards', compact('board_id'));
     }
 }
