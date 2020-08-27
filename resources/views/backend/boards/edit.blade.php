@@ -7,7 +7,7 @@
         <div class="container" id="create-group-form-wrap">
             <div class="row page-header my-4 pt-4">
                 <div class="col">
-                    <h3 class="page-title">{{ __('Edit user') }}</h3>
+                    <h3 class="page-title">{{ __('Edit Board') }}</h3>
                     <hr>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                                 <input type="text" class="form-control" id="group_name" name="group_name" value="Adam Levi" required>
                             </div>
                         </div>
-
+{{-- 
                         <div class="form-row">
                             <div class="form-group col-md-6 d-flex flex-wrap">
                                 <label for="" class="d-block w-100">{{ __('Assign a group:') }}</label>
@@ -96,7 +96,7 @@
                                     <label class="custom-control-label" for="group_admin_4">Alan Walker</label>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
                     </form>

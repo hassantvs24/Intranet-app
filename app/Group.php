@@ -11,6 +11,6 @@ class Group extends Model
      */
     public function admins()
     {
-        return $this->belongsToMany('App\GroupAdmin');
+        return $this->belongsToMany('App\GroupAdmin', 'group_group_admin', 'group_id', 'group_admin_id');
     }
 }

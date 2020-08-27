@@ -14,7 +14,7 @@
 
         <div class="row">
             <div class="col">
-                <form action="{{ route('store-board'}}" method="post">
+                <form  method="post">
                     @csrf;
                     <div class="form-row">
                         <div class="form-group col-md-6">

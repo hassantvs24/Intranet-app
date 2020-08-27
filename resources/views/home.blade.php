@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('body-class', 'user-dashboard  body-teal')
+@section('body-class', 'user-dashboard body-teal')
 
 @section('content')
     <div class="container">

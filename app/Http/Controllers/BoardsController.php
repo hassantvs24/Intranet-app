@@ -59,4 +59,9 @@ class BoardsController extends Controller
     {
         //
     }
+
+    public function info_cards()
+    {
+        return view('backend.boards.infocards');
+    }
 }
