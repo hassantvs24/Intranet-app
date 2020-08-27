@@ -19,6 +19,7 @@ class CreateCardsTable extends Migration
             $table->string('title');
             $table->enum('card_type', ['normal', 'calender']);
             $table->boolean('is_visible');
+            $table->string('html_content', 99999999999);
             $table->timestamps();
         });
     }

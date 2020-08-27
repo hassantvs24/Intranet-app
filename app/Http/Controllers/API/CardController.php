@@ -7,10 +7,9 @@ use App\Card;
 
 class CardController extends BaseController
 {
-    public function index()
+    public function index(Request $request)
     {
-        $cards = Card::all();
-
+        $cards = Card::all()->where('board_id', '=', $request['board_id']);
 
         if (is_null($cards)) {
             return $this->sendError('Cards not found.');
@@ -19,11 +18,11 @@ class CardController extends BaseController
         return $this->sendResponse($cards->toArray(), 'cards retrieved successfully.');
     }
 
-
     public function store(Request $request)
     {
         $card = new Card();
         $card->title = $request->title;
+        $card->card_content = $request->html_content;
         $card->board_id = $request->board_id;
         $card->card_type = $request->card_type;
         $card->is_visible = $request->is_visible;
