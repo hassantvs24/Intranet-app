@@ -36,7 +36,7 @@
             </div>
 
             <div class="col text-right">
-                <a href="{{ route('create-user') }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
+                <a href="{{ route('create-user') }}" class="btn btn-primary btn-md">{{ __('Create & Invite New User') }}</a>
             </div>
         </div>
 

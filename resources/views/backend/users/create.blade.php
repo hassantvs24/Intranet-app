@@ -7,7 +7,7 @@
     <div class="container" id="create-group-form-wrap">
         <div class="row page-header my-4 pt-4">
             <div class="col">
-                <h3 class="page-title">{{ __('Create user') }}</h3>
+                <h3 class="page-title">{{ __('Create & Invite user') }}</h3>
                 <hr>
             </div>
         </div>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">{{ __('Add New User') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ __('Invite & Add New User') }}</button>
                 </form>
             </div>
         </div>
