@@ -101,7 +101,7 @@
                         <tr>
                             <td>
                                 {{ __('No records found') }}
-                                <a href="{{ route('create-admin') }}">{{ __('Create new.') }}</a>
+                                <a href="{{ route('create-board') }}">{{ __('Create new.') }}</a>
                             </td>
                         </tr>
                     @endif

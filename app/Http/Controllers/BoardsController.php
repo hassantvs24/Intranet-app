@@ -74,6 +74,7 @@ class BoardsController extends Controller
 
     public function info_cards($id)
     {
+        $board_id = $id;
         return view('backend.boards.infocards', compact('board_id'));
     }
 }

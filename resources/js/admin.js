@@ -38,21 +38,42 @@ const EVENTS = [
 ];
 
 document.addEventListener("DOMContentLoaded", function() {
-    let calendarEl = document.getElementById("calendar");
-    if (!!calendarEl) {
-        let calendar = new Calendar(calendarEl, {
-            plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin],
-            editable: true,
-            events: EVENTS,
-            headerToolbar: {
-                left: "prev,next today",
-                center: "title",
-                right: "dayGridMonth,timeGridWeek,timeGridDay"
+    const targetNode = document.getElementById('data-cards-wrap');
+    const config = { attributes: true, childList: true, subtree: true };
+    // Callback function to execute when mutations are observed
+    const callback = function(mutationsList, observer) {
+        // Use traditional 'for loops' for IE 11
+        for(let mutation of mutationsList) {
+            if (mutation.type === 'childList' || mutation.type === 'attributes') {
+                init_full_calendar()
             }
-        });
-        calendar.render();
-        // console.log(calendar.getEvents());
+        }
+    };
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
+
+    function init_full_calendar() {
+        let calendarEl = document.getElementById("calendar");
+        if (!!calendarEl) {
+            let calendar = new Calendar(calendarEl, {
+                plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin],
+                editable: true,
+                events: EVENTS,
+                headerToolbar: {
+                    left: "prev,next today",
+                    center: "title",
+                    right: "dayGridMonth,timeGridWeek,timeGridDay"
+                }
+            });
+            calendar.render();
+            // console.log(calendar.getEvents());
+            // Later, you can stop observing
+            observer.disconnect();
+        }
     }
+
 });
 
 /*===================================================================

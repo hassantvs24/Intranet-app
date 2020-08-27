@@ -22,7 +22,7 @@ class CardController extends BaseController
     {
         $card = new Card();
         $card->title = $request->title;
-        $card->card_content = $request->html_content;
+        $card->html_content = $request->html_content;
         $card->board_id = $request->board_id;
         $card->card_type = $request->card_type;
         $card->is_visible = $request->is_visible;
@@ -50,7 +50,8 @@ class CardController extends BaseController
         $card->title = $request->title;
         $card->board_id = $request->board_id;
         $card->card_type = $request->card_type;
-        $card->is_visible = $request->is_visible;
+        $card->html_content = $request->html_content;
+//        $card->is_visible = $request->is_visible;
         $card->save();
         if (is_null($card)) {
             return $this->sendError('Cards can not be updated.');

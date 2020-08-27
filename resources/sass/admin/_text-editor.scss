@@ -48,7 +48,7 @@ div#editor {
         height: auto;
         text-align: right;
         padding: 10px 30px 30px 10px;
-    
+
         .btn {
             border-radius: 8px;
             float: none;
@@ -107,6 +107,17 @@ div#editor {
         border-bottom: 0;
         border-radius: 8px 8px 0 0;
         // box-shadow: 0 0px 1px 1px rgba(0,0,0,.05);
+    }
+
+    .note-editable {
+        img {
+            display: block;
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        iframe {
+            border-radius: 8px;
+        }
     }
 }
 .note-editor.note-airframe .note-statusbar,
