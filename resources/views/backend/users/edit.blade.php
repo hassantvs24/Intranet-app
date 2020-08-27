@@ -14,11 +14,13 @@
 
             <div class="row">
                 <div class="col">
-                    <form action="#" method="post">
+                    <form action="{{ route('update-user',$user->id) }}" method="post">
+                        @csrf
+                        @method('PUT')
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="group_name">{{ __('Name') }}</label>
-                                <input type="text" class="form-control" id="group_name" name="group_name" value="{{ $user->name }}" required>
+                                <input type="text" class="form-control" id="group_name" name="name" value="{{ $user->name }}" required>
                             </div>
                         </div>
 
@@ -37,14 +39,21 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="user_email">{{ __('Email') }}</label>
-                                <input type="email" class="form-control" id="user_email" name="user_email" value="{{ $user->email }}" required>
+                                <input type="email" class="form-control" id="user_email" name="email" value="{{ $user->email }}" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="user_phone_no">{{ __('Phone') }}</label>
-                                <input type="tel" class="form-control" id="user_phone_no" name="user_phone_no" value="{{ $user->phone }}" required>
+                                <input type="tel" class="form-control" id="user_phone_no" name="phone" value="{{ $user->phone }}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="exampleFormControlTextarea1">{{ __('About / Bio') }}</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="bio">{{ $user->bio }}</textarea>
                             </div>
                         </div>
 

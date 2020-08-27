@@ -210,39 +210,66 @@
                                 <p class="w-100 text-center">{{ __('Please enter an email & group to send invitation.') }}</p>
                                 <hr>
 
-                                <form method="POST" action="#" class="d-block mt-4">
-                                    @csrf
+                                <ul class="nav nav-pills justify-content-center mt-4" id="inviteUsersTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="old-users-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Existing Users</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link active" id="new-users-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">New User</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="inviteUsersTabContent">
+                                    <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="old-users-tab">
+                                        <form action="" class="d-block">
+                                            <div class="input-group mt-4 pt-3">
+                                                <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white border-right-0" id="search-icon">
+                                                <svg height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                                    <path d="M21.45,20A11,11,0,1,0,20,21.45l8.26,8.26a1,1,0,0,0,1.41-1.41ZM4,13a9,9,0,1,1,9,9A9,9,0,0,1,4,13Z" data-name="Layer 2" fill="#999"></path></svg>
+                                            </span>
+                                                </div>
+                                                <input type="search" class="form-control border-left-0" id="inputGroupFile01" aria-describedby="search-icon" placeholder="search users">
+                                            </div>
+                                        </form>
+                                    </div>
 
-                                    <div class="form-group row">
-                                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="new-users-tab">
+                                        <form method="POST" action="#" class="d-block mt-4 pt-3">
+                                            @csrf
 
-                                        <div class="col-md-6">
-                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="{{ __('customer email') }}" autofocus>
+                                            <div class="form-group row">
+                                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                                            @error('email')
-                                            <span class="invalid-feedback" role="alert">
+                                                <div class="col-md-6">
+                                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="{{ __('customer email') }}" autofocus>
+
+                                                    @error('email')
+                                                    <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
 
-                                    <div class="form-group row">
-                                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Group') }}</label>
+                                            <div class="form-group row">
+                                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Group') }}</label>
 
-                                        <div class="col-md-6">
-                                            <input class="form-control" type="text" value="{{ $group->name }}" disabled>
-                                        </div>
-                                    </div>
+                                                <div class="col-md-6">
+                                                    <input class="form-control" type="text" value="{{ $group->name }}" disabled>
+                                                </div>
+                                            </div>
 
-                                    <div class="form-group row mb-0">
-                                        <div class="col-md-8 offset-md-4">
-                                            <button type="submit" class="btn btn-primary btn-sm ls-1">
-                                                {{ __('Send Invite') }}
-                                            </button>
-                                        </div>
+                                            <div class="form-group row mb-0">
+                                                <div class="col-md-8 offset-md-4">
+                                                    <button type="submit" class="btn btn-primary btn-sm ls-1">
+                                                        {{ __('Send Invite') }}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
+
                             </div>
                         </div>
                     </div>

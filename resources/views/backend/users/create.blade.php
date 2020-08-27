@@ -13,12 +13,18 @@
         </div>
 
         <div class="row">
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
             <div class="col">
-                <form action="#" method="post">
+                <form action="{{ route('save-user') }}" method="post">
+                    @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="group_name">{{ __('Name') }}</label>
-                            <input type="text" class="form-control" id="group_name" name="group_name" placeholder="ex: Adam Levi" required>
+                            <input type="text" class="form-control" id="group_name" name="name" placeholder="ex: Adam Levi" required>
                         </div>
                     </div>
 
@@ -32,21 +38,21 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="user_email">{{ __('Email') }}</label>
-                            <input type="email" class="form-control" id="user_email" name="user_email" placeholder="email@domain.com" required>
+                            <input type="email" class="form-control" id="user_email" name="email" placeholder="email@domain.com" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="user_phone_no">{{ __('Phone') }}</label>
-                            <input type="tel" class="form-control" id="user_phone_no" name="user_phone_no" placeholder="+470156421" required>
+                            <input type="tel" class="form-control" id="user_phone_no" name="phone" placeholder="+470156421" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlTextarea1">{{ __('About / Bio') }}</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="bio"></textarea>
                         </div>
                     </div>
 

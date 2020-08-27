@@ -25,9 +25,13 @@
                             <span class="font-weight-bold">{{ __('Phone: ') }}</span>
                             <span>{{ $user->phone }}</span>
                         </div>
-                        <div class="info-line-item">
+                        <div class="info-line-item my-2">
                             <span class="font-weight-bold text-primary">{{ __('Group: ') }}</span>
                             <span>Group A</span>
+                        </div>
+                        <div class="info-line-item">
+                            <span class="font-weight-bold">{{ __('About / Bio: ') }}</span>
+                            <span>{{ $user->bio }}</span>
                         </div>
                     </div>
                 </div>

@@ -46,6 +46,7 @@ Route::get('/edit-infocards', 'BoardsController@info_cards')->name('edit-infocar
 Route::get('/all-users', 'UserController@index')->name('all-users');
 Route::get('/archived-users', 'UserController@archived')->name('archived-users');
 Route::get('/create-user', 'UserController@create')->name('create-user');
+Route::post('/save-user', 'UserController@store')->name('save-user');
 Route::get('/edit-user/{id}', 'UserController@edit')->name('edit-user');
 Route::put('/update-user/{id}', 'UserController@update')->name('update-user');
 Route::delete('/delete-user/{id}', 'UserController@destroy')->name('delete-user');

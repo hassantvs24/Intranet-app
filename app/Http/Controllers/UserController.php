@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Group;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -31,9 +32,16 @@ class UserController extends Controller
         return view('backend.users.create', compact('groups'));
     }
 
-    public function store(Request $request)
+    public function store(Request $data)
     {
-        //
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'password' => Hash::make($data['password']),
+        ]);
+        return redirect()->route('all-users')
+            ->with('success', 'User updated successfully');
     }
 
     public function show($id)
@@ -58,7 +66,7 @@ class UserController extends Controller
         $user->bio = $request->bio;
         $user->save();
         return redirect()->route('all-users')
-            ->with('success', 'Admin updated successfully');
+            ->with('success', 'User updated successfully');
     }
 
     public function destroy($id)
@@ -66,7 +74,7 @@ class UserController extends Controller
         User::findOrFail($id)->delete();
 
         return redirect()->route('all-users')
-            ->with('success', 'Admin deleted successfully');
+            ->with('success', 'User deleted successfully');
     }
 
     public function account_settings()

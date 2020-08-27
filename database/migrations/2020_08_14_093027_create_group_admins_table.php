@@ -19,7 +19,7 @@ class CreateGroupAdminsTable extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('avatar');
-            $table->text('bio');
+            $table->text('bio')->nullable();
             $table->timestamps();
         });
     }
