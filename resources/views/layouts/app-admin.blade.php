@@ -7,10 +7,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
+    <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/admin.js') }}" ></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -43,7 +43,7 @@
                 <div class="menu-wrap">
                     <a href="{{ route('admin-home') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
-                            <img src="images/dashboard.svg" alt="dashboard icon">
+                            <img src="{{ asset('images/dashboard.svg') }}" alt="dashboard icon">
                         </div>
                         <div class="text text-light">{{ __('Dashboard') }}</div>
                     </a>
@@ -53,7 +53,7 @@
                 <div class="menu-wrap">
                     <a href="{{ route('all-groups') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
-                            <img src="images/users.svg" alt="dashboard icon">
+                            <img src="{{ asset('images/users.svg') }}" alt="dashboard icon">
                         </div>
                         <div class="text text-light">{{ __('Groups') }}</div>
                     </a>
@@ -69,7 +69,7 @@
                 <div class="menu-wrap">
                     <a href="{{ route('all-boards') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
-                            <img src="images/boards.svg" alt="dashboard icon">
+                            <img src="{{ asset('images/boards.svg')}}" alt="dashboard icon">
                         </div>
                         <div class="text text-light">{{ __('Info Boards') }}</div>
                     </a>
@@ -85,7 +85,7 @@
                 <div class="menu-wrap">
                     <a href="{{ route('all-admins') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
-                            <img src="images/user.svg" alt="dashboard icon">
+                            <img src="{{ asset('images/user.svg') }}" alt="dashboard icon">
                         </div>
                         <div class="text text-light">{{ __('Admins') }}</div>
                     </a>
@@ -101,7 +101,7 @@
                 <div class="menu-wrap">
                     <a href="{{ route('all-users') }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
-                            <img src="images/user.svg" alt="dashboard icon">
+                            <img src="{{ asset('images/user.svg') }}" alt="dashboard icon">
                         </div>
                         <div class="text text-light">{{ __('Users') }}</div>
                     </a>
@@ -111,6 +111,22 @@
                         <a href="{{ route('create-user') }}" class="submenu-item text-light d-block pl-4">{{ __('Add New User') }}</a>
                         <a href="{{ route('archived-users') }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Users') }}</a>
                     </div>
+                </div>
+                {{-- END menu item --}}
+                {{-- START menu item --}}
+                <div class="menu-wrap">
+                    <a href="{{-- route('media-library') --}}" class="menu-item d-flex align-content-center align-items-center">
+                        <div class="icon mr-3">
+                            <img src="{{ asset('images/files.svg') }}" alt="media icon">
+                        </div>
+                        <div class="text text-light">{{ __('Files & Images') }}</div>
+                    </a>
+
+                    {{-- <div class="submenu pl-5">
+                        <a href="{{ route('all-users') }}" class="submenu-item text-light d-block pl-4">{{ __('All Users') }}</a>
+                        <a href="{{ route('create-user') }}" class="submenu-item text-light d-block pl-4">{{ __('Add New User') }}</a>
+                        <a href="{{ route('archived-users') }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Users') }}</a>
+                    </div> --}}
                 </div>
                 {{-- END menu item --}}
             </div>
@@ -153,7 +169,11 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{-- route('account-settings') --}}">
+                                        <a class="dropdown-item" href="{{ route('admin-home') }}">
+                                            {{ __('Dashboard') }}
+                                        </a>
+
+                                        <a class="dropdown-item" href="{{ route('admin-account-settings') }}">
                                             {{ __('Settings') }}
                                         </a>
 
@@ -176,7 +196,7 @@
                 </div>
             </nav>
 
-            <main class="py-0 px-2">
+            <main class="py-0 px-2 mb-5">
                 @yield('admin-content')
             </main>
         </div>

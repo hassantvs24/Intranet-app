@@ -51397,6 +51397,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 // this data will come from backend
 
 var EVENTS = [{
+<<<<<<< HEAD
   id: 'a',
   title: 'my event',
   start: '2020-08-08'
@@ -51430,6 +51431,44 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
   calendar.render();
+=======
+  id: "a",
+  title: "my event",
+  start: "2020-08-08"
+}, {
+  id: "b",
+  title: "my event2",
+  start: "2020-08-12"
+}, {
+  id: "c",
+  title: "my event2",
+  start: "2020-08-12"
+}, {
+  id: "d",
+  title: "cool event",
+  start: "2020-08-15"
+}, {
+  id: "e",
+  title: "Kekw 3",
+  start: "2020-08-15"
+}];
+document.addEventListener("DOMContentLoaded", function () {
+  var calendarEl = document.getElementById("calendar");
+
+  if (!!calendarEl) {
+    var calendar = new _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__["Calendar"](calendarEl, {
+      plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__["default"]],
+      editable: false,
+      events: EVENTS,
+      headerToolbar: {
+        left: "prev,next today",
+        center: "title",
+        right: "dayGridMonth,timeGridWeek,timeGridDay"
+      }
+    });
+    calendar.render();
+  }
+>>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 });
 
 /***/ }),
@@ -51510,9 +51549,15 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\walid\work\laragon\www\intranet-custom\resources\js\app.js */"./resources/js/app.js");
 __webpack_require__(/*! C:\Users\walid\work\laragon\www\intranet-custom\resources\sass\app.scss */"./resources/sass/app.scss");
 module.exports = __webpack_require__(/*! C:\Users\walid\work\laragon\www\intranet-custom\resources\sass\admin.scss */"./resources/sass/admin.scss");
+=======
+__webpack_require__(/*! /home/mahade/MEGA/work/laragon/www/intranet-custom/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /home/mahade/MEGA/work/laragon/www/intranet-custom/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /home/mahade/MEGA/work/laragon/www/intranet-custom/resources/sass/admin.scss */"./resources/sass/admin.scss");
+>>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 
 
 /***/ })

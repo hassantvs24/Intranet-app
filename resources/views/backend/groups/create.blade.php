@@ -1,4 +1,5 @@
 @extends('layouts.app-admin')
+@section('title', 'Create New Group')
 @section('body-class', 'bg-light')
 
 @section('admin-content')
@@ -104,4 +105,8 @@
     </div>
     {{-- END create group --}}
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a

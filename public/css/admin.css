@@ -11079,6 +11079,13 @@ label {
   text-transform: capitalize !important;
 }
 
+<<<<<<< HEAD
+=======
+.template {
+  display: none;
+}
+
+>>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .top-color-bar {
   height: 10px;
   display: block;
@@ -11136,6 +11143,23 @@ label {
   border-radius: 8px;
 }
 
+<<<<<<< HEAD
+=======
+#data-cards-wrap .card-header {
+  margin-bottom: 20px;
+}
+
+#data-cards-wrap img {
+  max-width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+#data-cards-wrap iframe {
+  border-radius: 8px;
+}
+
+>>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .btn {
   text-transform: capitalize;
   letter-spacing: 1px;
@@ -11146,10 +11170,256 @@ label {
   border-color: var(--color-one);
 }
 
+<<<<<<< HEAD
+=======
+.modal.right .modal-dialog {
+  position: fixed;
+  margin: auto;
+  height: 100%;
+  transform: translate3d(0%, 0, 0);
+  border-radius: 0;
+}
+
+.modal-dialog {
+  max-width: 650px;
+  right: 0;
+  left: auto;
+  margin: auto 0 0 auto;
+  height: 100%;
+  border-radius: 0;
+}
+
+.modal.right .modal-content {
+  height: 100%;
+  overflow-y: auto;
+  border-radius: 0;
+}
+
+.modal.right.fade .modal-dialog {
+  right: -620px;
+  transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.fade.show .modal-dialog {
+  right: 0;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 600px;
+  }
+}
+
+.animation-overlay {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.animation-overlay .circle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ff47f9;
+  border-radius: 50%;
+  -webkit-animation-name: zoom-opacity;
+          animation-name: zoom-opacity;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.animation-overlay .circle-1 {
+  left: 12%;
+  top: 40%;
+}
+
+.animation-overlay .circle-2 {
+  left: 60%;
+  top: 70%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.animation-overlay .circle-3 {
+  left: 75%;
+  top: 20%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+.animation-overlay .xmark {
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  -webkit-animation-name: rorateClock;
+          animation-name: rorateClock;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.animation-overlay .xmark .h-line,
+.animation-overlay .xmark .v-line {
+  background-color: #e5b2d2;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+}
+
+.animation-overlay .xmark .v-line {
+  width: 1px;
+  height: 100%;
+}
+
+.animation-overlay .xmark-2 {
+  top: 50%;
+  left: 40%;
+}
+
+.animation-overlay .xmark-3 {
+  top: 70%;
+  left: 30%;
+}
+
+.animation-overlay .xmark-4 {
+  top: 90%;
+  left: 59%;
+}
+
+.animation-overlay .line {
+  position: absolute;
+  left: 40%;
+  top: 20%;
+  height: 1px;
+  width: 380px;
+  background-color: #7e4fa0;
+  transform: rotate(-45deg);
+  transform-style: preserve-3d;
+  transform-origin: 100% 100%;
+  will-change: transform;
+  -webkit-animation-name: linemove;
+          animation-name: linemove;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@-webkit-keyframes zoom-opacity {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  60% {
+    opacity: 0.6;
+    transform: scale(0.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoom-opacity {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  60% {
+    opacity: 0.6;
+    transform: scale(0.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes rorateClock {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rorateClock {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes linemove {
+  0% {
+    transform: translate3d(500px, -500px, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg, 0deg);
+  }
+
+  100% {
+    transform: translate3d(-1000px, 1000px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg, 0deg);
+  }
+}
+
+@keyframes linemove {
+  0% {
+    transform: translate3d(500px, -500px, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg, 0deg);
+  }
+
+  100% {
+    transform: translate3d(-1000px, 1000px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg, 0deg);
+  }
+}
+
+>>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .login-page-wrap .left-col,
 .register-page-wrap .left-col {
   padding: 35px 15px;
   background-image: url("/images/hero-bg.png");
+<<<<<<< HEAD
+=======
+  position: relative;
+  z-index: 99;
+  overflow: hidden;
+>>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 }
 
 @media (min-width: 768px) {
@@ -11159,6 +11429,14 @@ label {
   }
 }
 
+<<<<<<< HEAD
+=======
+.login-page-wrap .left-col .content,
+.register-page-wrap .left-col .content {
+  z-index: 1;
+}
+
+>>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .login-page-wrap p,
 .register-page-wrap p {
   font-size: 20px;
@@ -11243,6 +11521,14 @@ label {
   margin-left: 300px;
 }
 
+<<<<<<< HEAD
+=======
+.admin-wrapper th .custom-checkbox {
+  cursor: pointer;
+  width: 10px;
+}
+
+>>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .navbar {
   height: 65px;
 }
@@ -11256,6 +11542,13 @@ label {
   margin: 0;
 }
 
+<<<<<<< HEAD
+=======
+.user-dashboard .navbar {
+  margin-top: 0;
+}
+
+>>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 /*------- all groups ----------*/
 
 .table--all-groups {
@@ -11263,7 +11556,11 @@ label {
 }
 
 .cta-group-item .btn {
+<<<<<<< HEAD
   padding: 10px;
+=======
+  padding: 5px;
+>>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
   margin: 0 10px 0 0;
   border-color: rgba(77, 22, 221, 0.1);
 }
@@ -11328,3 +11625,289 @@ label {
   border-radius: 50%;
 }
 
+<<<<<<< HEAD
+=======
+.animation-overlay {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.animation-overlay .circle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ff47f9;
+  border-radius: 50%;
+  -webkit-animation-name: zoom-opacity;
+          animation-name: zoom-opacity;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.animation-overlay .circle-1 {
+  left: 12%;
+  top: 40%;
+}
+
+.animation-overlay .circle-2 {
+  left: 60%;
+  top: 70%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.animation-overlay .circle-3 {
+  left: 75%;
+  top: 20%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+.animation-overlay .xmark {
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  -webkit-animation-name: rorateClock;
+          animation-name: rorateClock;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.animation-overlay .xmark .h-line,
+.animation-overlay .xmark .v-line {
+  background-color: #e5b2d2;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+}
+
+.animation-overlay .xmark .v-line {
+  width: 1px;
+  height: 100%;
+}
+
+.animation-overlay .xmark-2 {
+  top: 50%;
+  left: 40%;
+}
+
+.animation-overlay .xmark-3 {
+  top: 70%;
+  left: 30%;
+}
+
+.animation-overlay .xmark-4 {
+  top: 90%;
+  left: 59%;
+}
+
+.animation-overlay .line {
+  position: absolute;
+  left: 40%;
+  top: 20%;
+  height: 1px;
+  width: 380px;
+  background-color: #7e4fa0;
+  transform: rotate(-45deg);
+  transform-style: preserve-3d;
+  transform-origin: 100% 100%;
+  will-change: transform;
+  -webkit-animation-name: linemove;
+          animation-name: linemove;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@keyframes zoom-opacity {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  60% {
+    opacity: 0.6;
+    transform: scale(0.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rorateClock {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes linemove {
+  0% {
+    transform: translate3d(500px, -500px, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg, 0deg);
+  }
+
+  100% {
+    transform: translate3d(-1000px, 1000px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-45deg) skew(0deg, 0deg);
+  }
+}
+
+div#editor {
+  font-size: 16px;
+  font-family: inherit;
+  border: 1px solid #ced4da;
+}
+
+.ql-toolbar.ql-snow {
+  border-radius: 8px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.06);
+  background: #fff;
+  border: 0 !important;
+}
+
+/*------- modal // popup - related styles --------*/
+
+.note-editor {
+  /*------ note toolbar -------*/
+  /*------- Editing area --------*/
+}
+
+.note-editor.note-frame {
+  border: 0 !important;
+}
+
+.note-editor * {
+  font-family: "Nunito", sans-serif;
+}
+
+.note-editor .note-input {
+  font-size: 16px;
+  padding: 8px 15px;
+}
+
+.note-editor .checkbox label {
+  font-weight: normal;
+}
+
+.note-editor .checkbox input {
+  margin-right: 10px;
+}
+
+.note-editor .note-modal-body label {
+  display: flex;
+  align-items: center;
+}
+
+.note-editor .note-modal-footer {
+  height: auto;
+  text-align: right;
+  padding: 10px 30px 30px 10px;
+}
+
+.note-editor .note-modal-footer .btn {
+  border-radius: 8px;
+  float: none;
+  color: #fff;
+  background-color: #4d16dd;
+  border-color: #4d16dd;
+  display: inline-block;
+  font-weight: 600;
+  padding: 7px 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+  border-radius: 8px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.note-editor .note-modal-footer .btn:hover {
+  background-color: #3509a5;
+  border-color: #3509a5;
+}
+
+.note-editor .note-modal-content {
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 7px 20px 5px rgba(0, 0, 0, 0.05);
+}
+
+.note-editor .note-modal-header {
+  border: 0;
+  border-radius: 8px 8px 0 0;
+  background-color: rgba(77, 22, 221, 0.08);
+}
+
+.note-editor .note-modal-title {
+  font-family: inherit;
+  color: #4d16dd;
+  font-weight: bold;
+}
+
+.note-editor .note-toolbar {
+  color: #333;
+  background-color: rgba(77, 22, 221, 0.08);
+  border-bottom: 1px solid;
+  border-color: transparent;
+  border-radius: 8px;
+  box-shadow: 0 0px 15px 5px rgba(0, 0, 0, 0.05);
+}
+
+.note-editor .note-editing-area {
+  margin-top: 15px;
+  border: 2px solid rgba(77, 22, 221, 0.08);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+}
+
+.note-editor .note-editable img {
+  display: block;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.note-editor .note-editable iframe {
+  border-radius: 8px;
+}
+
+.note-editor.note-airframe .note-statusbar,
+.note-editor.note-frame .note-statusbar {
+  background-color: rgba(77, 22, 221, 0.08) !important;
+}
+
+>>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
