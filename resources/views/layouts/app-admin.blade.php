@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
+    <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
     <!-- Scripts -->
     <script src="{{ asset('js/admin.js') }}" ></script>
@@ -171,11 +171,11 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('admin-home') }}">
                                             {{ __('Dashboard') }}
-                                        </a> 
+                                        </a>
 
                                         <a class="dropdown-item" href="{{ route('admin-account-settings') }}">
                                             {{ __('Settings') }}
-                                        </a> 
+                                        </a>
 
                                         <div class="dropdown-divider"></div>
 

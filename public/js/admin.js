@@ -53819,21 +53819,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fullcalendar/daygrid */ "./node_modules/@fullcalendar/daygrid/main.js");
 /* harmony import */ var _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fullcalendar/timegrid */ "./node_modules/@fullcalendar/timegrid/main.js");
 /* harmony import */ var _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fullcalendar/interaction */ "./node_modules/@fullcalendar/interaction/main.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /*===================================
 Full calender implementation
 ===================================*/
 
-
-var edit_calender_btn = $("#edit-calender-btn");
-var save_calender_btn = $("#save-calender-btn");
-
-(function ($) {
-  edit_calender_btn.click(function () {
-    save_calender_btn.removeAttr("disabled", false);
-    console.log("clicked");
-  });
-})(jQuery);
 
 
 
@@ -53862,18 +53858,97 @@ var EVENTS = [{
   start: "2020-08-15"
 }];
 document.addEventListener("DOMContentLoaded", function () {
-  var calendarEl = document.getElementById("calendar");
-  var calendar = new _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__["Calendar"](calendarEl, {
-    plugins: [_fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_3__["default"], _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__["default"]],
-    editable: true,
-    events: EVENTS,
-    headerToolbar: {
-      left: "prev,next today",
-      center: "title",
-      right: "dayGridMonth,timeGridWeek,timeGridDay"
+  var targetNode = document.getElementById('data-cards-wrap');
+  var config = {
+    attributes: true,
+    childList: true,
+    subtree: true
+  }; // Callback function to execute when mutations are observed
+
+  var callback = function callback(mutationsList, observer) {
+    // Use traditional 'for loops' for IE 11
+    var _iterator = _createForOfIteratorHelper(mutationsList),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var mutation = _step.value;
+
+        if (mutation.type === 'childList' || mutation.type === 'attributes') {
+          init_full_calendar();
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
     }
+  }; // Create an observer instance linked to the callback function
+
+
+  var observer = new MutationObserver(callback); // Start observing the target node for configured mutations
+
+  if (!!targetNode) {
+    observer.observe(targetNode, config);
+  }
+
+  function init_full_calendar() {
+    var calendarEl = document.getElementById("calendar");
+
+    if (!!calendarEl) {
+      var calendar = new _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__["Calendar"](calendarEl, {
+        plugins: [_fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_3__["default"], _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__["default"]],
+        editable: true,
+        events: EVENTS,
+        headerToolbar: {
+          left: "prev,next today",
+          center: "title",
+          right: "dayGridMonth,timeGridWeek,timeGridDay"
+        }
+      });
+      calendar.render(); // console.log(calendar.getEvents());
+      // Later, you can stop observing
+
+      observer.disconnect();
+    }
+  }
+});
+/*===================================================================
+   On group select show relevant admins
+====================================================================*/
+
+document.addEventListener("DOMContentLoaded", function () {
+  var primary_contacts_wrap = $('#primary-contacts-wrap');
+
+  if (!!primary_contacts_wrap) {
+    $(".select-group-btn input[name='user_group']").change(function () {
+      // get selected group id
+      var group_id = $(this).val(); // clear old req data
+
+      var admins_html = ""; // get new data
+
+      axios.get('/api/group/' + group_id + '/contacts').then(function (response) {
+        // console.log( (response.data.data))
+        var data = response.data.data; // prepare html
+
+        data.forEach(function (admin) {
+          console.log(admin.name);
+          admins_html += "\n                        <div class=\"custom-control custom-radio w-100\">\n                            <input type=\"radio\" class=\"custom-control-input\" name=\"group_admins\" id=\"group_admin_".concat(admin.id, "\" value=\"").concat(admin.id, "\">\n                            <label class=\"custom-control-label\" for=\"group_admin_").concat(admin.id, "\">").concat(admin.name, "</label>\n                        </div>\n                    ");
+        }); // console.log(admins_html)
+        // clear DOM -> remove old group admins
+
+        primary_contacts_wrap.html(''); // set html in DOM
+
+        primary_contacts_wrap.html(admins_html);
+      });
+    });
+  } // execute this block only if primary-contact div is found
+  // init tooltip
+
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
   });
-  calendar.render(); // console.log(calendar.getEvents());
 });
 
 /***/ }),

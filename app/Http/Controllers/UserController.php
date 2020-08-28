@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,7 +16,9 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('backend.users.index');
+        $users = User::paginate(15);
+        // $someUsers = User::where('archived', '=', 0)->paginate(15);
+        return view('backend.users.index', compact('users'));
     }
 
     public function archived()
@@ -25,36 +29,54 @@ class UserController extends Controller
     public function create()
     {
         $groups = Group::all();
-        return view('backend.users.create',compact('groups'));
+        return view('backend.users.create', compact('groups'));
     }
 
-    public function store(Request $request)
+    public function store(Request $data)
     {
-        //
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'password' => Hash::make($data['password']),
+        ]);
+        return redirect()->route('all-users')
+            ->with('success', 'User updated successfully');
     }
 
-//    public function show($id)
-    public function show()
+    public function show($id)
     {
-        return view('backend.users.view');
+        $user = User::find($id);
+        return view('backend.users.view', compact('user'));
     }
 
-//    public function edit($id)
-    public function edit()
+    public function edit($id)
     {
-        return view('backend.users.edit');
+        $user = User::find($id);
+        $groups = Group::all();
+        return view('backend.users.edit', compact('user', 'groups'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->bio = $request->bio;
+        $user->save();
+        return redirect()->route('all-users')
+            ->with('success', 'User updated successfully');
     }
 
     public function destroy($id)
     {
-        //
+        User::findOrFail($id)->delete();
+
+        return redirect()->route('all-users')
+            ->with('success', 'User deleted successfully');
     }
-    
+
     public function account_settings()
     {
         return view('backend.users.account-settings');

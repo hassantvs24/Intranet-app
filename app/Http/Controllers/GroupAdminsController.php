@@ -17,7 +17,7 @@ class GroupAdminsController extends Controller
 
     public function index()
     {
-        $admins = GroupAdmin::all();
+        $admins = GroupAdmin::paginate(15);
         return view('backend.admins.index', compact('admins'));
     }
 

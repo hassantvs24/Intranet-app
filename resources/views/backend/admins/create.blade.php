@@ -1,4 +1,5 @@
 @extends('layouts.app-admin')
+@section('title', 'Create New Admin')
 @section('body-class', 'bg-light')
 
 @section('admin-content')
@@ -55,8 +56,6 @@
                                 <textarea class="form-control" name="bio" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                         </div>
-
-                        
 
                         <button type="submit" class="btn btn-primary">{{ __('Add New Admin') }}</button>
                     </form>

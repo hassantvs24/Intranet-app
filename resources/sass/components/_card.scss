@@ -44,3 +44,19 @@
         }
     }
 }
+
+#data-cards-wrap {
+    .card-header {
+        margin-bottom: 20px;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+        border-radius: 8px;
+    }
+
+    iframe {
+        border-radius: 8px;
+    }
+}

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\GroupAdmin as Admin;
 use App\Group as Group;
+use Illuminate\Support\Facades\App;
 
 class GroupsController extends Controller
 {
@@ -15,7 +17,12 @@ class GroupsController extends Controller
 
     public function home()
     {
-        return view('backend.dashboard');
+        // get group, users, admins count
+        $total_groups = count(Group::all());
+        $total_users = count(User::all());
+        $total_admins = count(Admin::all());
+//        return dd($total_groups, $total_users, $total_admins);
+        return view('backend.dashboard', compact('total_groups', 'total_users', 'total_admins'));
     }
 
     public function index()

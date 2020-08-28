@@ -51419,17 +51419,20 @@ var EVENTS = [{
 }];
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
-  var calendar = new _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__["Calendar"](calendarEl, {
-    plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__["default"]],
-    editable: false,
-    events: EVENTS,
-    headerToolbar: {
-      left: "prev,next today",
-      center: "title",
-      right: "dayGridMonth,timeGridWeek,timeGridDay"
-    }
-  });
-  calendar.render();
+
+  if (!!calendarEl) {
+    var calendar = new _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__["Calendar"](calendarEl, {
+      plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__["default"]],
+      editable: false,
+      events: EVENTS,
+      headerToolbar: {
+        left: "prev,next today",
+        center: "title",
+        right: "dayGridMonth,timeGridWeek,timeGridDay"
+      }
+    });
+    calendar.render();
+  }
 });
 
 /***/ }),

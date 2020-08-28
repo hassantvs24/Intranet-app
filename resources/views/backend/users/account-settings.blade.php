@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'User Settings')
 @section('body-class', 'user-dashboard bg-light body-teal')
 
 @section('content')
@@ -29,7 +30,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="user_email">{{ __('User Email') }}</label>
@@ -50,7 +51,7 @@
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                         </div>
-                        
+
                         <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
                     </form>
                 </div>

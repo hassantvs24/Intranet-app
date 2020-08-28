@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
-@section('title', 'Login')
-
+@section('title', 'Invite Users')
 @section('body-class', 'page page-login hide-header')
 
 @section('content')

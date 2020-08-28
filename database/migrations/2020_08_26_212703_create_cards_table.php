@@ -18,7 +18,8 @@ class CreateCardsTable extends Migration
             $table->unsignedBigInteger('board_id');
             $table->string('title');
             $table->enum('card_type', ['normal', 'calender']);
-            $table->boolean('is_visible');
+            $table->boolean('is_visible')->default(1);
+            $table->text('html_content')->nullable();
             $table->timestamps();
         });
     }

@@ -41,15 +41,17 @@ const EVENTS = [
 
 document.addEventListener("DOMContentLoaded", function() {
     let calendarEl = document.getElementById("calendar");
-    let calendar = new Calendar(calendarEl, {
-        plugins: [dayGridPlugin, timeGridPlugin],
-        editable: false,
-        events: EVENTS,
-        headerToolbar: {
-            left: "prev,next today",
-            center: "title",
-            right: "dayGridMonth,timeGridWeek,timeGridDay"
-        }
-    });
-    calendar.render();
+    if (!!calendarEl) {
+        let calendar = new Calendar(calendarEl, {
+            plugins: [dayGridPlugin, timeGridPlugin],
+            editable: false,
+            events: EVENTS,
+            headerToolbar: {
+                left: "prev,next today",
+                center: "title",
+                right: "dayGridMonth,timeGridWeek,timeGridDay"
+            }
+        });
+        calendar.render();
+    }
 });
