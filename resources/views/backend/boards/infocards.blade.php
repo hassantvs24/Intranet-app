@@ -239,11 +239,15 @@
             // try to fetch cards
             axios.get('/api/cards/?board_id='+ board_id)
             .then(function (response) {
-                console.log("card count: " +response.data.data.length)
-                if (parseInt(response.data.data.length) === 0) {
+                let cards_data = response.data.data
+                console.log("card count: " +cards_data.length)
+                if (parseInt(cards_data.length) === 0) {
                     set_default_demo_cards()
                 } else {
-                    load_cards_into_dom(response.data.data)
+                    if (! Array.isArray(cards_data)) {
+                        cards_data = Object.values(cards_data)
+                    }
+                    load_cards_into_dom(cards_data)
                 }
             })
 
@@ -263,7 +267,7 @@
             // function to laod card data into view
             function load_cards_into_dom(data) {
                 // console.log("data exists")
-                // console.log(data[0])
+                console.log(data)
                 data.map(function (card) {
                     check_card_type_and_insert_dom(card)
                 })

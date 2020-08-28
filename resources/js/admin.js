@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Create an observer instance linked to the callback function
     const observer = new MutationObserver(callback);
     // Start observing the target node for configured mutations
-    observer.observe(targetNode, config);
+    if (!!targetNode) {
+        observer.observe(targetNode, config);
+    }
 
     function init_full_calendar() {
         let calendarEl = document.getElementById("calendar");

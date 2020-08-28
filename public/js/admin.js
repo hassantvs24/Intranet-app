@@ -53888,7 +53888,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var observer = new MutationObserver(callback); // Start observing the target node for configured mutations
 
-  observer.observe(targetNode, config);
+  if (!!targetNode) {
+    observer.observe(targetNode, config);
+  }
 
   function init_full_calendar() {
     var calendarEl = document.getElementById("calendar");
