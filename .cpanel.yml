@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/getonnetdev/public_html/intrair8352/
+    - /bin/cp -r * $DEPLOYPATH/laravel/public $DEPLOYPATH
+    # - /bin/cp -r * $DEPLOYPATH #copy all from root
+    # - /bin/cp $DEPLOYPATH/laravel/public/css/*.css $DEPLOYPATH/css
