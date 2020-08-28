@@ -13,4 +13,9 @@ class Group extends Model
     {
         return $this->belongsToMany('App\GroupAdmin', 'group_group_admin', 'group_id', 'group_admin_id');
     }
+
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
 }

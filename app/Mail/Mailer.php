@@ -29,7 +29,7 @@ class Mailer extends Mailable
     public function build()
     {
         return $this->subject($this->details['subject'])
-                    ->view('email.invitation')
-                    ->from($this->details['from'], $this->details['from'])
+            ->view('email.invitation')
+            ->from($this->details['from'], $this->details['from']);
     }
 }

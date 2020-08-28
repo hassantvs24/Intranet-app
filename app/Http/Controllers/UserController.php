@@ -16,8 +16,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::paginate(15);
-        // $someUsers = User::where('archived', '=', 0)->paginate(15);
+        $users = User::where('role', '=', 'user')->paginate(15);
         return view('backend.users.index', compact('users'));
     }
 
@@ -32,12 +31,15 @@ class UserController extends Controller
         return view('backend.users.create', compact('groups'));
     }
 
+
     public function store(Request $data)
     {
         User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
+            'group_id' => $data['group_id'],
+            'role' => $data['role'],
             'password' => Hash::make($data['password']),
         ]);
         return redirect()->route('all-users')

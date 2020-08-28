@@ -28,7 +28,7 @@
                         </div>
                         <div class="info-line-item my-2">
                             <span class="font-weight-bold text-primary">{{ __('Group: ') }}</span>
-                            <span>Group A</span>
+                            <span>{{ $user->group->name}}</span>
                         </div>
                         <div class="info-line-item">
                             <span class="font-weight-bold">{{ __('About / Bio: ') }}</span>

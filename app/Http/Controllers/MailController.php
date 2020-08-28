@@ -8,30 +8,28 @@ use App\Mail\Mailer;
 
 class MailController extends Controller
 {
+    public $toEmail = '';
     public function new_mail(Request $request)
     {
+        $link = "http://intranet-app.test/invite?user=".base64_encode( $request->email )."&group=". base64_encode($request->group_id);
+        $email_body = "Dear user please click this link ". $link ." to create account on Intranet air";
 
-        $details = [
-            'to' => $request->to,
-            'from' => $request->from,
-            'subject' => $request->subject,
-            'title' => $request->title,
-            "body"     => $request->body
+        $data = [
+            'to' => $request->email,
+            'from' => 'ashikur@getonnet.agency',
+            'subject' => 'Please confirm your invitation',
+            'title' => 'Intranet air invitation',
+            "body"     => $email_body
         ];
+        $this->toEmail = $request->email;
 
-        Mail::to($request->to)->send(new Mailer($details));
+        Mail::send('email.invitation', compact('data'), function ($message) {
+            $message->from('admin@intranet.air', 'Intraner Air');
 
-        if (Mail::failures()) {
-            return response()->json([
-                'status'  => false,
-                'data'    => $details,
-                'message' => 'Nnot sending mail.. retry again...'
-            ]);
-        }
-        return response()->json([
-            'status'  => true,
-            'data'    => $details,
-            'message' => 'Your details mailed successfully'
-        ]);
+            $message->to($this->toEmail)->cc('bar@example.com');
+        });
+        return redirect()->route('all-groups')
+        ->with('success', 'User updated successfully');
+        
     }
 }

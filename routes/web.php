@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -22,6 +23,9 @@ Route::get('/style-guide', function () {
     return view('style-guide');
 });
 
+// Email sending routes
+Route::post('/send-email','MailController@new_mail')->name('email.send');
+
 // admin routes
 Route::get('/dashboard', 'GroupsController@home')->name('admin-home');
 Route::get('/all-groups', 'GroupsController@index')->name('all-groups');
@@ -31,7 +35,7 @@ Route::post('/groups/store', 'GroupsController@store')->name('group.store');
 Route::get('/groups/edit/{id}', 'GroupsController@edit')->name('edit-group');
 Route::put('/groups/update/{id}', 'GroupsController@update')->name('update-group');
 Route::get('/group/show/{id}', 'GroupsController@show')->name('view-group');
-Route::get('/invite', 'HomeController@invite_users')->name('invite');
+Route::get('/invite', ['middleware' => 'guest', 'uses' => 'InvitationController@invite'] )->name('invite-user');
 
 // Boards routes
 Route::get('/all-boards', 'BoardsController@index')->name('all-boards');

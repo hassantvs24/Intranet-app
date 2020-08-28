@@ -58,7 +58,8 @@ class GroupsController extends Controller
     public function show($id)
     {
         $group = Group::find($id);
-        return view('backend.groups.view',compact('group'));
+        $users = $group->users;
+        return view('backend.groups.view',compact('group','users'));
     }
 
     public function edit($id)

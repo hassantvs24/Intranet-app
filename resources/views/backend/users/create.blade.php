@@ -56,6 +56,7 @@
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="bio"></textarea>
                         </div>
                     </div>
+                    <input type="hidden" name="role" value="user">
 
                     <div class="form-row">
                         <div class="form-group col-md-6 d-flex flex-wrap">
@@ -63,7 +64,7 @@
 
                             @foreach($groups as $group)
                                 <div class="custom-control custom-radio select-group-btn mr-4 my-1">
-                                    <input type="radio" id="group_{{$group->id}}" name="user_group" class="custom-control-input" value="{{$group->id}}">
+                                    <input type="radio" id="group_{{$group->id}}" name="group_id" class="custom-control-input" value="{{$group->id}}">
                                     <label class="custom-control-label" for="group_{{$group->id}}">{{$group->name}}</label>
                                 </div>
                             @endforeach

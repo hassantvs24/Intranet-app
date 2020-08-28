@@ -105,8 +105,4 @@
     </div>
     {{-- END create group --}}
 </div>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
