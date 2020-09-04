@@ -18,4 +18,9 @@ class Group extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    public function boards()
+    {
+        return $this->hasMany( 'App\Board' );
+    }
 }

@@ -37,6 +37,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function cards() {
+        return $this->hasManyThrough(
+            'App\Card',
+            'App\Board',
+            'group_id', // Foreign key on Cards table...
+            'board_id', // Foreign key on board table...
+            'group_id', // Local key on Users table...
+            'id' // Local key on board table...
+        );
+    }
+
     public function group()
     {
         return $this->belongsTo('App\Group','group_id');
