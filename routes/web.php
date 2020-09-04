@@ -26,7 +26,7 @@ Route::get('/style-guide', function () {
 // Email sending routes
 Route::post('/send-email','MailController@new_mail')->name('email.send');
 
-Route::middleware([ 'admin' ])->group(function () {
+// Route::middleware([ 'admin' ])->group(function () {
     // admin routes
     Route::get('/dashboard', 'GroupsController@home')->name('admin-home');
     Route::get('/all-groups', 'GroupsController@index')->name('all-groups');
@@ -72,5 +72,6 @@ Route::middleware([ 'admin' ])->group(function () {
     Route::delete('/delete-admin/{id}', 'GroupAdminsController@destroy')->name('delete-admin');
     // add admin account settings route
     Route::get('/admin/my-account', 'GroupAdminsController@account_settings')->name('admin-account-settings');
+    Route::post('/admin/my-account', 'GroupAdminsController@update_account_settings')->name('admin-account-settings');
 
-});
+// });
