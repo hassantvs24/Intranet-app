@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
 use App\GroupAdmin;
+use App\User;
 
 class GroupAdminsController extends Controller
 {
@@ -92,6 +93,18 @@ class GroupAdminsController extends Controller
 
     public function account_settings()
     {
-        return view('backend.admins.account-settings');
+        $user = auth()->user();
+        return view('backend.admins.account-settings', compact( 'user' ) );
+    }
+
+    public function update_account_settings( Request $request ) {
+        $user = auth()->user();
+        $user->name = $request->group_name;
+        $user->email = $request->user_email;
+        $user->phone = $request->user_phone_no;
+        $user->bio = $request->user_bio;
+        $user->save();
+
+        return redirect()->route('admin-account-settings')->with('success', 'Settings updated successfully');
     }
 }

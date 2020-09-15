@@ -20,8 +20,22 @@
         <!-- START data cards -->
         <div class="data-cards">
             <div class="row">
+                @if ( count( $cards ) > 1)
+                    @foreach ( $cards as $card )
+                        <div class="col col-md-4 my-4">
+                            <div class="card">
+                                <div class="card-header bg-color">
+                                    <h3 class="cart-title mb-0 txt-color"> {{ $card->title  }} </h3>
+                                </div>
+                                <div class="card-body">
+                                    {!! $card->html_content !!}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
                 <!-- START card -->
-                <div class="col col-md-4 my-4">
+{{--                 <div class="col col-md-4 my-4">
                     <div class="card">
                         <div class="card-header bg-color">
                             <h3 class="cart-title mb-0 txt-color">Text or image</h3>
@@ -35,10 +49,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END card -->
                 <!-- START card -->
-                <div class="col col-md-4 my-4">
+{{--                 <div class="col col-md-4 my-4">
                     <div class="card">
                         <div class="card-header bg-color">
                             <h3 class="cart-title mb-0 txt-color">Resources & Links</h3>
@@ -57,10 +71,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END card -->
                 <!-- START card -->
-                <div class="col col-md-4 my-4">
+{{--                 <div class="col col-md-4 my-4">
                     <div class="card">
                         <div class="card-header bg-color">
                             <h3 class="cart-title mb-0 txt-color">Video</h3>
@@ -71,10 +85,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END card -->
                 <!-- START card -->
-                <div class="col col-md-8 my-4">
+{{--                 <div class="col col-md-8 my-4">
                     <div class="card">
                         <div class="card-header bg-color">
                             <h3 class="cart-title mb-0 txt-color">Calender</h3>
@@ -85,10 +99,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END card -->
                 <!-- START card -->
-                <div class="col col-md-4 my-4">
+{{--                 <div class="col col-md-4 my-4">
                     <div class="card">
                         <div class="card-header bg-color">
                             <h3 class="cart-title mb-0 txt-color">Primary contact</h3>
@@ -104,7 +118,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END card -->
             </div>
         </div>

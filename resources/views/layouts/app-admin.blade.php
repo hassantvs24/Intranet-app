@@ -81,6 +81,7 @@
                     </div>
                 </div>
                 {{-- END menu item --}}
+                @if( auth()->user()->role == 'admin' )
                 {{-- START menu item --}}
                 <div class="menu-wrap">
                     <a href="{{ route('all-admins') }}" class="menu-item d-flex align-content-center align-items-center">
@@ -97,6 +98,7 @@
                     </div>
                 </div>
                 {{-- END menu item --}}
+                @endif;
                 {{-- START menu item --}}
                 <div class="menu-wrap">
                     <a href="{{ route('all-users') }}" class="menu-item d-flex align-content-center align-items-center">

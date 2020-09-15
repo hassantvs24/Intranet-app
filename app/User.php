@@ -28,6 +28,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $guard = [
+        'role'
+    ];
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -36,6 +40,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function cards() {
+        return $this->hasManyThrough(
+            'App\Card',
+            'App\Board',
+            'group_id', // Foreign key on Cards table...
+            'board_id', // Foreign key on board table...
+            'group_id', // Local key on Users table...
+            'id' // Local key on board table...
+        );
+    }
 
     public function group()
     {

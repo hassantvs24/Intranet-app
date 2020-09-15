@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $id    = auth()->user()->id;
+        $cards = User::find( $id )->cards()->get();
+
+        return view( 'home', compact('cards') );
     }
 
     public function invite_users()
