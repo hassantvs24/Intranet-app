@@ -64,10 +64,10 @@
                                             <label class="custom-control-label" for="select_all_groups"></label>
                                         </div>
                                     </th>
-                                    <th scope="col" class="border-0">Name</th>
-                                    <th scope="col" class="border-0">Email</th>
-                                    <th scope="col" class="border-0">Phone</th>
-                                    <th scope="col" class="border-0">Group</th>
+                                    <th scope="col" class="border-0">{{ __('Name') }}</th>
+                                    <th scope="col" class="border-0">{{ __('Email') }}</th>
+                                    <th scope="col" class="border-0">{{ __('Phone') }}</th>
+                                    <th scope="col" class="border-0">{{ __('Group') }}</th>
                                     <th scope="col" class="border-0">&nbsp;</th>
                                 </tr>
                             </thead>
@@ -124,10 +124,10 @@
 
                                 <ul class="nav nav-pills justify-content-center mt-4" id="inviteUsersTab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="old-users-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Existing Users</a>
+                                        <a class="nav-link" id="old-users-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false"> {{ __('Existing Users') }}</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="new-users-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">New User</a>
+                                        <a class="nav-link active" id="new-users-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">{{ __('New User') }}</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="inviteUsersTabContent">
@@ -140,13 +140,13 @@
                                                     <path d="M21.45,20A11,11,0,1,0,20,21.45l8.26,8.26a1,1,0,0,0,1.41-1.41ZM4,13a9,9,0,1,1,9,9A9,9,0,0,1,4,13Z" data-name="Layer 2" fill="#999"></path></svg>
                                             </span>
                                                 </div>
-                                                <input type="search" class="form-control border-left-0" id="inputGroupFile01" aria-describedby="search-icon" placeholder="search users">
+                                                <input type="search" class="form-control border-left-0" id="inputGroupFile01" aria-describedby="search-icon" placeholder="{{ __('search users') }}">
                                             </div>
                                         </form>
                                     </div>
 
                                     <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="new-users-tab">
-                                        <form method="POST" action="{{route('email.send')}}" class="d-block mt-4 pt-3">
+                                        <form method="POST" action="{{route('email.send', app()->getLocale())}}" class="d-block mt-4 pt-3">
                                             @csrf
 
                                             <div class="form-group row">

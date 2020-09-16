@@ -25,7 +25,7 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="user_profile_image">Profile Image</label>
+                                <label for="user_profile_image"> {{ __('Profile Image') }}</label>
                                 <input type="file" class="form-control-file" id="user_profile_image" name="user_profile_image">
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="col">
-                    <h4 class="mb-4">Group Info</h4>
+                    <h4 class="mb-4"> {{ __('Group Info') }} </h4>
                     <div>
                         <span class="font-weight-bold">{{ __('Primary contact') }}</span> :
                         <span>Group admin</span>

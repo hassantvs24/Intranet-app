@@ -8,7 +8,7 @@
     <div class="login-page-wrap">
         <div class="container-fluid">
             <div class="row justify-content-center align-items-stretch align-content-stretch">
-                
+
                 <div class="col-md-5 bg-dark left-col d-flex flex-wrap justify-content-center align-content-center align-items-center">
                     {{-- animations --}}
                     <div class="animation-overlay">
@@ -21,7 +21,7 @@
                         <div class="circle circle-2"></div>
                         <div class="circle circle-3"></div>
                         <div class="line line-1"></div>
-                    </div> 
+                    </div>
                     {{-- // animations --}}
                     <div class="content">
                         <h1 class="text-center text-light w-100 font-weight-bolder">{{ __('Login.') }}</h1>
@@ -31,7 +31,7 @@
 
                 <div class="col-md-7 right-col d-flex flex-wrap justify-content-center align-content-center align-items-center">
                     <div class="login-form">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('login',app()->getLocale()) }}">
                             @csrf
 
                             <div class="form-group row">
@@ -80,11 +80,11 @@
                                         {{ __('Login') }}
                                     </button>
 
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{-- @if (Route::has('password.request')) --}}
+                                        <a class="btn btn-link" href="{{ route('password.request',app()->getLocale() ) }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
-                                    @endif
+                                    {{-- @endif --}}
                                 </div>
                             </div>
                         </form>

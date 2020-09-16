@@ -20,7 +20,7 @@
             @endif
 
             <div class="col">
-                <form action="{{ route('store-board') }}"  method="post">
+                <form action="{{ route('store-board', app()->getLocale() ) }}"  method="post">
                     @csrf
 
                     <div class="form-row">

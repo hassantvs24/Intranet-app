@@ -23,7 +23,7 @@
     <div class="admin-wrapper d-flex flex-wrap">
         {{-- START left col --}}
         <div id="sidebar">
-            <a href="{{ route('admin-home') }}" class="sidebar-header d-flex">
+            <a href="{{ route('admin-home', app()->getLocale() ) }}" class="sidebar-header d-flex">
                 <svg width="135" height="28" viewBox="0 0 135 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19.99 22.759L2.05 10.384C0.232001 9.12998 0.850002 6.51898 3.117 5.90498L22.184 0.729984C22.5879 0.584243 23.0207 0.536934 23.4466 0.591984C23.8724 0.647034 24.279 0.802854 24.6326 1.04651C24.9861 1.29017 25.2765 1.61464 25.4795 1.99299C25.6825 2.37134 25.7924 2.79266 25.8 3.22198L24.67 20.771C24.536 22.854 21.808 24.013 19.99 22.759Z" fill="#E9327C"/>
                     <path d="M14.3 25.814L3.73101 5.14498C3.48942 4.67214 3.3831 4.14175 3.42379 3.61232C3.46448 3.08289 3.6506 2.57498 3.96162 2.14461C4.27263 1.71424 4.69646 1.37812 5.18637 1.17332C5.67628 0.968521 6.21323 0.903002 6.73801 0.983984L26.325 4.00698C26.776 4.07659 27.204 4.25224 27.5738 4.51949C27.9436 4.78674 28.2448 5.13797 28.4524 5.54428C28.6601 5.95059 28.7683 6.40038 28.7682 6.85668C28.7682 7.31297 28.6598 7.76273 28.452 8.16898L19.429 25.815C19.1867 26.2865 18.8191 26.682 18.3666 26.9582C17.9142 27.2343 17.3943 27.3804 16.8642 27.3803C16.3341 27.3802 15.8143 27.2339 15.3619 26.9576C14.9095 26.6813 14.5421 26.2856 14.3 25.814V25.814Z" fill="#1dace3"/>
@@ -41,7 +41,7 @@
             <div class="sidebar-content">
                 {{-- START menu item --}}
                 <div class="menu-wrap">
-                    <a href="{{ route('admin-home') }}" class="menu-item d-flex align-content-center align-items-center">
+                    <a href="{{ route('admin-home', app()->getLocale() ) }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
                             <img src="{{ asset('images/dashboard.svg') }}" alt="dashboard icon">
                         </div>
@@ -51,7 +51,7 @@
                 {{-- END menu item --}}
                 {{-- START menu item --}}
                 <div class="menu-wrap">
-                    <a href="{{ route('all-groups') }}" class="menu-item d-flex align-content-center align-items-center">
+                    <a href="{{ route('all-groups', app()->getLocale() ) }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
                             <img src="{{ asset('images/users.svg') }}" alt="dashboard icon">
                         </div>
@@ -59,15 +59,15 @@
                     </a>
 
                     <div class="submenu pl-5">
-                        <a href="{{ route('all-groups') }}" class="submenu-item text-light d-block pl-4">{{ __('All Groups') }}</a>
-                        <a href="{{ route('create-group') }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Group') }}</a>
-                        <a href="{{ route('archived-groups') }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Groups') }}</a>
+                        <a href="{{ route('all-groups', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('All Groups') }}</a>
+                        <a href="{{ route('create-group', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Group') }}</a>
+                        <a href="{{ route('archived-groups', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Groups') }}</a>
                     </div>
                 </div>
                 {{-- END menu item --}}
                 {{-- START menu item --}}
                 <div class="menu-wrap">
-                    <a href="{{ route('all-boards') }}" class="menu-item d-flex align-content-center align-items-center">
+                    <a href="{{ route('all-boards', app()->getLocale() ) }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
                             <img src="{{ asset('images/boards.svg')}}" alt="dashboard icon">
                         </div>
@@ -75,16 +75,16 @@
                     </a>
 
                     <div class="submenu pl-5">
-                        <a href="{{ route('all-boards') }}" class="submenu-item text-light d-block pl-4">{{ __('All Boards') }}</a>
-                        <a href="{{ route('create-board') }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Board') }}</a>
-                        <a href="{{ route('archived-boards') }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Boards') }}</a>
+                        <a href="{{ route('all-boards', app()->getLocale()) }}" class="submenu-item text-light d-block pl-4">{{ __('All Boards') }}</a>
+                        <a href="{{ route('create-board', app()->getLocale()) }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Board') }}</a>
+                        <a href="{{ route('archived-boards', app()->getLocale()) }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Boards') }}</a>
                     </div>
                 </div>
                 {{-- END menu item --}}
                 @if( auth()->user()->role == 'admin' )
                 {{-- START menu item --}}
                 <div class="menu-wrap">
-                    <a href="{{ route('all-admins') }}" class="menu-item d-flex align-content-center align-items-center">
+                    <a href="{{ route('all-admins', app()->getLocale() ) }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
                             <img src="{{ asset('images/user.svg') }}" alt="dashboard icon">
                         </div>
@@ -92,16 +92,16 @@
                     </a>
 
                     <div class="submenu pl-5">
-                        <a href="{{ route('all-admins') }}" class="submenu-item text-light d-block pl-4">{{ __('All Admins') }}</a>
-                        <a href="{{ route('create-admin') }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Admin') }}</a>
-                        <a href="{{ route('archived-admins') }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Admins') }}</a>
+                        <a href="{{ route('all-admins', app()->getLocale()) }}" class="submenu-item text-light d-block pl-4">{{ __('All Admins') }}</a>
+                        <a href="{{ route('create-admin', app()->getLocale()) }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Admin') }}</a>
+                        <a href="{{ route('archived-admins', app()->getLocale()) }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Admins') }}</a>
                     </div>
                 </div>
                 {{-- END menu item --}}
                 @endif;
                 {{-- START menu item --}}
                 <div class="menu-wrap">
-                    <a href="{{ route('all-users') }}" class="menu-item d-flex align-content-center align-items-center">
+                    <a href="{{ route('all-users', app()->getLocale()) }}" class="menu-item d-flex align-content-center align-items-center">
                         <div class="icon mr-3">
                             <img src="{{ asset('images/user.svg') }}" alt="dashboard icon">
                         </div>
@@ -109,9 +109,9 @@
                     </a>
 
                     <div class="submenu pl-5">
-                        <a href="{{ route('all-users') }}" class="submenu-item text-light d-block pl-4">{{ __('All Users') }}</a>
-                        <a href="{{ route('create-user') }}" class="submenu-item text-light d-block pl-4">{{ __('Add New User') }}</a>
-                        <a href="{{ route('archived-users') }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Users') }}</a>
+                        <a href="{{ route('all-users', app()->getLocale()) }}" class="submenu-item text-light d-block pl-4">{{ __('All Users') }}</a>
+                        <a href="{{ route('create-user', app()->getLocale()) }}" class="submenu-item text-light d-block pl-4">{{ __('Add New User') }}</a>
+                        <a href="{{ route('archived-users', app()->getLocale()) }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Users') }}</a>
                     </div>
                 </div>
                 {{-- END menu item --}}
@@ -140,8 +140,8 @@
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" id="site-header">
                 <div class="container-fluid">
                     <div class="navbar-brand d-inline-flex align-items-center align-content-center">
-                        <label for="search-full" class="font-weight-bold pr-4">Search</label>
-                        <input type="search" id="search-full" class="form-control" placeholder="search everything">
+                        <label for="search-full" class="font-weight-bold pr-4">{{ __( 'Search' ) }}</label>
+                        <input type="search" id="search-full" class="form-control" placeholder="{{ __('search everything') }}">
                     </div>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -152,16 +152,18 @@
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto"></ul>
 
+                        @include('components.language')
+
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login', app()->getLocale() ) }}">{{ __('Login') }}</a>
                                 </li>
                                 @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        <a class="nav-link" href="{{ route('register', app()->getLocale() ) }}">{{ __('Register') }}</a>
                                     </li>
                                 @endif
                             @else
@@ -171,23 +173,23 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('admin-home') }}">
+                                        <a class="dropdown-item" href="{{ route('admin-home', app()->getLocale()) }}">
                                             {{ __('Dashboard') }}
                                         </a>
 
-                                        <a class="dropdown-item" href="{{ route('admin-account-settings') }}">
+                                        <a class="dropdown-item" href="{{ route('admin-account-settings', app()->getLocale()) }}">
                                             {{ __('Settings') }}
                                         </a>
 
                                         <div class="dropdown-divider"></div>
 
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        <a class="dropdown-item" href="{{ route('logout', app()->getLocale() ) }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('logout', app()->getLocale() ) }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
                                     </div>

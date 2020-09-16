@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -27,7 +28,6 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
     /**
      * Create a new controller instance.
      *
@@ -37,4 +37,30 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    //     public function authenticate(Request $request)
+    // {
+    //     $credentials = $request->only('email', 'password');
+
+    //     if (Auth::attempt($credentials)) {
+    //         // Authentication passed...
+    //         return redirect()->intended('dashboard');
+    //     }
+    // }
+
+    // public function redirectTo(){
+    //     // User role
+    //     $role = Auth::user()->role;
+
+    //     // Check user role
+    //     switch ($role) {
+    //         case 'admin':
+    //             return redirect()->to('/dashboard');
+    //             // return Auth::user()->language . '/dashboard';
+    //             break;
+    //         default:
+    //                 return app()->getLocale() . '/dashboard';
+    //             break;
+    //     }
+    // }
 }

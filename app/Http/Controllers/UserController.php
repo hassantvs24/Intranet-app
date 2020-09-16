@@ -42,32 +42,33 @@ class UserController extends Controller
             'role' => $data['role'],
             'password' => Hash::make($data['password']),
         ]);
-        return redirect()->route('all-users')
+        return redirect()->route('all-users', app()->getLocale() )
             ->with('success', 'User updated successfully');
     }
 
-    public function show($id)
+    public function show( $language, $id )
     {
         $user = User::find($id);
         return view('backend.users.view', compact('user'));
     }
 
-    public function edit($id)
+    public function edit( $language, $id )
     {
         $user = User::find($id);
         $groups = Group::all();
         return view('backend.users.edit', compact('user', 'groups'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $language, $id )
     {
+        dd( $request );
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->bio = $request->bio;
         $user->save();
-        return redirect()->route('all-users')
+        return redirect()->route('all-users', app()->getLocale() )
             ->with('success', 'User updated successfully');
     }
 
@@ -75,7 +76,7 @@ class UserController extends Controller
     {
         User::findOrFail($id)->delete();
 
-        return redirect()->route('all-users')
+        return redirect()->route('all-users', app()->getLocale() )
             ->with('success', 'User deleted successfully');
     }
 

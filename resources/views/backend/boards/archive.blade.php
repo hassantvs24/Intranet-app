@@ -20,7 +20,7 @@
                                         <svg height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21.45,20A11,11,0,1,0,20,21.45l8.26,8.26a1,1,0,0,0,1.41-1.41ZM4,13a9,9,0,1,1,9,9A9,9,0,0,1,4,13Z" data-name="Layer 2" fill="#999"/></svg>
                                     </span>
                                 </div>
-                                <input type="search" class="form-control border-left-0" id="inputGroupFile01" aria-describedby="search-icon" placeholder="search">
+                                <input type="search" class="form-control border-left-0" id="inputGroupFile01" aria-describedby="search-icon" placeholder="{{ __('Search') }}">
                             </div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="col text-right">
-                <a href="{{ route('create-board') }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
+                <a href="{{ route('create-board', app()->getLocale() ) }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
             </div>
         </div>
 
@@ -46,7 +46,7 @@
                         <th scope="col" class="border-0">{{ __('Name') }}</th>
                         <th scope="col" class="border-0">{{ __('Users') }}</th>
                         <th scope="col" class="border-0">{{ __('Admin') }}</th>
-                        <th scope="col" class="border-0">{{ __('color') }}</th>
+                        <th scope="col" class="border-0">{{ __('Color') }}</th>
                         <th scope="col" class="border-0">&nbsp;</th>
                     </tr>
                     </thead>
@@ -164,7 +164,7 @@
 
         <div class="row">
             <div class="col">
-                <a href="{{ route('all-boards') }}" class="btn btn-outline-primary">{{ __('view Active boards') }}</a>
+                <a href="{{ route('all-boards', app()->getLocale() ) }}" class="btn btn-outline-primary">{{ __('view Active boards') }}</a>
             </div>
         </div>
     </div>

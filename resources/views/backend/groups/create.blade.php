@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col">
-                <form action="{{ route('group.store') }}" method="post">
+                <form action="{{ route('group.store', app()->getLocale()) }}" method="post">
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">

@@ -11,11 +11,11 @@
                 <img src="{{$admin->avatar}}" class="rounded" alt="{{ $admin->name }}" height="100" width="100">
                 <div class="group-info mt-3">
                     <div class="info-line-item">
-                        <span class="font-weight-bold">{{ __('Email: ') }}</span>
+                        <span class="font-weight-bold">{{ __('Email') }}:</span>
                         <span>{{$admin->email}}</span>
                     </div>
                     <div class="info-line-item my-2">
-                        <span class="font-weight-bold">{{ __('Phone: ') }}</span>
+                        <span class="font-weight-bold">{{ __('Phone') }}:</span>
                         <span>{{$admin->phone}}</span>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
 
         <div class="row">
             <div class="col">
-                <a href="{{ route('edit-admin',$admin->id) }}" class="btn btn-primary">
+                <a href="{{ route('edit-admin',[ app()->getLocale(), $admin->id ] ) }}" class="btn btn-primary">
                     {{ __('Edit Admin') }}
                 </a>
             </div>

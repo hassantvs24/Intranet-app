@@ -56,16 +56,16 @@ class GroupAdminsController extends Controller
             $admin->avatar = $filePath;
         }
         $admin->save();
-        return redirect()->route('all-admins')->with(['status' => 'Admin created successfully.']);
+        return redirect()->route('all-admins', app()->getLocale() )->with(['status' => 'Admin created successfully.']);
     }
 
-    public function show($id)
+    public function show( $language, $id )
     {
         $admin = GroupAdmin::find($id);
         return view('backend.admins.view', compact('admin'));
     }
 
-    public function edit($id)
+    public function edit( $language,$id)
     {
         $admin = GroupAdmin::find($id);
         return view('backend.admins.edit', compact('admin'));
@@ -79,7 +79,7 @@ class GroupAdminsController extends Controller
         $admin->phone = $request->phone;
         $admin->bio = $request->bio;
         $admin->save();
-        return redirect()->route('all-admins')
+        return redirect()->route('all-admins', app()->getLocale() )
             ->with('success', 'Admin updated successfully');
     }
 
@@ -87,7 +87,7 @@ class GroupAdminsController extends Controller
     {
         GroupAdmin::findOrFail($id)->delete();
 
-        return redirect()->route('all-admins')
+        return redirect()->route('all-admins', app()->getLocale() )
         ->with('success', 'Admin deleted successfully');
     }
 
@@ -103,8 +103,14 @@ class GroupAdminsController extends Controller
         $user->email = $request->user_email;
         $user->phone = $request->user_phone_no;
         $user->bio = $request->user_bio;
+        if( isset( $request->user_language ) ) {
+            $user->language = $request->user_language;
+            session()->put('language', $request->user_language );
+            app()->setLocale( $request->user_language );
+        }
+
         $user->save();
 
-        return redirect()->route('admin-account-settings')->with('success', 'Settings updated successfully');
+        return redirect()->route('admin-account-settings', app()->getLocale() )->with('success', 'Settings updated successfully');
     }
 }

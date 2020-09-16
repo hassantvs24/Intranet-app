@@ -44,7 +44,7 @@
         </div>
 
         <div class="col text-right">
-            <a href="{{ route('create-admin') }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
+            <a href="{{ route('create-admin', app()->getLocale() ) }}" class="btn btn-primary btn-md">{{ __('Create New') }}</a>
         </div>
     </div>
 
@@ -79,17 +79,17 @@
                         <td>{{ $admin->email }}</td>
                         <td>{{$admin->phone}}</td>
                         <td class="cta-group-item">
-                            <a href="{{ route('view-admin',$admin->id) }}" class="btn btn-outline-primary btn-sm" id="btn-view-group">
+                            <a href="{{ route('view-admin',[ app()->getLocale(), $admin->id ]) }}" class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z" />
                                     <path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z" /></svg>
                             </a>
-                            <a href="{{ route('edit-admin',$admin->id) }}" class="btn btn-outline-primary btn-sm" id="btn-edit-group">
+                            <a href="{{ route('edit-admin',[ app()->getLocale(), $admin->id ]) }}" class="btn btn-outline-primary btn-sm" id="btn-edit-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                                     <path d="M10.3,17.744l-.472,3.3a1,1,0,0,0,.99,1.142.987.987,0,0,0,.142-.01l3.3-.472a1,1,0,0,0,.565-.283l9.6-9.6,1.886-1.885a1,1,0,0,0,0-1.414L23.479,5.693a1,1,0,0,0-1.414,0L20.179,7.579l-9.6,9.6A1,1,0,0,0,10.3,17.744Zm12.476-9.93,1.414,1.415-.472.471L22.3,8.286ZM12.229,18.357,20.886,9.7,22.3,11.114l-8.657,8.657-1.649.236Z" fill="#999" />
                                     <path d="M27,15a1,1,0,0,0-1,1v9a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V7A1,1,0,0,1,7,6h9a1,1,0,0,0,0-2H7A3,3,0,0,0,4,7V25a3,3,0,0,0,3,3H25a3,3,0,0,0,3-3V16A1,1,0,0,0,27,15Z" fill="#999" /></svg>
                             </a>
-                            <form action="{{ route('delete-admin', $admin->id) }}" method="POST" class="d-inline-block">
+                            <form action="{{ route('delete-admin', [ app()->getLocale(), $admin->id ] ) }}" method="POST" class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-outline-primary btn-sm" id="btn-delete-group">
@@ -105,7 +105,7 @@
                     <tr>
                         <td>
                             {{ __('No records found') }}
-                            <a href="{{ route('create-admin') }}">{{ __('Create new.') }}</a>
+                            <a href="{{ route('create-admin', app()->getLocale() ) }}">{{ __('Create new.') }}</a>
                         </td>
                     </tr>
                     @endif
@@ -130,7 +130,7 @@
 
     <div class="row">
         <div class="col">
-            <a href="{{ route('archived-users') }}" class="btn btn-warning">{{ __('view archived users') }}</a>
+            <a href="{{ route('archived-users', app()->getLocale() ) }}" class="btn btn-warning">{{ __('view archived users') }}</a>
         </div>
     </div>
 </div>

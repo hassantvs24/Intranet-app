@@ -28,8 +28,8 @@ class MailController extends Controller
 
             $message->to($this->toEmail)->cc('bar@example.com');
         });
-        return redirect()->route('all-groups')
+        return redirect()->route('all-groups', app()->getLocale() )
         ->with('success', 'User updated successfully');
-        
+
     }
 }

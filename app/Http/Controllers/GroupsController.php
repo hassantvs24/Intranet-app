@@ -12,11 +12,13 @@ class GroupsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     public function home()
     {
+
+        // dd('haha');
         // get group, users, admins count
         $total_groups = count(Group::all());
         $total_users = count(User::all());
@@ -52,17 +54,17 @@ class GroupsController extends Controller
         $group->save();
         $group->admins($group->id)->attach($request->group_admins);
         $group->save();
-        return redirect(route('all-groups'))->with('status', 'Group successfully created!');
+        return redirect(route('all-groups', app()->getLocale() ))->with('status', 'Group successfully created!');
     }
 
-    public function show($id)
+    public function show($language,$id)
     {
         $group = Group::find($id);
         $users = $group->users;
         return view('backend.groups.view',compact('group','users'));
     }
 
-    public function edit($id)
+    public function edit( $language, $id)
     {
         $group = Group::find($id);
         $group_admins = array_column($group->admins->toArray(), 'id');
@@ -70,7 +72,7 @@ class GroupsController extends Controller
         return view('backend.groups.edit', compact('group', 'admins', 'group_admins'));
     }
 
-    public function update(Request $request, $id)
+    public function update( Request $request, $language, $id )
     {
         $group = Group::find($id);
         $group->name = $request->name;
@@ -79,7 +81,7 @@ class GroupsController extends Controller
         $group->end_date = $request->end_date;
         $group->save();
         $group->admins($group->id)->sync($request->group_admins);
-        return redirect(route('all-groups'))->with('status', 'Board successfully updated!');
+        return redirect(route('all-groups',app()->getLocale() ))->with('status', 'Board successfully updated!');
     }
 
     public function destroy($id)

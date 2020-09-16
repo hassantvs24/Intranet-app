@@ -42,28 +42,28 @@ class BoardsController extends Controller
             'name' => $request['name'],
             'group_id' => $request['user_group']
         ]);
-        return redirect()->route('all-boards')
+        return redirect()->route('all-boards', app()->getLocale() )
             ->with('success', 'Board added successfully');
     }
 
-    public function show($id)
+    public function show($language,$id)
     {
         $board = Board::find($id);
         return view('backend.boards.view', compact('board'));
     }
 
-    public function edit($id)
+    public function edit( $language, $id )
     {
         $board = Board::find($id);
         return view('backend.boards.edit', compact('board'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $language, $id)
     {
         $board = Board::find($id);
         $board->name = $request->name;
         $board->save();
-        return redirect()->route('all-boards')
+        return redirect()->route( 'all-boards', app()->getLocale() )
             ->with('success', 'Board updated successfully');
     }
 

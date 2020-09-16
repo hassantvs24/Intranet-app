@@ -19,19 +19,19 @@
 
                     <div class="group-info mt-3">
                         <div class="info-line-item">
-                            <span class="font-weight-bold">{{ __('Email: ') }}</span>
+                            <span class="font-weight-bold">{{ __('Email') }}:</span>
                             <span>{{ $user->email }}</span>
                         </div>
                         <div class="info-line-item my-2">
-                            <span class="font-weight-bold">{{ __('Phone: ') }}</span>
+                            <span class="font-weight-bold">{{ __('Phone') }}:</span>
                             <span>{{ $user->phone }}</span>
                         </div>
                         <div class="info-line-item my-2">
-                            <span class="font-weight-bold text-primary">{{ __('Group: ') }}</span>
+                            <span class="font-weight-bold text-primary">{{ __('Group') }}:</span>
                             <span>{{ $user->group->name}}</span>
                         </div>
                         <div class="info-line-item">
-                            <span class="font-weight-bold">{{ __('About / Bio: ') }}</span>
+                            <span class="font-weight-bold">{{ __('About / Bio') }}:</span>
                             <span>{{ $user->bio }}</span>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
 
             <div class="row">
                 <div class="col">
-                    <a href="{{ route('edit-user', $user->id) }}" type="submit" class="btn btn-primary">
+                    <a href="{{ route('edit-user', [ app()->getLocale(), $user->id ] ) }}" type="submit" class="btn btn-primary">
                         {{ __('Edit User') }}
                     </a>
                 </div>

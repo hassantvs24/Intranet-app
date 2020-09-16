@@ -8,14 +8,14 @@
         <div class="container" id="create-group-form-wrap">
             <div class="row page-header my-4 pt-4">
                 <div class="col">
-                    <h3 class="page-title">{{ __('Edit user') }}</h3>
+                    <h3 class="page-title">{{ __('Edit User') }}</h3>
                     <hr>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <form action="{{ route('update-user',$user->id) }}" method="post">
+                    <form action="{{ route('update-user', [ app()->getLocale(), $user->id ] ) }}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="form-row">

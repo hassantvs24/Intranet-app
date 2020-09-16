@@ -25,7 +25,7 @@
 
             <div class="row">
                 <div class="col">
-                    <form action="{{ route('admin-account-settings') }}" method="post">
+                    <form action="{{ route('admin-account-settings', app()->getLocale()) }}" method="post">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-12">
@@ -37,7 +37,7 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="user_profile_image">Profile Image</label>
+                                <label for="user_profile_image"> {{ __('Profile Image') }} </label>
                                 <input type="file" class="form-control-file" id="user_profile_image" name="user_profile_image">
                             </div>
                         </div>
@@ -55,6 +55,17 @@
                                 <label for="user_phone_no">{{ __('User Phone') }}</label>
                                 <input type="tel" class="form-control" id="user_phone_no" name="user_phone_no" placeholder="+470156421" required
                                 value="{{ $user->phone }}" />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="user_language"> {{ __( 'Language' ) }} </label>
+                                <select name="user_language">
+                                    <option value=""></option>
+                                    <option value="en" @if( $user->language == 'en' ) {{ 'selected' }} @endif > {{ __( 'English' ) }}</option>
+                                    <option value="nor" @if( $user->language == 'nor' ) {{ 'selected' }} @endif >  {{ __( 'Norwegian' ) }}</option>
+                                </select>
                             </div>
                         </div>
 

@@ -16,7 +16,7 @@
 
         <div class="row">
             <div class="col">
-                <form action="{{ route('update-group',$group->id) }}" method="post">
+                <form action="{{ route('update-group', [ app()->getLocale(), $group->id ] ) }}" method="post">
                     @csrf
                     @method('PUT')
                     <div class="form-row">
