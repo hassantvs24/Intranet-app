@@ -24,7 +24,8 @@ class GroupAdminsController extends Controller
 
     public function archived()
     {
-        return view('backend.admins.archive');
+        $admins = GroupAdmin::paginate(15);
+        return view('backend.admins.archive', compact( 'admins' ) );
     }
 
     public function create()

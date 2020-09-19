@@ -86,6 +86,20 @@
                     </div>
 
                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="group_archive_start_date">{{ __('Archive Start date') }}</label>
+                            <input type="date" class="form-control" id="group_archive_start_date" name="archive_start_date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="archive_group_end_date">{{ __(' Archive End date') }}</label>
+                            <input type="date" class="form-control" id="archive_group_end_date" name="archive_end_date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
                         <label for="" class="d-block w-100">{{ __('Select group admins:') }}</label>
 
                         <div class="form-group col-md-6">

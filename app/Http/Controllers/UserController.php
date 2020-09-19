@@ -22,7 +22,9 @@ class UserController extends Controller
 
     public function archived()
     {
-        return view('backend.users.archive');
+        $users = User::where('role', '=', 'user')->paginate(15);
+
+        return view('backend.users.archive', compact( 'users' ));
     }
 
     public function create()

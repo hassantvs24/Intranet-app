@@ -14,15 +14,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('locale/{locale}', function ($locale){
-    Session::put('language', $locale);
+// Route::get('locale/{locale}', function ($locale){
+//     Session::put('language', $locale);
 
-    if (request()->fullUrl() === redirect()->back()->getTargetUrl()) {
-        return redirect('/');
-    }
+//     if (request()->fullUrl() === redirect()->back()->getTargetUrl()) {
+//         return redirect('/');
+//     }
 
-    return redirect()->back();
-});
+//     return redirect()->back();
+// });
 
 Route::redirect('/', app()->getLocale() );
 
@@ -89,6 +89,5 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         // add admin account settings route
         Route::get('/admin/my-account', 'GroupAdminsController@account_settings')->name('admin-account-settings');
         Route::post('/admin/my-account', 'GroupAdminsController@update_account_settings')->name('admin-account-settings');
-
     });
 });

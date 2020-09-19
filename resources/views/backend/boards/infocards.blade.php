@@ -10,7 +10,6 @@
         <!-- START data cards -->
         <div class="data-cards">
             <div class="row" id="data-cards-wrap">
-
                 {{-- {{ $board_id }}--}}
 
                 <!-- START card -->

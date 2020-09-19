@@ -12,4 +12,9 @@ class Board extends Model
     {
         return $this->hasMany('App\Card');
     }
+
+    public function group()
+    {
+        return $this->belongsTo('App\Group');
+    }
 }

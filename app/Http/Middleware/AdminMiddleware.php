@@ -16,13 +16,13 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check()) {
+        if ( Auth::check() ) {
             if (Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin') {
                 return $next($request);
             }
         }
 
-        return redirect('home');
-
+        return $next($request);
+        // return redirect('home');
     }
 }

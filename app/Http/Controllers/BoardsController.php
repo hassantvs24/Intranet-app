@@ -27,7 +27,8 @@ class BoardsController extends Controller
 
     public function archived()
     {
-        return view('backend.boards.archive');
+        $boards = Board::paginate(15);
+        return view('backend.boards.archive', compact('boards'));
     }
 
     public function create()
@@ -72,7 +73,7 @@ class BoardsController extends Controller
         //
     }
 
-    public function info_cards($id)
+    public function info_cards( $language, $id )
     {
         $board_id = $id;
         return view('backend.boards.infocards', compact('board_id'));

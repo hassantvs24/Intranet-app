@@ -61,12 +61,14 @@
                         <th scope="col" class="border-0">{{ __('Name') }}</th>
                         <th scope="col" class="border-0">{{ __('Start date') }}</th>
                         <th scope="col" class="border-0">{{ __('End date') }}</th>
+                        <th scope="col" class="border-0">{{ __('Archive Start date') }}</th>
+                        <th scope="col" class="border-0">{{ __('Archive End date') }}</th>
                         <th scope="col" class="border-0">{{ __('Members') }}</th>
                         <th scope="col" class="border-0">&nbsp;</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if(count($groups) > 0)
+                @if(count($groups) > 0)
                     @foreach($groups as $group)
                     <tr>
                         <th scope="row">
@@ -75,10 +77,12 @@
                                 <label class="custom-control-label" for="group_2_id"></label>
                             </div>
                         </th>
-                        <td>{{ $group->name }}</td>
-                        <td>{{ $group->start_date }}</td>
-                        <td>{{ $group->end_date }}</td>
-                        <td>15</td>
+                        <td> {{ $group->name }}</td>
+                        <td> {{ $group->start_date }}</td>
+                        <td> {{ $group->end_date }}</td>
+                        <td> {{ $group->archive_start_date }}</td>
+                        <td> {{ $group->archive_end_date }}</td>
+                        <td> 15 {{ $group->users()->count() }} </td>
                         <td class="cta-group-item">
                             <a href="{{ route('view-group',[ app()->getLocale(), $group->id ]) }}" class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -108,6 +112,14 @@
                     @endif
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col">
+            <nav aria-label="Page navigation example">
+                {{ $groups->links() }}
+            </nav>
         </div>
     </div>
 

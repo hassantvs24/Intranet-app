@@ -6,7 +6,7 @@
 <div class="container-fluid p-4">
     <div class="row page-header mb-3">
         <div class="col">
-            <h3 class="page-title">{{ __('Users') }}</h3>
+            <h3 class="page-title">{{ __('Admins') }}</h3>
         </div>
     </div>
 
@@ -117,20 +117,14 @@
     <div class="row mb-4">
         <div class="col">
             <nav aria-label="Page navigation example">
-                <ul class="pagination font-weight-bold">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
+                {{ $admins->links() }}
             </nav>
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <a href="{{ route('archived-users', app()->getLocale() ) }}" class="btn btn-warning">{{ __('view archived users') }}</a>
+            <a href="{{ route('archived-admins', app()->getLocale() ) }}" class="btn btn-warning">{{ __('view archived admins') }}</a>
         </div>
     </div>
 </div>

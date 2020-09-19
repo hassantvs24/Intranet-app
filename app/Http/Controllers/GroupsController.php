@@ -29,13 +29,14 @@ class GroupsController extends Controller
 
     public function index()
     {
-        $groups = Group::all();
+        $groups = Group::paginate(15);
         return view('backend.groups.index', compact('groups'));
     }
 
     public function archived()
     {
-        return view('backend.groups.archive');
+        $groups = Group::paginate(15);
+        return view('backend.groups.archive', compact('groups'));
     }
 
     public function create()
@@ -46,11 +47,21 @@ class GroupsController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         $group = new Group();
         $group->name = $request->name;
         $group->color = $request->group_color;
         $group->start_date = $request->start_date;
         $group->end_date = $request->end_date;
+
+        if( isset( $request->archive_start_date ) ) {
+            $group->archive_start_date = $request->archive_start_date;
+        }
+
+        if( isset( $request->archive_end_date ) ) {
+            $group->archive_end_date = $request->archive_end_date;
+        }
+
         $group->save();
         $group->admins($group->id)->attach($request->group_admins);
         $group->save();

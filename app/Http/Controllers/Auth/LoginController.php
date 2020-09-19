@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
     /**
      * Create a new controller instance.
      *
@@ -38,29 +38,10 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    //     public function authenticate(Request $request)
-    // {
-    //     $credentials = $request->only('email', 'password');
-
-    //     if (Auth::attempt($credentials)) {
-    //         // Authentication passed...
-    //         return redirect()->intended('dashboard');
-    //     }
-    // }
-
-    // public function redirectTo(){
-    //     // User role
-    //     $role = Auth::user()->role;
-
-    //     // Check user role
-    //     switch ($role) {
-    //         case 'admin':
-    //             return redirect()->to('/dashboard');
-    //             // return Auth::user()->language . '/dashboard';
-    //             break;
-    //         default:
-    //                 return app()->getLocale() . '/dashboard';
-    //             break;
-    //     }
-    // }
+    protected function redirectTo() {
+        // dd("hahahaha");
+        return redirect()->to('/dashboard');
+        // return redirect()->route('profile', app()->getLocale() );
+        // return route( 'admin-home', app()->getLocale() );
+    }
 }
