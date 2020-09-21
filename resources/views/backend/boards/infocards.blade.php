@@ -144,7 +144,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
                 <!-- END card -->
-
+                <input type="hidden" name="board_id" id="board_id" value="{{ $board_id }}">
             </div>
         </div>
         <!-- END data cards -->

@@ -8,35 +8,6 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
-// this data will come from backend
-const EVENTS = [
-    {
-        id: "a",
-        title: "my event",
-        start: "2020-08-08"
-    },
-    {
-        id: "b",
-        title: "my event2",
-        start: "2020-08-12"
-    },
-    {
-        id: "c",
-        title: "my event2",
-        start: "2020-08-12"
-    },
-    {
-        id: "d",
-        title: "cool event",
-        start: "2020-08-15"
-    },
-    {
-        id: "e",
-        title: "Kekw 3",
-        start: "2020-08-15"
-    }
-];
-
 document.addEventListener("DOMContentLoaded", function() {
     const targetNode = document.getElementById('data-cards-wrap');
     const config = { attributes: true, childList: true, subtree: true };
@@ -59,15 +30,53 @@ document.addEventListener("DOMContentLoaded", function() {
     function init_full_calendar() {
         let calendarEl = document.getElementById("calendar");
         if (!!calendarEl) {
+            var board_id = $('#board_id').val()
             let calendar = new Calendar(calendarEl, {
                 plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin],
                 editable: true,
-                events: EVENTS,
+                events: `/api/eventsbyboard/${board_id}`,
+                // events: EVENTS,
                 headerToolbar: {
                     left: "prev,next today",
                     center: "title",
                     right: "dayGridMonth,timeGridWeek,timeGridDay"
-                }
+                },
+                selectable: true,
+                selectHelper: true,
+                select: function (start, end, allDay) {
+                    var title      = prompt('Event Title:');
+
+                    if (title) {
+                        var data = {
+                            "start_date": start.startStr,
+                            "end_date": start.endStr,
+                            "details": "hahah",
+                            "title": title,
+                            "board_id": board_id,
+                        };
+
+                        axios.post('/api/events', data)
+                        .then(function (response) {
+                            console.log(response.data.data);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+                        // calendar.fullCalendar('renderEvent',
+                        //     {
+                        //         title: title,
+                        //         start: start,
+                        //         end: end,
+                        //         allDay: allDay
+                        //     },
+                        //     true
+                        // );
+                    }
+
+                    // calendar.fullCalendar('unselect');
+                },
+
             });
             calendar.render();
             // console.log(calendar.getEvents());

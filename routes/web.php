@@ -14,15 +14,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('locale/{locale}', function ($locale){
-//     Session::put('language', $locale);
-
-//     if (request()->fullUrl() === redirect()->back()->getTargetUrl()) {
-//         return redirect('/');
-//     }
-
-//     return redirect()->back();
-// });
+Route::get('locale/{locale}', function ($locale){
+    Session::put('language', $locale);
+    app()->setLocale( request()->locale );
+    // if (request()->fullUrl() === redirect()->back()->getTargetUrl()) {
+    //     return redirect('/');
+    // }
+    //
+    return redirect()->back();
+});
 
 Route::redirect('/', app()->getLocale() );
 

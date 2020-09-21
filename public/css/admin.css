@@ -11079,13 +11079,10 @@ label {
   text-transform: capitalize !important;
 }
 
-<<<<<<< HEAD
-=======
 .template {
   display: none;
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .top-color-bar {
   height: 10px;
   display: block;
@@ -11143,8 +11140,6 @@ label {
   border-radius: 8px;
 }
 
-<<<<<<< HEAD
-=======
 #data-cards-wrap .card-header {
   margin-bottom: 20px;
 }
@@ -11159,7 +11154,6 @@ label {
   border-radius: 8px;
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .btn {
   text-transform: capitalize;
   letter-spacing: 1px;
@@ -11170,8 +11164,6 @@ label {
   border-color: var(--color-one);
 }
 
-<<<<<<< HEAD
-=======
 .modal.right .modal-dialog {
   position: fixed;
   margin: auto;
@@ -11409,17 +11401,13 @@ label {
   }
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .login-page-wrap .left-col,
 .register-page-wrap .left-col {
   padding: 35px 15px;
   background-image: url("/images/hero-bg.png");
-<<<<<<< HEAD
-=======
   position: relative;
   z-index: 99;
   overflow: hidden;
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 }
 
 @media (min-width: 768px) {
@@ -11429,14 +11417,11 @@ label {
   }
 }
 
-<<<<<<< HEAD
-=======
 .login-page-wrap .left-col .content,
 .register-page-wrap .left-col .content {
   z-index: 1;
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .login-page-wrap p,
 .register-page-wrap p {
   font-size: 20px;
@@ -11521,14 +11506,11 @@ label {
   margin-left: 300px;
 }
 
-<<<<<<< HEAD
-=======
 .admin-wrapper th .custom-checkbox {
   cursor: pointer;
   width: 10px;
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .navbar {
   height: 65px;
 }
@@ -11542,13 +11524,10 @@ label {
   margin: 0;
 }
 
-<<<<<<< HEAD
-=======
 .user-dashboard .navbar {
   margin-top: 0;
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 /*------- all groups ----------*/
 
 .table--all-groups {
@@ -11556,11 +11535,7 @@ label {
 }
 
 .cta-group-item .btn {
-<<<<<<< HEAD
-  padding: 10px;
-=======
   padding: 5px;
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
   margin: 0 10px 0 0;
   border-color: rgba(77, 22, 221, 0.1);
 }
@@ -11625,8 +11600,6 @@ label {
   border-radius: 50%;
 }
 
-<<<<<<< HEAD
-=======
 .animation-overlay {
   position: absolute;
   z-index: -1;
@@ -11910,4 +11883,3 @@ div#editor {
   background-color: rgba(77, 22, 221, 0.08) !important;
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a

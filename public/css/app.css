@@ -11079,13 +11079,10 @@ label {
   text-transform: capitalize !important;
 }
 
-<<<<<<< HEAD
-=======
 .template {
   display: none;
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .top-color-bar {
   height: 10px;
   display: block;
@@ -11143,8 +11140,6 @@ label {
   border-radius: 8px;
 }
 
-<<<<<<< HEAD
-=======
 #data-cards-wrap .card-header {
   margin-bottom: 20px;
 }
@@ -11159,7 +11154,6 @@ label {
   border-radius: 8px;
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .btn {
   text-transform: capitalize;
   letter-spacing: 1px;
@@ -11170,8 +11164,6 @@ label {
   border-color: var(--color-one);
 }
 
-<<<<<<< HEAD
-=======
 .modal.right .modal-dialog {
   position: fixed;
   margin: auto;
@@ -11409,7 +11401,6 @@ label {
   }
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .login-page-wrap .left-col,
 .register-page-wrap .left-col {
   padding: 35px 15px;

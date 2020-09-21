@@ -53834,29 +53834,7 @@ Full calender implementation
 
 
 
- // this data will come from backend
 
-var EVENTS = [{
-  id: "a",
-  title: "my event",
-  start: "2020-08-08"
-}, {
-  id: "b",
-  title: "my event2",
-  start: "2020-08-12"
-}, {
-  id: "c",
-  title: "my event2",
-  start: "2020-08-12"
-}, {
-  id: "d",
-  title: "cool event",
-  start: "2020-08-15"
-}, {
-  id: "e",
-  title: "Kekw 3",
-  start: "2020-08-15"
-}];
 document.addEventListener("DOMContentLoaded", function () {
   var targetNode = document.getElementById('data-cards-wrap');
   var config = {
@@ -53896,14 +53874,45 @@ document.addEventListener("DOMContentLoaded", function () {
     var calendarEl = document.getElementById("calendar");
 
     if (!!calendarEl) {
+      var board_id = $('#board_id').val();
       var calendar = new _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__["Calendar"](calendarEl, {
         plugins: [_fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_3__["default"], _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__["default"]],
         editable: true,
-        events: EVENTS,
+        events: "/api/eventsbyboard/".concat(board_id),
+        // events: EVENTS,
         headerToolbar: {
           left: "prev,next today",
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay"
+        },
+        selectable: true,
+        selectHelper: true,
+        select: function select(start, end, allDay) {
+          var title = prompt('Event Title:');
+
+          if (title) {
+            var data = {
+              "start_date": start.startStr,
+              "end_date": start.endStr,
+              "details": "hahah",
+              "title": title,
+              "board_id": board_id
+            };
+            axios.post('/api/events', data).then(function (response) {
+              console.log(response.data.data);
+            })["catch"](function (error) {
+              console.log(error);
+            }); // calendar.fullCalendar('renderEvent',
+            //     {
+            //         title: title,
+            //         start: start,
+            //         end: end,
+            //         allDay: allDay
+            //     },
+            //     true
+            // );
+          } // calendar.fullCalendar('unselect');
+
         }
       });
       calendar.render(); // console.log(calendar.getEvents());
@@ -54007,7 +54016,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/mahade/MEGA/work/laragon/www/intranet-custom/resources/js/admin.js */"./resources/js/admin.js");
+module.exports = __webpack_require__(/*! /Users/wedevs/Sites/Intranet-app/resources/js/admin.js */"./resources/js/admin.js");
 
 
 /***/ })
