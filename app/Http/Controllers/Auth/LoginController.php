@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -38,10 +39,10 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function redirectTo() {
-        // dd("hahahaha");
-        return redirect()->to('/dashboard');
-        // return redirect()->route('profile', app()->getLocale() );
-        // return route( 'admin-home', app()->getLocale() );
+    public function authenticated(Request $request, $user)
+    {
+        if ( $user->role == 'admin' || $user->role == 'superadmin') {
+            return redirect()->route('admin-home', $user->language );
+        }
     }
 }

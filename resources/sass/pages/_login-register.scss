@@ -2,7 +2,9 @@
 .register-page-wrap {
     .left-col {
         padding: 35px 15px;
-        background-image: url("/images/hero-bg.png");
+        background-image: url("/images/bg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
         position: relative;
         z-index: 99;
         overflow: hidden;

@@ -7,6 +7,7 @@ import { Calendar } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import Swal from 'sweetalert2';
 
 document.addEventListener("DOMContentLoaded", function() {
     const targetNode = document.getElementById('data-cards-wrap');
@@ -27,6 +28,20 @@ document.addEventListener("DOMContentLoaded", function() {
         observer.observe(targetNode, config);
     }
 
+    function formatDate( date ) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
     function init_full_calendar() {
         let calendarEl = document.getElementById("calendar");
         if (!!calendarEl) {
@@ -41,21 +56,52 @@ document.addEventListener("DOMContentLoaded", function() {
                     center: "title",
                     right: "dayGridMonth,timeGridWeek,timeGridDay"
                 },
+                lazyFetching: true,
+                displayEventTime: true,
                 selectable: true,
                 selectHelper: true,
                 select: function (start, end, allDay) {
-                    var title      = prompt('Event Title:');
+                    $('#fullCalModal').modal();
+                    $('#event_start').val(start.startStr);
+                    $('#event_end').val(start.endStr);
+                },
+                eventDrop:function(event) {
+                    var    id    = event.event.id;
+                    console.log(event.event.start);
+                    let    data  = {
+                        "start_date" : formatDate(event.event.start),
+                        "end_date"   : formatDate(event.event.end),
+                        "title" :       event.event.title,
+                        "board_id" : board_id
+                    };
 
-                    if (title) {
-                        var data = {
-                            "start_date": start.startStr,
-                            "end_date": start.endStr,
-                            "details": "hahah",
-                            "title": title,
-                            "board_id": board_id,
-                        };
+                    axios.put(`/api/events/${id}`, data)
+                        .then(function (response) {
 
-                        axios.post('/api/events', data)
+                        })
+                        .catch(function (error) {
+
+                        });
+                },
+                eventClick: function( event ) {
+                    var    id    = event.event.id;
+
+                    Swal.fire({
+                      title: 'Are you sure?',
+                      text: "You won't be able to revert this!",
+                      icon: 'warning',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        Swal.fire(
+                          'Deleted!',
+                          'Your file has been deleted.',
+                          'success'
+                        )
+                        axios.delete(`/api/events/${id}`)
                         .then(function (response) {
                             console.log(response.data.data);
                         })
@@ -63,28 +109,58 @@ document.addEventListener("DOMContentLoaded", function() {
                             console.log(error);
                         });
 
-                        // calendar.fullCalendar('renderEvent',
-                        //     {
-                        //         title: title,
-                        //         start: start,
-                        //         end: end,
-                        //         allDay: allDay
-                        //     },
-                        //     true
-                        // );
-                    }
-
-                    // calendar.fullCalendar('unselect');
-                },
-
+                        window.location.reload();
+                      }
+                    })
+                }
             });
             calendar.render();
-            // console.log(calendar.getEvents());
-            // Later, you can stop observing
             observer.disconnect();
         }
     }
 
+
+    $(document).on('submit','#calenderform',function(e){
+        e.preventDefault();
+
+        var start = $('#event_start').val(),
+            end   = $('#event_end').val(),
+            description = $('#event_description').val(),
+            title = $('#event_title').val(),
+            board_id = $('#board_id').val();
+        var data = {
+            "start_date": start,
+            "end_date": end,
+            "details": description,
+            "title": title,
+            "board_id": board_id,
+        };
+
+        axios.post('/api/events', data)
+        .then(function (response) {
+            if( response.status == 200 ) {
+                $('#modalmessage').text('');
+                $('#modalmessage').text('Event Created');
+                var data = response.data.data;
+                // $('#calendar').fullCalendar('renderEvent', {
+                //     title: title,
+                //     start: start,
+                //     allDay: true
+                // });
+                // console.log(response.data.data);
+                // calendar.addEvent({
+                //     title: data.title,
+                //     start: data.start,
+                //     allDay: false
+                // });
+
+                window.location.reload();
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    });
 });
 
 /*===================================================================
@@ -126,5 +202,5 @@ document.addEventListener("DOMContentLoaded", function() {
     // init tooltip
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
-    })
+    });
 })

@@ -26,6 +26,10 @@ label {
         cursor: pointer;
     }
 }
+
+img {
+    max-width: 100%;
+}
 /* -------- Hide header where necessary -------- */
 .hide-header #site-header {
     display: none;

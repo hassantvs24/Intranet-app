@@ -13,13 +13,23 @@
                 </div>
             </div>
 
+            <div class="row mb-4">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                    </div>
+                @endif
+            </div>
+
             <div class="row">
                 <div class="col">
-                    <form action="#" method="post">
+                    <form action="{{ route('user-account-settings', app()->getLocale()) }}" method="post">
+                        @csrf
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="group_name">{{ __('Name') }}</label>
-                                <input type="text" class="form-control" id="group_name" name="group_name" placeholder="ex: Adam Levi" required>
+                                <input type="text" class="form-control" id="group_name" name="group_name" placeholder="ex: Adam Levi" required value="{{ $user->name }}">
                             </div>
                         </div>
 
@@ -34,21 +44,32 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="user_email">{{ __('User Email') }}</label>
-                                <input type="email" class="form-control" id="user_email" name="user_email" placeholder="email@domain.com" required>
+                                <input type="email" class="form-control" id="user_email" name="user_email" placeholder="email@domain.com" required value="{{ $user->email }}">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="user_phone_no">{{ __('User Phone') }}</label>
-                                <input type="tel" class="form-control" id="user_phone_no" name="user_phone_no" placeholder="+470156421" required>
+                                <input type="tel" class="form-control" id="user_phone_no" name="user_phone_no" placeholder="+470156421" required value="{{ $user->phone }}">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="user_language"> {{ __( 'Language' ) }} </label>
+                                <select name="user_language">
+                                    <option value=""></option>
+                                    <option value="en" @if( $user->language == 'en' ) {{ 'selected' }} @endif > {{ __( 'English' ) }}</option>
+                                    <option value="nor" @if( $user->language == 'nor' ) {{ 'selected' }} @endif >  {{ __( 'Norwegian' ) }}</option>
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="exampleFormControlTextarea1">{{ __('About / Bio') }}</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"> {{ $user->bio }} </textarea>
                             </div>
                         </div>
 

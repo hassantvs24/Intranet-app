@@ -132,15 +132,33 @@
                                 </ul>
                                 <div class="tab-content" id="inviteUsersTabContent">
                                     <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="old-users-tab">
-                                        <form action="" class="d-block">
-                                            <div class="input-group mt-4 pt-3">
+                                        <form action="{{route('group.user', app()->getLocale())}}" class="d-block" method="post">
+                                            @csrf
+                                            <div class="form-group row mb-0 input-group mt-4 pt-3">
                                                 <div class="input-group-prepend">
-                                            <span class="input-group-text bg-white border-right-0" id="search-icon">
-                                                <svg height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                                                    <path d="M21.45,20A11,11,0,1,0,20,21.45l8.26,8.26a1,1,0,0,0,1.41-1.41ZM4,13a9,9,0,1,1,9,9A9,9,0,0,1,4,13Z" data-name="Layer 2" fill="#999"></path></svg>
-                                            </span>
+                                                    <span class="input-group-text bg-white border-right-0" id="search-icon">
+                                                    <svg height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                                        <path d="M21.45,20A11,11,0,1,0,20,21.45l8.26,8.26a1,1,0,0,0,1.41-1.41ZM4,13a9,9,0,1,1,9,9A9,9,0,0,1,4,13Z" data-name="Layer 2" fill="#999"></path>
+                                                    </svg>
+                                                    </span>
                                                 </div>
-                                                <input type="search" class="form-control border-left-0" id="inputGroupFile01" aria-describedby="search-icon" placeholder="{{ __('search users') }}">
+                                                {{-- <input type="search" class="form-control border-left-0" id="inputGroupFile01" aria-describedby="search-icon" placeholder="{{ __('search users') }}"> --}}
+                                                <select name="searchuser" class="form-control border-left-0"  id="searchuser" required>
+                                                    <option value=""></option>
+                                                    @if( !@empty ( $gusers ) )
+                                                       @foreach ($gusers as $guser)
+                                                            <option value="{{ $guser->id }}"> {{ $guser->name }}  </option>
+                                                       @endforeach
+                                                    @endif
+                                                </select>
+                                            </div>
+                                            <div class="form-group row mb-0">
+                                                <div class="col-md-8 offset-md-4">
+                                                    <input type="hidden" name="group_ex_id" value="{{$group->id}}">
+                                                    <button type="submit" class="btn btn-primary btn-sm ls-1">
+                                                        {{ __('Add To Group') }}
+                                                    </button>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
@@ -192,4 +210,14 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    /*jQuery(document).ready(function($) {
+        $('#searchuser').select2({
+          // placeholder: 'Select an option'
+          placeholder: 'search users'
+        });
+    }); */
+
+</script>
 @endsection

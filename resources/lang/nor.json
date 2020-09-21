@@ -79,5 +79,17 @@
     "Select a group:": "Velg en gruppe:",
     "Select a group color:": "Velg en gruppefarge:",
     "view Active Groups": "se aktive grupper",
-    "Save changes": "Lagre endringer"
+    "Save changes": "Lagre endringer",
+    "Show All": "Vis alt",
+    "Before": "Før",
+    "After": "Etter",
+    "During": "Under",
+    "Close": "Lukk",
+    "Card content": "Kortinnhold",
+    "Card title": "Korttittel",
+    "Event Title": "Hendelsestittel",
+    "Event Description": "Arrangementsbeskrivelse",
+    "Events Start date": "Arrangementer Startdato",
+    "Events End date": "Arrangementer Sluttdato",
+    "Archive date": "Arkivdato"
 }

@@ -51394,37 +51394,16 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
  // import interactionPlugin from '@fullcalendar/interaction';
-// this data will come from backend
 
-var EVENTS = [{
-  id: "a",
-  title: "my event",
-  start: "2020-08-08"
-}, {
-  id: "b",
-  title: "my event2",
-  start: "2020-08-12"
-}, {
-  id: "c",
-  title: "my event2",
-  start: "2020-08-12"
-}, {
-  id: "d",
-  title: "cool event",
-  start: "2020-08-15"
-}, {
-  id: "e",
-  title: "Kekw 3",
-  start: "2020-08-15"
-}];
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
+  var board_id = $('#board_id').val();
 
   if (!!calendarEl) {
     var calendar = new _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__["Calendar"](calendarEl, {
       plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__["default"]],
       editable: false,
-      events: EVENTS,
+      events: "/api/eventsbyboard/".concat(board_id),
       headerToolbar: {
         left: "prev,next today",
         center: "title",

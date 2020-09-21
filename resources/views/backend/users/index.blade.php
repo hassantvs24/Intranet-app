@@ -20,7 +20,7 @@
 
         <div class="row mb-4 align-items-center align-content-center">
             <div class="col">
-                <form action="#" method="get">
+                <form action="{{ route('search-user', [ app()->getLocale() ] ) }}" method="get">
                     <div class="form-row">
                         <div class="col col-md-5">
                             <div class="input-group">
@@ -29,7 +29,7 @@
                                         <svg height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21.45,20A11,11,0,1,0,20,21.45l8.26,8.26a1,1,0,0,0,1.41-1.41ZM4,13a9,9,0,1,1,9,9A9,9,0,0,1,4,13Z" data-name="Layer 2" fill="#999"/></svg>
                                     </span>
                                 </div>
-                                <input type="search" class="form-control border-left-0" id="inputGroupFile01" aria-describedby="search-icon" placeholder="{{ __('Search') }}">
+                                <input type="search" class="form-control border-left-0" id="inputGroupFile01" aria-describedby="search-icon" placeholder="{{ __('Search') }}" name="search" value="@if( !empty( $_GET['search'] ) ) {{ $_GET['search'] }} @endif ">
                             </div>
                         </div>
                     </div>

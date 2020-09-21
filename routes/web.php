@@ -40,6 +40,9 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
 
     // Email sending routes
     Route::post('/send-email','MailController@new_mail')->name('email.send');
+    Route::get('/users/my-account', 'UserController@account_settings')->name('user-account-settings');
+    Route::post('/users/my-account', 'UserController@update_account_settings')->name('user-account-settings');
+    Route::get('/invite', ['middleware' => 'guest', 'uses' => 'InvitationController@invite'] )->name('invite-user');
 
     Route::middleware([ 'admin' ])->group(function () {
         // admin routes
@@ -52,7 +55,11 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         Route::get('/groups/edit/{id}', 'GroupsController@edit')->name('edit-group');
         Route::put('/groups/update/{id}', 'GroupsController@update')->name('update-group');
         Route::get('/group/show/{id}', 'GroupsController@show')->name('view-group');
-        Route::get('/invite', ['middleware' => 'guest', 'uses' => 'InvitationController@invite'] )->name('invite-user');
+        // Route::get('/invite', ['middleware' => 'guest', 'uses' => 'InvitationController@invite'] )->name('invite-user');
+        Route::get('/search-group/', 'GroupsController@search')->name('search-group');
+        Route::post('/groups/user', 'GroupsController@existinguser')->name('group.user');
+        Route::get('/search-group-archive/', 'GroupsController@searchArchive')->name('search-group-archive');
+
 
         // // Boards routes
         Route::get('/all-boards', 'BoardsController@index')->name('all-boards');
@@ -64,6 +71,9 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         Route::put('/update-board/{id}', 'BoardsController@update')->name('update-board');
         Route::delete('/delete-board/{id}', 'BoardsController@destroy')->name('delete-board');
         Route::get('/edit-infocards/board/{id}', 'BoardsController@info_cards')->name('edit-infocards');
+        Route::get('/search-board/', 'BoardsController@search')->name('search-board');
+        Route::get('/search-board-archive/', 'BoardsController@searchArchive')->name('search-board-archive');
+
 
         // // users routes
         Route::get('/all-users', 'UserController@index')->name('all-users');
@@ -74,8 +84,8 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         Route::get('/edit-user/{id}', 'UserController@edit')->name('edit-user');
         Route::put('/update-user/{id}', 'UserController@update')->name('update-user');
         Route::delete('/delete-user/{id}', 'UserController@destroy')->name('delete-user');
+        Route::get('/search-user/', 'UserController@search')->name('search-user');
         // // add user account settings route
-        Route::get('/users/my-account', 'UserController@account_settings')->name('user-account-settings');
 
         // // admins routes
         Route::get('/all-admins', 'GroupAdminsController@index')->name('all-admins');
@@ -86,6 +96,8 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         Route::get('/edit-admin/{id}', 'GroupAdminsController@edit')->name('edit-admin');
         Route::put('/update-admin/{id}', 'GroupAdminsController@update')->name('update-admin');
         Route::delete('/delete-admin/{id}', 'GroupAdminsController@destroy')->name('delete-admin');
+        Route::get('/search-admin/', 'GroupAdminsController@search')->name('search-admin');
+        Route::get('/search-admin-archive/', 'GroupAdminsController@searchArchive')->name('search-admin-archive');
         // add admin account settings route
         Route::get('/admin/my-account', 'GroupAdminsController@account_settings')->name('admin-account-settings');
         Route::post('/admin/my-account', 'GroupAdminsController@update_account_settings')->name('admin-account-settings');

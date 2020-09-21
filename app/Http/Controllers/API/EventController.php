@@ -16,19 +16,8 @@ class EventController extends BaseController
             return $this->sendError('Events not found.');
         }
 
-     $EVENTS = [
-        [
-            "id" => "a",
-            "title" => "my event",
-            "start" => "2020-08-08"
-        ],
-        [
-            "id" => "b",
-            "title" => "my event2",
-            "start" => "2020-09-12"
-        ]
-    ];
         return response()->json($events->toArray(), 200);
+
         return $this->sendResponse($events->toArray(), 'events retrieved successfully.');
     }
 
@@ -70,7 +59,9 @@ class EventController extends BaseController
         $event->start = $request->start_date;
         // $event->end_date   = $request->end_date;
         $event->end   = $request->end_date;
-        $event->details    = $request->details;
+        if( $request->details ) {
+            $event->details = $request->details;
+        }
         $event->save();
         if (is_null($event)) {
             return $this->sendError('Events can not be updated.');
@@ -81,7 +72,8 @@ class EventController extends BaseController
 
     public function destroy($id)
     {
-        $event =  Event::findOrFail($id)->delete();
+        $event =  Event::findOrFail($id);
+        $event->delete();
         return $this->sendResponse($event->toArray(), 'events deleted successfully.');
     }
 

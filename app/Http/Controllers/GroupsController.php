@@ -24,18 +24,18 @@ class GroupsController extends Controller
         $total_users = count(User::all());
         $total_admins = count(Admin::all());
 //        return dd($total_groups, $total_users, $total_admins);
-        return view('backend.dashboard', compact('total_groups', 'total_users', 'total_admins'));
+        return view('backend.dashboard', compact('total_groups','total_users', 'total_admins'));
     }
 
     public function index()
     {
-        $groups = Group::paginate(15);
+        $groups = Group::active(true)->paginate(15);
         return view('backend.groups.index', compact('groups'));
     }
 
     public function archived()
     {
-        $groups = Group::paginate(15);
+        $groups = Group::active(false)->paginate(15);
         return view('backend.groups.archive', compact('groups'));
     }
 
@@ -72,7 +72,8 @@ class GroupsController extends Controller
     {
         $group = Group::find($id);
         $users = $group->users;
-        return view('backend.groups.view',compact('group','users'));
+        $gusers = User::whereNull('group_id')->get();
+        return view('backend.groups.view',compact('group','users', 'gusers'));
     }
 
     public function edit( $language, $id)
@@ -95,8 +96,28 @@ class GroupsController extends Controller
         return redirect(route('all-groups',app()->getLocale() ))->with('status', 'Board successfully updated!');
     }
 
-    public function destroy($id)
+    public function destroy( $language, $id )
     {
-        //
+        $group = Group::find( $id );
+    }
+
+    public function search( Request $request ) {
+        $search = $request->get('search');
+        $groups = Group::active(true)->where('name','like', '%'.$search.'%')->paginate(15);
+        return view('backend.groups.index', compact('groups'));
+    }
+
+    public function searchArchive( Request $request ) {
+        $search = $request->get('search');
+        $groups = Group::Active(false)->where('name','like', '%'.$search.'%')->paginate(15);
+        return view('backend.groups.index', compact('groups'));
+    }
+
+    public function existinguser( Request $request ) {
+        $user = User::find( $request->searchuser );
+        $user->group_id = $request->group_ex_id;
+        $user->save();
+
+        return redirect()->route('view-group', [ app()->getLocale(), $request->group_ex_id ]);
     }
 }

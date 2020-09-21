@@ -25,7 +25,7 @@
 
             <div class="row">
                 <div class="col">
-                    <form action="{{ route('admin-account-settings', app()->getLocale()) }}" method="post">
+                    <form action="{{ route('admin-account-settings', app()->getLocale()) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-12">
@@ -39,6 +39,7 @@
                             <div class="form-group col-md-12">
                                 <label for="user_profile_image"> {{ __('Profile Image') }} </label>
                                 <input type="file" class="form-control-file" id="user_profile_image" name="user_profile_image">
+                                 {{-- <img id="userimage" src="#" alt="your image" /> --}}
                             </div>
                         </div>
 
@@ -101,4 +102,31 @@
         </div>
         {{-- END create group --}}
     </div>
+
+    <style>
+        #userimage{
+            max-width: 600px;
+            max-height: 200px;
+        }
+    </style>
+
+    <script>
+      /*  $(document).ready(function(){
+            function readURL(input) {
+              if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                  $('#userimage').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+              }
+            }
+
+            $("#user_profile_image").change(function() {
+              readURL(this);
+            });
+        }); */
+    </script>
 @endsection

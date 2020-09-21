@@ -7,6 +7,7 @@ use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
 use App\GroupAdmin;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class GroupAdminsController extends Controller
 {
@@ -18,13 +19,13 @@ class GroupAdminsController extends Controller
 
     public function index()
     {
-        $admins = GroupAdmin::paginate(15);
+        $admins = GroupAdmin::active(true)->paginate(15);
         return view('backend.admins.index', compact('admins'));
     }
 
     public function archived()
     {
-        $admins = GroupAdmin::paginate(15);
+        $admins = GroupAdmin::active(false)->paginate(15);
         return view('backend.admins.archive', compact( 'admins' ) );
     }
 
@@ -72,7 +73,7 @@ class GroupAdminsController extends Controller
         return view('backend.admins.edit', compact('admin'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $language,$id)
     {
         $admin = GroupAdmin::find($id);
         $admin->name = $request->name;
@@ -84,7 +85,7 @@ class GroupAdminsController extends Controller
             ->with('success', 'Admin updated successfully');
     }
 
-    public function destroy($id)
+    public function destroy($language, $id)
     {
         GroupAdmin::findOrFail($id)->delete();
 
@@ -100,6 +101,16 @@ class GroupAdminsController extends Controller
 
     public function update_account_settings( Request $request ) {
         $user = auth()->user();
+
+        // if ($request->hasFile('user_profile_image')) {
+        //     if ($request->file('user_profile_image')->isValid()) {
+        //         $name = time(). $request->user_profile_image->getClientOriginalName();
+        //         $request->user_profile_image->storeAs('/public', $name );
+        //         $url = Storage::url($name);
+        //         $user->avatar = $url;
+        //     }
+        // }
+
         $user->name = $request->group_name;
         $user->email = $request->user_email;
         $user->phone = $request->user_phone_no;
@@ -113,5 +124,19 @@ class GroupAdminsController extends Controller
         $user->save();
 
         return redirect()->route('admin-account-settings', app()->getLocale() )->with('success', 'Settings updated successfully');
+    }
+
+    public function search( Request $request ) {
+        $search = $request->get('search');
+        $admins = GroupAdmin::active(true)->where('name','like', '%'.$search.'%')->paginate(15);
+
+        return view('backend.admins.index', compact('admins'));
+    }
+
+    public function searchArchive( Request $request ) {
+        $search = $request->get('search');
+        $admins = GroupAdmin::active(false)->where('name','like', '%'.$search.'%')->paginate(15);
+
+        return view('backend.admins.index', compact('admins'));
     }
 }

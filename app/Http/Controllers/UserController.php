@@ -63,7 +63,6 @@ class UserController extends Controller
 
     public function update(Request $request, $language, $id )
     {
-        dd( $request );
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
@@ -74,7 +73,7 @@ class UserController extends Controller
             ->with('success', 'User updated successfully');
     }
 
-    public function destroy($id)
+    public function destroy($language,$id)
     {
         User::findOrFail($id)->delete();
 
@@ -84,6 +83,31 @@ class UserController extends Controller
 
     public function account_settings()
     {
-        return view('backend.users.account-settings');
+        $user = auth()->user();
+        return view('backend.users.account-settings', compact( 'user') );
+    }
+
+    public function update_account_settings( Request $request ) {
+        $user = auth()->user();
+        $user->name = $request->group_name;
+        $user->email = $request->user_email;
+        $user->phone = $request->user_phone_no;
+        $user->bio = $request->user_bio;
+        if( isset( $request->user_language ) ) {
+            $user->language = $request->user_language;
+            session()->put('language', $request->user_language );
+            app()->setLocale( $request->user_language );
+        }
+
+        $user->save();
+
+        return redirect()->route('user-account-settings', app()->getLocale() )->with('success', 'Settings updated successfully');
+    }
+
+    public function search( Request $request ) {
+        $search = $request->get('search');
+        $users = User::where('name','like', '%'.$search.'%')->paginate(15);
+
+        return view('backend.users.index', compact('users'));
     }
 }
