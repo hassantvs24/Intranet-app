@@ -25,8 +25,7 @@ class MailController extends Controller
 
         Mail::send('email.invitation', compact('data'), function ($message) {
             $message->from('admin@intranet.air', 'Intraner Air');
-
-            $message->to($this->toEmail)->cc('bar@example.com');
+            $message->to($this->toEmail);
         });
         return redirect()->route('all-groups', app()->getLocale() )
         ->with('success', 'User updated successfully');
