@@ -43,7 +43,7 @@
 
             <div class="col-md-7 right-col d-flex flex-wrap justify-content-center align-content-center align-items-center">
                 <div class="register-form">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register', app()->getLocale()) }}">
                         @csrf
 
                         <div class="form-group row">

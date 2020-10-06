@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-body,html {
-=======
 body,
 html {
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
     scroll-behavior: smooth;
 }
 label {
@@ -30,6 +26,10 @@ label {
         cursor: pointer;
     }
 }
+
+img {
+    max-width: 100%;
+}
 /* -------- Hide header where necessary -------- */
 .hide-header #site-header {
     display: none;
@@ -41,10 +41,6 @@ label {
 .page-title {
     text-transform: capitalize !important;
 }
-<<<<<<< HEAD
-=======
-
 .template {
     display: none;
 }
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a

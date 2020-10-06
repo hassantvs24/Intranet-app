@@ -20,7 +20,7 @@
                     </div>
                  @endif
                 <div class="col">
-                    <form action="{{ route('admin.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.store', app()->getLocale() ) }}" method="post" enctype="multipart/form-data">
                          @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -31,7 +31,7 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="user_profile_image">Profile Image</label>
+                                <label for="user_profile_image"> {{ __('Profile Image') }} </label>
                                 <input type="file" class="form-control-file" id="user_profile_image" name="avatar">
                             </div>
                         </div>

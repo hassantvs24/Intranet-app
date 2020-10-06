@@ -26,6 +26,11 @@ class CardController extends BaseController
         $card->board_id = $request->board_id;
         $card->card_type = $request->card_type;
         $card->is_visible = $request->is_visible;
+
+        if( $request->view_type ) {
+            $card->view_type = $request->view_type;
+        }
+
         $card->save();
         if (is_null($card)) {
             return $this->sendError('Cards not found.');
@@ -47,12 +52,31 @@ class CardController extends BaseController
     public function update(Request $request, $id)
     {
         $card = Card::find($id);
-        $card->title = $request->title;
+
+        if( $request->title ) {
+            $card->title = $request->title;
+        }
+
         $card->board_id = $request->board_id;
-        $card->card_type = $request->card_type;
-        $card->html_content = $request->html_content;
-//        $card->is_visible = $request->is_visible;
+
+        if( $request->card_type ) {
+            $card->card_type = $request->card_type;
+        }
+
+        if( $request->html_content ) {
+            $card->html_content = $request->html_content;
+        }
+
+        if( $request->is_visible ) {
+            $card->is_visible = $request->is_visible;
+        }
+
+        if( $request->view_type ) {
+            $card->view_type = $request->view_type;
+        }
+
         $card->save();
+
         if (is_null($card)) {
             return $this->sendError('Cards can not be updated.');
         }

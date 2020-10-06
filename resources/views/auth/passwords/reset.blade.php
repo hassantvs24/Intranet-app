@@ -15,7 +15,7 @@
 
                 <div class="col-md-7 right-col d-flex flex-wrap justify-content-center align-content-center align-items-center">
                     <div class="login-form">
-                        <form method="POST" action="{{ route('password.update') }}">
+                        <form method="POST" action="{{ route('password.update', app()->getLocale()) }}">
                             @csrf
 
                             <input type="hidden" name="token" value="{{ $token }}">

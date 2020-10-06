@@ -20,7 +20,7 @@
                 </div>
             @endif
             <div class="col">
-                <form action="{{ route('save-user') }}" method="post">
+                <form action="{{ route('save-user',app()->getLocale()) }}" method="post">
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">

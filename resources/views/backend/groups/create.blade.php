@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col">
-                <form action="{{ route('group.store') }}" method="post">
+                <form action="{{ route('group.store', app()->getLocale()) }}" method="post">
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -73,15 +73,29 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="group_start_date">{{ __('Start date') }}</label>
+                            <label for="group_start_date">{{ __('Events Start date') }}</label>
                             <input type="date" class="form-control" id="group_start_date" name="start_date" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="group_end_date">{{ __('End date') }}</label>
+                            <label for="group_end_date">{{ __('Events End date') }}</label>
                             <input type="date" class="form-control" id="group_end_date" name="end_date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="group_archive_start_date">{{ __('Start date') }}</label>
+                            <input type="date" class="form-control" id="group_archive_start_date" name="archive_start_date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="archive_group_end_date">{{ __('Archive date') }}</label>
+                            <input type="date" class="form-control" id="archive_group_end_date" name="archive_end_date" required>
                         </div>
                     </div>
 

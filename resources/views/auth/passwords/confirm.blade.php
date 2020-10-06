@@ -15,7 +15,7 @@
 
                 <div class="col-md-7 right-col d-flex flex-wrap justify-content-center align-content-center align-items-center">
                     <div class="login-form">
-                        <form method="POST" action="{{ route('password.confirm') }}">
+                        <form method="POST" action="{{ route('password.confirm', app()->getLocale() ) }}">
                             @csrf
 
                             <div class="form-group row">
@@ -39,7 +39,7 @@
                                     </button>
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="btn btn-link" href="{{ route('password.request', app()->getLocale() ) }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
                                     @endif

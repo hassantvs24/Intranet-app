@@ -11063,6 +11063,10 @@ label {
   cursor: pointer;
 }
 
+img {
+  max-width: 100%;
+}
+
 /* -------- Hide header where necessary -------- */
 
 .hide-header #site-header {
@@ -11079,13 +11083,10 @@ label {
   text-transform: capitalize !important;
 }
 
-<<<<<<< HEAD
-=======
 .template {
   display: none;
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .top-color-bar {
   height: 10px;
   display: block;
@@ -11143,8 +11144,6 @@ label {
   border-radius: 8px;
 }
 
-<<<<<<< HEAD
-=======
 #data-cards-wrap .card-header {
   margin-bottom: 20px;
 }
@@ -11159,7 +11158,62 @@ label {
   border-radius: 8px;
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
+.button-group.filter-button-group button {
+  border: none;
+  color: #fff;
+  background: #4d16dd;
+  padding: 10px 15px;
+  display: inline-block;
+  text-align: center;
+  min-width: 120px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+ul#filter {
+  float: left;
+  font-size: 16px;
+  list-style: none;
+  margin-left: 0;
+  width: 100%;
+}
+
+ul#filter li {
+  float: left;
+  line-height: 16px;
+  margin-right: 10px;
+  border: none;
+  color: #fff;
+  background: #4d16dd;
+  padding: 10px 15px;
+  display: inline-block;
+  text-align: center;
+  min-width: 120px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+ul#filter li:last-child {
+  border-right: none;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+ul#filter a {
+  color: #fff;
+  text-decoration: none;
+}
+
+ul#filter li.current a,
+ul#filter a:hover {
+  text-decoration: underline;
+}
+
+ul#filter li.current a {
+  color: #333;
+  font-weight: bold;
+}
+
 .btn {
   text-transform: capitalize;
   letter-spacing: 1px;
@@ -11170,8 +11224,6 @@ label {
   border-color: var(--color-one);
 }
 
-<<<<<<< HEAD
-=======
 .modal.right .modal-dialog {
   position: fixed;
   margin: auto;
@@ -11409,11 +11461,12 @@ label {
   }
 }
 
->>>>>>> 58c6d1bad231fc3d7814349d369bd9102e416d7a
 .login-page-wrap .left-col,
 .register-page-wrap .left-col {
   padding: 35px 15px;
-  background-image: url("/images/hero-bg.png");
+  background-image: url("/images/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
   z-index: 99;
   overflow: hidden;

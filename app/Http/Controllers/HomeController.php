@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -25,9 +26,27 @@ class HomeController extends Controller
     public function index()
     {
         $id    = auth()->user()->id;
-        $cards = User::find( $id )->cards()->get();
+        // $cards = User::find( $id )->cards()->get();
+        $group = auth()->user()->group;
+        // $cards = [];
 
-        return view( 'home', compact('cards') );
+        if( $group != Null ) {
+            $today     = Carbon::now();
+            $todayDate = $today->toDateString();
+
+            if( $todayDate >= $group->start_date &&  $todayDate <= $group->end_date ) {
+                $cards = User::find( $id )->cards()->ViewType('under')->Visible(true)->get();
+            } elseif( $todayDate >= $group->archive_start_date &&  $todayDate < $group->start_date ) {
+                $cards = User::find( $id )->cards()->ViewType('before')->Visible(true)->get();
+            } elseif( $todayDate <= $group->archive_end_date &&  $todayDate > $group->end_date ) {
+                $cards = User::find( $id )->cards()->ViewType('after')->Visible(true)->get();
+            }
+        } else {
+            $cards = [];
+        }
+
+
+        return view( 'home', compact('cards', 'group') );
     }
 
     public function invite_users()

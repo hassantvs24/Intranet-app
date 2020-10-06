@@ -16,17 +16,22 @@ class EventController extends BaseController
             return $this->sendError('Events not found.');
         }
 
+        return response()->json($events->toArray(), 200);
+
         return $this->sendResponse($events->toArray(), 'events retrieved successfully.');
     }
 
 
     public function store(Request $request)
     {
-        $event = new Event();
-        $event->title = $request->title;
-        $event->start_date = $request->start_date;
-        $event->end_date = $request->end_date;
-        $event->details = $request->details;
+        $event             = new Event();
+        $event->title      = $request->title;
+        $event->board_id   = $request->board_id;
+        // $event->start_date = $request->start_date;
+        $event->start = $request->start_date;
+        // $event->end_date   = $request->end_date;
+        $event->end  = $request->end_date;
+        $event->details    = $request->details;
         $event->save();
         if (is_null($event)) {
             return $this->sendError('Events not found.');
@@ -47,11 +52,16 @@ class EventController extends BaseController
 
     public function update(Request $request, $id)
     {
-        $event = Event::find($id);
-        $event->title = $request->title;
-        $event->start_date = $request->start_date;
-        $event->end_date = $request->end_date;
-        $event->details = $request->details;
+        $event             = Event::find($id);
+        $event->title      = $request->title;
+        $event->board_id   = $request->board_id;
+        // $event->start_date = $request->start_date;
+        $event->start = $request->start_date;
+        // $event->end_date   = $request->end_date;
+        $event->end   = $request->end_date;
+        if( $request->details ) {
+            $event->details = $request->details;
+        }
         $event->save();
         if (is_null($event)) {
             return $this->sendError('Events can not be updated.');
@@ -62,7 +72,14 @@ class EventController extends BaseController
 
     public function destroy($id)
     {
-        $event =  Event::findOrFail($id)->delete();
+        $event =  Event::findOrFail($id);
+        $event->delete();
         return $this->sendResponse($event->toArray(), 'events deleted successfully.');
+    }
+
+    public function eventbyBoard($board_id) {
+        $events = Event::where( 'board_id', $board_id )->get();
+
+        return response()->json($events->toArray(), 200);
     }
 }

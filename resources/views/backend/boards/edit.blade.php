@@ -14,7 +14,7 @@
 
             <div class="row">
                 <div class="col">
-                    <form action="{{ route('update-board', $board->id) }}" method="post">
+                    <form action="{{ route('update-board', [ app()->getLocale(), $board->id ] ) }}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="form-row">

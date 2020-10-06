@@ -16,7 +16,7 @@
 
         <div class="row">
             <div class="col">
-                <form action="{{ route('update-group',$group->id) }}" method="post">
+                <form action="{{ route('update-group', [ app()->getLocale(), $group->id ] ) }}" method="post">
                     @csrf
                     @method('PUT')
                     <div class="form-row">
@@ -75,14 +75,14 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="group_start_date">{{__('Start date')}} <span class="font-weight-light">( mm/dd/year )</span></label>
+                            <label for="group_start_date">{{__('Events Start date')}} <span class="font-weight-light">( mm/dd/year )</span></label>
                             <input type="date" class="form-control" id="group_start_date" name="start_date" value="{{$group->start_date}}" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="group_end_date">{{ __('End date spa') }}<span class="font-weight-light">( mm/dd/year )</span></label>
+                            <label for="group_end_date">{{ __('Events End date') }}<span class="font-weight-light">( mm/dd/year )</span></label>
                             <input type="date" class="form-control" id="end_date" name="end_date" value="{{$group->end_date}}" required>
                         </div>
                     </div>

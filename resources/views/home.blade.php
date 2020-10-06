@@ -20,18 +20,30 @@
         <!-- START data cards -->
         <div class="data-cards">
             <div class="row">
-                @if ( count( $cards ) > 1)
+                @if( !@empty ( auth()->user()->group->boards ) )
+                    <input type="hidden" name="board_id" id="board_id" value="{{ auth()->user()->group->boards->id }}" />
+                @endif
+
+                @if ( count( $cards ) > 0 )
                     @foreach ( $cards as $card )
-                        <div class="col col-md-4 my-4">
-                            <div class="card">
-                                <div class="card-header bg-color">
-                                    <h3 class="cart-title mb-0 txt-color"> {{ $card->title  }} </h3>
-                                </div>
-                                <div class="card-body">
-                                    {!! $card->html_content !!}
+                        @if ( $card->card_type == 'normal')
+                            <div class="col col-md-4 my-4">
+                        @elseif ( $card->card_type == 'calender')
+                            <div class="col col-md-12 my-12">
+                        @endif
+                                <div class="card">
+                                    <div class="card-header bg-color">
+                                        <h3 class="cart-title mb-0 txt-color"> {{ $card->title  }} </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        @if ( $card->card_type == 'normal')
+                                            {!! $card->html_content !!}
+                                        @elseif ( $card->card_type == 'calender')
+                                            <div id="calendar"></div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     @endforeach
                 @endif
                 <!-- START card -->
