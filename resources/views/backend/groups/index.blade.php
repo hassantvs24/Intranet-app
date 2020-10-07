@@ -60,7 +60,7 @@
                             </div>
                         </th>
                         <th scope="col" class="border-0">{{ __('Name') }}</th>
-                        <th scope="col" class="border-0">{{ __('Start date') }}</th>
+                        <th scope="col" class="border-0">{{ __('Email send out date') }}</th>
                         <th scope="col" class="border-0">{{ __('Events Start date') }}</th>
                         <th scope="col" class="border-0">{{ __('Events End date') }}</th>
                         <th scope="col" class="border-0">{{ __('Archive date') }}</th>
@@ -85,6 +85,10 @@
                         <td> {{ $group->archive_end_date }}</td>
                         <td> {{ $group->users()->count() }} </td>
                         <td class="cta-group-item">
+                            <a href="#" class="btn btn-outline-primary btn-sm" id="btn-view-group">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g data-name="Layer 3"><path d="M23.92,6.59H22V4.71a.5.5,0,0,0-.5-.5H18.34V2.86a2.35,2.35,0,0,0-4.71,0V4.21H10.42a.5.5,0,0,0-.5.5V6.59H8.08A2.87,2.87,0,0,0,5.21,9.46V28.62a2.87,2.87,0,0,0,2.87,2.87H23.92a2.87,2.87,0,0,0,2.87-2.87V9.46A2.87,2.87,0,0,0,23.92,6.59Zm-13-1.37h3.21a.5.5,0,0,0,.5-.5V2.86a1.35,1.35,0,0,1,2.71,0V4.71a.5.5,0,0,0,.5.5H21V8.85H10.92ZM25.79,28.62a1.87,1.87,0,0,1-1.87,1.87H8.08a1.87,1.87,0,0,1-1.87-1.87V9.46A1.87,1.87,0,0,1,8.08,7.59H9.92V9.35a.5.5,0,0,0,.5.5H21.55a.5.5,0,0,0,.5-.5V7.59h1.87a1.87,1.87,0,0,1,1.87,1.87Z"></path><path d="M10.2 14.67h5.23a.5.5 0 0 0 0-1H10.2a.5.5 0 0 0 0 1zM10.2 17.84h5.23a.5.5 0 0 0 0-1H10.2a.5.5 0 0 0 0 1zM21.55 20H10.2a.5.5 0 0 0 0 1H21.55a.5.5 0 0 0 0-1zM21.55 23.17H10.2a.5.5 0 1 0 0 1H21.55a.5.5 0 0 0 0-1zM21.55 26.34H10.2a.5.5 0 0 0 0 1H21.55a.5.5 0 0 0 0-1zM21.55 13.49H17.79a.5.5 0 0 0-.5.5v3.76a.5.5 0 0 0 .5.5h3.76a.5.5 0 0 0 .5-.5V14A.5.5 0 0 0 21.55 13.49zM21 17.25H18.29V14.49H21z"></path></g></svg>
+                            </a>
+
                             <a href="{{ route('view-group',[ app()->getLocale(), $group->id ]) }}" class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z" />
