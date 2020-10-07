@@ -15,6 +15,11 @@
 
         <div class="row">
             <div class="col">
+
+                <div class="text-left mb-5">
+                    <img src="{{asset('images/logo.png')}}">
+                </div>
+
                 <form action="{{ route('group.store', app()->getLocale()) }}" method="post">
                     @csrf
                     <div class="form-row">
@@ -73,8 +78,17 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
+                            <label for="group_archive_start_date">{{ __('User access date') }}</label>
+                            <input type="date" class="form-control" id="group_archive_start_date" name="archive_start_date" required>
+                            <small class="form-text text-muted">{{__('This is the date users will get the first access to the boards')}}</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
                             <label for="group_start_date">{{ __('Events Start date') }}</label>
                             <input type="date" class="form-control" id="group_start_date" name="start_date" required>
+                            <small class="form-text text-muted">{{__('This is the date the event starts')}}</small>
                         </div>
                     </div>
 
@@ -85,12 +99,7 @@
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="group_archive_start_date">{{ __('Start date') }}</label>
-                            <input type="date" class="form-control" id="group_archive_start_date" name="archive_start_date" required>
-                        </div>
-                    </div>
+
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
