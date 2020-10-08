@@ -77,7 +77,6 @@
     "Create Board": "Lag bord",
     "Create group": "Lag gruppe",
     "Select a group:": "Velg en gruppe:",
-    "Select a group color:": "Velg en gruppefarge:",
     "view Active Groups": "se aktive grupper",
     "Save changes": "Lagre endringer",
     "Show All": "Vis alt",
@@ -91,5 +90,7 @@
     "Event Description": "Arrangementsbeskrivelse",
     "Events Start date": "Arrangementer Startdato",
     "Events End date": "Arrangementer Sluttdato",
-    "Archive date": "Arkivdato"
+    "Archive date": "Arkivdato",
+    "Preview": "Forhåndsvisning",
+    "Edit": "Redigere"
 }

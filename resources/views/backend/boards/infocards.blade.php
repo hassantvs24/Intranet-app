@@ -3,7 +3,7 @@
 @section('title', 'Edit InfoCards')
 
 @section('admin-content')
-    <div class="container">
+    <div class="container-flued">
 
         <ul id="filter">
             <li class="current"><a href="#" data-filter="*"> {{ __('Show All') }} </a></li>
@@ -96,6 +96,28 @@
             </div>
         </div>
     </div>
+
+
+
+    <div class="modal fade" id="dataPreviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Close') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- ============= END template for editing cards - modal ============= --}}
 
     {{-- <div id="csrftoken">@csrf</div> --}}
@@ -678,7 +700,7 @@
                             <div class="card-header bg-color">
                                 <h3 class="cart-title mb-0 txt-color">${card.title}</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="height: 300px; overflow-y: auto;" >
                                 ${card.html_content}
                             </div>
 
@@ -689,18 +711,54 @@
                                         data-toggle="modal" data-target="#dataEditModal">
                                         {{ __('Edit') }}
                                     </button>
-                                </div>
 
-                                <div class="custom-control custom-switch d-inline-block ml-auto">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch-${card.id}" name="is_visible" ${visibility}>
+                                    <button class="btn btn-outline-primary btn-sm d-inline-block btn-preview-card" data-card-type="normal"
+                                        data-card-title="${card.title}" data-board-id="${card.board_id}"
+                                        data-toggle="modal" data-target="#dataPreviewModal">
+                                        {{ __('Preview') }}
+                                    </button>
+                </div>
+
+                <div class="custom-control custom-switch d-inline-block ml-auto">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch-${card.id}" name="is_visible" ${visibility}>
                                     <label class="custom-control-label card-visibility" data-visibility="${card.id}" for="customSwitch-${card.id}">{{ __('Visibility') }}</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 `
-                data_cards_wrap.append(card_html)
+                data_cards_wrap.append(card_html);
+                preview_modal_data();
             }
+
+            /**
+             * Preview Data on modal
+             * */
+            function preview_modal_data() {
+                $('.btn-preview-card').click(function () {
+                    var card_title = $(this).data('card-title');
+                    var htm_con = $(this).parent().parent().siblings('.card-body').html();
+
+                    $('#dataPreviewModal').find('.modal-title').html(card_title);
+                    $('#dataPreviewModal').find('.modal-body').html(htm_con);
+
+
+                    /*   <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>*/
+                    //alert(card_title);
+
+                });
+            }
+            /**
+             * /Preview Data on modal
+             * */
+
             // function to create calender card & insert to dom
             function create_calender_card_and_insert_to_dom(card) {
                 let card_html = `
@@ -740,6 +798,7 @@
                 common dom items or variables
             --------------------------------------------*/
             const data_modal = $("#dataEditModal")
+
 
             /*--------------------------------------------
                 Initalize text editor
@@ -900,6 +959,9 @@
             //         // location.reload(true);
             //     })
             // });
+
+
+
         });
 
 
