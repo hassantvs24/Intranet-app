@@ -648,6 +648,7 @@
                     "view_type": "under"
                 },
             ];
+            var card_info_init = [];
             // try to fetch cards
             axios.get('/api/cards/?board_id='+ board_id)
             .then(function (response) {
@@ -667,7 +668,7 @@
                 demo_card_data.map(card => {
                     axios.post('/api/cards', card)
                     .then(function (response) {
-                        // console.log(response.data.data);
+                         //console.log(response.data.data);
                         check_card_type_and_insert_dom(response.data.data)
                     })
                     .catch(function (error) {
@@ -685,6 +686,7 @@
                 })
             }
             function check_card_type_and_insert_dom(card) {
+
                 if (card.card_type === 'normal') {
                     create_normal_card_and_insert_to_dom(card)
                 } else if (card.card_type === 'calender') {
@@ -694,15 +696,17 @@
             // function to create normal card & insert to dom
             function create_normal_card_and_insert_to_dom(card) {
                 let visibility = parseInt(card.is_visible) === 1 ? "checked" : ""
+                let contents = card.html_content.replace(/(<([^>]+)>)/gi, "");
                 let card_html = `
                     <div class="col col-md-4 my-4 grid-item active ${card.view_type}" id="template-card-${card.id}" data-category="${card.view_type}">
                         <div class="card">
                             <div class="card-header bg-color">
                                 <h3 class="cart-title mb-0 txt-color">${card.title}</h3>
                             </div>
-                            <div class="card-body" style="height: 300px; overflow-y: auto;" >
-                                ${card.html_content}
+                            <div class="card-body" style="height: 200px; overflow-y: auto;" >
+                                ${contents.substring(0,500)} <a class="view_more" href="#" title="view more">...</a>
                             </div>
+
 
                             <div class="card-footer mt-3 border-0 rounded-lg d-flex align-items-center">
                                 <div class="d-inline-block">
@@ -712,8 +716,10 @@
                                         {{ __('Edit') }}
                                     </button>
 
+                                    <div class="html_contents" style="position: absolute; left: -9999px; visibility:hidden; display:none;">${card.html_content}</div>
+
                                     <button class="btn btn-outline-primary btn-sm d-inline-block btn-preview-card" data-card-type="normal"
-                                        data-card-title="${card.title}" data-board-id="${card.board_id}"
+                                        data-card-title="${card.title}"  data-card-id="${card.id}" data-board-id="${card.board_id}"
                                         data-toggle="modal" data-target="#dataPreviewModal">
                                         {{ __('Preview') }}
                                     </button>
@@ -736,25 +742,24 @@
              * ----------------------
              * */
             function preview_modal_data() {
+
+                $('.view_more').click(function (e) {
+                    e.preventDefault();
+                    $(this).parent().next().find('.btn-preview-card').trigger('click');
+                });
+
                 $('.btn-preview-card').click(function () {
+                    
                     var card_title = $(this).data('card-title');
-                    var htm_con = $(this).parent().parent().siblings('.card-body').html();
+                    var htm_con = $(this).siblings('.html_contents').html();
+
 
                     $('#dataPreviewModal').find('.modal-title').html(card_title);
                     $('#dataPreviewModal').find('.modal-body').html(htm_con);
 
-
-                    /*   <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>*/
-                    //alert(card_title);
-
                 });
+
+                return false;
             }
             /**----------------------
              * /Preview Data on modal
