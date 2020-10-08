@@ -53,4 +53,16 @@ class HomeController extends Controller
     {
         return view('admin.invite-users');
     }
+
+
+    /**
+     * Created by nazmul
+     */
+    public function creation(){
+        return view('creation');
+    }
+
+    /**
+     * Created by nazmul
+     */
 }

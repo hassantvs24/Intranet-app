@@ -704,7 +704,7 @@
                                 <h3 class="cart-title mb-0 txt-color">${card.title}</h3>
                             </div>
                             <div class="card-body" style="height: 200px; overflow-y: auto;" >
-                                ${contents.substring(0,500)} <a class="view_more" href="#" title="view more">...</a>
+                                ${contents.substring(0,300)} <a class="view_more" href="#" title="view more">...</a>
                             </div>
 
 
@@ -749,7 +749,7 @@
                 });
 
                 $('.btn-preview-card').click(function () {
-                    
+
                     var card_title = $(this).data('card-title');
                     var htm_con = $(this).siblings('.html_contents').html();
 

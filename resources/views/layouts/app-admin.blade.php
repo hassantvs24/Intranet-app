@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+
+    @yield('script')
+
 </head>
 <body class="@yield('body-class')">
     <div class="admin-wrapper d-flex flex-wrap">

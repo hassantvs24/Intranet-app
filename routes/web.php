@@ -30,6 +30,8 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
     // default page -> dashboard / login
     Route::get('/', 'HomeController@index');
 
+    Route::get('/creation', 'HomeController@creation')->name('creation');
+
     Auth::routes(['verify' => true]);
 
     Route::get('/home', 'HomeController@index')->name('home');
@@ -46,6 +48,7 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
 
     Route::middleware([ 'admin' ])->group(function () {
         // admin routes
+
         Route::get('/dashboard', 'GroupsController@home')->name('admin-home');
 
         Route::get('/all-groups', 'GroupsController@index')->name('all-groups');

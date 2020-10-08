@@ -92,5 +92,12 @@
     "Events End date": "Arrangementer Sluttdato",
     "Archive date": "Arkivdato",
     "Preview": "Forhåndsvisning",
-    "Edit": "Redigere"
+    "Edit": "Redigere",
+    "Group creation" : "Gruppeopprettelse",
+    "Invite users" : "Inviter brukere",
+    "Add group" : "Legg til gruppe",
+    "Add admin" : "Legg til administrator",
+    "Next" : "Neste",
+    "Back" : "Tilbake",
+    "Submit" : "Sende inn"
 }
