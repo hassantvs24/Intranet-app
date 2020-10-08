@@ -1,4 +1,4 @@
-@extends('layouts.app-admin')
+@extends('layouts.app-creation')
 @section('title', 'Welcome')
 @section('body-class', 'bg-light')
 
@@ -7,7 +7,7 @@
         <div class="container-fluid">
 
             <div class="row">
-                <div class="col-6 m-4">
+                <div class="col m-4">
                     <h3 class="text-center">{{__('Group creation')}}</h3>
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
