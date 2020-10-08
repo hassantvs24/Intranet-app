@@ -717,7 +717,7 @@
                                         data-toggle="modal" data-target="#dataPreviewModal">
                                         {{ __('Preview') }}
                                     </button>
-                </div>
+                            </div>
 
                 <div class="custom-control custom-switch d-inline-block ml-auto">
                     <input type="checkbox" class="custom-control-input" id="customSwitch-${card.id}" name="is_visible" ${visibility}>
@@ -731,8 +731,9 @@
                 preview_modal_data();
             }
 
-            /**
+            /**----------------------
              * Preview Data on modal
+             * ----------------------
              * */
             function preview_modal_data() {
                 $('.btn-preview-card').click(function () {
@@ -755,8 +756,9 @@
 
                 });
             }
-            /**
+            /**----------------------
              * /Preview Data on modal
+             * ----------------------
              * */
 
             // function to create calender card & insert to dom
