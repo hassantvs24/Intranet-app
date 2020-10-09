@@ -18,6 +18,7 @@
                         </div>
                     </nav>
                     <form id="form_cr" action="#" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-creat_group" role="tabpanel" aria-labelledby="nav-home-tab">
 
