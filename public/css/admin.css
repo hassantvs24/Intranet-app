@@ -2284,11 +2284,6 @@ pre code {
   opacity: 1;
 }
 
-.form-control::-ms-input-placeholder {
-  color: #6c757d;
-  opacity: 1;
-}
-
 .form-control::placeholder {
   color: #6c757d;
   opacity: 1;
@@ -11660,6 +11655,26 @@ ul#filter li.current a {
   height: 20px;
   width: 20px;
   border-radius: 50%;
+}
+
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  margin-top: 100px;
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
 }
 
 .animation-overlay {

@@ -9,7 +9,7 @@
 
                 <div class="col-3">
                     <div class="card card--dashboard shadow-sm">
-                        <h3>{{ __('Total Active Groups') }}</h3>
+                        <h3 class=" title_cap">{{ __('Total active groups') }}</h3>
                         <h3 class="display-3 my-3 text-primary">{{ $total_groups }}</h3>
                         <div class="card--dashboard__links">
                             <a href="{{ route('all-groups', app()->getLocale() ) }}" class="btn-link font-weight-light">{{ __('View All') }}</a>
@@ -21,7 +21,7 @@
 
                 <div class="col-3">
                     <div class="card card--dashboard shadow-sm">
-                        <h3>{{ __('Total Active Users') }}</h3>
+                        <h3 class=" title_cap">{{ __('Total active users') }}</h3>
                         <h3 class="display-3 my-3">{{ $total_users }}</h3>
                         <div class="card--dashboard__links">
                             <a href="{{ route('all-users', app()->getLocale() ) }}" class="btn-link font-weight-light">{{ __('View All') }}</a>
@@ -33,7 +33,7 @@
 
                 <div class="col-3">
                     <div class="card card--dashboard shadow-sm">
-                        <h3>{{ __('Total Admins') }}</h3>
+                        <h3 class=" title_cap">{{ __('Total admins') }}</h3>
                         <h3 class="display-3 my-3">{{ $total_admins }}</h3>
                         <div class="card--dashboard__links">
                             <a href="{{ route('all-admins', app()->getLocale() ) }}" class="btn-link font-weight-light">{{ __('View All') }}</a>

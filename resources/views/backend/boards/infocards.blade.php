@@ -3,7 +3,7 @@
 @section('title', 'Edit InfoCards')
 
 @section('admin-content')
-    <div class="container">
+    <div class="container-flued">
 
         <ul id="filter">
             <li class="current"><a href="#" data-filter="*"> {{ __('Show All') }} </a></li>
@@ -96,6 +96,28 @@
             </div>
         </div>
     </div>
+
+
+
+    <div class="modal fade" id="dataPreviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Close') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- ============= END template for editing cards - modal ============= --}}
 
     {{-- <div id="csrftoken">@csrf</div> --}}
@@ -626,6 +648,7 @@
                     "view_type": "under"
                 },
             ];
+            var card_info_init = [];
             // try to fetch cards
             axios.get('/api/cards/?board_id='+ board_id)
             .then(function (response) {
@@ -645,7 +668,7 @@
                 demo_card_data.map(card => {
                     axios.post('/api/cards', card)
                     .then(function (response) {
-                        // console.log(response.data.data);
+                         //console.log(response.data.data);
                         check_card_type_and_insert_dom(response.data.data)
                     })
                     .catch(function (error) {
@@ -663,6 +686,7 @@
                 })
             }
             function check_card_type_and_insert_dom(card) {
+
                 if (card.card_type === 'normal') {
                     create_normal_card_and_insert_to_dom(card)
                 } else if (card.card_type === 'calender') {
@@ -672,15 +696,17 @@
             // function to create normal card & insert to dom
             function create_normal_card_and_insert_to_dom(card) {
                 let visibility = parseInt(card.is_visible) === 1 ? "checked" : ""
+                let contents = card.html_content.replace(/(<([^>]+)>)/gi, "");
                 let card_html = `
                     <div class="col col-md-4 my-4 grid-item active ${card.view_type}" id="template-card-${card.id}" data-category="${card.view_type}">
                         <div class="card">
                             <div class="card-header bg-color">
                                 <h3 class="cart-title mb-0 txt-color">${card.title}</h3>
                             </div>
-                            <div class="card-body">
-                                ${card.html_content}
+                            <div class="card-body" style="height: 200px; overflow-y: auto;" >
+                                ${contents.substring(0,300)} <a class="view_more" href="#" title="view more">...</a>
                             </div>
+
 
                             <div class="card-footer mt-3 border-0 rounded-lg d-flex align-items-center">
                                 <div class="d-inline-block">
@@ -689,18 +715,57 @@
                                         data-toggle="modal" data-target="#dataEditModal">
                                         {{ __('Edit') }}
                                     </button>
-                                </div>
 
-                                <div class="custom-control custom-switch d-inline-block ml-auto">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch-${card.id}" name="is_visible" ${visibility}>
+                                    <div class="html_contents" style="position: absolute; left: -9999px; visibility:hidden; display:none;">${card.html_content}</div>
+
+                                    <button class="btn btn-outline-primary btn-sm d-inline-block btn-preview-card" data-card-type="normal"
+                                        data-card-title="${card.title}"  data-card-id="${card.id}" data-board-id="${card.board_id}"
+                                        data-toggle="modal" data-target="#dataPreviewModal">
+                                        {{ __('Preview') }}
+                                    </button>
+                            </div>
+
+                <div class="custom-control custom-switch d-inline-block ml-auto">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch-${card.id}" name="is_visible" ${visibility}>
                                     <label class="custom-control-label card-visibility" data-visibility="${card.id}" for="customSwitch-${card.id}">{{ __('Visibility') }}</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 `
-                data_cards_wrap.append(card_html)
+                data_cards_wrap.append(card_html);
+                preview_modal_data();
             }
+
+            /**----------------------
+             * Preview Data on modal
+             * ----------------------
+             * */
+            function preview_modal_data() {
+
+                $('.view_more').click(function (e) {
+                    e.preventDefault();
+                    $(this).parent().next().find('.btn-preview-card').trigger('click');
+                });
+
+                $('.btn-preview-card').click(function () {
+
+                    var card_title = $(this).data('card-title');
+                    var htm_con = $(this).siblings('.html_contents').html();
+
+
+                    $('#dataPreviewModal').find('.modal-title').html(card_title);
+                    $('#dataPreviewModal').find('.modal-body').html(htm_con);
+
+                });
+
+                return false;
+            }
+            /**----------------------
+             * /Preview Data on modal
+             * ----------------------
+             * */
+
             // function to create calender card & insert to dom
             function create_calender_card_and_insert_to_dom(card) {
                 let card_html = `
@@ -740,6 +805,7 @@
                 common dom items or variables
             --------------------------------------------*/
             const data_modal = $("#dataEditModal")
+
 
             /*--------------------------------------------
                 Initalize text editor
@@ -900,6 +966,9 @@
             //         // location.reload(true);
             //     })
             // });
+
+
+
         });
 
 

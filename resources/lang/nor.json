@@ -67,7 +67,7 @@
     "Account Settings": "Kontoinnstillinger",
     "Phone No.": "Telefonnr.",
     "view archived boards": "se arkiverte tavler",
-    "Edit board data": "Rediger tavleda,ta",
+    "Edit board data": "Rediger tavledata",
     "Edit Board": "Koblet gruppe",
     "Linked Group": "Koblet gruppe",
     "Boards": "Tavler",
@@ -77,7 +77,6 @@
     "Create Board": "Lag bord",
     "Create group": "Lag gruppe",
     "Select a group:": "Velg en gruppe:",
-    "Select a group color:": "Velg en gruppefarge:",
     "view Active Groups": "se aktive grupper",
     "Save changes": "Lagre endringer",
     "Show All": "Vis alt",
@@ -91,5 +90,14 @@
     "Event Description": "Arrangementsbeskrivelse",
     "Events Start date": "Arrangementer Startdato",
     "Events End date": "Arrangementer Sluttdato",
-    "Archive date": "Arkivdato"
+    "Archive date": "Arkivdato",
+    "Preview": "Forhåndsvisning",
+    "Edit": "Redigere",
+    "Group creation" : "Gruppeopprettelse",
+    "Invite users" : "Inviter brukere",
+    "Add group" : "Legg til gruppe",
+    "Add admin" : "Legg til administrator",
+    "Next" : "Neste",
+    "Back" : "Tilbake",
+    "Submit" : "Sende inn"
 }

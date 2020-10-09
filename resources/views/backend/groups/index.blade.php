@@ -65,6 +65,7 @@
                         <th scope="col" class="border-0">{{ __('Events End date') }}</th>
                         <th scope="col" class="border-0">{{ __('Archive date') }}</th>
                         <th scope="col" class="border-0">{{ __('Members') }}</th>
+                        <th scope="col" class="border-0">{{ __('Add Board') }}</th>
                         <th scope="col" class="border-0">&nbsp;</th>
                     </tr>
                 </thead>
@@ -84,6 +85,7 @@
                         <td> {{ $group->archive_start_date }}</td>
                         <td> {{ $group->archive_end_date }}</td>
                         <td> {{ $group->users()->count() }} </td>
+                        <td><a href="#" data-toggle="modal" data-target="#add_board_option">Add Board</a></td>
                         <td class="cta-group-item">
                             <a href="{{ route('view-group',[ app()->getLocale(), $group->id ]) }}" class="btn btn-outline-primary btn-sm" id="btn-view-group">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -129,5 +131,25 @@
             <a href="{{ route('archived-groups', app()->getLocale() ) }}" class="btn btn-warning">{{__('Archived Groups')}}</a>
         </div>
     </div>
+
+        <!--Add Board Lightbox-->
+        <div class="row">
+            <div class="col">
+
+                <div id="add_board_option" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content p-2">
+                            Add Board Light Box
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--/Add Board Lightbox-->
+
+
 </div>
+
+
 @endsection

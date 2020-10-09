@@ -34,6 +34,10 @@
                         <form method="POST" action="{{ route('login',app()->getLocale()) }}">
                             @csrf
 
+                            <div class="text-center mb-5">
+                                <img src="{{asset('images/logo.png')}}">
+                            </div>
+
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
