@@ -63,6 +63,10 @@ class HomeController extends Controller
         return view('creation');
     }
 
+    public function creation_save(Request $request){
+        dd($request->all());
+    }
+
     /**
      * Created by nazmul
      */

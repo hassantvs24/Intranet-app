@@ -837,7 +837,7 @@
                 let card_type = $(this).attr('data-card-type')
                 let card_id = $(this).attr('data-card-id')
                 let board_id = $(this).attr('data-board-id')
-                let markupStr = $(this).parent().parent().siblings('.card-body').html()
+                let markupStr = $(this).siblings('.html_contents').html();//$(this).parent().parent().siblings('.card-body').html()
 
                 if (card_type === 'normal') {
                     modal_save_btn.attr('data-card-title', card_title)

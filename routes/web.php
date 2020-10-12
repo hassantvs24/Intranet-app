@@ -30,6 +30,7 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
     // default page -> dashboard / login
     Route::get('/', 'HomeController@index');
 
+    Route::post('/creation', 'HomeController@creation_save')->name('creation-save');
     Route::get('/creation', 'HomeController@creation')->name('creation');
 
     Auth::routes(['verify' => true]);
