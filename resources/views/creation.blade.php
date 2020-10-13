@@ -5,6 +5,28 @@
 @section('admin-content')
     <div class="group-create-wrap">
         <div class="container">
+            <div class="row">
+                <div class="col mt-3">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if(session()->has('status'))
+                        <div class="alert {{session()->get('alert')}} alert-dismissible fade show" role="alert">
+                            {{ session()->get('status') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col m-4">
@@ -31,8 +53,8 @@
 
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
-                                                        <label for="group_name">{{ __('Name') }}</label>
-                                                        <input type="text" class="form-control" id="group_name" name="name" placeholder="Group Name" required>
+                                                        <label for="group_name">{{ __('Group name') }}</label>
+                                                        <input type="text" class="form-control" id="group_name" name="name" value="{{ old('name') }}" placeholder="{{ __('Group name') }}" required>
                                                     </div>
                                                 </div>
 
@@ -86,7 +108,7 @@
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="group_archive_start_date">{{ __('User access date') }}</label>
-                                                        <input type="date" class="form-control" id="group_archive_start_date" name="archive_start_date" required>
+                                                        <input type="date" class="form-control" id="group_archive_start_date"  value="{{ old('archive_start_date') }}" name="archive_start_date" required>
                                                         <small class="form-text text-muted">{{__('This is the date users will get the first access to the boards')}}</small>
                                                     </div>
                                                 </div>
@@ -98,7 +120,7 @@
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="group_start_date">{{ __('Events Start date') }}</label>
-                                                        <input type="date" class="form-control" id="group_start_date" name="start_date" required>
+                                                        <input type="date" class="form-control" id="group_start_date" value="{{ old('start_date') }}" name="start_date" required>
                                                         <small class="form-text text-muted">{{__('This is the date the event starts')}}</small>
                                                     </div>
                                                 </div>
@@ -106,14 +128,14 @@
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="group_end_date">{{ __('Events End date') }}</label>
-                                                        <input type="date" class="form-control" id="group_end_date" name="end_date" required>
+                                                        <input type="date" class="form-control" id="group_end_date" value="{{ old('end_date') }}" name="end_date" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="archive_group_end_date">{{ __('Archive date') }}</label>
-                                                        <input type="date" class="form-control" id="archive_group_end_date" name="archive_end_date" required>
+                                                        <input type="date" class="form-control" id="archive_group_end_date" value="{{ old('archive_end_date') }}" name="archive_end_date" required>
                                                     </div>
                                                 </div>
 
@@ -137,10 +159,22 @@
                                             <div class="col-md-6">
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
-                                                        <label for="board_name">{{ __('Name') }}</label>
-                                                        <input type="text" class="form-control" id="board_name" placeholder="Board Name" name="board_name">
+                                                        <label for="board_name">{{ __('Add new board name') }}</label>
+                                                        <input type="text" class="form-control" id="board_name" placeholder="{{ __('Board name') }}" value="{{ old('board_name') }}" name="board_name">
                                                     </div>
                                                 </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+{{--                                                <p class="text-info"><b>{{ __('Or Select Board') }}</b></p>--}}
+{{--                                                @foreach($board as $row)--}}
+{{--                                                    <div class="form-check">--}}
+{{--                                                        <input class="form-check-input" type="checkbox" name="board_id" value="{{$row->id}}" id="defaultCheck1{{$row->id}}">--}}
+{{--                                                        <label class="form-check-label" for="defaultCheck1{{$row->id}}">--}}
+{{--                                                            Default checkbox--}}
+{{--                                                        </label>--}}
+{{--                                                    </div>--}}
+{{--                                                @endforeach--}}
                                             </div>
                                         </div>
 
@@ -161,8 +195,8 @@
                                             <div class="col-md-6">
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
-                                                        <label for="admin_name">{{ __('Name') }}</label>
-                                                        <input type="text" class="form-control" id="admin_name" name="admin_name" placeholder="ex: Adam Levi" required>
+                                                        <label for="admin_name">{{ __('Admin name') }}</label>
+                                                        <input type="text" class="form-control" id="admin_name" value="{{ old('admin_name') }}" name="admin_name" placeholder="ex: Adam Levi" required>
                                                     </div>
                                                 </div>
 
@@ -176,7 +210,7 @@
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="user_email">{{ __('Email') }}</label>
-                                                        <input type="email" class="form-control" id="user_email" name="email" placeholder="email@domain.com" required>
+                                                        <input type="email" class="form-control" id="user_email" value="{{ old('email') }}" name="email" placeholder="email@domain.com" required>
                                                     </div>
                                                 </div>
 
@@ -186,14 +220,14 @@
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="user_phone_no">{{ __('Phone') }}</label>
-                                                        <input type="tel" class="form-control" id="user_phone_no" name="phone" placeholder="+470156421" required>
+                                                        <input type="tel" class="form-control" id="user_phone_no" value="{{ old('phone') }}" name="phone" placeholder="+470156421" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="exampleFormControlTextarea1">{{ __('About / Bio') }}</label>
-                                                        <textarea class="form-control" name="bio" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                        <textarea class="form-control" name="bio" id="exampleFormControlTextarea1" rows="3">{{ old('bio') }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -217,8 +251,8 @@
                                             <div class="col-md-6">
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
-                                                        <label for="invite_user">{{ __('Email') }}</label>
-                                                        <input type="email" class="form-control" id="invite_user" name="invite_user_email" placeholder="email@domain.com">
+                                                        <label for="invite_user">{{ __('User email') }}</label>
+                                                        <input type="email" class="form-control" id="invite_user" value="{{ old('invite_user_email') }}" name="invite_user_email" placeholder="email@domain.com">
                                                     </div>
                                                 </div>
                                             </div>
@@ -253,5 +287,6 @@
         next_to_invite = () => $('#nav-invite_users-tab').trigger('click');
         back_to_admin = () => $('#nav-add_admin-tab').trigger('click');
        // send_data = () => $('#form_cr').submit();
+
     </script>
 @endsection

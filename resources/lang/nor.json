@@ -99,5 +99,12 @@
     "Add admin" : "Legg til administrator",
     "Next" : "Neste",
     "Back" : "Tilbake",
-    "Submit" : "Sende inn"
+    "Submit" : "Sende inn",
+    "Group name" : "Gruppenavn",
+    "Board name" : "Styrets navn",
+    "Admin name" : "Administratornavn",
+    "User email" : "Bruker-e-post",
+    "Add new board name" : "Legg til nytt tavlens navn",
+    "Or Select Board" : "Eller velg brett"
+
 }
