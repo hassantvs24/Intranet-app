@@ -33,6 +33,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
     {
         $id    = auth()->user()->id;
@@ -55,7 +56,6 @@ class HomeController extends Controller
             $cards = [];
         }
 
-       // dd($cards);
 
         return view( 'home', compact('cards', 'group') );
     }

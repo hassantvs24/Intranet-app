@@ -15,11 +15,14 @@ class CreateGroupAdminsTable extends Migration
     {
         Schema::create('group_admins', function (Blueprint $table) {
             $table->id();
-            $table->string('name',100);
+            $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->string('avatar')->nullable();
             $table->text('bio')->nullable();
+            $table->boolean('status')->default(1);
+            $table->foreignId('users_id')->nullable()->constrained()->onDelete('CASCADE')->onUpdate('No Action');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

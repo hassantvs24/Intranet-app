@@ -30,6 +30,8 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('images/logo.png') }}" height="35" alt="">
                 </a>
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -53,12 +55,38 @@
                                 </li>
                             @endif
                         @else
+
+                            <div class="collapse navbar-collapse">
+                                <ul class="navbar-nav ml-auto">
+                                    @foreach ( config('app.languages' ) as $locale )
+                                        <li class="nav-item">
+                                            {{-- {{ dd(Route::currentRouteName()) }} --}}
+                                            {{-- {{ dd( Request::segment(4)  )}} --}}
+                                            @php
+                                                if( in_array( Route::currentRouteName(), [ 'edit-infocards', 'view-group', 'edit-group' ] ) ) {
+                                                    $segment = Request::segment(4);
+                                                } else{
+                                                    $segment = Request::segment(3);
+                                                }
+                                            @endphp
+
+
+                                            <a class="nav-link"
+                                               href="{{ route( Route::currentRouteName(), [ $locale, $segment ] ) }}"
+                                               @if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
+                                            {{-- <li><a href="{{ url("locale/{$locale}") }}" ><i class="fa fa-language"></i> {{ $locale }}</a></li> --}}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+
                                     <a class="dropdown-item" href="{{ route('home', app()->getLocale() ) }}">
                                         {{ __('Dashboard') }}
                                     </a>
