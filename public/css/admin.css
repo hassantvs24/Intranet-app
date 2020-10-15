@@ -11568,6 +11568,13 @@ ul#filter li.current a {
   width: 10px;
 }
 
+.one_stop .card-body {
+  height: 370px;
+  padding: 0px 15px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
 .navbar {
   height: 65px;
 }

@@ -105,6 +105,8 @@
     "Admin name" : "Administratornavn",
     "User email" : "Bruker-e-post",
     "Add new board name" : "Legg til nytt tavlens navn",
-    "Or Select Board" : "Eller velg brett"
-
+    "Or Select Existing Board" : "Eller velg eksisterende bord",
+    "Make this blank, if you select existing board" : "Gjør dette tomt, hvis du velger eksisterende brett",
+    "Select user" : "Velg bruker",
+    "Or Select Existing User" : "Eller velg eksisterende bruker"
 }

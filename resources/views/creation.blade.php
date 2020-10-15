@@ -41,7 +41,7 @@
                     </nav>
                     <form id="form_cr" action="{{route('creation-save', app()->getLocale())}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-content one_stop" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-creat_group" role="tabpanel" aria-labelledby="nav-home-tab">
 
                                 <div class="card">
@@ -54,7 +54,7 @@
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="group_name">{{ __('Group name') }}</label>
-                                                        <input type="text" class="form-control" id="group_name" name="name" value="{{ old('name') }}" placeholder="{{ __('Group name') }}" required>
+                                                        <input type="text" class="form-control" id="group_name" name="name" value="{{ old('name') }}" placeholder="{{ __('Group name') }}">
                                                     </div>
                                                 </div>
 
@@ -108,7 +108,7 @@
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="group_archive_start_date">{{ __('User access date') }}</label>
-                                                        <input type="date" class="form-control" id="group_archive_start_date"  value="{{ old('archive_start_date') }}" name="archive_start_date" required>
+                                                        <input type="date" class="form-control" id="group_archive_start_date"  value="{{ old('archive_start_date') }}" name="archive_start_date">
                                                         <small class="form-text text-muted">{{__('This is the date users will get the first access to the boards')}}</small>
                                                     </div>
                                                 </div>
@@ -120,7 +120,7 @@
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="group_start_date">{{ __('Events Start date') }}</label>
-                                                        <input type="date" class="form-control" id="group_start_date" value="{{ old('start_date') }}" name="start_date" required>
+                                                        <input type="date" class="form-control" id="group_start_date" value="{{ old('start_date') }}" name="start_date">
                                                         <small class="form-text text-muted">{{__('This is the date the event starts')}}</small>
                                                     </div>
                                                 </div>
@@ -128,14 +128,14 @@
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="group_end_date">{{ __('Events End date') }}</label>
-                                                        <input type="date" class="form-control" id="group_end_date" value="{{ old('end_date') }}" name="end_date" required>
+                                                        <input type="date" class="form-control" id="group_end_date" value="{{ old('end_date') }}" name="end_date">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="archive_group_end_date">{{ __('Archive date') }}</label>
-                                                        <input type="date" class="form-control" id="archive_group_end_date" value="{{ old('archive_end_date') }}" name="archive_end_date" required>
+                                                        <input type="date" class="form-control" id="archive_group_end_date" value="{{ old('archive_end_date') }}" name="archive_end_date">
                                                     </div>
                                                 </div>
 
@@ -152,7 +152,7 @@
                             <div class="tab-pane fade" id="nav-add_group" role="tabpanel" aria-labelledby="nav-profile-tab">
 
                                 <div class="card">
-                                    <div class="card-body" style="height: 300px">
+                                    <div class="card-body">
                                         <h5 class="card-title">{{__('Add Board')}}</h5>
 
                                         <div class="row">
@@ -161,17 +161,18 @@
                                                     <div class="form-group w-100">
                                                         <label for="board_name">{{ __('Add new board name') }}</label>
                                                         <input type="text" class="form-control" id="board_name" placeholder="{{ __('Board name') }}" value="{{ old('board_name') }}" name="board_name">
+                                                        <!--<small class="form-text text-muted">{{__('Make this blank, if you select existing board')}}</small>-->
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
-{{--                                                <p class="text-info"><b>{{ __('Or Select Board') }}</b></p>--}}
+{{--                                                <p class="text-info"><b>{{ __('Or Select Existing Board') }}</b></p>--}}
 {{--                                                @foreach($board as $row)--}}
-{{--                                                    <div class="form-check">--}}
+{{--                                                    <div class="form-check board_check">--}}
 {{--                                                        <input class="form-check-input" type="checkbox" name="board_id" value="{{$row->id}}" id="defaultCheck1{{$row->id}}">--}}
 {{--                                                        <label class="form-check-label" for="defaultCheck1{{$row->id}}">--}}
-{{--                                                            Default checkbox--}}
+{{--                                                            {{$row->name}}--}}
 {{--                                                        </label>--}}
 {{--                                                    </div>--}}
 {{--                                                @endforeach--}}
@@ -189,45 +190,62 @@
                             <div class="tab-pane fade" id="nav-add_admin" role="tabpanel" aria-labelledby="nav-contact-tab">
 
                                 <div class="card">
-                                    <div class="card-body" style="height: 300px">
+                                    <div class="card-body">
                                         <h5 class="card-title">{{__('Add admin')}}</h5>
                                         <div class="row">
                                             <div class="col-md-6">
+                                                    <div class="form-row">
+                                                        <div class="form-group w-100">
+                                                            <label for="user_select">{{ __('Select user') }}</label>
+                                                            <select id="user_select" name="users_id" class="form-control">
+                                                                <option value="">{{ __('Select user') }}</option>
+                                                                @foreach($user as $row)
+                                                                    <option value="{{$row->id}}"
+                                                                            data-email="{{$row->email}}"
+                                                                            data-name="{{$row->name}}"
+                                                                            data-phone="{{$row->phone}}"
+                                                                            data-bio="{{$row->bio}}"
+                                                                    >{{$row->name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
                                                         <label for="admin_name">{{ __('Admin name') }}</label>
-                                                        <input type="text" class="form-control" id="admin_name" value="{{ old('admin_name') }}" name="admin_name" placeholder="ex: Adam Levi" required>
+                                                        <input type="text" class="form-control" id="admin_name" value="{{ old('admin_name') }}" name="admin_name" placeholder="ex: Adam Levi">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
-                                                        <label for="user_profile_image"> {{ __('Profile Image') }} </label>
-                                                        <input type="file" class="form-control-file" id="user_profile_image" name="avatar">
+                                                        <label for="admin_profile_image"> {{ __('Profile Image') }} </label>
+                                                        <input type="file" class="form-control-file" id="admin_profile_image" name="avatar">
                                                     </div>
                                                 </div>
-
-                                                <div class="form-row">
-                                                    <div class="form-group w-100">
-                                                        <label for="user_email">{{ __('Email') }}</label>
-                                                        <input type="email" class="form-control" id="user_email" value="{{ old('email') }}" name="email" placeholder="email@domain.com" required>
-                                                    </div>
-                                                </div>
-
 
                                             </div>
                                             <div class="col-md-6">
+
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
-                                                        <label for="user_phone_no">{{ __('Phone') }}</label>
-                                                        <input type="tel" class="form-control" id="user_phone_no" value="{{ old('phone') }}" name="phone" placeholder="+470156421" required>
+                                                        <label for="admin_email">{{ __('Email') }}</label>
+                                                        <input type="email" class="form-control" id="admin_email" value="{{ old('email') }}" name="email" placeholder="email@domain.com">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group w-100">
-                                                        <label for="exampleFormControlTextarea1">{{ __('About / Bio') }}</label>
-                                                        <textarea class="form-control" name="bio" id="exampleFormControlTextarea1" rows="3">{{ old('bio') }}</textarea>
+                                                        <label for="admin_phone_no">{{ __('Phone') }}</label>
+                                                        <input type="tel" class="form-control" id="admin_phone_no" value="{{ old('phone') }}" name="phone" placeholder="+470156421">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group w-100">
+                                                        <label for="admin_bio">{{ __('About / Bio') }}</label>
+                                                        <textarea class="form-control" name="bio" id="admin_bio" rows="3">{{ old('bio') }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -245,7 +263,7 @@
                             <div class="tab-pane fade" id="nav-invite_users" role="tabpanel" aria-labelledby="nav-contact-tab">
 
                                 <div class="card">
-                                    <div class="card-body" style="height: 300px">
+                                    <div class="card-body">
                                         <h5 class="card-title">{{__('Invite users')}}</h5>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -256,6 +274,21 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-6">
+
+                                                    <p class="text-info"><b>{{ __('Or Select Existing User') }}</b></p>
+                                                    @foreach($guest_user as $row)
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" name="invite_user_id[]" value="{{$row->id}}" id="inviteUsers{{$row->id}}">
+                                                            <label class="form-check-label" for="inviteUsers{{$row->id}}">
+                                                                {{$row->name}}
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+
+
                                         </div>
 
                                     </div>
@@ -287,6 +320,42 @@
         next_to_invite = () => $('#nav-invite_users-tab').trigger('click');
         back_to_admin = () => $('#nav-add_admin-tab').trigger('click');
        // send_data = () => $('#form_cr').submit();
+
+
+        /**-----------------------------
+         * Add board options implements
+         * -----------------------------
+         */
+        $(function () {
+            //alert($('.board_check input[type="checkbox"]').prop('checked'));
+
+            // $('.board_check input[type="checkbox"]').on('change', function() {
+            //     if($(this).prop('checked')){
+            //         $('#board_name').val('');
+            //         $('#board_name').prop("disabled",true);
+            //     }else{
+            //         $('#board_name').prop("disabled",false);
+            //     }
+            //     $('.board_check input:checkbox').not(this).prop('checked', false);
+            // });
+
+            $('#user_select').change(function () {
+                var name = $(this).find(':selected').data('name');
+                var email = $(this).find(':selected').data('email');
+                var phone = $(this).find(':selected').data('phone');
+                var bio = $(this).find(':selected').data('bio');
+
+                $('#admin_name').val(name);
+                $('#admin_email').val(email);
+                $('#admin_phone_no').val(phone);
+                $('#admin_bio').val(bio);
+
+            });
+        });
+        /**-----------------------------
+         * Add board options implements
+         * -------------------------------
+         */
 
     </script>
 @endsection

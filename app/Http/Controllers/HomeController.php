@@ -70,14 +70,15 @@ class HomeController extends Controller
      * Created by nazmul
      */
     public function creation(){
+        $group_admin = GroupAdmin::select('users_id')->get()->toArray();
+        $user = User::orderBy('name')->whereNotIn('id',$group_admin)->get();
         $board = Board::orderBy('name')->get();
-        return view('creation')->with(['board' => $board]);
+        $guest_user = User::whereNull('group_id')->orderBy('id', 'DESC')->get();
+        return view('creation')->with(['board' => $board, 'user' => $user, 'guest_user' => $guest_user]);
     }
 
     public function creation_save(Request $request){
-
         //dd($request->all());
-
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:4|max:191',
             'group_color' => 'required|string',
@@ -85,10 +86,11 @@ class HomeController extends Controller
             'end_date' => 'date|required',
             'archive_start_date' => 'date|nullable',
             'archive_end_date' => 'date|nullable',
-            'board_name' => 'required|string',
+            //'board_name' => 'sometimes|required|string',
             'admin_name' => 'required|string',
             'email' => 'required|email',
             'invite_user_email' => 'email|nullable',
+            'users_id' => 'required|numeric'
         ]);
 
         if ($validator->fails()) {
@@ -125,10 +127,13 @@ class HomeController extends Controller
             /**
              * Create Board
              */
-            $board = new Board();
-            $board->name = $request->board_name;
-            $board->group_id = $group_id;
-            $board->save();
+            if (isset($request->board_name)){
+                $board = new Board();
+                $board->name = $request->board_name;
+                $board->group_id = $group_id;
+                $board->save();
+            }
+
             /**
              * /Create Board
              */
@@ -137,6 +142,7 @@ class HomeController extends Controller
              * Create Group Admin
              */
             $group_admin = new GroupAdmin();
+            $group_admin->users_id = $request->users_id;
             $group_admin->name = $request->admin_name;
             $group_admin->email = $request->email;
             $group_admin->phone = $request->phone ?? '';
@@ -179,25 +185,46 @@ class HomeController extends Controller
 
 
             /**
+             * Add group ID to user
+             */
+
+            if(isset($request->invite_user_id)){
+                $inv_user_id = $request->invite_user_id;
+
+                foreach ($inv_user_id as $row){
+                    $user = User::find($row);
+                    $user->group_id = $group_id;
+                    $user->save();
+                }
+            }
+
+            /**
+             * /Add group ID to user
+             */
+
+
+            /**
              * Send Invitation
              */
 
-            $link = "http://intranet-app.test/nor/invite?user=".base64_encode( $request->invite_user_email )."&group=". base64_encode($group_id);
-            $email_body = "Dear user please click this link ". $link ." to create account on Intranet air";
+            if(isset($request->invite_user_email)){
+                $link = "http://intranet-app.test/nor/invite?user=".base64_encode( $request->invite_user_email )."&group=". base64_encode($group_id);
+                $email_body = "Dear user please click this link ". $link ." to create account on Intranet air";
 
-            $data = [
-                'to' => $request->invite_user_email,
-                'from' => 'ashikur@getonnet.agency',
-                'subject' => 'Please confirm your invitation',
-                'title' => 'Intranet air invitation',
-                "body"     => $email_body
-            ];
-            $this->toEmail = $request->invite_user_email;
+                $data = [
+                    'to' => $request->invite_user_email,
+                    'from' => 'ashikur@getonnet.agency',
+                    'subject' => 'Please confirm your invitation',
+                    'title' => 'Intranet air invitation',
+                    "body"     => $email_body
+                ];
+                $this->toEmail = $request->invite_user_email;
 
-            Mail::send('email.invitation', compact('data'), function ($message) {
-                $message->from('admin@intranet.air', 'Intraner Air');
-                $message->to($this->toEmail);
-            });
+                Mail::send('email.invitation', compact('data'), function ($message) {
+                    $message->from('admin@intranet.air', 'Intraner Air');
+                    $message->to($this->toEmail);
+                });
+            }
 
             /**
              * /Send Invitation

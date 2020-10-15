@@ -41,6 +41,7 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         return view('style-guide');
     });
 
+
     // Email sending routes
     Route::post('/send-email','MailController@new_mail')->name('email.send');
     Route::get('/users/my-account', 'UserController@account_settings')->name('user-account-settings');
