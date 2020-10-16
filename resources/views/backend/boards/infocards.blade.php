@@ -83,9 +83,10 @@
                             <label for=""> {{ __("Event Description") }}: </label>
                             <textarea name="event_description" class="form-control"  id="event_description" cols="15" rows="5" required > </textarea>
                         </div>
+
                         <div class="form-group">
-                            <input type="hidden" name="event_start" id="event_start" value="" />
-                            <input type="hidden" name="event_end" id="event_end" value= "" />
+                            <input type="datetime-local" name="event_start" id="event_start" value="" />
+                            <input type="datetime-local" name="event_end" id="event_end" value= "" />
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -125,6 +126,7 @@
     {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script type="text/javascript" src="{{asset('js/summernote-file.js')}}"></script>
 
     <script>
         $(document).ready(function(){
@@ -822,8 +824,15 @@
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
-                    ['insert', ['link', 'picture', 'video']],
-                ]
+                    ['insert', ['link', 'picture', 'video', 'file']],
+                ],
+                callbacks: {
+                    onFileUpload: function(file) {
+                        //alert('hello');
+                        //Your own code goes here
+                        myOwnCallBack(file[0]);
+                    },
+                },
             });
             /*--------------------------------------------
                 Edit card Data after editing
@@ -941,6 +950,83 @@
             // });
 
         });
+
+
+        /**-----------------------
+         * File Upload in summernote
+         * ----------------------
+         */
+        function myOwnCallBack(file) {
+            let data = new FormData();
+            data.append("_token", "{{ csrf_token() }}");
+            data.append("file", file);
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: "{{route('infocards.upload', app()->getLocale())}}", //Your own back-end uploader
+                cache: false,
+                contentType: false,
+                processData: false,
+                xhr: function() { //Handle progress upload
+                    let myXhr = $.ajaxSettings.xhr();
+                    if (myXhr.upload) myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
+                    return myXhr;
+                },
+                success: function(reponse) {
+                    if(reponse.status === true) {
+                        let listMimeImg = ['image/png', 'image/jpeg', 'image/webp', 'image/gif', 'image/svg'];
+                        let listMimeAudio = ['audio/mpeg', 'audio/ogg'];
+                        let listMimeVideo = ['video/mpeg', 'video/mp4', 'video/webm'];
+                        let elem;
+
+                        if (listMimeImg.indexOf(file.type) > -1) {
+                            //Picture
+                            $('#summernote').summernote('editor.insertImage', reponse.filename);
+                        } else if (listMimeAudio.indexOf(file.type) > -1) {
+                            //Audio
+                            elem = document.createElement("audio");
+                            elem.setAttribute("src", reponse.filename);
+                            elem.setAttribute("controls", "controls");
+                            elem.setAttribute("preload", "metadata");
+                            $('#summernote').summernote('editor.insertNode', elem);
+                        } else if (listMimeVideo.indexOf(file.type) > -1) {
+                            //Video
+                            elem = document.createElement("video");
+                            elem.setAttribute("src", reponse.filename);
+                            elem.setAttribute("controls", "controls");
+                            elem.setAttribute("preload", "metadata");
+                            $('#summernote').summernote('editor.insertNode', elem);
+                        } else {
+                            //Other file type
+                            elem = document.createElement("a");
+                            let linkText = document.createTextNode(file.name);
+                            elem.appendChild(linkText);
+                            elem.title = file.name;
+                            elem.href = reponse.filename;
+                            $('#summernote').summernote('editor.insertNode', elem);
+                        }
+                    }
+                }
+            });
+        }
+
+        function progressHandlingFunction(e) {
+            if (e.lengthComputable) {
+                //Log current progress
+                console.log((e.loaded / e.total * 100) + '%');
+
+                //Reset progress on complete
+                if (e.loaded === e.total) {
+                    console.log("Upload finished.");
+                }
+            }
+        }
+
+        /**----------------------
+         * /File Upload in summernote
+         * ----------------------
+         */
+
     </script>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script type="text/javascript">

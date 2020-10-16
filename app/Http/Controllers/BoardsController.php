@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Board;
+use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use App\Group as Group;
+use Illuminate\Support\Str;
 
 class BoardsController extends Controller
 {
+    use UploadTrait;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -93,5 +97,25 @@ class BoardsController extends Controller
         $search = $request->get('search');
         $boards = Board::active(false)->where('name','like', '%'.$search.'%')->paginate(15);
         return view('backend.boards.index', compact('boards'));
+    }
+
+    public function info_card_file_upload(Request $request){
+        if ($request->has('file')) {
+            // Get image file
+            $myFile = $request->file('file');
+            // Make a image name based on user name and current timestamp
+            $name = Str::slug($myFile->getClientOriginalName()) . '_' . time();
+            // Define folder path
+            $folder = '/uploads/files/';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            //$fileName = $name . '.' . $myFile->getClientOriginalExtension();
+            $filePath = $folder . $name . '.' . $myFile->getClientOriginalExtension();
+            // Upload image
+            $this->uploadOne($myFile, $folder, 'public', $name);
+            // Set user profile image path in database to filePath
+            return response()->json(["status" => true,"filename" => $filePath]) ;
+        }
+
+        return response()->json(["status" => false]) ;
     }
 }

@@ -74,7 +74,7 @@
 
                                     <div class="form-row">
                                         <div class="form-group w-100">
-                                            <label for="user_select">{{ __('Select admin') }} <span class="text-danger">*</span></label>
+                                            <label for="user_select">{{ __('Primary contact') }} <span class="text-danger">*</span></label>
                                             <select id="user_select" name="users_id" class="form-control">
                                                 <option value="">{{ __('Select admin') }}</option>
                                                 @foreach($invited_user as $row)

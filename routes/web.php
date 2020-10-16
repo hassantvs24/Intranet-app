@@ -54,7 +54,11 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         Route::get('/dashboard', 'GroupsController@home')->name('admin-home');
 
 
-
+        /**
+         * -----------------------
+         * Create flow
+         * ----------------------
+         */
         Route::post('/group-create', 'GroupCreateController@save_group')->name('groups.create.save');
         Route::get('/group-create', 'GroupCreateController@index')->name('groups.create');
 
@@ -66,6 +70,23 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
 
         Route::post('/group-create/invite', 'GroupCreateController@save_invite')->name('groups.invite.save');
         Route::get('/group-create/invite', 'GroupCreateController@invite')->name('groups.invite');
+        /**
+         * -----------------------
+         * /Create flow
+         * ----------------------
+         */
+
+        /**
+         * -----------------------
+         * Summernote file upload on infocard
+         * ----------------------
+         */
+        Route::post('/edit-infocards/upload', 'BoardsController@info_card_file_upload')->name('infocards.upload');
+        /**
+         * -----------------------
+         * /Summernote file upload on infocard
+         * ----------------------
+         */
 
 
 
