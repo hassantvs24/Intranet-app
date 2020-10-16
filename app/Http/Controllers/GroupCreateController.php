@@ -92,7 +92,7 @@ class GroupCreateController extends Controller
     public function admin(){
         $group = Group::orderBy('name')->get();
         $group_admin = GroupAdmin::select('users_id')->get()->toArray();
-        $user = User::orderBy('name')->whereNotIn('id',$group_admin)->get();
+        $user = User::orderBy('name')->whereNotIn('id',$group_admin)->get(); //Filter user, which user not find in group admin table
         return view('backend.creation.admin_create')->with(['user' => $user, 'group' => $group]);
     }
 
@@ -162,8 +162,8 @@ class GroupCreateController extends Controller
 
     public function invite(){
         $group = Group::orderBy('name')->get();
-        $invited_user = User::orderBy('name')->whereIn('role', ['admin','superadmin'])->get();
-        $guest_user = User::whereNull('group_id')->orderBy('id', 'DESC')->get();
+        $invited_user = User::orderBy('name')->whereIn('role', ['admin','superadmin'])->get();//Invite existing user who are admin or super admin
+        $guest_user = User::whereNull('group_id')->orderBy('id', 'DESC')->get();//User select which is not linkup with group
         return view('backend.creation.invitation')->with(['invited_user' => $invited_user, 'guest_user' => $guest_user, 'group' => $group]);
     }
 

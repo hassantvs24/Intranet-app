@@ -113,7 +113,7 @@ class BoardsController extends Controller
             // Upload image
             $this->uploadOne($myFile, $folder, 'public', $name);
             // Set user profile image path in database to filePath
-            return response()->json(["status" => true,"filename" => $filePath]) ;
+            return response()->json(["status" => true,"filename" => asset('public'.$filePath)]) ;
         }
 
         return response()->json(["status" => false]) ;
