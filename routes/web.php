@@ -53,6 +53,22 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
 
         Route::get('/dashboard', 'GroupsController@home')->name('admin-home');
 
+
+
+        Route::post('/group-create', 'GroupCreateController@save_group')->name('groups.create.save');
+        Route::get('/group-create', 'GroupCreateController@index')->name('groups.create');
+
+        Route::post('/group-create/board', 'GroupCreateController@save_board')->name('groups.board.save');
+        Route::get('/group-create/board', 'GroupCreateController@board')->name('groups.board');
+
+        Route::post('/group-create/admin', 'GroupCreateController@save_admin')->name('groups.admin.save');
+        Route::get('/group-create/admin', 'GroupCreateController@admin')->name('groups.admin');
+
+        Route::post('/group-create/invite', 'GroupCreateController@save_invite')->name('groups.invite.save');
+        Route::get('/group-create/invite', 'GroupCreateController@invite')->name('groups.invite');
+
+
+
         Route::get('/all-groups', 'GroupsController@index')->name('all-groups');
         Route::get('/groups/archived', 'GroupsController@archived')->name('archived-groups');
         Route::get('/groups/create', 'GroupsController@create')->name('create-group');

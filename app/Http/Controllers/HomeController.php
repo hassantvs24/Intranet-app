@@ -72,13 +72,14 @@ class HomeController extends Controller
     public function creation(){
         $group_admin = GroupAdmin::select('users_id')->get()->toArray();
         $user = User::orderBy('name')->whereNotIn('id',$group_admin)->get();
+        $invited_user = User::orderBy('name')->whereIn('role', ['admin','superadmin'])->get();
         $board = Board::orderBy('name')->get();
         $guest_user = User::whereNull('group_id')->orderBy('id', 'DESC')->get();
-        return view('creation')->with(['board' => $board, 'user' => $user, 'guest_user' => $guest_user]);
+        return view('creation')->with(['board' => $board, 'user' => $user, 'guest_user' => $guest_user, 'invited_user' => $invited_user]);
     }
 
     public function creation_save(Request $request){
-        //dd($request->all());
+        dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:4|max:191',
             'group_color' => 'required|string',
@@ -86,10 +87,10 @@ class HomeController extends Controller
             'end_date' => 'date|required',
             'archive_start_date' => 'date|nullable',
             'archive_end_date' => 'date|nullable',
-            //'board_name' => 'sometimes|required|string',
+            'board_name' => 'required|string',
             'admin_name' => 'required|string',
             'email' => 'required|email',
-            'invite_user_email' => 'email|nullable',
+            //'invite_user_email' => 'email|nullable',
             'users_id' => 'required|numeric'
         ]);
 
