@@ -37,9 +37,9 @@ class HomeController extends Controller
     public function index()
     {
         $id    = auth()->user()->id;
-        // $cards = User::find( $id )->cards()->get();
+        $cards = User::find( $id )->cards()->get();
         $group = auth()->user()->group;
-         $cards = [];
+        /* $cards = [];
 
         if( $group != Null ) {
             $today     = Carbon::now();
@@ -54,8 +54,9 @@ class HomeController extends Controller
             }
         } else {
             $cards = [];
-        }
+        }*/
 
+       // dd($cards);
 
         return view( 'home', compact('cards', 'group') );
     }

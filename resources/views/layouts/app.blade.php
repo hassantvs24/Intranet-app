@@ -27,7 +27,7 @@
 
         <nav class="navbar navbar-expand-md navbar-light" id="site-header">
             <div class="container bg-color">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('main', app()->getLocale()) }}">
                     <img src="{{ asset('images/logo.png') }}" height="35" alt="">
                 </a>
 

@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css?v=') }}" rel="stylesheet">
 
     @yield('script')
 </head>
@@ -61,7 +61,7 @@
                     </a>
 
                     <div class="submenu pl-5">
-                        <a href="{{ route('groups.create', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('Group creation') }}</a>
+                        <a href="{{ route('groups.create', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Group') }}</a>
 
                         <!--<a href="{{ route('all-groups', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('All Groups') }}</a>
                         <a href="{{ route('create-group', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Group') }}</a>

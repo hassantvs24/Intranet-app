@@ -28,7 +28,7 @@ Route::redirect('/', app()->getLocale() );
 
 Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], function() {
     // default page -> dashboard / login
-    Route::get('/', 'HomeController@index');
+    Route::get('/', 'HomeController@index')->name('main');
 
     Route::post('/creation', 'HomeController@creation_save')->name('creation-save');
     Route::get('/creation', 'HomeController@creation')->name('creation');

@@ -706,7 +706,7 @@
                                 <h3 class="cart-title mb-0 txt-color">${card.title}</h3>
                             </div>
                             <div class="card-body" style="height: 200px; overflow-y: auto;" >
-                                ${contents.substring(0,300)} <a class="view_more" href="#" title="view more">...</a>
+                                ${contents.substring(0,300)} <a class="view_more" href="#" title="view more" data-toggle="modal" data-target="#dataPreviewModal">...</a>
                             </div>
 
 
@@ -720,11 +720,9 @@
 
                                     <div class="html_contents" style="position: absolute; left: -9999px; visibility:hidden; display:none;">${card.html_content}</div>
 
-                                    <button class="btn btn-outline-primary btn-sm d-inline-block btn-preview-card" data-card-type="normal"
-                                        data-card-title="${card.title}"  data-card-id="${card.id}" data-board-id="${card.board_id}"
-                                        data-toggle="modal" data-target="#dataPreviewModal">
+                                    <a class="btn btn-outline-primary btn-sm d-inline-block" href="{{route('main', app()->getLocale())}}">
                                         {{ __('Preview') }}
-                                    </button>
+                                    </a>
                             </div>
 
                 <div class="custom-control custom-switch d-inline-block ml-auto">
@@ -747,10 +745,18 @@
 
                 $('.view_more').click(function (e) {
                     e.preventDefault();
-                    $(this).parent().next().find('.btn-preview-card').trigger('click');
+
+                    var card_title = $(this).data('card-title');
+                    var htm_con = $(this).parent().next('.card-footer').find('.html_contents').html();
+
+
+                    $('#dataPreviewModal').find('.modal-title').html(card_title);
+                    $('#dataPreviewModal').find('.modal-body').html(htm_con);
+
+                    //$(this).parent().next().find('.btn-preview-card').trigger('click');
                 });
 
-                $('.btn-preview-card').click(function () {
+                /*$('.btn-preview-card').click(function () {
 
                     var card_title = $(this).data('card-title');
                     var htm_con = $(this).siblings('.html_contents').html();
@@ -759,7 +765,7 @@
                     $('#dataPreviewModal').find('.modal-title').html(card_title);
                     $('#dataPreviewModal').find('.modal-body').html(htm_con);
 
-                });
+                });*/
 
                 return false;
             }
