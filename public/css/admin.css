@@ -2284,6 +2284,11 @@ pre code {
   opacity: 1;
 }
 
+.form-control::-ms-input-placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
 .form-control::placeholder {
   color: #6c757d;
   opacity: 1;
@@ -2785,20 +2790,24 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
-.btn-primary {
+.btn-primary,
+#filter .current a {
   color: #fff;
   background-color: #4d16dd;
   border-color: #4d16dd;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+#filter .current a:hover {
   color: #fff;
   background-color: #4113ba;
   border-color: #3d11af;
 }
 
 .btn-primary:focus,
-.btn-primary.focus {
+#filter .current a:focus,
+.btn-primary.focus,
+#filter .current a.focus {
   color: #fff;
   background-color: #4113ba;
   border-color: #3d11af;
@@ -2806,23 +2815,31 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary.disabled,
-.btn-primary:disabled {
+#filter .current a.disabled,
+.btn-primary:disabled,
+#filter .current a:disabled {
   color: #fff;
   background-color: #4d16dd;
   border-color: #4d16dd;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active,
+#filter .current a:not(:disabled):not(.disabled):active,
 .btn-primary:not(:disabled):not(.disabled).active,
-.show > .btn-primary.dropdown-toggle {
+#filter .current a:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle,
+#filter .current .show > a.dropdown-toggle {
   color: #fff;
   background-color: #3d11af;
   border-color: #3910a3;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus,
+#filter .current a:not(:disabled):not(.disabled):active:focus,
 .btn-primary:not(:disabled):not(.disabled).active:focus,
-.show > .btn-primary.dropdown-toggle:focus {
+#filter .current a:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus,
+#filter .current .show > a.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(104, 57, 226, 0.5);
 }
 
@@ -11165,50 +11182,6 @@ img {
   font-size: 18px;
 }
 
-ul#filter {
-  float: left;
-  font-size: 16px;
-  list-style: none;
-  margin-left: 0;
-  width: 100%;
-}
-
-ul#filter li {
-  float: left;
-  line-height: 16px;
-  margin-right: 10px;
-  border: none;
-  color: #fff;
-  background: #4d16dd;
-  padding: 10px 15px;
-  display: inline-block;
-  text-align: center;
-  min-width: 120px;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-ul#filter li:last-child {
-  border-right: none;
-  margin-right: 0;
-  padding-right: 0;
-}
-
-ul#filter a {
-  color: #fff;
-  text-decoration: none;
-}
-
-ul#filter li.current a,
-ul#filter a:hover {
-  text-decoration: underline;
-}
-
-ul#filter li.current a {
-  color: #333;
-  font-weight: bold;
-}
-
 .btn {
   text-transform: capitalize;
   letter-spacing: 1px;
@@ -11965,5 +11938,9 @@ div#editor {
 .note-editor.note-airframe .note-statusbar,
 .note-editor.note-frame .note-statusbar {
   background-color: rgba(77, 22, 221, 0.08) !important;
+}
+
+#filter {
+  list-style: none;
 }
 

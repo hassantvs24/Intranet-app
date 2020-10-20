@@ -3,19 +3,17 @@
 @section('title', 'Edit InfoCards')
 
 @section('admin-content')
-    <div class="container-flued">
-        <div class="bg-info" style="position: absolute; right: 15px; padding: 10px 15px;"><a class="font-weight-bolder text-white text-decoration-none" href="{{route('main', app()->getLocale())}}">{{ __('Preview') }}</a></div>
+    <div class="container-fluid">
+        <div class="" style="position: absolute; right: 15px;">
+            <a class="btn btn-secondary" href="{{route('main', app()->getLocale())}}">{{ __('Preview') }}</a>
+        </div>
 
-        <ul id="filter">
-            <li class="current"><a href="#" data-filter="*"> {{ __('Show All') }} </a></li>
-            <li><a href="#" data-filter="before"> {{ __('Before') }} </a></li>
-            <li><a href="#" data-filter="after"> {{ __('After') }} </a></li>
-            <li><a href="#" data-filter="under"> {{ __('During') }} </a></li>
-
+        <ul id="filter" class="list-unstyled mt-4 d-flex">
+            <li class="current mr-3"><a href="#" class="btn btn-outline-primary" data-filter="*"> {{ __('Show All') }} </a></li>
+            <li class="mr-3"><a href="#" class="btn btn-outline-primary" data-filter="before"> {{ __('Before') }} </a></li>
+            <li class="mr-3"><a href="#" class="btn btn-outline-primary" data-filter="after"> {{ __('After') }} </a></li>
+            <li class="mr-3"><a href="#" class="btn btn-outline-primary" data-filter="under"> {{ __('During') }} </a></li>
         </ul>
-
-
-
 
         <!-- START data cards -->
         <div class="data-cards">
@@ -31,6 +29,20 @@
         </div>
         <!-- END data cards -->
     </div>
+
+
+    {{-- ============= START add new card button ============= --}}
+    <button class="btn btn-primary position-fixed shadow-lg pb-4 pr-4 pt-5 pl-5"
+            id="add-new-card-btn" data-card-type=""
+            data-card-title="" data-card-id="" data-board-id=""
+            data-toggle="modal" data-target="#dataEditModal"
+            style="right: 0;bottom: 0;z-index: 99; border-radius: 0; border-top-left-radius: 100px;">
+        <svg width="30" height="30" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="25" width="10" height="60" fill="white"/>
+            <rect x="60" y="25" width="10" height="60" transform="rotate(90 60 25)" fill="white"/>
+        </svg>
+    </button>
+    {{-- ============= END add new card button ============= --}}
 
     {{-- ============= template for editing cards - modal ============= --}}
     <div class="modal right fade" id="dataEditModal" data-keyboard="false" tabindex="-1" aria-labelledby="dataEditModalLabel" aria-hidden="true">
@@ -48,6 +60,15 @@
                 <div class="form-group">
                     <label for="editing-card-title">{{ __('Card title') }}</label>
                     <input type="text" class="form-control" id="editing-card-title" name="card_title" value="Old title goes here">
+                </div>
+
+                <div class="form-group">
+                    <label for="editing-card-type">{{ __('Card type') }}</label>
+{{--                    <input type="text" class="form-control" id="editing-card-type" name="card_type" value="">--}}
+                    <select class="form-control" name="card_type" id="editing-card-type">
+                        <option value="normal" selected>Normal</option>
+                        <option value="normal">Calender</option>
+                    </select>
                 </div>
 
                 <!-- Create the editor container -->
@@ -104,8 +125,6 @@
         </div>
     </div>
 
-
-
     <div class="modal fade" id="dataPreviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -144,199 +163,6 @@
 
             // demo data for initial cards
             let demo_card_data = [
-                // {
-                //     "title": "Text or Image",
-                //     "html_content": '<p><img src="/images/demo-card-image.png" alt=""></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dignissimos dolore doloremque eaque enim eveniet expedita libero maiores neque.</p>',
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Resources & Links",
-                //     "html_content": '<ul> <li><a href="#">How to take a nap?</a></li> <li><a href="#">Where to find good materials for our business?</a></li> <li><a href="#">Who to ask if I have questions and concerns</a></li> <li><a href="#">How to take a nap?</a></li> </ul><p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dignissimos dolore doloremque eaque enim eveniet. </p>',
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Video",
-                //     "html_content": '<iframe width="100%" height="180" src="https://www.youtube.com/embed/L4qM1IEhtNQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>',
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Calender",
-                //     "html_content": 'test',
-                //     "card_type": "calender",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-//
-                // {
-                //     "title": "Diet",
-                //     "html_content": "<p>In the book More than only raspa carrots! »You will find recipes for many colorful and tasty vegetarian dishesfrom The AiR kitchen. The kitchen here at the house combines both vegetables, meat and fish in menyane their, but it can vera exciting å die ein vegetarian twist as a variation. Many people probably think that vegetarian dishes required unknown and difficult raw materials to obtain,but so need it no å vera.- In the book has me has emphasized the use of very simple raw materials that you can buy in common grocery stores. - Myself about ein hair eit common diet, can it vera excitingto try vegetarian dishes occasionally. In the book hasme difor set together recipes you can use both for breakfast, dinner and snack. Such provides you book Buy it at the reception, or order the book by e-mail to tinging@air.no The price is NOK 230 + postage.You can receive an invoice or pay with ",
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Instruction",
-                //     "html_content": '<ul> <li><a href="#">Today\'s teaching availableOnline (streaming)</a></li> <li><a href="#">Former owner instruction available (video)</a></li> <li><a href="#">Do you want to train a little extra? VR, video, podcast? mindfull, social training, physical training, mental training)</a></li> <li> <a href=""> Diet </a></ul>',
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Next follow-up from AiR",
-                //     "html_content": '<p> When you traveled from AiR got you victim about follow-up. The next follow-up for you will be: </p> <ul> <li><a href="#">Follow-up program</a></li></ul>',
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Exercise diary",
-                //     "html_content": '<ul> <li><a href="#">Plan for work / follow-up</a></li> <li><a href="#">Welcome to Rauland (fact box, link to map etc.) Yr.no</a></li> </ul>',
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Message from the primary contact",
-                //     "html_content": '<ul> <li><a href="#"> Schedule today </a></li> </ul> <p> Basic timetable as own file </p> <ul><li><a href="#">Schedule this week</a></li> </ul>',
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Leisure activities",
-                //     "html_content": '<ul> <li><a href="#"> Leisure activities (on the program, or submissions to own activities) </a></li> <li><a href="#">Welcome to Rauland (fact box, link to map etc.)</a></li> </ul>',
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Leisure activities",
-                //     "html_content": '<ul> <li><a href="#"> Leisure activities (on the program, or submissions to own activities) </a></li> <li><a href="#">Welcome to Rauland (fact box, link to map etc.)</a></li> </ul>',
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Common Questions and answers",
-                //     "html_content": '<p>Sheep eg own room? </p> <ul> <li><a href="#"> You will be assigned a single room with bathroom and toilet. This willvera your room throughout the stay. </a></li> <li><a href="#">Towels and bed linen can be borrowed here.</a></li> <li><a href="#"> It\'s radio and hair dryer in all rooms. </a></li> <li> <a href=""> You are responsible for reinhald and order in yourroom, but will get good information about routines and where to find laundry equipment when you come here. </a> </li> <li> <a href=""> In the communal laundry you have access to a washing machine against coin toss.</a> </li> <li> <a href=""> There is only access to internet and TV in the common area </a> </li> </ul>',
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Exercise",
-                //     "html_content": `<p> You can come to us online as you are. To get yet better exchange of the stay can it anyway vere nice to start a little on the training allereie no.
-                //     Video clips:
-                //     For you who no moves you then mykje two common
-                //     For you who are in normally good shape
-                //     For you who feel fit During the stay you will stay known with many ways
-                //     å come in better form on, and halde the shape by equal.
-                //     Do you have special plagar we will help you find good ones exercises as gjer that you can master dei best possible.
-                //     You will also gain insight into various methods for mental training, among other things mindfullness. </p>`,
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Travel planners",
-                //     "html_content": `<p>No i Koronatida encourages we about traveling by private car.You can find us here: Haddlandsvegen 20 3864 Rauland (link to googlemaps)
-                //     If you come along public transportation: Haukeliekspressen stops in Åmot (link to Haukeliekspressen) From there you can take the local bus to
-                //     Rauland (link to telemarkbil.no) </p> <h4> Travel expenses </h4> <p> Travel expenses to and from AiRclinic (arrival
-                //     and departure) is covered by Patient travel.Travel must take place oncheapest way with publictransportation. Youpays deductible that becomes funnel fromthe amount you spend. If you have special needs, read their Patient Travelsrules for use of private </p>`,
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Leave and visit?",
-                //     "html_content": `<p> Leave on weekends First weekend in the stay you can take leave from Saturdayat 12.00 The other weekends you can take leavefromFriday at 15.30, and
-                //     you mustvere back to training / teaching Monday tomorrowat 08.30. Beyond this it will be no gjeve leave withoutthat
-                //     you have a very special reason. Such a reason can, for examplevera serious illness or death in family, funeral or agreements with public office that required personalattendance. Questions
-                //     about leave are raisedteam leaders in as good a time as possible.</p>
-                //     <p> Visits by friends and family
-                //     It's time, because of coronary restrictions, no
-                //     have the opportunity to receive visits from
-                //     family and friends inside AiR its area. </p>`,
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-
-                // {
-                //     "title": "Packing list",
-                //     "html_content": `<p> You must include this: </p>
-                //     <ul>
-                //         <li> Your own, fast medicine for whole the stay </li>
-                //         <li> Current X-ray reports (you need no the X-ray image) </li>
-                //         <li> Swimwear, training clothes and sneakers for indoor use </li>
-                //         <li> Sneakers, mountain shoes /rubber boots </li>
-                //         <li> Clothes and shoes you can possibly ride in </li>
-                //     </ul>
-                //     <p> It can too vere wise to include: </p>
-                //     <ul>
-                //     <li> Musical instrument and hobby equipment </li>
-                //     <li> A good book </li>
-                //     <li> PC and alarm clock </li>
-                //     <li>  Spinning shoes and cycling shorts </li>
-                //     </ul>
-                //     <p> You need no: </p>
-                //     <ul>
-                //         <li> Linen </li>
-                //         <li> Towels </li>
-                //     </ul>
-                //     `,
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Welcome two AiR!",
-                //     "html_content": `<p> You have no got a place at the Rehabilitation Center AiR. Here we operatelabor lawrehabilitation. It means thatwork is the main goal in treatment, because we believe that work is health-promoting.
-                //     With us you are ein participants. That means you're in itthe driver's seat. When it approaching seg the stay you will be assigned ein primary contact, which is your contact person towards it interdisciplinary the team that is
-                //     there to help you.
-                //     Treatment by AiRis group based. You're coming heretogether with 16 others. Usually is it eit plural women, and the average age is 43 year. Some have muscle and skeletal disorders, others lighter mental suffering, dei most have more and compound ailments.Common to all is that it dei struggle with hinders dei in å vere working.</p>`,
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "Welcome two AiR!",
-                //     "html_content": `
-                //     <h2> Welcome two AiR </h2>
-                //     <p> In this video you get eit insight into what can meet you in dei 4 weeks at AiR.</p>
-                //     <h2> Telemark swing </h2>
-                //     <p> To solve challenges in life required interaction between body and soul. </p>
-                //     <h2> AiR set from the air </h2>
-                //     <h2> Welcome to Rauland! </h2> <p>
-                //         Rauland is a mountain village, 800 meters above sea level, in West Telemark. Underthe
-                //         stay your here will you become closer known with the immediate area, in the activitiesWe offer. You also get free time where you can
-                //         explore the area, alone or maybetogether with nokon on your group. Check everyone the possibilities on Visit Rauland's website.
-                //     </p>`,
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
-                // {
-                //     "title": "This is how you can prepare",
-                //     "html_content": `
-                //     <ul>
-                //         <li>Exercise</li>
-                //         <li>Mapping</li>
-                //         <li>Packing list</li>
-                //         <li>Leave and visit?</li>
-                //         <li>Travel planners</li>
-                //         <li>Common Questions and answers</li>
-                //     </ul>`,
-                //     "card_type": "normal",
-                //     "is_visible": 1,
-                //     "board_id": {{ $board_id }}
-                // },
                 {
                     "title": "Slik kan du førebu deg",
                     "html_content": `<ul>
@@ -849,6 +675,8 @@
             const modal_save_btn = $('#modal-save-btn')
             // const edit_card_data_btn = $('.btn-edit-card')
             data_cards_wrap.on('click', '.btn-edit-card', function () {
+                // update modal title
+                $("#dataEditModalLabel").text("Edit data")
                 let card_title = $(this).attr('data-card-title')
                 modal_card_title.val(card_title)
                 let card_type = $(this).attr('data-card-type')
@@ -959,6 +787,12 @@
 
         });
 
+        /*-------------------------
+            handle add new card
+        -------------------------*/
+        $("#add-new-card-btn").click(function () {
+            $("#dataEditModalLabel").text("Add new data card")
+        })
 
         /**-----------------------
          * File Upload in summernote
@@ -1029,12 +863,6 @@
                 }
             }
         }
-
-        /**----------------------
-         * /File Upload in summernote
-         * ----------------------
-         */
-
     </script>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script type="text/javascript">
