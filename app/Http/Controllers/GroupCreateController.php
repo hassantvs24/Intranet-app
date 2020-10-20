@@ -91,7 +91,7 @@ class GroupCreateController extends Controller
 
     public function admin(){
         $group = Group::orderBy('name')->get();
-        $group_admin = GroupAdmin::select('users_id')->get()->toArray();
+        $group_admin = GroupAdmin::select('users_id')->whereNotNull('users_id')->get()->toArray();
         $user = User::orderBy('name')->whereNotIn('id',$group_admin)->get(); //Filter user, which user not find in group admin table
         return view('backend.creation.admin_create')->with(['user' => $user, 'group' => $group]);
     }
@@ -251,6 +251,7 @@ class GroupCreateController extends Controller
                     $this->toEmail = $email;
 
                     Mail::send('email.invitation', compact('data'), function ($message) {
+                        $message->subject('Please confirm your invitation');
                         $message->from('admin@intranet.air', 'Intraner Air');
                         $message->to($this->toEmail);
                     });

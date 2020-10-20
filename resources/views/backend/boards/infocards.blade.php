@@ -4,13 +4,19 @@
 
 @section('admin-content')
     <div class="container-flued">
+        <div class="bg-info" style="position: absolute; right: 15px; padding: 10px 15px;"><a class="font-weight-bolder text-white text-decoration-none" href="{{route('main', app()->getLocale())}}">{{ __('Preview') }}</a></div>
 
         <ul id="filter">
             <li class="current"><a href="#" data-filter="*"> {{ __('Show All') }} </a></li>
             <li><a href="#" data-filter="before"> {{ __('Before') }} </a></li>
             <li><a href="#" data-filter="after"> {{ __('After') }} </a></li>
             <li><a href="#" data-filter="under"> {{ __('During') }} </a></li>
+
         </ul>
+
+
+
+
         <!-- START data cards -->
         <div class="data-cards">
 {{--             <div class="button-group filter-button-group">
@@ -719,10 +725,6 @@
                                     </button>
 
                                     <div class="html_contents" style="position: absolute; left: -9999px; visibility:hidden; display:none;">${card.html_content}</div>
-
-                                    <a class="btn btn-outline-primary btn-sm d-inline-block" href="{{route('main', app()->getLocale())}}">
-                                        {{ __('Preview') }}
-                                    </a>
                             </div>
 
                 <div class="custom-control custom-switch d-inline-block ml-auto">

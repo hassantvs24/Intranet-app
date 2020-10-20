@@ -44,7 +44,6 @@ class HomeController extends Controller
         if( $group != Null ) {
             $today     = Carbon::now();
             $todayDate = $today->toDateString();
-
             if( $todayDate >= $group->start_date &&  $todayDate <= $group->end_date ) {
                 $cards = User::find( $id )->cards()->ViewType('under')->Visible(true)->get();
             } elseif( $todayDate >= $group->archive_start_date &&  $todayDate < $group->start_date ) {
@@ -56,7 +55,7 @@ class HomeController extends Controller
             $cards = [];
         }*/
 
-       // dd($cards);
+        //dd($cards);
 
         return view( 'home', compact('cards', 'group') );
     }
