@@ -3,7 +3,7 @@
 @section('body-class', 'user-dashboard body-teal')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 {{--<h1>{{ __('Dashboard') }}</h1>
@@ -33,7 +33,11 @@
                         @endif
                                 <div class="card">
                                     <div class="card-header bg-color">
-                                        <h3 class="cart-title mb-0 txt-color"> {{ $card->title  }} </h3>
+                                        @if($card->card_type == 'calender')
+                                            <h3 class="cart-title mb-0 txt-color"> {{ $card->title  }} </h3>
+                                            @else
+                                            <h3 class="cart-title mb-0 txt-color" id="preview_ac" onclick="show_contents(this)" style="cursor: pointer; display: block;" data-toggle="modal" data-target="#dataPreviewModal"> {{ $card->title  }} </h3>
+                                        @endif
                                     </div>
                                     <div class="card-body">
                                         @if ( $card->card_type == 'normal')
@@ -132,8 +136,64 @@
                     </div>
                 </div> --}}
                 <!-- END card -->
+
             </div>
         </div>
         <!-- END data cards -->
     </div>
+        <div class="row">
+            <div class="col">
+                <div class="modal fade" id="dataPreviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="preview_title">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="preview_content" style="overflow-y: auto; max-height: 500px;">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Close') }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        function show_contents(el) {
+            var titles = el.innerHTML;
+            document.getElementById("preview_title").innerHTML = titles;
+
+           var paren =  el.parentElement;
+
+
+            var bodys = paren.nextElementSibling.innerHTML;
+            document.getElementById("preview_content").innerHTML = bodys;
+
+        }
+
+    </script>
+
+@endsection
+
+@section('style')
+<style>
+    body.modal-open .modal {
+        display: flex !important;
+        height: 100%;
+        margin-top: 50px;
+    }
+
+    body.modal-open .modal .modal-dialog {
+        margin: auto;
+    }
+</style>
 @endsection

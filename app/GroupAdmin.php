@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class GroupAdmin extends Model
 {
-    protected $fillable = [ 'name', 'e-mail', 'phone', 'avatar', 'bio','status' ];
+    protected $fillable = [ 'name', 'e-mail', 'phone', 'avatar', 'bio','status', 'users_id' ];
 
     public function group()
     {

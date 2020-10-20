@@ -15,11 +15,12 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('board_id');
             $table->string('title');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('start');
+            $table->date('end');
             $table->text('details');
+            $table->unsignedBigInteger('board_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

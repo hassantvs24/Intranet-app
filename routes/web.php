@@ -28,8 +28,9 @@ Route::redirect('/', app()->getLocale() );
 
 Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], function() {
     // default page -> dashboard / login
-    Route::get('/', 'HomeController@index');
+    Route::get('/', 'HomeController@index')->name('main');
 
+    Route::post('/creation', 'HomeController@creation_save')->name('creation-save');
     Route::get('/creation', 'HomeController@creation')->name('creation');
 
     Auth::routes(['verify' => true]);
@@ -39,6 +40,7 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
     Route::get('/style-guide', function () {
         return view('style-guide');
     });
+
 
     // Email sending routes
     Route::post('/send-email','MailController@new_mail')->name('email.send');
@@ -50,6 +52,48 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         // admin routes
 
         Route::get('/dashboard', 'GroupsController@home')->name('admin-home');
+
+
+        /**
+         * -----------------------
+         * Create flow
+         * ----------------------
+         */
+        Route::post('/group-create', 'GroupCreateController@save_group')->name('groups.create.save');
+        Route::get('/group-create', 'GroupCreateController@index')->name('groups.create');
+
+        Route::post('/group-create/board', 'GroupCreateController@save_board')->name('groups.board.save');
+        Route::get('/group-create/board', 'GroupCreateController@board')->name('groups.board');
+
+        Route::post('/group-create/admin', 'GroupCreateController@save_admin')->name('groups.admin.save');
+        Route::get('/group-create/admin', 'GroupCreateController@admin')->name('groups.admin');
+
+        Route::post('/group-create/admin-assign', 'GroupCreateController@save_group_assign')->name('groups.admin-assign.save');
+        Route::get('/group-create/admin-assign', 'GroupCreateController@group_assign')->name('groups.admin-assign');
+
+        Route::post('/group-create/invite', 'GroupCreateController@save_invite')->name('groups.invite.save');
+        Route::get('/group-create/invite', 'GroupCreateController@invite')->name('groups.invite');
+
+        Route::post('/group-create/invite-exist', 'GroupCreateController@save_invite_exist')->name('groups.invite-exist.save');
+        Route::get('/group-create/invite-exist', 'GroupCreateController@invite_exist')->name('groups.invite-exist');
+        /**
+         * -----------------------
+         * /Create flow
+         * ----------------------
+         */
+
+        /**
+         * -----------------------
+         * Summernote file upload on infocard
+         * ----------------------
+         */
+        Route::post('/edit-infocards/upload', 'BoardsController@info_card_file_upload')->name('infocards.upload');
+        /**
+         * -----------------------
+         * /Summernote file upload on infocard
+         * ----------------------
+         */
+
 
         Route::get('/all-groups', 'GroupsController@index')->name('all-groups');
         Route::get('/groups/archived', 'GroupsController@archived')->name('archived-groups');

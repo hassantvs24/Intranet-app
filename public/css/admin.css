@@ -11459,7 +11459,7 @@ ul#filter li.current a {
 .login-page-wrap .left-col,
 .register-page-wrap .left-col {
   padding: 35px 15px;
-  background-image: url("/images/bg.png");
+  background-image: url("/images/bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -11566,6 +11566,13 @@ ul#filter li.current a {
 .admin-wrapper th .custom-checkbox {
   cursor: pointer;
   width: 10px;
+}
+
+.one_stop .card-body {
+  height: 370px;
+  padding: 0px 15px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .navbar {

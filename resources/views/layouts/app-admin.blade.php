@@ -17,7 +17,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css?v=') }}" rel="stylesheet">
+
+    @yield('script')
 </head>
 <body class="@yield('body-class')">
     <div class="admin-wrapper d-flex flex-wrap">
@@ -59,12 +61,14 @@
                     </a>
 
                     <div class="submenu pl-5">
+                        <a href="{{ route('groups.create', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Group') }}</a>
+
                         <a href="{{ route('all-groups', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('All Groups') }}</a>
-                        <a href="{{ route('create-group', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Group') }}</a>
+                        <!--<a href="{{ route('create-group', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('Add New Group') }}</a>-->
                         <a href="{{ route('archived-groups', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('Archived Groups') }}</a>
 
                         <!-- Created by nazmul -->
-                        <a href="{{ route('creation', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('Creation') }}**</a>
+                        <!--<a href="{{ route('creation', app()->getLocale() ) }}" class="submenu-item text-light d-block pl-4">{{ __('Creation') }}**</a>-->
                         <!-- Created by nazmul -->
                     </div>
                 </div>

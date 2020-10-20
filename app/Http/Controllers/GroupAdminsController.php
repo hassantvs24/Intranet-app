@@ -38,6 +38,7 @@ class GroupAdminsController extends Controller
     {
 
         $admin = new GroupAdmin();
+        $admin->users_id = $request->users_id;
         $admin->name = $request->name;
         $admin->email = $request->email;
         $admin->phone = $request->phone;
@@ -80,6 +81,7 @@ class GroupAdminsController extends Controller
         $admin->email = $request->email;
         $admin->phone = $request->phone;
         $admin->bio = $request->bio;
+        $admin->users_id = $request->users_id;
         $admin->save();
         return redirect()->route('all-admins', app()->getLocale() )
             ->with('success', 'Admin updated successfully');

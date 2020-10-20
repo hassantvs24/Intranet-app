@@ -11,7 +11,7 @@ class InvitationController extends Controller
     {
         $groups = Group::all();
         $email =  base64_decode($request->query('user'));
-        $group = base64_decode($request->query('group')) ;
+        $group = base64_decode($request->query('group'));
         return view('backend.users.invitation', compact('groups', 'email', 'group'));
     }
 }

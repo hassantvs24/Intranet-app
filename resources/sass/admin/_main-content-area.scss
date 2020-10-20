@@ -7,3 +7,10 @@
     cursor: pointer;
     width: 10px;
 }
+
+.one_stop .card-body{
+    height: 370px;
+    padding: 0px 15px;
+    overflow: hidden;
+    overflow-y: auto;
+}

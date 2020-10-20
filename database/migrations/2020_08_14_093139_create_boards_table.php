@@ -17,6 +17,8 @@ class CreateBoardsTable extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('group_id');
+            $table->boolean('status')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -19,6 +19,10 @@ class CreateGroupsTable extends Migration
             $table->string('color');
             $table->date('start_date');
             $table->date('end_date');
+            $table->date('archive_start_date')->nullable();
+            $table->date('archive_end_date')->nullable();
+            $table->boolean('status')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
