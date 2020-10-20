@@ -102,7 +102,7 @@ class GroupCreateController extends Controller
             'admin_name' => 'required|string|min:4|max:191',
             'phone' => 'required|string|min:10|max:20',
             'email' => 'required|email',
-            'group_id' => 'required|numeric',
+            //'group_id' => 'required|numeric',
             'users_id' => 'required|numeric'
         ]);
 
@@ -113,6 +113,11 @@ class GroupCreateController extends Controller
         DB::beginTransaction();
 
         try{
+
+            $user = User::find($request->users_id);
+            $user->group_id = NULL;
+            $user->role = 'admin';
+            $user->save();
 
             $table = new GroupAdmin();
             $table->users_id = $request->users_id;
@@ -143,10 +148,12 @@ class GroupCreateController extends Controller
              * Assign Group Admin
              */
 
-            $assign_admin = new GroupGroupAdmin();
-            $assign_admin->group_id = $request->group_id;
-            $assign_admin->group_admin_id = $group_admin_id;
-            $assign_admin->save();
+            if(isset($request->group_id)){
+                $assign_admin = new GroupGroupAdmin();
+                $assign_admin->group_id = $request->group_id;
+                $assign_admin->group_admin_id = $group_admin_id;
+                $assign_admin->save();
+            }
 
             /**
              * /Assign Group Admin
@@ -160,21 +167,18 @@ class GroupCreateController extends Controller
         return redirect()->back()->with(['status' => 'Created successfully.', 'alert' => 'alert-success']);
     }
 
-    public function invite(){
+
+    public function group_assign(){
         $group = Group::orderBy('name')->get();
-        $invited_user = User::orderBy('name')->whereIn('role', ['admin','superadmin'])->get();//Invite existing user who are admin or super admin
-        $guest_user = User::whereNull('group_id')->orderBy('id', 'DESC')->get();//User select which is not linkup with group
-        return view('backend.creation.invitation')->with(['invited_user' => $invited_user, 'guest_user' => $guest_user, 'group' => $group]);
+        $admins = GroupAdmin::orderBy('name')->get();
+        return view('backend.creation.assign_group')->with(['admins' => $admins, 'group' => $group]);
     }
 
-    public function save_invite(Request $request){
+    public function save_group_assign(Request $request){
        // dd($request->all());
-
         $validator = Validator::make($request->all(), [
             'group_id' => 'required|numeric',
-            'users_id' => 'required|numeric',
-            'invite_user_id' => 'sometimes|required|array',
-            'invite_email' => 'sometimes|required|array'
+            'admin_id' => 'required|array'
         ]);
 
         if ($validator->fails()) {
@@ -184,34 +188,67 @@ class GroupCreateController extends Controller
         DB::beginTransaction();
         try{
 
-            $group_id = $request->group_id;
-            $users_id = $request->users_id;
+            if (isset($request->admin_id)){
+                $admin_id = $request->admin_id;
 
-            if (isset($request->invite_user_id)){
-                $invite_user_id = $request->invite_user_id;
-
-                foreach ($invite_user_id as $rows){
-                    $user = User::find($rows);
-                    $user->group_id = $group_id;
-                    $user->save();
+                foreach ($admin_id as $rows){
+                    GroupGroupAdmin::firstOrCreate([
+                        'group_id' => $request->group_id,
+                        'group_admin_id' => $rows
+                    ]);
                 }
             }
+
+            DB::commit();
+        }catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->back()->with(['status' => 'Some Thing error.', 'alert' => 'alert-danger']);
+        }
+        return redirect()->back()->with(['status' => 'Created successfully.', 'alert' => 'alert-success']);
+    }
+
+
+    public function invite(){
+        $group = Group::orderBy('name')->get();
+        $invited_user = User::orderBy('name')->whereIn('role', ['admin','superadmin'])->get();//Filter primary contact who are admin or super admin
+        return view('backend.creation.invitation')->with(['invited_user' => $invited_user, 'group' => $group]);
+    }
+
+
+    public function save_invite(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'invite_email' => 'required|array'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        DB::beginTransaction();
+        try{
 
             if (isset($request->invite_email)){
                 $invite_email = $request->invite_email;
 
                 foreach ($invite_email as $row){
-                    $link = "http://intranet-app.test/nor/invite?user=".base64_encode($row)."&group=". base64_encode($group_id)."&admin=". base64_encode($users_id);
+
+                    $row_data = explode(", ",$row); // email, primary_contact, group
+                    $email = $row_data[0];
+                    $users_id = $row_data[1];
+                    $group_id = $row_data[2];
+
+                    $link = "http://intranet-app.test/nor/invite?user=".base64_encode($email)."&group=". base64_encode($group_id)."&admin=". base64_encode($users_id);
                     $email_body = "Dear user please click this link ". $link ." to create account on Intranet air";
 
                     $data = [
-                        'to' => $row,
+                        'to' => $email,
                         'from' => 'ashikur@getonnet.agency',
                         'subject' => 'Please confirm your invitation',
                         'title' => 'Intranet air invitation',
                         "body"     => $email_body
                     ];
-                    $this->toEmail = $row;
+                    $this->toEmail = $email;
 
                     Mail::send('email.invitation', compact('data'), function ($message) {
                         $message->from('admin@intranet.air', 'Intraner Air');
@@ -223,9 +260,51 @@ class GroupCreateController extends Controller
             DB::commit();
         }catch (\Exception $ex) {
             DB::rollback();
-             dd($ex);
             return redirect()->back()->with(['status' => 'Some Thing error.', 'alert' => 'alert-danger']);
         }
-        return redirect()->back()->with(['status' => 'Created successfully.', 'alert' => 'alert-success']);
+        return redirect()->back()->with(['status' => 'Successfully send.', 'alert' => 'alert-success']);
     }
+
+
+    public function invite_exist(){
+        $group = Group::orderBy('name')->get();
+        $invited_user = User::orderBy('name')->whereIn('role', ['admin','superadmin'])->get();//Filter primary contact who are admin or super admin
+        $guest_user = User::whereNull('group_id')->where('role', 'user')->orderBy('id', 'DESC')->get();//User select which is not linkup with group
+        return view('backend.creation.invite_exist')->with(['guest_user' => $guest_user, 'invited_user' => $invited_user,  'group' => $group]);
+    }
+
+    public function save_invite_exist(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'invite_user_id' => 'required|array',
+            'users_id' => 'required|numeric',
+            'group_id' => 'required|numeric'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        DB::beginTransaction();
+        try{
+
+            if (isset($request->invite_user_id)){
+                $invite_user_id = $request->invite_user_id;
+
+                foreach ($invite_user_id as $rows){
+                    $user = User::find($rows);
+                    $user->group_id = $request->group_id;
+                    $user->primary_contact = $request->users_id;
+                    $user->save();
+                }
+            }
+
+            DB::commit();
+        }catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->back()->with(['status' => 'Some Thing error.', 'alert' => 'alert-danger']);
+        }
+        return redirect()->back()->with(['status' => 'Updated successfully.', 'alert' => 'alert-success']);
+    }
+
 }

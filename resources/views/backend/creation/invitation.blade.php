@@ -41,8 +41,33 @@
                         <h5 class="card-header mb-3">{{__('Invite users')}}</h5>
                         <div class="card-body">
 
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-md-6">
+
+                                    <div class="form-row">
+                                        <div class="form-group w-100">
+                                            <label for="group_select">{{ __('Select group') }}</label>
+                                            <select id="group_select" name="group_id" class="form-control">
+                                                <option value="">{{ __('Select group') }}</option>
+                                                @foreach($group as $row)
+                                                    <option value="{{$row->id}}" data-name="{{$row->name}}">{{$row->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-row">
+                                        <div class="form-group w-100">
+                                            <label for="user_select">{{ __('Primary contact') }}</label>
+                                            <select id="user_select" name="users_id" class="form-control">
+                                                <option value="">{{ __('Select admin') }}</option>
+                                                @foreach($invited_user as $row)
+                                                    <option value="{{$row->id}}" data-name="{{$row->name}}">{{$row->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
 
                                     <div class="form-row">
                                         <label for="invite_user_input">{{__('Invite users')}}</label>
@@ -53,53 +78,26 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="m-4" id="show_invite_email">
-                                        <!-- Invite User Email List here -->
-                                    </div>
-                                </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <div class="form-row">
-                                        <div class="form-group w-100">
-                                            <label for="group_select">{{ __('Select group') }} <span class="text-danger">*</span></label>
-                                            <select id="group_select" name="group_id" class="form-control" required>
-                                                <option value="">{{ __('Select group') }}</option>
-                                                @foreach($group as $row)
-                                                    <option value="{{$row->id}}">{{$row->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-row">
-                                        <div class="form-group w-100">
-                                            <label for="user_select">{{ __('Primary contact') }} <span class="text-danger">*</span></label>
-                                            <select id="user_select" name="users_id" class="form-control">
-                                                <option value="">{{ __('Select admin') }}</option>
-                                                @foreach($invited_user as $row)
-                                                    <option value="{{$row->id}}">{{$row->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <p class="text-info"><b>{{ __('Or Select Existing User') }}</b></p>
-                                    @foreach($guest_user as $row)
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="invite_user_id[]" value="{{$row->id}}" id="inviteUsers{{$row->id}}">
-                                            <label class="form-check-label" for="inviteUsers{{$row->id}}">
-                                                {{$row->name}}
-                                            </label>
-                                        </div>
-                                    @endforeach
+                                    <table class="table table-hover table-striped table-sm">
+                                        <thead>
+                                            <th>#</th>
+                                            <th>{{__('Email')}}</th>
+                                            <th>{{__('Group')}}</th>
+                                            <th>{{__('Primary Contact')}}</th>
+                                        </thead>
+                                        <tbody id="show_invite_email">
+                                            <!-- generate email list -->
+                                        </tbody>
+                                    </table>
                                 </div>
 
                             </div>
 
                         </div>
                         <div class="card-footer text-right">
-                            <button type="submit" class="btn btn-primary">{{__('Store')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
                         </div>
                     </form>
                 </div>
@@ -116,29 +114,41 @@
         $(function () {
             $('#add_user_input').click(function () {
                 var emails = $('#invite_user_input').val();
+                var primary_contact = $('#user_select').val();
+                var primary_name = $('#user_select').find(':selected').data('name');
+                var group_id = $('#group_select').val();
+                var group_name =  $('#group_select').find(':selected').data('name');
 
-                if(emails.length > 0 && validateEmail(emails)){
-                    email_list.unshift(emails);
-                    $('#invite_user_input').val('');
-                    email_list_generate();
+                if(emails.length > 0 && validateEmail(emails) && primary_contact != '' && group_id != ''){
+                    const single_item = email_list.filter(items => items.email == emails);
+
+                    if(single_item.length === 0){
+                        email_list.unshift({
+                            email: emails,
+                            primary: primary_contact,
+                            p_name: primary_name,
+                            group: group_id,
+                            g_name: group_name
+                        });
+                        $('#invite_user_input').val('');
+                        email_list_generate();
+                    }
+
                 }
 
             });
         });
 
         function email_list_generate(){
-            var uniqueArray = email_list.filter(function(item, pos) {
-                return email_list.indexOf(item) == pos;
-            });
             var gen = '';
-            $.each(uniqueArray, function(i, el){
+            $.each(email_list, function(i, el){
                 gen += `
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="invite_email[]" value="${el}" id="invEmail${i}" checked>
-                            <label class="form-check-label" for="invEmail${i}">
-                                ${el}
-                            </label>
-                        </div>
+                        <tr>
+                            <td><input type="checkbox" name="invite_email[]" value="${el.email}, ${el.primary}, ${el.group}" checked /></td>
+                            <td>${el.email}</td>
+                            <td>${el.g_name}</td>
+                            <td>${el.p_name}</td>
+                        </tr>
                     `;
             });
             $('#show_invite_email').html(gen);

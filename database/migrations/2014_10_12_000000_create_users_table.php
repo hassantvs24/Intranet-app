@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->text('bio')->nullable();
             $table->string( 'language', 5 )->nullable()->default("en");
             $table->unsignedBigInteger('group_id')->nullable();
+            $table->unsignedBigInteger('primary_contact')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

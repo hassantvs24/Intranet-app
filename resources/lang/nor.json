@@ -111,5 +111,12 @@
     "Add" : "Legge til",
     "Select admin" : "Velg administrator",
     "Select group" : "Velg gruppe",
-    "Primary contact" : "Hovedkontakt"
+    "Primary contact" : "Hovedkontakt",
+    "Send" :  "Sende",
+    "Primary Contact" : "Hovedkontakt",
+    "Invite exist users" : "Inviter eksisterende brukere",
+    "Select Existing User" : "Velg Eksisterende bruker",
+    "Update" : "Oppdater",
+    "Group Assign" : "Gruppetildeling",
+    "Select Admin" : "Velg Administrator"
 }

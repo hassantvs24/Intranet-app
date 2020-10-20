@@ -45,8 +45,8 @@
                                 <div class="col-md-6">
                                     <div class="form-row">
                                         <div class="form-group w-100">
-                                            <label for="group_select">{{ __('Select group') }} <span class="text-danger">*</span></label>
-                                            <select id="group_select" name="group_id" class="form-control" required>
+                                            <label for="group_select">{{ __('Select group') }}</label>
+                                            <select id="group_select" name="group_id" class="form-control">
                                                 <option value="">{{ __('Select group') }}</option>
                                                 @foreach($group as $row)
                                                     <option value="{{$row->id}}">{{$row->name}}</option>
