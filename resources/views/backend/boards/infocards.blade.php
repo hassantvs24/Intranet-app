@@ -37,9 +37,9 @@
             data-card-title="" data-card-id="" data-board-id=""
             data-toggle="modal" data-target="#dataEditModal"
             style="right: 0;bottom: 0;z-index: 99; border-radius: 0; border-top-left-radius: 100px;">
-        <svg width="30" height="30" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="25" width="10" height="60" fill="white"/>
-            <rect x="60" y="25" width="10" height="60" transform="rotate(90 60 25)" fill="white"/>
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="25" width="10" height="60" rx="5" fill="white"/>
+            <rect x="60" y="25" width="10" height="60" rx="5" transform="rotate(90 60 25)" fill="white"/>
         </svg>
     </button>
     {{-- ============= END add new card button ============= --}}
