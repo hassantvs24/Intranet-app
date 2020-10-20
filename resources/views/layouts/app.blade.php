@@ -29,7 +29,7 @@
     <div id="app">
 
         <nav class="navbar navbar-expand-md navbar-light" id="site-header">
-            <div class="container bg-color">
+            <div class="container-fluid bg-color">
                 <a class="navbar-brand" href="{{ route('main', app()->getLocale()) }}">
                     <img src="{{ asset('images/logo.png') }}" height="35" alt="">
                 </a>

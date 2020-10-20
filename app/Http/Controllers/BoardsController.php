@@ -60,7 +60,8 @@ class BoardsController extends Controller
     public function edit( $language, $id )
     {
         $board = Board::find($id);
-        return view('backend.boards.edit', compact('board'));
+        $groups = Group::all();
+        return view('backend.boards.edit', compact('board', 'groups'));
     }
 
     public function update(Request $request, $language, $id)

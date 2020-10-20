@@ -19,10 +19,24 @@
                         @method('PUT')
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="group_name">{{ __('Name') }}</label>
-                                <input type="text" class="form-control" id="group_name" name="name" value="{{ $board->name }}" required>
+                                <label for="board_name">{{ __('Name') }}</label>
+                                <input type="text" class="form-control" id="board_name" name="name" value="{{ $board->name }}" required>
                             </div>
                         </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="group_name">{{ __('Related Group') }}</label>
+                                <select class="form-control" id="group_name" name="name">
+                                    @foreach($groups as $group)
+                                        <option value="group_{{$group->id}}" @if($board->group_id === $group->id) selected @endif >
+                                            {{$group->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
                     </form>
                 </div>

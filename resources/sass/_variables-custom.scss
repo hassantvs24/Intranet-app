@@ -92,8 +92,16 @@ Custom css variables
 .body-red {
     --color-one: #ff4757;
 
+    .top-color-bar {
+        background-color: var(--color-one);
+        background-image: none;
+    }
+
     .bg-color {
         background-color: rgba(#ff4757, .15) !important;
+        &-light {
+            background-color: rgba(#ff4757, .05) !important;
+        }
     }
     a,
     .txt-color {
@@ -103,8 +111,16 @@ Custom css variables
 .body-orange {
     --color-one: #f65b00;
 
+    .top-color-bar {
+        background-color: var(--color-one);
+        background-image: none;
+    }
+
     .bg-color {
         background-color: rgba(#f65b00, .15) !important;
+        &-light {
+            background-color: rgba(#f65b00, .05) !important;
+        }
     }
     a,
     .txt-color {
@@ -112,10 +128,18 @@ Custom css variables
     }
 }
 .body-yellow {
-    --color-one: #fdcb6e;
+    --color-one: #935f00;
+
+    .top-color-bar {
+        background-color: var(--color-one);
+        background-image: none;
+    }
 
     .bg-color {
         background-color: rgba(#fdcb6e, .15) !important;
+        &-light {
+            background-color: rgba(#fdcb6e, .05) !important;
+        }
     }
     a,
     .txt-color {
@@ -125,8 +149,16 @@ Custom css variables
 .body-violet {
     --color-one: #6c5ce7;
 
+    .top-color-bar {
+        background-color: var(--color-one);
+        background-image: none;
+    }
+
     .bg-color {
         background-color: rgba(#6c5ce7, .15) !important;
+        &-light {
+            background-color: rgba(#6c5ce7, .05) !important;
+        }
     }
     a,
     .txt-color {
@@ -136,8 +168,16 @@ Custom css variables
 .body-green {
     --color-one: #2ed573;
 
+    .top-color-bar {
+        background-color: var(--color-one);
+        background-image: none;
+    }
+
     .bg-color {
         background-color: rgba(#2ed573, .15) !important;
+        &-light {
+            background-color: rgba(#2ed573, .05) !important;
+        }
     }
     a,
     .txt-color {
@@ -147,8 +187,16 @@ Custom css variables
 .body-teal {
     --color-one: #02aab0;
 
+    .top-color-bar {
+        background-color: var(--color-one);
+        background-image: none;
+    }
+
     .bg-color {
         background-color: rgba(#02aab0, .15) !important;
+        &-light {
+            background-color: rgba(#02aab0, .05) !important;
+        }
     }
     a,
     .txt-color {
@@ -158,9 +206,18 @@ Custom css variables
 .body-blue {
     --color-one: #0984e3;
 
+    .top-color-bar {
+        background-color: var(--color-one);
+        background-image: none;
+    }
+
     .bg-color {
         background-color: rgba(#0984e3, .15) !important;
+        &-light {
+            background-color: rgba(#0984e3, .05) !important;
+        }
     }
+
     a,
     .txt-color {
         color: var(--color-one) !important;
@@ -169,8 +226,16 @@ Custom css variables
 .body-pink {
     --color-one: #e84393;
 
+    .top-color-bar {
+        background-color: var(--color-one);
+        background-image: none;
+    }
+
     .bg-color {
         background-color: rgba(#e84393, .15) !important;
+        &-light {
+            background-color: rgba(#e84393, .05) !important;
+        }
     }
     a,
     .txt-color {
