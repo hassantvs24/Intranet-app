@@ -210,14 +210,14 @@ class HomeController extends Controller
 
             if(isset($request->invite_user_email)){
                 $link = "http://intranet-app.test/nor/invite?user=".base64_encode( $request->invite_user_email )."&group=". base64_encode($group_id);
-                $email_body = "Dear user please click this link ". $link ." to create account on Intranet air";
+                // $email_body = "Dear user please click this link ". $link ." to create account on Intranet air";
 
                 $data = [
                     'to' => $request->invite_user_email,
                     'from' => 'ashikur@getonnet.agency',
                     'subject' => 'Please confirm your invitation',
                     'title' => 'Intranet air invitation',
-                    "body"     => $email_body
+                    "body"     => $link
                 ];
                 $this->toEmail = $request->invite_user_email;
 

@@ -239,14 +239,14 @@ class GroupCreateController extends Controller
                     $group_id = $row_data[2];
 
                     $link = "http://intranet-app.test/nor/invite?user=".base64_encode($email)."&group=". base64_encode($group_id)."&admin=". base64_encode($users_id);
-                    $email_body = "Dear user please click this link ". $link ." to create account on Intranet air";
+                    // $email_body = "Dear user please click this link ". $link ." to create account on Intranet air";
 
                     $data = [
                         'to' => $email,
                         'from' => 'ashikur@getonnet.agency',
                         'subject' => 'Please confirm your invitation',
                         'title' => 'Intranet air invitation',
-                        "body"     => $email_body
+                        "body"     => $link
                     ];
                     $this->toEmail = $email;
 

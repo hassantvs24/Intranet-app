@@ -12,14 +12,14 @@ class MailController extends Controller
     public function new_mail(Request $request)
     {
         $link = "http://intranet-app.test/nor/invite?user=".base64_encode( $request->email )."&group=". base64_encode($request->group_id);
-        $email_body = "Dear user please click this link ". $link ." to create account on Intranet air";
+        // $email_body = "Dear user please click this link ". $link ." to create account on Intranet air";
 
         $data = [
             'to' => $request->email,
             'from' => 'ashikur@getonnet.agency',
             'subject' => 'Please confirm your invitation',
             'title' => 'Intranet air invitation',
-            "body"     => $email_body
+            "body"     => $link
         ];
         $this->toEmail = $request->email;
 

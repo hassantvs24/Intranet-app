@@ -27,6 +27,10 @@ Route::get('locale/{locale}', function ($locale){
 Route::redirect('/', app()->getLocale() );
 
 Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], function() {
+    // preview emails
+    Route::get('/email-invite', function () { return view('email.invitation'); });
+    Route::get('/email-user', function () { return view('email.user'); });
+
     // default page -> dashboard / login
     Route::get('/', 'HomeController@index')->name('main');
 
