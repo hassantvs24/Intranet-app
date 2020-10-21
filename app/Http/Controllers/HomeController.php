@@ -222,7 +222,7 @@ class HomeController extends Controller
                 $this->toEmail = $request->invite_user_email;
 
                 Mail::send('email.invitation', compact('data'), function ($message) {
-                    $message->from('admin@intranet.air', 'Intraner Air');
+                    $message->from(' velkomen@air.no', 'Intraner Air');
                     $message->to($this->toEmail);
                 });
             }
