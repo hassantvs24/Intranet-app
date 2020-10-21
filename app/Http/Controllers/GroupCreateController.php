@@ -252,7 +252,7 @@ class GroupCreateController extends Controller
 
                     Mail::send('email.invitation', compact('data'), function ($message) {
                         $message->subject('Please confirm your invitation');
-                        $message->from('admin@intranet.air', 'Intraner Air');
+                        $message->from(' velkomen@air.no', 'Intraner Air');
                         $message->to($this->toEmail);
                     });
                 }

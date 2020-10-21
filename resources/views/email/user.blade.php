@@ -89,6 +89,7 @@
             <td style="font-family: 'Nunito', 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 18px; vertical-align: top; margin: 0;" valign="top"></td>
             <td class="container" width="600" style="font-family: 'Nunito', 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 18px; vertical-align: top; display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto;" valign="top">
                 <div class="content" style="font-family: 'Nunito', 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 18px; max-width: 600px; display: block; margin: 0 auto; padding: 20px;">
+
                     <table class="main" width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Nunito', 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 18px; border-radius: 3px;  margin: 0; border: none;">
                         <tr style="font-family: 'Nunito', 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 18px; margin: 0;">
                             <td class="content-wrap aligncenter" style="font-family: 'Nunito', 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 18px; vertical-align: top; margin: 0;padding: 20px;border: 3px solid #46a5b6;border-radius: 7px; background-color: #fff;" align="center" valign="top">
@@ -153,6 +154,7 @@
                             </td>
                         </tr>
                     </table>
+
                     <div class="footer" style="font-family: 'Nunito', 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 18px; width: 100%; clear: both; color: #999; margin: 0; padding: 20px;">
                         <table width="100%" style="font-family: 'Nunito', 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 18px; margin: 0;">
                             <tr>

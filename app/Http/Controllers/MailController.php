@@ -24,7 +24,7 @@ class MailController extends Controller
         $this->toEmail = $request->email;
 
         Mail::send('email.invitation', compact('data'), function ($message) {
-            $message->from('admin@intranet.air', 'Intraner Air');
+            $message->from(' velkomen@air.no', 'Intraner Air');
             $message->to($this->toEmail);
         });
         return redirect()->route('all-groups', app()->getLocale() )
