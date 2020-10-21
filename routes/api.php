@@ -23,5 +23,7 @@ Route::group(['middleware' => ['api']], function () {
     Route::get( 'eventsbyboard/{board_id}', 'API\EventController@eventbyBoard');
     Route::resource('events', 'API\EventController');
     Route::resource('cards', 'API\CardController');
+
+    Route::get('/boards/{id}', 'API\BoardController@show_cards')->name('api.cards');
 });
 

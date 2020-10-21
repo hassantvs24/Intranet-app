@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/intranet-custom.iml" filepath="$PROJECT_DIR$/.idea/intranet-custom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Intranet-app.iml" filepath="$PROJECT_DIR$/.idea/Intranet-app.iml" />
     </modules>
   </component>
 </project>

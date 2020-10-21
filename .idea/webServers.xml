@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="91859bfb-ce52-4e9e-aea7-a5333a68931d" name="intranet" url="http://ftp.getonnet.dev">
+      <webServer id="31bc2cf4-2279-44c3-b550-b8b7c2988e70" name="Intranet" url="http://ftp.getonnet.dev">
         <fileTransfer host="ftp.getonnet.dev" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />

@@ -60,7 +60,8 @@ class BoardsController extends Controller
     public function edit( $language, $id )
     {
         $board = Board::find($id);
-        return view('backend.boards.edit', compact('board'));
+        $groups = Group::all();
+        return view('backend.boards.edit', compact('board', 'groups'));
     }
 
     public function update(Request $request, $language, $id)
@@ -101,16 +102,16 @@ class BoardsController extends Controller
 
     public function info_card_file_upload(Request $request){
         if ($request->has('file')) {
-            // Get image file
+            // Get file
             $myFile = $request->file('file');
-            // Make a image name based on user name and current timestamp
+            // Make a file name based on file name and current timestamp
             $name = Str::slug($myFile->getClientOriginalName()) . '_' . time();
             // Define folder path
             $folder = '/uploads/files/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
             //$fileName = $name . '.' . $myFile->getClientOriginalExtension();
             $filePath = $folder . $name . '.' . $myFile->getClientOriginalExtension();
-            // Upload image
+            // Upload file
             $this->uploadOne($myFile, $folder, 'public', $name);
             // Set user profile image path in database to filePath
             return response()->json(["status" => true,"filename" => asset($filePath)]) ;
