@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Board;
+use App\Card;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use App\Group as Group;
@@ -118,5 +119,19 @@ class BoardsController extends Controller
         }
 
         return response()->json(["status" => false]) ;
+    }
+
+
+    public function preview_board($language, $id){
+
+        $cards_normal = Card::where('board_id', $id)->where('card_type', 'normal')->where('is_visible', 1)->get();
+        $cards_titles = Card::where('board_id', $id)->where('card_type', 'titles')->where('is_visible', 1)->get();
+        $cards_static = Card::where('board_id', $id)->where('card_type', 'static')->where('is_visible', 1)->get();
+        $cards_calender = Card::where('board_id', $id)->where('card_type', 'calender')->where('is_visible', 1)->get();
+
+        $board = Board::find($id);
+        $color = $board->group['color'];
+
+        return view('board_preview')->with(['normal' => $cards_normal, 'titles' => $cards_titles, 'static' => $cards_static, 'calender' => $cards_calender, 'color' => $color]);
     }
 }

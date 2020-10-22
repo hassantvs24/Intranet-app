@@ -16,7 +16,7 @@ class CreateCardsTable extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->enum('card_type', ['normal', 'calender']);
+            $table->enum('card_type', ['normal', 'titles', 'static', 'calender']);
             $table->boolean('is_visible')->default(1);
             $table->text('html_content')->nullable();
             $table->unsignedBigInteger('board_id');
