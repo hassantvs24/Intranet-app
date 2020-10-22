@@ -98,6 +98,22 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
          * ----------------------
          */
 
+        /**
+         * -----------------------
+         * BoardCard Update on infocard
+         * ----------------------
+         */
+        Route::put('/create-card/{id}', 'CardController@create_card')->name('create_card');
+        Route::put('/update-card/{id}', 'CardController@update_card')->name('update_card');
+        Route::get('/card-visible', 'CardController@is_visible')->name('card-visible');
+
+        Route::get('/preview-board/{id}', 'BoardsController@preview_board')->name('preview_board');
+        /**
+         * -----------------------
+         * /BoardCard Update on infocard
+         * ----------------------
+         */
+
 
         Route::get('/all-groups', 'GroupsController@index')->name('all-groups');
         Route::get('/groups/archived', 'GroupsController@archived')->name('archived-groups');

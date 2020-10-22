@@ -21,7 +21,7 @@ class CreateGroupAdminsTable extends Migration
             $table->string('avatar')->nullable();
             $table->text('bio')->nullable();
             $table->boolean('status')->default(1);
-            $table->foreignId('users_id')->nullable()->constrained()->onDelete('CASCADE')->onUpdate('No Action');
+            $table->bigInteger('users_id')->nullable()->unique();
             $table->softDeletes();
             $table->timestamps();
         });

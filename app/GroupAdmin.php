@@ -17,4 +17,9 @@ class GroupAdmin extends Model
     {
         return $query->where('status', $value );
     }
+
+    public function users()
+    {
+        return $this->belongsTo('App\User','users_id');
+    }
 }

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Intranet Air</title>
-    {{--    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">--}}
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 
     <style type="text/css">
@@ -116,7 +115,7 @@
 
                                 <tr style="font-family: 'Nunito', 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 18px; margin: 0;">
                                     <td class="content-block" style="font-family: 'Nunito', 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 18px; font-weight: bold; vertical-align: top; margin: 0; padding: 0 0 20px; padding-left: 15px;padding-right: 15px;" valign="top">
-                                        Du kan logge deg på her: <a href="{{ $data['body'] ?? "NO LINK WAS SET!" }}" style="color: #46a5b6;">{{ $data['body'] ?? "NO LINK WAS SET!" }}</a>
+                                        Du kan logge deg på her: <a href="{{ $data['body'] ?? "NO LINK WAS SET!" }}" style="color: #46a5b6;">Klikk her</a>
                                     </td>
                                 </tr>
 
@@ -157,7 +156,7 @@
                     <table width="100%" style="font-family: 'Nunito', 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 18px; margin: 0;">
                         <tr>
                             <td style="vertical-align: top; padding-top:30px;" align="center"><a href="javascript:void(0)" target="_blank">
-                                    <img src={{ asset('images/logo.png') }} alt="logo" height="36"> <br /> </a>
+                                    <img src="https://intrair8352.getonnet.dev/public/images/logo.png" alt="logo" height="36"> <br /> </a>
                             </td>
                         </tr>
                     </table>
