@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
         $table->email = 'admin@admin.com';
         $table->password = bcrypt(12345678);//Password: 12345678
         $table->role = 'admin';
+        $table->primary_contact = 1;
         $table->save();
     }
 }

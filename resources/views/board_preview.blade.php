@@ -36,8 +36,9 @@
                         <div class="card-header bg-color">
                             <h3 class="cart-title mb-0 txt-color">{{$row->title}}</h3>
                         </div>
+                        <div class="html_contents" style="position: absolute; left: -9999px; visibility:hidden; display:none;"> {!! $row->html_content !!}</div>
                         <div class="card-body">
-                            {!! $row->html_content !!}
+                            {!! Str::limit(strip_tags($row->html_content), 300) !!}
                         </div>
                     </div>
                 @endforeach
@@ -65,14 +66,17 @@
                     <div class="card-header bg-color">
                         <h3 class="cart-title mb-0 txt-color">Primary contact</h3>
                     </div>
+                    @php
+                        $admin = $contact->get_admin();
+                    @endphp
                     <div class="card-body">
                         <div class="card-body__child card-body__child--img">
-                            <img class="rounded-circle d-block m-auto" height="100" width="100" src="/images/demo-card-image.png" alt="">
+                            <img class="rounded-circle d-block m-auto" height="100" width="100" src="{{asset($admin->avatar ?? '/images/demo-card-image.png')}}" alt="Avatar">
                         </div>
                         <div class="card-body__child card-body__child--text text-center">
-                            <div class="name font-weight-bold">Contact Name</div>
-                            <div class="name font-weight-bold">email@domain.com</div>
-                            <div class="name font-weight-bold">+8801994961651</div>
+                            <div class="name font-weight-bold">{{$admin->name ?? $contact->name}}</div>
+                            <div class="name font-weight-bold">{{$admin->email ?? $contact->email}}</div>
+                            <div class="name font-weight-bold">{{$admin->phone ?? $contact->phone}}</div>
                         </div>
                     </div>
                 </div>
@@ -85,10 +89,10 @@
             <div class="col mx-auto" style="max-width: 1300px">
                 <div class="card">
                     <div class="card-header bg-color">
-                        <h3 class="cart-title mb-0 txt-color"> Calculator </h3>
+                        <h3 class="cart-title mb-0 txt-color">{{__('Event Calender')}} </h3>
                     </div>
                     <div class="card-body mt-4">
-                        <div id="calendar"></div>
+                        <div id="calendar" data-board="{{$board_id}}"></div>
                     </div>
                 </div>
             </div>
@@ -328,7 +332,6 @@
             document.getElementById("modal_preview_body").innerHTML = bodys;
 
         }
-
 
         /**
          * show content for titles normal

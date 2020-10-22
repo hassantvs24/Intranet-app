@@ -56,4 +56,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Group','group_id');
     }
+
+    public function get_admin(){
+        $admin = GroupAdmin::select('name', 'email', 'phone', 'avatar')->where('users_id', $this->id)->first();
+
+        return $admin;
+    }
 }

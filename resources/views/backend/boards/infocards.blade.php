@@ -55,7 +55,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="add-card-title">{{ __('Card title') }}</label>
-                        <input type="text" class="form-control" id="add-card-title" name="card_title">
+                        <input type="text" class="form-control" id="add-card-title" placeholder="{{ __('Card title') }}" name="card_title" required>
                     </div>
 
                     <div class="form-group">
@@ -64,7 +64,7 @@
                             <option value="normal">Normal</option>
                             <option value="titles">Title</option>
                             <option value="static">Static</option>
-                            <option value="calender">Calender</option>
+                            <!--<option value="calender">Calender</option>-->
                         </select>
                     </div>
 

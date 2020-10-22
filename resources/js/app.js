@@ -12,7 +12,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 
 document.addEventListener("DOMContentLoaded", function() {
     let calendarEl = document.getElementById("calendar");
-    var board_id = $('#board_id').val();
+    var board_id = document.getElementById("calendar").getAttribute('data-board');
     if (!!calendarEl) {
         let calendar = new Calendar(calendarEl, {
             plugins: [dayGridPlugin, timeGridPlugin],

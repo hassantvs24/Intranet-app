@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Board;
 use App\Card;
 use App\Traits\UploadTrait;
+use App\User;
 use Illuminate\Http\Request;
 use App\Group as Group;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class BoardsController extends Controller
@@ -132,6 +134,19 @@ class BoardsController extends Controller
         $board = Board::find($id);
         $color = $board->group['color'];
 
-        return view('board_preview')->with(['normal' => $cards_normal, 'titles' => $cards_titles, 'static' => $cards_static, 'calender' => $cards_calender, 'color' => $color]);
+        if (Auth::check()) {
+            $primary_contact = Auth::user()->primary_contact;
+
+            $contact = User::find(1);//Default Primary contact if NULL
+
+            if($primary_contact != ''){
+                $contact = User::find($primary_contact);
+            }
+
+        }else{
+            $contact = User::find(1);//Default Primary contact if not Login
+        }
+
+        return view('board_preview')->with(['contact' => $contact, 'board_id' => $id, 'normal' => $cards_normal, 'titles' => $cards_titles, 'static' => $cards_static, 'calender' => $cards_calender, 'color' => $color]);
     }
 }

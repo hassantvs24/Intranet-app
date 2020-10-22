@@ -51397,7 +51397,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
-  var board_id = $('#board_id').val();
+  var board_id = document.getElementById("calendar").getAttribute('data-board');
 
   if (!!calendarEl) {
     var calendar = new _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__["Calendar"](calendarEl, {
