@@ -2372,6 +2372,11 @@ pre code {
   opacity: 1;
 }
 
+.form-control::-ms-input-placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
 .form-control::placeholder {
   color: #6c757d;
   opacity: 1;
@@ -11588,6 +11593,29 @@ img {
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 3px 20px 5px rgba(0, 0, 0, 0.05);
+}
+
+.user-dashboard .navbar .navbar-collapse {
+  flex-grow: 0;
+}
+
+.user-dashboard .social-links a {
+  text-decoration: none;
+  opacity: 0.7;
+  transition: all 0.3s ease-in-out;
+}
+
+.user-dashboard .social-links a:hover {
+  opacity: 1;
+}
+
+.user-dashboard .social-links svg {
+  height: 40px;
+  width: auto;
+}
+
+.user-dashboard .social-links .fb {
+  margin-right: 10px;
 }
 
 .user-dashboard #newDataPreviewModal {
