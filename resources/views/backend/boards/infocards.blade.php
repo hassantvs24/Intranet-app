@@ -5,7 +5,7 @@
 @section('admin-content')
     <div class="container-fluid">
         <div class="" style="position: absolute; right: 15px;">
-            <a class="btn btn-secondary" href="{{route('preview_board', [app()->getLocale(), $board_id ])}}">{{ __('Preview') }}</a>
+            <a class="btn btn-secondary" href="{{route('preview_board', [app()->getLocale(), $board_id ])}}" target="_blank">{{ __('Preview') }}</a>
         </div>
 
         <ul id="filter" class="list-unstyled mt-4 d-flex">
@@ -241,8 +241,8 @@
             let demo_card_data = demo_insert_data(board_id);
 
             // demo data for initial cards
-
             var card_info_init = [];
+
             // try to fetch cards
             axios.get('/api/cards/?board_id='+ board_id)
             .then(function (response) {
