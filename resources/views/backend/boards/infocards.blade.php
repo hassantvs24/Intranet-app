@@ -312,8 +312,8 @@
                                     <div class="html_contents" style="position: absolute; left: -9999px; visibility:hidden; display:none;">${card.html_content}</div>
                             </div>
 
-                <div class="custom-control custom-switch d-inline-block ml-auto">
-                    <input type="checkbox" class="custom-control-input visibility_op" id="customSwitch-${card.id}" value="${card.id}" name="is_visible" ${visibility}>
+                            <div class="custom-control custom-switch d-inline-block ml-auto">
+                                <input type="checkbox" class="custom-control-input visibility_op" id="customSwitch-${card.id}" value="${card.id}" name="is_visible" ${visibility}>
                                     <label class="custom-control-label card-visibility" data-visibility="${card.id}" for="customSwitch-${card.id}">{{ __('Visibility') }}</label>
                                 </div>
                             </div>

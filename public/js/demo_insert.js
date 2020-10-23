@@ -47,7 +47,7 @@ function demo_insert_data(board_id) {
         },
         {
             title: "Pakkeliste?",
-            html_content: `<p> Dette må du ha med: </p>
+            html_content: `<p> <b>Dette må du ha med:</b> </p>
                     <ul>
                         <li> Dine eigne, faste medisinar for heile opphaldet </li>
                         <li> Aktuelle røntgenrapportar (du treng ikkje røntgenbiletet) </li>
@@ -76,13 +76,15 @@ function demo_insert_data(board_id) {
         },
         {
             title: "Permisjon og besøk?",
-            html_content: `<p> Permisjon i helgene Fyrste helg i opphaldet kan du ta permisjon frå
+            html_content: `<p> <b>Permisjon i helgene</b><br>
+                    Fyrste helg i opphaldet kan du ta permisjon frå
                     laurdag kl. 12.00. Dei andre helgene kan du ta permisjon frå fredag kl. 15.30, og du må vere
                     tilbake til trening/undervisning måndag morgon kl. 08.30.
                     Utover dette blir det ikkje gjeve permisjonar utan at du har heilt spesiell grunn. Slik grunn
                     kan til dømes vera alvorleg sjukdom eller dødsfall i familie, gravferd eller avtaler med
                     offentleg kontor som krev personleg frammøte.Spørsmål om permisjon tek du opp medteamleiaren i så god tid som mogleg. </p>
-                    <p> Besøk av vener og familie Det er for tida, pga koronarestriksjonar, ikkje
+
+                    <p> <b>Besøk av vener og familie</b> Det er for tida, pga koronarestriksjonar, ikkje
                     høve til å ta i mot besøk av familie og vener inne på AiR sitt område. </p>`,
             card_type: "titles",
             is_visible: 1,
@@ -91,16 +93,19 @@ function demo_insert_data(board_id) {
         },
         {
             title: "Reiseplanleggjar",
-            html_content: `<p> No i Koronatida oppmodar vi om å reise med privatbil.
-                    Du finn oss her:
-                    Haddlandsvegen 20
-                    3864 Rauland
-                    (link til googlemaps)
-                    Viss du kjem med offentleg transport:
-                    Haukeliekspressen stoppar i Åmot (link til Haukeliekspressen )
+            html_content: `<p> No i Koronatida oppmodar vi om å reise med privatbil.<br>
+                    Du finn oss her:<br>
+                    Haddlandsvegen 20<br>
+                    3864 Rauland<br><br>
+
+                    <a href="https://goo.gl/maps/GsuavvD5qmAXP52D8" target="_blank">Map</a> <br>
+
+                    Viss du kjem med offentleg transport:<br>
+                    Haukeliekspressen stoppar i Åmot (link til Haukeliekspressen ) <br>
                     Derifrå kan du ta lokalbuss til Rauland ( link til telemarkbil.no ) </p>
+
+                    <h3>Reiseutgifter</h3>
                     <p>
-                    Reiseutgifter
                     Reiseutgifter til og fra AiR-klinikk (ankomst og
                     avreise) blir dekt av Pasientreiser. Reise må
                     skje på billigaste måte med offentleg transport.
@@ -115,7 +120,11 @@ function demo_insert_data(board_id) {
         },
         {
             title: "Måltid og kosthald",
-            html_content: `<p></p>`,
+            html_content: `
+                <p>Kjøkenet vårt serverer frukost, lunsj, mellommåltid og middag i spisesalen kvar dag (bortsett frå onsdag, laurdag og sundag då alle smører seg lunsj-niste ved frukost). I tillegg blir det servert eit enkelt mellommåltid kvar ettermiddag.</p>
+                <p>Dersom det vert lagt fram legeattest tilpassar me kosten for dei som har spesielle behov. </p>
+                <p>Ta i så fall kontakt med oss før du kjem. Me kan og tilby vegetarkost, men diverre ikkje Vegan og Foodmap.</p>
+            `,
             card_type: "titles",
             is_visible: 1,
             board_id: board_id,

@@ -61,3 +61,7 @@
 @import "components/animations";
 @import "pages/login-register";
 @import "pages/user-dashboard";
+
+.card-item.hidden {
+    display: none;
+}
