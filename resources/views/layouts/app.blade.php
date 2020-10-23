@@ -137,5 +137,7 @@
             @yield('content')
         </main>
     </div>
+
+    @include('components.credits')
 </body>
 </html>
