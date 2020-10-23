@@ -13,6 +13,30 @@
             border-radius: 8px;
             box-shadow: 0 3px 20px 5px rgba(0, 0, 0, 0.05);
         }
+
+        .navbar-collapse {
+            flex-grow: 0;
+        }
+    }
+
+    .social-links {
+        a {
+            text-decoration: none;
+            opacity: 0.7;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        svg {
+            height: 40px;
+            width: auto;
+        }
+
+        .fb {
+            margin-right: 10px;
+        }
     }
 
     // new modal styles
@@ -99,7 +123,11 @@
 
         .modal-body {
             .title {
-                h1,h2,h3,h4,h5 {
+                h1,
+                h2,
+                h3,
+                h4,
+                h5 {
                     font-weight: bold;
                     font-size: 45px;
                     margin-bottom: 5px;
@@ -121,7 +149,8 @@
                     margin-bottom: 15px;
                 }
 
-                p,div {
+                p,
+                div {
                     font-size: 18px;
                     line-height: 1.5;
                 }
@@ -147,7 +176,7 @@
         .card {
             cursor: pointer;
             border: 1px solid transparent;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
 
             &:hover {
                 border: 1px solid var(--color-one);
