@@ -2372,6 +2372,11 @@ pre code {
   opacity: 1;
 }
 
+.form-control::-ms-input-placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
 .form-control::placeholder {
   color: #6c757d;
   opacity: 1;
@@ -11752,6 +11757,14 @@ img {
 
 #cards-layout #third-column .card--primary-contact {
   border: 1px solid var(--color-one);
+}
+
+#filter {
+  list-style: none;
+}
+
+.card-item.hidden {
+  display: none;
 }
 
 #sidebar {

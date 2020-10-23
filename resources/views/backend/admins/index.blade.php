@@ -51,13 +51,13 @@
 
     <div class="row mb-4" id="all-users">
         <div class="col">
-            <table class="table table--all-groups shadow-sm rounded border-0 overflow-hidden">
+            <table class="table table--all-admins shadow-sm rounded border-0 overflow-hidden">
                 <thead class="thead-light border-0">
                     <tr class="border-0">
                         <th scope="col" class="border-0">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="select_all_groups">
-                                <label class="custom-control-label" for="select_all_groups"></label>
+                                <input type="checkbox" class="custom-control-input" id="select_all_admins">
+                                <label class="custom-control-label" for="select_all_admins"></label>
                             </div>
                         </th>
                         <th scope="col" class="border-0">{{ __('Name') }}</th>
@@ -72,8 +72,8 @@
                     <tr>
                         <th scope="row">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="group_1_id">
-                                <label class="custom-control-label" for="group_1_id"></label>
+                                <input type="checkbox" class="custom-control-input" id="admin_{{ $admin->id }}_id">
+                                <label class="custom-control-label" for="admin_{{ $admin->id }}_id"></label>
                             </div>
                         </th>
                         <td>{{ $admin->name }}</td>

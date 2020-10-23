@@ -5,7 +5,7 @@
 @section('admin-content')
     <div class="container-fluid">
         <div class="" style="position: absolute; right: 15px;">
-            <a class="btn btn-secondary" href="{{route('preview_board', [app()->getLocale(), $board_id ])}}">{{ __('Preview') }}</a>
+            <a class="btn btn-secondary" href="{{route('preview_board', [app()->getLocale(), $board_id ])}}" target="_blank">{{ __('Preview') }}</a>
         </div>
 
         <ul id="filter" class="list-unstyled mt-4 d-flex">
@@ -240,8 +240,8 @@
             let demo_card_data = demo_insert_data(board_id);
 
             // demo data for initial cards
-
             var card_info_init = [];
+
             // try to fetch cards
             axios.get('/api/cards/?board_id='+ board_id)
             .then(function (response) {
@@ -312,8 +312,8 @@
                                     <div class="html_contents" style="position: absolute; left: -9999px; visibility:hidden; display:none;">${card.html_content}</div>
                             </div>
 
-                <div class="custom-control custom-switch d-inline-block ml-auto">
-                    <input type="checkbox" class="custom-control-input visibility_op" id="customSwitch-${card.id}" value="${card.id}" name="is_visible" ${visibility}>
+                            <div class="custom-control custom-switch d-inline-block ml-auto">
+                                <input type="checkbox" class="custom-control-input visibility_op" id="customSwitch-${card.id}" value="${card.id}" name="is_visible" ${visibility}>
                                     <label class="custom-control-label card-visibility" data-visibility="${card.id}" for="customSwitch-${card.id}">{{ __('Visibility') }}</label>
                                 </div>
                             </div>
