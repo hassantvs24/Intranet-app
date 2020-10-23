@@ -19,6 +19,7 @@ class CreateGroupAdminTable extends Migration
             $table->unsignedBigInteger('group_admin_id');
             $table->softDeletes();
             $table->timestamps();
+            $table->unique(['group_id', 'group_admin_id']);
         });
     }
 

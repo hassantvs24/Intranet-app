@@ -98,7 +98,8 @@ class GroupsController extends Controller
 
     public function destroy( $language, $id )
     {
-        $group = Group::find( $id );
+        Group::destroy( $id );
+        return redirect(route('all-groups', app()->getLocale() ))->with('status', 'Group successfully deleted!');
     }
 
     public function search( Request $request ) {

@@ -27,9 +27,9 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="group_name">{{ __('Related Group') }}</label>
-                                <select class="form-control" id="group_name" name="name">
+                                <select class="form-control" id="group_name" name="group_id">
                                     @foreach($groups as $group)
-                                        <option value="group_{{$group->id}}" @if($board->group_id === $group->id) selected @endif >
+                                        <option value="{{$group->id}}" @if($board->group_id === $group->id) selected @endif >
                                             {{$group->name}}
                                         </option>
                                     @endforeach
