@@ -13,7 +13,6 @@
         <div class="row mb-4">
             <div class="alert alert-primary font-weight-bold" role="alert">
                 {{__('Boards are page that your customer will see while logged in.')}} <br>
-{{--                {{__('You can create multiple boards and assign days for which board show up when')}} <br>--}}
                 {{__('You can update the same board for a group as necessary.')}}
             </div>
         </div>
@@ -45,18 +44,17 @@
 
         <div class="row mb-4" id="all-boards">
             <div class="col">
-                <table class="table table--all-groups shadow-sm rounded border-0 overflow-hidden">
+                <table class="table table--all-boards shadow-sm rounded border-0 overflow-hidden">
                     <thead class="thead-light border-0">
                     <tr class="border-0">
                         <th scope="col" class="border-0">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="select_all_groups">
-                                <label class="custom-control-label" for="select_all_groups"></label>
+                                <input type="checkbox" class="custom-control-input" id="select_all_boards">
+                                <label class="custom-control-label" for="select_all_boards"></label>
                             </div>
                         </th>
                         <th scope="col" class="border-0">{{ __('Name') }}</th>
                         <th scope="col" class="border-0">{{ __('Linked Group') }}</th>
-{{--                        <th scope="col" class="border-0">{{ __('Group Color') }}</th>--}}
                         <th scope="col" class="border-0"></th>
                     </tr>
                     </thead>
@@ -66,19 +64,14 @@
                             <tr>
                                 <th scope="row">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="group_1_id">
-                                        <label class="custom-control-label" for="group_1_id"></label>
+                                        <input type="checkbox" class="custom-control-input" id="board_{{ $board->id }}_id">
+                                        <label class="custom-control-label" for="board_{{ $board->id }}_id"></label>
                                     </div>
                                 </th>
                                 <td> {{ $board->name }} </td>
                                 <td> {{ $board->group->name }} </td>
-                                {{-- <td><span class="bg-primary group-color-dot"></span></td> --}}
+
                                 <td class="cta-group-item">
-    {{--                                 <a href="{{ route('view-board', $board->id) }}" class="btn btn-outline-primary btn-sm" id="btn-view-group"
-                                       data-toggle="tooltip" data-placement="top" title="{{ __('View board') }}"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19C5.526,19,.44,12.9.227,12.634a1,1,0,0,1,0-1.268C.44,11.105,5.526,5,12,5s11.56,6.105,11.773,6.366a1,1,0,0,1,0,1.268C23.56,12.9,18.474,19,12,19ZM2.349,12C3.764,13.472,7.611,17,12,17s8.239-3.525,9.651-5C20.236,10.528,16.389,7,12,7S3.761,10.525,2.349,12Z"/><path d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,10Z"/></svg>
-                                    </a> --}}
                                     <a href="{{ route('edit-board', [ app()->getLocale(), $board->id ] ) }}" class="btn btn-outline-primary btn-sm" id="btn-edit-group"
                                        data-toggle="tooltip" data-placement="top" title="{{ __('Edit Board') }}"
                                     >
