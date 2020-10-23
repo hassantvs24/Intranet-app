@@ -11,7 +11,6 @@ class EventController extends BaseController
     {
         $events = Event::all();
 
-
         if (is_null($events)) {
             return $this->sendError('Events not found.');
         }

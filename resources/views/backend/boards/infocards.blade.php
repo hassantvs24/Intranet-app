@@ -24,7 +24,6 @@
         <!-- END data cards -->
     </div>
 
-
     {{-- ============= START add new card button ============= --}}
     <button class="btn btn-primary position-fixed shadow-lg pb-4 pr-4 pt-5 pl-5"
             id="add-new-card-btn" data-card-type=""

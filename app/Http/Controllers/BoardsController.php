@@ -69,19 +69,17 @@ class BoardsController extends Controller
 
     public function update(Request $request, $language, $id)
     {
+        //dd($request->all());
         $board = Board::find($id);
         $board->name = $request->name;
+        $board->group_id = $request->group_id;
         $board->save();
-        return redirect()->route( 'all-boards', app()->getLocale() )
-            ->with('success', 'Board updated successfully');
+        return redirect()->route('all-boards', app()->getLocale())->with('success', 'Board updated successfully');
     }
 
     public function destroy( $language, $id )
     {
-        $board = Board::find( $id );
-        $board->events()->delete();
-        $board->cards()->delete();
-        $board->delete();
+        $board = Board::destroy( $id );
         return redirect()->route( 'all-boards', app()->getLocale() )->with('success', 'Board deleted!');
     }
 

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
+use App\GroupGroupAdmin;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\GroupAdmin;
 use App\User;
@@ -31,34 +35,82 @@ class GroupAdminsController extends Controller
 
     public function create()
     {
-        return view('backend.admins.create');
+        $group = Group::orderBy('name')->get();
+        $group_admin = GroupAdmin::select('users_id')->whereNotNull('users_id')->get()->toArray();
+        $user = User::orderBy('name')->whereNotIn('id',$group_admin)->get(); //Filter user, which user not find in group admin table
+        return view('backend.admins.create')->with(['user' => $user,  'group' => $group]);
     }
 
     public function store(Request $request)
     {
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:4|max:191',
+            'phone' => 'required|string|min:10|max:20',
+            'email' => 'required|email',
+            'group_id' => 'required|array',
+            'users_id' => 'required|numeric'
+        ]);
 
-        $admin = new GroupAdmin();
-        $admin->users_id = $request->users_id;
-        $admin->name = $request->name;
-        $admin->email = $request->email;
-        $admin->phone = $request->phone;
-        $admin->bio = $request->bio;
-        // Check if a profile image has been uploaded
-        if ($request->has('avatar')) {
-            // Get image file
-            $image = $request->file('avatar');
-            // Make a image name based on user name and current timestamp
-            $name = Str::slug($request->input('name')) . '_' . time();
-            // Define folder path
-            $folder = '/uploads/images/';
-            // Make a file path where image will be stored [ folder path + file name + file extension]
-            $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
-            // Upload image
-            $this->uploadOne($image, $folder, 'public', $name);
-            // Set user profile image path in database to filePath
-            $admin->avatar = $filePath;
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
-        $admin->save();
+
+        DB::beginTransaction();
+
+        try{
+            $user = User::find($request->users_id); //Make User to admin
+            $user->group_id = NULL;
+            $user->role = 'admin';
+            $user->save();
+
+            $admin = new GroupAdmin();
+            $admin->users_id = $request->users_id;
+            $admin->name = $request->name;
+            $admin->email = $request->email;
+            $admin->phone = $request->phone;
+            $admin->bio = $request->bio;
+            // Check if a profile image has been uploaded
+            if ($request->has('avatar')) {
+                // Get image file
+                $image = $request->file('avatar');
+                // Make a image name based on user name and current timestamp
+                $name = Str::slug($request->input('name')) . '_' . time();
+                // Define folder path
+                $folder = '/uploads/images/';
+                // Make a file path where image will be stored [ folder path + file name + file extension]
+                $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
+                // Upload image
+                $this->uploadOne($image, $folder, 'public', $name);
+                // Set user profile image path in database to filePath
+                $admin->avatar = $filePath;
+            }
+            $admin->save();
+
+            $group_admin_id = $admin->id;
+
+            if(isset($request->group_id)){
+
+                GroupGroupAdmin::where('group_admin_id', $group_admin_id)->delete(); // Remove old add before new update
+
+                $group_ids = $request->group_id;
+                foreach ($group_ids as $row){
+
+                    $assign_admin = new GroupGroupAdmin();
+                    $assign_admin->group_id = $row;
+                    $assign_admin->group_admin_id = $group_admin_id;
+                    $assign_admin->save();
+                }
+
+            }
+
+            DB::commit();
+        }catch (\Exception $ex) {
+            DB::rollback();
+            // dd($ex);
+            return redirect()->back()->with(['status' => 'Some Thing error.', 'alert' => 'alert-danger']);
+        }
+
         return redirect()->route('all-admins', app()->getLocale() )->with(['status' => 'Admin created successfully.']);
     }
 
@@ -71,20 +123,97 @@ class GroupAdminsController extends Controller
     public function edit( $language,$id)
     {
         $admin = GroupAdmin::find($id);
-        return view('backend.admins.edit', compact('admin'));
+        $group = Group::orderBy('name')->get();
+        $group_admin = GroupAdmin::select('users_id')->whereNotNull('users_id')->get()->toArray();
+        $user = User::orderBy('name')->whereNotIn('id',$group_admin)->get(); //Filter user, which user not find in group admin table
+
+        return view('backend.admins.edit')->with(['admin' => $admin, 'user' => $user,  'group' => $group]);
     }
 
     public function update(Request $request, $language,$id)
     {
-        $admin = GroupAdmin::find($id);
-        $admin->name = $request->name;
-        $admin->email = $request->email;
-        $admin->phone = $request->phone;
-        $admin->bio = $request->bio;
-        $admin->users_id = $request->users_id;
-        $admin->save();
-        return redirect()->route('all-admins', app()->getLocale() )
-            ->with('success', 'Admin updated successfully');
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:4|max:191',
+            'phone' => 'required|string|min:10|max:20',
+            'email' => 'required|email',
+            'group_id' => 'required|array',
+            'users_id' => 'required|numeric'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        DB::beginTransaction();
+
+        try{
+
+
+            $old_user_admin = GroupAdmin::find($id);
+            $old_user_id = $old_user_admin->users_id;
+
+            if($old_user_id != $request->users_id){
+                $old_user = User::find($old_user_id); //Make admin to user if change old user of the admin
+                $old_user->role = 'user';
+                $old_user->save();
+
+                $user = User::find($request->users_id); //Make user to admin if change old user of the admin
+                $user->group_id = NULL;
+                $user->role = 'admin';
+                $user->save();
+            }
+
+
+            $admin = GroupAdmin::find($id);
+            $admin->name = $request->name;
+            $admin->email = $request->email;
+            $admin->phone = $request->phone;
+            $admin->bio = $request->bio;
+            $admin->users_id = $request->users_id;
+
+            // Check if a profile image has been uploaded
+            if ($request->has('avatar')) {
+                // Get image file
+                $image = $request->file('avatar');
+                // Make a image name based on user name and current timestamp
+                $name = Str::slug($request->input('name')) . '_' . time();
+                // Define folder path
+                $folder = '/uploads/images/';
+                // Make a file path where image will be stored [ folder path + file name + file extension]
+                $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
+                // Upload image
+                $this->uploadOne($image, $folder, 'public', $name);
+                // Set user profile image path in database to filePath
+                $admin->avatar = $filePath;
+            }
+
+            $admin->save();
+
+            $group_admin_id = $id;
+
+            GroupGroupAdmin::where('group_admin_id', $group_admin_id)->delete(); // Remove old add before new update
+
+            if(isset($request->group_id)) {
+
+                $group_ids = $request->group_id;
+                foreach ($group_ids as $row) {
+
+                    $assign_admin = new GroupGroupAdmin();
+                    $assign_admin->group_id = $row;
+                    $assign_admin->group_admin_id = $group_admin_id;
+                    $assign_admin->save();
+                }
+            }
+
+            DB::commit();
+        }catch (\Exception $ex) {
+            DB::rollback();
+            // dd($ex);
+            return redirect()->back()->with(['status' => 'Some Thing error.', 'alert' => 'alert-danger']);
+        }
+
+        return redirect()->route('all-admins', app()->getLocale() )->with('success', 'Admin updated successfully');
     }
 
     public function destroy($language, $id)
