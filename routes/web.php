@@ -122,6 +122,7 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         Route::get('/groups/edit/{id}', 'GroupsController@edit')->name('edit-group');
         Route::put('/groups/update/{id}', 'GroupsController@update')->name('update-group');
         Route::get('/group/show/{id}', 'GroupsController@show')->name('view-group');
+        Route::get('/group/delete/{id}', 'GroupsController@destroy')->name('delete-group');
         // Route::get('/invite', ['middleware' => 'guest', 'uses' => 'InvitationController@invite'] )->name('invite-user');
         Route::get('/search-group/', 'GroupsController@search')->name('search-group');
         Route::post('/groups/user', 'GroupsController@existinguser')->name('group.user');
@@ -136,7 +137,7 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         Route::get('/view-board/{id}', 'BoardsController@show')->name('view-board');
         Route::get('/edit-board/{id}', 'BoardsController@edit')->name('edit-board');
         Route::put('/update-board/{id}', 'BoardsController@update')->name('update-board');
-        Route::delete('/delete-board/{id}', 'BoardsController@destroy')->name('delete-board');
+        Route::get('/delete-board/{id}', 'BoardsController@destroy')->name('delete-board');
         Route::get('/edit-infocards/board/{id}', 'BoardsController@info_cards')->name('edit-infocards');
         Route::get('/search-board/', 'BoardsController@search')->name('search-board');
         Route::get('/search-board-archive/', 'BoardsController@searchArchive')->name('search-board-archive');

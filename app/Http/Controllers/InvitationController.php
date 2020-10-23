@@ -9,9 +9,11 @@ class InvitationController extends Controller
 {
     public function invite(Request $request)
     {
+
         $groups = Group::all();
         $email =  base64_decode($request->query('user'));
         $group = base64_decode($request->query('group'));
+        //dd($group);
         return view('backend.users.invitation', compact('groups', 'email', 'group'));
     }
 }

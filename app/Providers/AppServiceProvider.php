@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Board;
+use App\Group;
+use App\Observers\BoardObserver;
+use App\Observers\GroupObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Group::observe(GroupObserver::class);
+        Board::observe(BoardObserver::class);
     }
 }
