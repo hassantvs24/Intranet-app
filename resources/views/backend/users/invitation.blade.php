@@ -46,11 +46,14 @@
                     <form method="POST" action="{{ route('register', app()->getLocale()) }}">
                         @csrf
 
+                        <input name="primary_contact" value="{{$primary_contact}}" type="hidden">
+                        <input name="group_id" value="{{$group_id}}" type="hidden">
+
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Levi Freeman">
+                                <input id="name" type="text" readonly class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $name }}" required autocomplete="name" autofocus placeholder="Levi Freeman">
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -59,7 +62,6 @@
                                 @enderror
                             </div>
                         </div>
-                        <input type="hidden" name="group_id" value="{{$group}}">
                         <input type="hidden" name="role" value="user">
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

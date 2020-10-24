@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\InviteQueue;
 use App\User;
 use Illuminate\Http\Request;
 use App\GroupAdmin as Admin;
@@ -120,5 +121,11 @@ class GroupsController extends Controller
         $user->save();
 
         return redirect()->route('view-group', [ app()->getLocale(), $request->group_ex_id ]);
+    }
+
+    public function show_invite_list($language, $id){
+        $group = Group::find($id);
+        $invitation = InviteQueue::where('group_id', $id)->orderBy('status')->get();
+        return view('backend.groups.view_invite')->with(['group' => $group, 'invitation' => $invitation]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Board;
 use App\Group;
 use App\GroupGroupAdmin;
+use App\InviteQueue;
 
 class GroupObserver
 {
@@ -40,6 +41,7 @@ class GroupObserver
     {
         GroupGroupAdmin::where('group_id',  $group->id)->delete();
         Board::where('group_id',  $group->id)->delete();
+        InviteQueue::where('group_id',  $group->id)->delete();
     }
 
     /**
@@ -63,5 +65,6 @@ class GroupObserver
     {
         GroupGroupAdmin::where('group_id',  $group->id)->forceDelete();
         Board::where('group_id',  $group->id)->forceDelete();
+        InviteQueue::where('group_id',  $group->id)->forceDelete();
     }
 }

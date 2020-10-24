@@ -4,8 +4,13 @@ namespace App\Providers;
 
 use App\Board;
 use App\Group;
+use App\GroupAdmin;
+use App\GroupUser;
+use App\Observers\AdminObserver;
 use App\Observers\BoardObserver;
 use App\Observers\GroupObserver;
+use App\Observers\UserObserver;
+use App\User;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,5 +34,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Group::observe(GroupObserver::class);
         Board::observe(BoardObserver::class);
+        GroupAdmin::observe(AdminObserver::class);
+        User::observe(UserObserver::class);
     }
 }

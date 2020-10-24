@@ -126,5 +126,9 @@
     "Visibility" : "Synlighet",
     "Event Calender" : "Arrangementskalender",
 
-    "This is how you can prepare": "Slik kan du førebu deg"
+    "This is how you can prepare" : "Slik kan du førebu deg",
+    "User name" : "Brukernavn",
+    "Invite email" : "Inviter e-post",
+    "Save to queue" : "Lagre i kø",
+    "Add existing user": "Legg til eksisterende bruker"
 }

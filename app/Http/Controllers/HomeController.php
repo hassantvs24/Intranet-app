@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Board;
+use App\Card;
 use App\Group as Group;
 use App\GroupAdmin;
 use App\GroupGroupAdmin;
@@ -10,6 +11,7 @@ use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -36,9 +38,32 @@ class HomeController extends Controller
 
     public function index()
     {
-        $id    = auth()->user()->id;
-        $cards = User::find( $id )->cards()->get();
+        $id    = 6;//auth()->user()->id;
+        $uid = auth()->user()->id;
+        $cards = User::find( $uid )->cards()->get();
         $group = auth()->user()->group;
+
+        $cards_normal = Card::where('board_id', $id)->where('card_type', 'normal')->where('is_visible', 1)->get();
+        $cards_titles = Card::where('board_id', $id)->where('card_type', 'titles')->where('is_visible', 1)->get();
+        $cards_static = Card::where('board_id', $id)->where('card_type', 'static')->where('is_visible', 1)->get();
+        $cards_calender = Card::where('board_id', $id)->where('card_type', 'calender')->where('is_visible', 1)->get();
+
+        $board = Board::find($id);
+        $color = $board->group['color'];
+
+        if (Auth::check()) {
+            $primary_contact = Auth::user()->primary_contact;
+
+            $contact = User::find(1);//Default Primary contact if NULL
+
+            if($primary_contact != ''){
+                $contact = User::find($primary_contact);
+            }
+
+        }else{
+            $contact = User::find(1);//Default Primary contact if not Login
+        }
+
         /* $cards = [];
 
         if( $group != Null ) {
@@ -56,8 +81,8 @@ class HomeController extends Controller
         }*/
 
         //dd($cards);
-
-        return view( 'home', compact('cards', 'group') );
+        return view('home')->with(['cards' => $cards, 'group' => $group,'contact' => $contact, 'board_id' => $id, 'normal' => $cards_normal, 'titles' => $cards_titles, 'static' => $cards_static, 'calender' => $cards_calender, 'color' => $color]);
+       // return view( 'home', compact('cards', 'group') );
     }
 
     public function invite_users()

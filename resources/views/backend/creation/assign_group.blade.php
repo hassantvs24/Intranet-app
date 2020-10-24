@@ -86,8 +86,9 @@
 
 @section('script')
     <script type="text/javascript">
-
-
-
+        var group_select = "{{session('select_group')}}";
+        $(function () {
+            $('#group_select').val(group_select);
+        });
     </script>
 @endsection

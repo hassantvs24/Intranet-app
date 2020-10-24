@@ -6,11 +6,15 @@ use App\Board;
 use App\Group;
 use App\GroupAdmin;
 use App\GroupGroupAdmin;
+use App\GroupUser;
+use App\InviteQueue;
 use App\Traits\UploadTrait;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -53,11 +57,14 @@ class GroupCreateController extends Controller
             }
 
             $table->save();
+            $group_id = $table->id;
+
+            Session::put('select_group', $group_id);//Store Group ID in Session Data
 
         }catch (\Exception $ex) {
             return redirect()->back()->with(['status' => 'Some Thing error.', 'alert' => 'alert-danger']);
         }
-        return redirect()->back()->with(['status' => 'Created successfully.', 'alert' => 'alert-success']);
+        return redirect()->route('groups.board', app()->getLocale())->with(['status' => 'Created successfully.', 'alert' => 'alert-success']);
     }
 
     public function board(){
@@ -86,7 +93,7 @@ class GroupCreateController extends Controller
         }catch (\Exception $ex) {
             return redirect()->back()->with(['status' => 'Some Thing error.', 'alert' => 'alert-danger']);
         }
-        return redirect()->back()->with(['status' => 'Created successfully.', 'alert' => 'alert-success']);
+        return redirect()->route('groups.admin', app()->getLocale())->with(['status' => 'Created successfully.', 'alert' => 'alert-success']);
     }
 
     public function admin(){
@@ -118,6 +125,8 @@ class GroupCreateController extends Controller
             $user->group_id = NULL;
             $user->role = 'admin';
             $user->save();
+
+            Session::put('select_primary', $request->users_id);//Store Primary Contact User ID in Session Data
 
             $table = new GroupAdmin();
             $table->users_id = $request->users_id;
@@ -164,7 +173,7 @@ class GroupCreateController extends Controller
            // dd($ex);
             return redirect()->back()->with(['status' => 'Some Thing error.', 'alert' => 'alert-danger']);
         }
-        return redirect()->back()->with(['status' => 'Created successfully.', 'alert' => 'alert-success']);
+        return redirect()->route('groups.admin-assign', app()->getLocale())->with(['status' => 'Created successfully.', 'alert' => 'alert-success']);
     }
 
 
@@ -204,22 +213,150 @@ class GroupCreateController extends Controller
             DB::rollback();
             return redirect()->back()->with(['status' => 'Some Thing error.', 'alert' => 'alert-danger']);
         }
-        return redirect()->back()->with(['status' => 'Created successfully.', 'alert' => 'alert-success']);
+        return redirect()->route('groups.invite', app()->getLocale())->with(['status' => 'Created successfully.', 'alert' => 'alert-success']);
     }
 
 
     public function invite(){
         $group = Group::orderBy('name')->get();
         $invited_user = User::orderBy('name')->whereIn('role', ['admin','superadmin'])->get();//Filter primary contact who are admin or super admin
-        return view('backend.creation.invitation')->with(['invited_user' => $invited_user, 'group' => $group]);
+        $guest_user = User::whereNull('group_id')->where('role', 'user')->orderBy('id', 'DESC')->get();//User select which is not linkup with group
+        return view('backend.creation.invitation')->with(['invited_user' => $invited_user, 'group' => $group, 'guest_user' => $guest_user,]);
+    }
+
+    public function save_invite(Request $request){
+        if(isset($request->add_exist)){
+            $validator = Validator::make($request->all(), [
+                'existing_user' => 'required|array',
+                'group_id' => 'required|numeric',
+                'primary_contact' => 'required|numeric'
+            ]);
+        }else{
+            $validator = Validator::make($request->all(), [
+                'queue_value' => 'required|array'
+            ]);
+        }
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        DB::beginTransaction();
+        try{
+
+            if (isset($request->add_exist)){
+                $invite_user_id = $request->existing_user;
+
+                foreach ($invite_user_id as $rows){
+                    $user = User::find($rows);
+                    $user->role = 'user';
+                    $user->group_id = $request->group_id;
+                    $user->primary_contact = $request->primary_contact;
+                    $user->save();
+
+                    GroupUser::firstOrCreate(['group_id' => $request->group_id, 'users_id' => $rows],['admin_id' => Auth::user()->id]); //Add to group table
+
+                }
+            }
+
+            if (isset($request->add_queue)){
+                $invites = $request->queue_value;
+
+                foreach ($invites as $row){
+                    $row_data = explode(", ",$row); // email, primary_contact, group, name
+                    $email = $row_data[0];
+                    $users_id = $row_data[1];
+                    $group_id = $row_data[2];
+                    $name = $row_data[3];
+                    InviteQueue::firstOrCreate(['email' => $email],['group_id' => $group_id, 'name' => $name, 'primary_contact' => $users_id, 'creator_id' => Auth::user()->id]);
+                }
+            }
+
+            DB::commit();
+        }catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->back()->with(['status' => 'Some Thing error.', 'alert' => 'alert-danger']);
+        }
+        return redirect()->back()->with(['status' => 'Successfully updated.', 'alert' => 'alert-success']);
     }
 
 
+    public function invitation_send(Request $request){
+       // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'send_email' => 'required|array'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        DB::beginTransaction();
+        try{
+
+            $url = "http://intrair8352.getonnet.dev"; //Base url
+
+            if (isset($request->send_email)){
+                $invites = $request->send_email;
+
+                foreach ($invites as $id){
+                    $table = InviteQueue::find($id);
+                    $name = $table->name;
+                    $email = $table->email;
+                    $group = $table->group_id;
+                    $p_contact = $table->primary_contact;
+
+                    $link = $url."/nor/invite?user=".base64_encode($name)."&email=".base64_encode($email)."&group=". base64_encode($group)."&admin=". base64_encode($p_contact);
+                    // $email_body = "Dear user please click this link ". $link ." to create account on Intranet air";
+
+                    $data = [
+                        'to' => $email,
+                        'from' => 'ashikur@getonnet.agency',
+                        'subject' => 'Please confirm your invitation',
+                        'title' => 'Intranet air invitation',
+                        'name' => $name,
+                        "body"     => $link
+                    ];
+                    $this->toEmail = $email;
+
+                    Mail::send('email.invitation', compact('data'), function ($message) {
+                        $message->subject('Please confirm your invitation');
+                        $message->from('velkomen@air.no', 'Intraner Air');
+                        $message->to($this->toEmail);
+                    });
+
+                    $table->status = 'Invited';
+                    $table->sender_id = Auth::user()->id;
+                    $table->save();
+                }
+            }
+
+            DB::commit();
+        }catch (\Exception $ex) {
+            DB::rollback();
+            dd($ex);
+            return redirect()->back()->with(['status' => 'Some Thing error.', 'alert' => 'alert-danger']);
+        }
+        return redirect()->back()->with(['status' => 'Successfully updated.', 'alert' => 'alert-success']);
+    }
+
+
+/*
     public function save_invite(Request $request){
 
-        $validator = Validator::make($request->all(), [
-            'invite_email' => 'required|array'
-        ]);
+        //dd($request->all());
+
+        if(isset($request->add_exist)){
+            $validator = Validator::make($request->all(), [
+                'selected_user' => 'required|array',
+                'group_id' => 'required|numeric',
+                'primary_contact' => 'required|numeric'
+            ]);
+        }else{
+            $validator = Validator::make($request->all(), [
+                'queue_value' => 'required|array'
+            ]);
+        }
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -306,6 +443,6 @@ class GroupCreateController extends Controller
             return redirect()->back()->with(['status' => 'Some Thing error.', 'alert' => 'alert-danger']);
         }
         return redirect()->back()->with(['status' => 'Updated successfully.', 'alert' => 'alert-success']);
-    }
+    }*/
 
 }

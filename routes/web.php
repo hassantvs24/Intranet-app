@@ -45,6 +45,19 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         return view('style-guide');
     });
 
+    /**-----------------
+     *  Laravel cache remover
+     * -----------------
+     */
+    Route::get('/catch', function () {
+        Artisan::call('config:cache');
+        Artisan::call('view:cache');
+    });
+    /**-----------------
+     *  /Laravel cache remover
+     * -----------------
+     */
+
 
     // Email sending routes
     Route::post('/send-email','MailController@new_mail')->name('email.send');
@@ -78,8 +91,8 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         Route::post('/group-create/invite', 'GroupCreateController@save_invite')->name('groups.invite.save');
         Route::get('/group-create/invite', 'GroupCreateController@invite')->name('groups.invite');
 
-        Route::post('/group-create/invite-exist', 'GroupCreateController@save_invite_exist')->name('groups.invite-exist.save');
-        Route::get('/group-create/invite-exist', 'GroupCreateController@invite_exist')->name('groups.invite-exist');
+        //Route::post('/group-create/invite-exist', 'GroupCreateController@save_invite_exist')->name('groups.invite-exist.save');
+        //Route::get('/group-create/invite-exist', 'GroupCreateController@invite_exist')->name('groups.invite-exist');
         /**
          * -----------------------
          * /Create flow
@@ -114,7 +127,6 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
          * ----------------------
          */
 
-
         Route::get('/all-groups', 'GroupsController@index')->name('all-groups');
         Route::get('/groups/archived', 'GroupsController@archived')->name('archived-groups');
         Route::get('/groups/create', 'GroupsController@create')->name('create-group');
@@ -123,6 +135,8 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         Route::put('/groups/update/{id}', 'GroupsController@update')->name('update-group');
         Route::get('/group/show/{id}', 'GroupsController@show')->name('view-group');
         Route::get('/group/delete/{id}', 'GroupsController@destroy')->name('delete-group');
+        Route::post('/send-invite', 'GroupCreateController@invitation_send')->name('send-invite');//View Group Invite sender
+        Route::get('/groups-invite/{id}', 'GroupsController@show_invite_list')->name('user-invite');//View Group Invite list
         // Route::get('/invite', ['middleware' => 'guest', 'uses' => 'InvitationController@invite'] )->name('invite-user');
         Route::get('/search-group/', 'GroupsController@search')->name('search-group');
         Route::post('/groups/user', 'GroupsController@existinguser')->name('group.user');
@@ -151,7 +165,7 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         Route::post('/save-user', 'UserController@store')->name('save-user');
         Route::get('/edit-user/{id}', 'UserController@edit')->name('edit-user');
         Route::put('/update-user/{id}', 'UserController@update')->name('update-user');
-        Route::delete('/delete-user/{id}', 'UserController@destroy')->name('delete-user');
+        Route::get('/delete-user/{id}', 'UserController@destroy')->name('delete-user');
         Route::get('/search-user/', 'UserController@search')->name('search-user');
         // // add user account settings route
 
@@ -171,3 +185,5 @@ Route::group([ 'prefix' => '{language}', 'where' => ['locale' => '[a-zA-Z]'] ], 
         Route::post('/admin/my-account', 'GroupAdminsController@update_account_settings')->name('admin-account-settings');
     });
 });
+
+

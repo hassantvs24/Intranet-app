@@ -56,11 +56,10 @@
                                         </div>
                                     </div>
 
-
                                     <div class="form-row">
                                         <div class="form-group w-100">
                                             <label for="user_select">{{ __('Primary contact') }}</label>
-                                            <select id="user_select" name="users_id" class="form-control">
+                                            <select id="user_select" name="primary_contact" class="form-control">
                                                 <option value="">{{ __('Select admin') }}</option>
                                                 @foreach($invited_user as $row)
                                                     <option value="{{$row->id}}" data-name="{{$row->name}}">{{$row->name}}</option>
@@ -70,7 +69,14 @@
                                     </div>
 
                                     <div class="form-row">
-                                        <label for="invite_user_input">{{__('Invite users')}}</label>
+                                        <div class="form-group w-100">
+                                            <label for="user_name">{{ __('User name') }}</label>
+                                            <input type="text" class="form-control" id="user_name" name="name" value="{{ old('name') }}" placeholder="{{ __('User name') }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <label for="invite_user_input">{{__('Invite email')}}</label>
                                         <div class="input-group">
                                             <input type="email" id="invite_user_input" class="form-control" placeholder="email@domain.com" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                             <div class="input-group-append">
@@ -78,12 +84,30 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <hr />
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="text-info"><b>{{ __('Select Existing User') }}</b></p>
+                                            @foreach($guest_user as $row)
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="existing_user[]" value="{{$row->id}}" id="inviteUsers{{$row->id}}">
+                                                    <label class="form-check-label" for="inviteUsers{{$row->id}}">
+                                                        {{$row->name}}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <table class="table table-hover table-striped table-sm">
                                         <thead>
                                             <th>#</th>
+                                            <th>{{__('Name')}}</th>
                                             <th>{{__('Email')}}</th>
                                             <th>{{__('Group')}}</th>
                                             <th>{{__('Primary Contact')}}</th>
@@ -97,8 +121,9 @@
                             </div>
 
                         </div>
-                        <div class="card-footer text-right">
-                            <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
+                        <div class="card-footer d-flex justify-content-between">
+                            <button type="submit" name="add_exist" value="exits" class="btn btn-info">{{__('Add existing user')}}</button>
+                            <button type="submit" name="add_queue" value="queue" class="btn btn-primary">{{__('Save to queue')}}</button>
                         </div>
                     </form>
                 </div>
@@ -110,28 +135,39 @@
 
 @section('script')
     <script type="text/javascript">
+        var group_select = "{{session('select_group')}}";
+        var user_select = "{{session('select_primary')}}";
+        $(function () {
+            $('#group_select').val(group_select);
+            $('#user_select').val(user_select);
+        });
+    </script>
+
+    <script type="text/javascript">
         var email_list = [];
 
         $(function () {
             $('#add_user_input').click(function () {
+                var names = $('#user_name').val();
                 var emails = $('#invite_user_input').val();
                 var primary_contact = $('#user_select').val();
                 var primary_name = $('#user_select').find(':selected').data('name');
                 var group_id = $('#group_select').val();
                 var group_name =  $('#group_select').find(':selected').data('name');
 
-                if(emails.length > 0 && validateEmail(emails) && primary_contact != '' && group_id != ''){
+                if(emails.length > 0 && validateEmail(emails) && names != '' && primary_contact != '' && group_id != ''){
                     const single_item = email_list.filter(items => items.email == emails);
 
                     if(single_item.length === 0){
                         email_list.unshift({
+                            name: names,
                             email: emails,
                             primary: primary_contact,
                             p_name: primary_name,
                             group: group_id,
                             g_name: group_name
                         });
-                        $('#invite_user_input').val('');
+                        $('#invite_user_input, #user_name').val('');
                         email_list_generate();
                     }
 
@@ -145,7 +181,8 @@
             $.each(email_list, function(i, el){
                 gen += `
                         <tr>
-                            <td><input type="checkbox" name="invite_email[]" value="${el.email}, ${el.primary}, ${el.group}" checked /></td>
+                            <td><input type="checkbox" name="queue_value[]" value="${el.email}, ${el.primary}, ${el.group}, ${el.name}" checked /></td>
+                            <td>${el.name}</td>
                             <td>${el.email}</td>
                             <td>${el.g_name}</td>
                             <td>${el.p_name}</td>
